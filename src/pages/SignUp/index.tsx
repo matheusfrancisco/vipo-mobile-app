@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Title } from './styles';
 
 
 const SingUp: React.FC = () => { 
   return  (
-    <Container />
+    <Container>
+      <Title>Faça seu cadastro</Title>
+    </Container>
   )
 };
 
