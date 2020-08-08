@@ -9,7 +9,6 @@ import {
 import Icon  from 'react-native-vector-icons/Feather';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import ButtonFacebook from '../../components/facebook';
 
 import logo from '../../assets/logo.png';
 
@@ -45,7 +44,7 @@ const SignUp: React.FC = () => {
             </View>
 
             <Input name="name" icon="user" placeholder="Nome" />
-            <Input name="email" icon="mail" placeholder="Email" />
+            <Input name="email" icon="mail" placeholder="E-mail" />
             <Input name="password" icon="lock" placeholder="Senha"/>
 
             <Button 

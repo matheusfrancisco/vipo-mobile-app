@@ -6,6 +6,7 @@ import {
   Platform,
   ScrollView
 } from 'react-native';
+import Icon  from 'react-native-vector-icons/Feather';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import ButtonFacebook from '../../components/facebook';
