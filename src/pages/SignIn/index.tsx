@@ -6,6 +6,7 @@ import {
   Platform,
   ScrollView
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/input';
 import Button from '../../components/button';
 import ButtonFacebook from '../../components/facebook';
@@ -23,6 +24,8 @@ import {
 } from './styles';
 
 const SignIn: React.FC = () => { 
+  const navigation = useNavigation();
+  
   return  (
     <>
       <KeyboardAvoidingView 
@@ -64,7 +67,7 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={()=> {}}>
+      <CreateAccountButton onPress={()=>navigation.navigate('SignUp')}>
         <CreateAccountButtonText> Criar uma conta </CreateAccountButtonText>
       </CreateAccountButton>
     </>
