@@ -1,12 +1,15 @@
-import React from 'react';
-import { 
+import React, { useCallback, useRef } from 'react';
+import {
   Image,
   View,
   KeyboardAvoidingView,
   Platform,
   ScrollView
 } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native'
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,7 +18,7 @@ import ButtonGoogle from '../../components/google';
 import logo from '../../assets/logo.png';
 
 
-import { 
+import {
   Container,
   Title,
   ForgotPaswordText,
@@ -25,12 +28,18 @@ import {
   SocialIcon
 } from './styles';
 
-const SignIn: React.FC = () => { 
+const SignIn: React.FC = () => {
   const navigation = useNavigation();
+
+  const formRef = useRef<FormHandles>(null);
   
+  const handleSingIn = useCallback((data: object) =>{
+    console.log(data);
+  }, []);
+
   return  (
     <>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         style={{ flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding': undefined}
         enabled
@@ -48,15 +57,18 @@ const SignIn: React.FC = () => {
               <Title>Seu app para sair</Title>
             </View>
 
-            <Input name="email" icon="mail" placeholder="E-mail" />
-            <Input name="password" icon="lock" placeholder="Senha"/>
+            <Form ref={formRef} onSubmit={handleSingIn}>
+              <Input name="email" icon="mail" placeholder="E-mail" />
+              <Input name="password" icon="lock" placeholder="Senha"/>
 
-            <Button 
-              onPress={() => console.log("Foi")}
-            >
-              Entrar 
-            </Button>
-            <SocialIcon>
+              <Button
+                onPress={() => {
+                  formRef.current?.submitForm();
+                }}
+              >
+                Entrar
+              </Button>
+              <SocialIcon>
               <ButtonFacebook
                 onPress={() => console.log("Foi")}
               >
@@ -68,6 +80,7 @@ const SignIn: React.FC = () => {
                 Login with Google
               </ButtonGoogle>
             </SocialIcon>
+            </Form>
             <ForgotPassword onPress={() => {}}>
               <ForgotPaswordText>
                 Esqueci minha senha
@@ -76,7 +89,7 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={()=>navigation.navigate}>
+      <CreateAccountButton onPress={()=>navigation.navigate("SingUp")}>
         <CreateAccountButtonText> Criar uma conta </CreateAccountButtonText>
       </CreateAccountButton>
     </>
