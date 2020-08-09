@@ -7,7 +7,7 @@ import {
   ScrollView
 } from 'react-native';
 
-import Input from '../../components/Input';
+import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
 import { 
   Container,
@@ -50,7 +50,7 @@ const Seach: React.FC = () => {
             }} />
             
             <SeachInput>
-              <Input name="search" icon="search" placeholder="Search" />
+              <InputSearch name="search" icon="search" placeholder="Search" />
             </SeachInput>
              
           </Container>
