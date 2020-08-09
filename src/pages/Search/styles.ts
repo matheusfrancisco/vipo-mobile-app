@@ -18,11 +18,26 @@ export const Title = styled.Text`
 `;
 
 export const SeachInput = styled.View`
-  align-items: center;
-  margin-top: 130px;
+  align-items: center; 
+  top: ${getBottomSpace() + 100}px;
 `;
 
 export const HeaderIcon = styled.View`
   flex-direction: row;
   justify-content: space-between; 
+`;
+
+export const IconHelpButton = styled.TouchableOpacity`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0%;
+  background: #312e28;
+  border-top-width: 1px;
+  border-color: #232129;
+  padding: 16px 0 ${16 + getBottomSpace()}px;
+
+  justify-content:center;
+  align-items: center;
+  flex-direction: row;
 `;

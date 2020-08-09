@@ -7,16 +7,18 @@ import {
   ScrollView
 } from 'react-native';
 
-import Input from '../../components/input';
+import Input from '../../components/Input';
 import logo from '../../assets/logo.png';
 import { 
   Container,
   Title,
   SeachInput,
   HeaderIcon,
+  IconHelpButton,
 } from './styles';
-import IconUser from '../../components/iconUser';
-import IconMenu from '../../components/iconMenu';
+import IconUser from '../../components/IconUser';
+import IconMenu from '../../components/IconMenu';
+import IconHelp from '../../components/IconHelp';
 
 
 const Seach: React.FC = () => { 
@@ -33,15 +35,8 @@ const Seach: React.FC = () => {
           contentContainerStyle={{ flex: 1}}
         >
           <HeaderIcon>
-            <IconUser
-                  onPress={() => console.log("Foi")}
-                >
-            </IconUser>
-
-            <IconMenu
-                  onPress={() => console.log("Foi")}
-                >
-            </IconMenu>
+            <IconUser />
+            <IconMenu />
           </HeaderIcon>
         
           <Container>
@@ -59,6 +54,9 @@ const Seach: React.FC = () => {
             </SeachInput>
              
           </Container>
+          <IconHelpButton>
+            <IconHelp />
+          </IconHelpButton>
         </ScrollView>
       </KeyboardAvoidingView>
 

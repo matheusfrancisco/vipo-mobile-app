@@ -10,10 +10,11 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
-import Input from '../../components/input';
-import Button from '../../components/button';
-import ButtonFacebook from '../../components/facebook';
-import ButtonGoogle from '../../components/google';
+
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import ButtonFacebook from '../../components/Facebook';
+import ButtonGoogle from '../../components/Google';
 import logo from '../../assets/logo.png';
 
 
