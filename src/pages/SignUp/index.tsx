@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { 
   Image,
   View,
@@ -25,6 +25,7 @@ import {
 
 const SignUp: React.FC = () => { 
   const navigation = useNavigation();
+  const formRef = useRef(null);
   
   return  (
     <>
@@ -45,7 +46,9 @@ const SignUp: React.FC = () => {
             <View>
               <Title>Crie sua conta</Title>
             </View>
-            <Form onSubmit={() => {}}>
+            <Form ref={formRef} onSubmit={(data) => {
+              console.log(data);
+            }}>
               <Input name="name" icon="user" placeholder="Nome" />
               <Input name="email" icon="mail" placeholder="E-mail" />
               <Input name="password" icon="lock" placeholder="Senha"/>
