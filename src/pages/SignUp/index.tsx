@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Icon  from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native'
+import { Form } from '@unform/mobile';
 import Input from '../../components/input';
 import Button from '../../components/button';
 
@@ -44,16 +45,17 @@ const SignUp: React.FC = () => {
             <View>
               <Title>Crie sua conta</Title>
             </View>
+            <Form onSubmit={() => {}}>
+              <Input name="name" icon="user" placeholder="Nome" />
+              <Input name="email" icon="mail" placeholder="E-mail" />
+              <Input name="password" icon="lock" placeholder="Senha"/>
 
-            <Input name="name" icon="user" placeholder="Nome" />
-            <Input name="email" icon="mail" placeholder="E-mail" />
-            <Input name="password" icon="lock" placeholder="Senha"/>
-
-            <Button 
-              onPress={() => console.log("Foi")}
-            >
-              Entrar 
-            </Button>
+              <Button 
+                onPress={() => console.log("Foi")}
+              >
+                Entrar 
+              </Button>
+            </Form>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
