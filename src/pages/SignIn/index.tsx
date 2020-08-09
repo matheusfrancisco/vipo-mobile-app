@@ -6,7 +6,7 @@ import {
   Platform,
   ScrollView
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/input';
 import Button from '../../components/button';
 import Icon from 'react-native-vector-icons/FontAwesome';
