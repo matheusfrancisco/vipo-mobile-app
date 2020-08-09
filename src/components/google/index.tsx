@@ -11,11 +11,11 @@ interface ButtonProps extends RectButtonProperties {
 const ButtonFacebook: React.FC<ButtonProps> =({ children, ...rest }) => (
   <Container {...rest} >
     <Icon.Button
-        name="facebook"
-        backgroundColor="#3b5998"
+        name="google"
+        backgroundColor="#ff0000"
         onPress={() => console.log("Foi")}
       >
-        Login with Facebook
+        Login with Google
     </Icon.Button>
   </Container>
 );
