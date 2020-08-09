@@ -50,3 +50,7 @@ export const CreateAccountButtonText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
 `;
+
+export const SocialIcon = styled.View`
+  flex-direction: row;
+`;

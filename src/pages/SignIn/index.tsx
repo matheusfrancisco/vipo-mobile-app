@@ -9,8 +9,9 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/input';
 import Button from '../../components/button';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import ButtonFacebook from '../../components/facebook';
-
+import ButtonGoogle from '../../components/google';
 import logo from '../../assets/logo.png';
 
 
@@ -20,7 +21,8 @@ import {
   ForgotPaswordText,
   ForgotPassword,
   CreateAccountButton,
-  CreateAccountButtonText
+  CreateAccountButtonText,
+  SocialIcon
 } from './styles';
 
 const SignIn: React.FC = () => { 
@@ -54,11 +56,18 @@ const SignIn: React.FC = () => {
             >
               Entrar 
             </Button>
-            <ButtonFacebook 
-              onPress={() => console.log("Foi")}
-            >
-              Entrar com o Facebook 
-            </ButtonFacebook>
+            <SocialIcon>
+              <ButtonFacebook
+                onPress={() => console.log("Foi")}
+              >
+                Login with Facebook
+              </ButtonFacebook>
+              <ButtonGoogle
+                onPress={() => console.log("Foi")}
+              >
+                Login with Google
+              </ButtonGoogle>
+            </SocialIcon>
             <ForgotPassword onPress={() => {}}>
               <ForgotPaswordText>
                 Esqueci minha senha
@@ -67,7 +76,7 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={()=>navigation.navigate('SignUp')}>
+      <CreateAccountButton onPress={()=>navigation.navigate}>
         <CreateAccountButtonText> Criar uma conta </CreateAccountButtonText>
       </CreateAccountButton>
     </>
