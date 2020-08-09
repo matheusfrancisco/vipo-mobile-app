@@ -89,7 +89,7 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={()=>navigation.navigate}>
+      <CreateAccountButton onPress={()=>navigation.navigate("SingUp")}>
         <CreateAccountButtonText> Criar uma conta </CreateAccountButtonText>
       </CreateAccountButton>
     </>
