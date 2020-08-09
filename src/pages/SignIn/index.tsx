@@ -12,7 +12,6 @@ import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import Input from '../../components/input';
 import Button from '../../components/button';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import ButtonFacebook from '../../components/facebook';
 import ButtonGoogle from '../../components/google';
 import logo from '../../assets/logo.png';
