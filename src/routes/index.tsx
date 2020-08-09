@@ -1,8 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
-import Seach from '../pages/Search';
+
 import { ActivityIndicator, View } from 'react-native';
 
 import AuthRoutes  from './auth.routes';
