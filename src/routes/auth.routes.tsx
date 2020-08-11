@@ -5,6 +5,7 @@ import SignUp from '../pages/SignUp';
 import MatcherParty from '../pages/MatcherParty';
 import LikeMusical from '../pages/LikeMusic';
 import TasteFood from '../pages/TasteFood';
+import MatchParty from '../pages/Match';
 
 const Auth = createStackNavigator();
 
@@ -16,6 +17,7 @@ const AuthRoutes: React.FC = () => (
       }}
       initialRouteName="TasteFood"
     >
+      <Auth.Screen name="Match" component={MatchParty} />
       <Auth.Screen name="SignIn" component={SignIn} />
       <Auth.Screen name="SignUp" component={SignUp} />
       <Auth.Screen name="MatcherParty" component={MatcherParty} />
