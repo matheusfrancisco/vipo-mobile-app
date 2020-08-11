@@ -4,24 +4,42 @@ import { Platform } from 'react-native';
 
 export const Container = styled.View`
   flex:1;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
+  flex-direction: row;
 `;
 
+export const Description = styled.View`
+  position: relative;
+  border: 1px;
+  height: 100px
+  bottom: 400px;
+`;
 
 export const Title = styled.Text`
   flex:1;
   font-size: 25px;
-  color: #871F9A;
+  color: white;
   font-family: 'RobotoSlab-Medium';
   position: absolute;
   bottom: 10px;
+  background: black;
 `;
 
-export const ImageBanner = styled.View`
+export const ImageBanner = styled.ImageBackground`
   border: 1px;
   height: 25%;
   margin-top: 18px;
   align-items: center;
+`;
+
+export const Insta = styled.Text`
+`;
+
+export const Line = styled.Text`
+  border-bottom-width: 1px;
+  border-bottom-color: gray;
+  height: 20px;
+  width: 80%;
+  position: relative;
+  left:10px;
+  bottom: 8px;
 `;
