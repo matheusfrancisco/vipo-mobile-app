@@ -8,15 +8,30 @@ import {
   Platform,
   ScrollView
 } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import  { useAuth } from '../../hooks/auth';
 
-import { 
+import {
   Container,
   Title,
   Insta,
   Line,
   Description,
+  DescriptionInfo,
   ImageBanner,
+  LikedIcons,
+  PubInformations,
+  PubTicket,
+  Informations,
+  Offert,
+  Liked,
+  INext,
+  ILeft,
+  Like,
+  Dislike,
+  Week,
+  Share,
+  Calendar,
 } from './styles';
 
 const MatchParty: React.FC = () => {
@@ -27,8 +42,10 @@ const MatchParty: React.FC = () => {
      "instagram": "@sputinick",
      "uri": "https://sputnikbar.com/img/sobre/30-11-2018.jpg",
      "description": "UUUUUUUUUUUUUm bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!",
-     "open": "6pm",
-     "close": "23pm",}
+     "ticket": "As pessoas costuman gastar R$ 60,00 neste local",
+     "bonus": "Indo pelo App você ganha um shot de boas-vindas quando chegar lá",
+     "openHour": "19:00",
+     "closeHour": "05:00",}
   ];
 
   return  (
@@ -43,7 +60,10 @@ const MatchParty: React.FC = () => {
           contentContainerStyle={{ flex: 1}}
         >
           <ImageBanner source={yourMatchs[0]}>
-            <Title>{yourMatchs[0].name}</Title>
+            <Title>
+                {yourMatchs[0].name}
+            </Title>
+            <Week> Agenda da semana </Week>
           </ ImageBanner>
           <Container>
             <Insta>
@@ -51,11 +71,47 @@ const MatchParty: React.FC = () => {
             </Insta>
             <Line/>
           </Container>
-          <Description>
-            <Text style={{textAlign : "left", paddingLeft: 10}}>
+          <Informations>
+            <Description>
               {yourMatchs[0].description}
-            </Text>
-          </Description>
+            </Description>
+            <DescriptionInfo>
+              <PubInformations>
+                <Text style={{marginBottom: 8}}>
+                {`${yourMatchs[0].openHour} - ${yourMatchs[0].closeHour}`}
+                </Text>
+                <Text>
+                  República +
+                </Text>
+              </PubInformations>
+              <PubTicket>
+                {yourMatchs[0].ticket}
+              </PubTicket>
+            </DescriptionInfo>
+            <Offert>
+              <Text style={{ textAlign: 'center' }}>
+                {yourMatchs[0].bonus}
+              </Text>
+            </Offert>
+            <Liked>
+              <LikedIcons>
+                <ILeft name="chevron-left"
+                  onPress={() => console.log("back")}
+                />
+                <Dislike name="thumbs-o-down"
+                  onPress={() => console.log("dislike")}
+                />
+                <Like name="thumbs-o-up"
+                  onPress={() => console.log("like")}
+                />
+                <INext name="chevron-right"
+                  onPress={() => console.log("next")}
+                />
+              </LikedIcons>
+              <Calendar name="calendar" />
+              <Share name="share-square" />
+            </Liked>
+          </Informations>
         </ScrollView>
       </KeyboardAvoidingView>
     </>
