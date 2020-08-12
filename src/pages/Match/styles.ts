@@ -1,7 +1,13 @@
 import styled from 'styled-components/native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
-import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+export const Wrapper = styled.View`
+  flex:1;
+  margin: 10px;
+  border: 1px;
+  background: #312e29;
+`;
+
 
 export const Container = styled.View`
   flex:1;
@@ -11,7 +17,7 @@ export const Container = styled.View`
 
 export const Informations = styled.View`
   position: relative;
-  height: 300px
+  height: 300px;
   bottom: 200px;
   margin: 10px 10px;
 `;
@@ -39,7 +45,6 @@ export const Week = styled.Text`
 export const ImageBanner = styled.ImageBackground`
   border: 1px;
   height: 25%;
-  margin-top: 18px;
   align-items: center;
 `;
 

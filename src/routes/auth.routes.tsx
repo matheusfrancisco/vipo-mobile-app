@@ -15,9 +15,11 @@ const AuthRoutes: React.FC = () => (
         headerShown: false,
         cardStyle: { backgroundColor: '#312e28'},
       }}
+<<<<<<< HEAD
       initialRouteName="TasteFood"
+=======
+>>>>>>> Finish fake signin and navigation
     >
-      <Auth.Screen name="Match" component={MatchParty} />
       <Auth.Screen name="SignIn" component={SignIn} />
       <Auth.Screen name="SignUp" component={SignUp} />
       <Auth.Screen name="MatcherParty" component={MatcherParty} />

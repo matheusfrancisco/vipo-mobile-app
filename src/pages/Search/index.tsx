@@ -4,8 +4,10 @@ import {
   View,
   KeyboardAvoidingView,
   Platform,
-  ScrollView
+  ScrollView,
 } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native'
 
 import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
@@ -19,10 +21,12 @@ import {
 import IconUser from '../../components/IconUser';
 import IconMenu from '../../components/IconMenu';
 import IconHelp from '../../components/IconHelp';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 const Seach: React.FC = () => { 
-  
+  const navigation = useNavigation();
+
   return  (
     <>
       <KeyboardAvoidingView 
@@ -44,10 +48,13 @@ const Seach: React.FC = () => {
               <Title>PROCURAR UM ROLÊ</Title>
             </View>
 
-            <Image source={logo} style={{
-              width:150,
-              height:150,
-            }} />
+            <RectButton onPress={() => { navigation.navigate('Match') }}>
+              <Image source={logo} style={{
+                width:150,
+                height:150,
+              }} />
+
+            </RectButton>
             
             <SeachInput>
               <InputSearch name="search" icon="search" placeholder="Search" />

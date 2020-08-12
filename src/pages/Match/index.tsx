@@ -32,6 +32,7 @@ import {
   Week,
   Share,
   Calendar,
+  Wrapper,
 } from './styles';
 
 const MatchParty: React.FC = () => {
@@ -59,59 +60,62 @@ const MatchParty: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ flex: 1}}
         >
-          <ImageBanner source={yourMatchs[0]}>
-            <Title>
-                {yourMatchs[0].name}
-            </Title>
-            <Week> Agenda da semana </Week>
-          </ ImageBanner>
-          <Container>
-            <Insta>
-              {yourMatchs[0].instagram}
-            </Insta>
-            <Line/>
-          </Container>
-          <Informations>
-            <Description>
-              {yourMatchs[0].description}
-            </Description>
-            <DescriptionInfo>
-              <PubInformations>
-                <Text style={{marginBottom: 8}}>
-                {`${yourMatchs[0].openHour} - ${yourMatchs[0].closeHour}`}
+          <Wrapper>
+
+            <ImageBanner source={yourMatchs[0]}>
+              <Title>
+                  {yourMatchs[0].name}
+              </Title>
+              <Week> Agenda da semana </Week>
+            </ ImageBanner>
+            <Container>
+              <Insta>
+                {yourMatchs[0].instagram}
+              </Insta>
+              <Line/>
+            </Container>
+            <Informations>
+              <Description>
+                {yourMatchs[0].description}
+              </Description>
+              <DescriptionInfo>
+                <PubInformations>
+                  <Text style={{marginBottom: 8}}>
+                  {`${yourMatchs[0].openHour} - ${yourMatchs[0].closeHour}`}
+                  </Text>
+                  <Text>
+                    República +
+                  </Text>
+                </PubInformations>
+                <PubTicket>
+                  {yourMatchs[0].ticket}
+                </PubTicket>
+              </DescriptionInfo>
+              <Offert>
+                <Text style={{ textAlign: 'center' }}>
+                  {yourMatchs[0].bonus}
                 </Text>
-                <Text>
-                  República +
-                </Text>
-              </PubInformations>
-              <PubTicket>
-                {yourMatchs[0].ticket}
-              </PubTicket>
-            </DescriptionInfo>
-            <Offert>
-              <Text style={{ textAlign: 'center' }}>
-                {yourMatchs[0].bonus}
-              </Text>
-            </Offert>
-            <Liked>
-              <LikedIcons>
-                <ILeft name="chevron-left"
-                  onPress={() => console.log("back")}
-                />
-                <Dislike name="thumbs-o-down"
-                  onPress={() => console.log("dislike")}
-                />
-                <Like name="thumbs-o-up"
-                  onPress={() => console.log("like")}
-                />
-                <INext name="chevron-right"
-                  onPress={() => console.log("next")}
-                />
-              </LikedIcons>
-              <Calendar name="calendar" />
-              <Share name="share-square" />
-            </Liked>
-          </Informations>
+              </Offert>
+              <Liked>
+                <LikedIcons>
+                  <ILeft name="chevron-left"
+                    onPress={() => console.log("back")}
+                  />
+                  <Dislike name="thumbs-o-down"
+                    onPress={() => console.log("dislike")}
+                  />
+                  <Like name="thumbs-o-up"
+                    onPress={() => console.log("like")}
+                  />
+                  <INext name="chevron-right"
+                    onPress={() => console.log("next")}
+                  />
+                </LikedIcons>
+                <Calendar name="calendar" />
+                <Share name="share-square" />
+              </Liked>
+            </Informations>
+          </Wrapper>
         </ScrollView>
       </KeyboardAvoidingView>
     </>
