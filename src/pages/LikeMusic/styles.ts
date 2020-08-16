@@ -14,6 +14,7 @@ export const HeaderText = styled.Text`
   font-size: 15px;
   color: #fff;
   font-family: 'RobotoSlab-Medium';
+  text-align: center;
 `;
 
 export const ContainerImage = styled.View`
@@ -47,6 +48,6 @@ export const ButtonIconHelp = styled.TouchableOpacity`
   flex-direction: row;
 `;
 
-export const Bn = styled.View`
+export const ButtonWarpper = styled.View`
   margin: 18px 120px;
 `;

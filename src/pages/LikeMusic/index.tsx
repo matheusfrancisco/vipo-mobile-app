@@ -14,7 +14,7 @@ import {
   HeaderLikeMusic,
   HeaderText as HeaderText,
   ButtonIconHelp,
-  Bn,
+  ButtonWarpper,
 } from './styles';
 import IconHelp from '../../components/IconHelp';
 import logo from '../../assets/logo.png'
@@ -190,9 +190,9 @@ const LikeMusic: React.FC = () => {
           </ContainerImage>
 
           </Container>
-          <Bn>
+          <ButtonWarpper>
             <ButtonNext>Próximo</ButtonNext>
-          </Bn>
+          </ButtonWarpper>
           <ButtonIconHelp>
             <IconHelp />
           </ButtonIconHelp>
