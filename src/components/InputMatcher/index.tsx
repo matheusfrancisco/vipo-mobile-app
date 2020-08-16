@@ -1,13 +1,7 @@
 import React from 'react';
-import { TextInputProps } from 'react-native';
-import { Container, TextInput, Icon } from './styles';
+import { Container, TextInput } from './styles';
 
-interface InputProps extends TextInputProps {
-  name: string;
-  icon: string;
-}
-
-const InputMatcher: React.FC<InputProps> = () => (
+const InputMatcher: React.FC = () => (
   <Container>
     <TextInput 
       keyboardAppearance="dark"

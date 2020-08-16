@@ -1,42 +1,32 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView,
-         ScrollView, 
-         Platform, 
-         Text, 
-         Image 
-        } from 'react-native';
-import { Title,
-         Container, 
-         SearchRole,
-         TextMatcher, 
-         ContainerImage,
-         ContainerContent as ContainerContent,
-         TextContainerImage,
-         PriceRole,
-         PriceRoleText, 
-       } from './styles';
+import { 
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  View,
+  Text,
+  Image
+} from 'react-native';
+
+import {
+  Title,
+  Container,
+  SearchRole,
+  TextMatcher,
+  ContainerImage,
+  ContainerContent,
+  TextContainerImage,
+  PriceRole,
+  PriceRoleText,
+  ImageItem,
+} from './styles';
+
+import PickerItem from '../../components/PickerItem';
 import ButtonViewRole from '../../components/ButtonViewRole';
-import logo from '../../assets/logo.png';
 import InputMatcher from '../../components/InputMatcher';
 const MatcherParty: React.FC = () => {
-  // const [selected, setSelected] = useState();
 
-  // const handleChange = (index) => {
-  //   setSelected({
-  //     selected: index
-  //   });
-  // };
-  const options = [
-    {
-      img: '../../assets/drink.jpg',
-      txt: 'Beber',
-    },
-    {
-      img: '../../assets/food.jpg',
-      txt: 'Dançar'
-    }
-  ];
-
+  const [selectedValue, setValue] = useState("1");
   return  (
     <>
       <KeyboardAvoidingView 
@@ -46,98 +36,82 @@ const MatcherParty: React.FC = () => {
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1}}
         >
+          <Container>
             <SearchRole>
               <Title>PROCURAR UM ROLÊ </Title>
             </SearchRole>
-            <Container>
-              <TextMatcher>
-                <Text>Em quantas pessoas vocês estão?</Text>
-              </TextMatcher>
-            </Container>
-            {/* <SmoothPicker
-              offsetSelection={40}
-              magnet
-              scrollAnimation
-              data={Array.from({ length: 16 }, (_, i) => i)}
-              onSelected={({ item, index }) => handleChange(index)}
-              renderItem={({ item, index }) => (
-                <Number selected={index === selected}>{item}</Number>
-                )}
-              /> */}
-              <TextMatcher>Quais os planos para hoje?</TextMatcher>
-              
-              <ContainerImage>
-                <ContainerContent>         
-                  <Image 
+            <TextMatcher>
+              <Text>Em quantas pessoas vocês estão?</Text>
+            </TextMatcher>
+            <PickerItem
+              setSelectedValue={(item: any) => { setValue(item)}}
+              selectedValue={selectedValue}
+            />
+            <TextMatcher>Quais os planos para hoje?</TextMatcher>
+            <ContainerImage>
+              <ContainerContent>         
+                <ImageItem 
                   source={require('../../assets/drink.jpg')}  
-                  style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                  />
-                  <TextContainerImage> Beber</TextContainerImage>
-                </ContainerContent>
+                />
+                <TextContainerImage> Beber</TextContainerImage>
+              </ContainerContent>
 
-                <ContainerContent>
-                  <Image 
-                    source={require('../../assets/food.jpg')}  
-                    style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                    />
-                  <TextContainerImage>Comer</TextContainerImage>
-                </ContainerContent>
+              <ContainerContent>
+                <ImageItem 
+                  source={require('../../assets/food.jpg')}  
+                />
+                <TextContainerImage>Comer</TextContainerImage>
+              </ContainerContent>
 
-                <ContainerContent>
-                  <Image 
-                    source={require('../../assets/dance.jpg')}  
-                    style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                    />
-                  <TextContainerImage>Dançar</TextContainerImage>
-                </ContainerContent>                
-              </ContainerImage>
-              
-              <ContainerImage>
-                <ContainerContent>
-                    <Image 
-                      source={require('../../assets/talk.jpg')}  
-                      style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                      />
-                    <TextContainerImage>Conversar</TextContainerImage>
-                </ContainerContent>
+              <ContainerContent>
+                <ImageItem 
+                  source={require('../../assets/dance.jpg')}  
+                />
+                <TextContainerImage>Dançar</TextContainerImage>
+              </ContainerContent>                
+            </ContainerImage>
+            <ContainerImage>
+              <ContainerContent>
+                <ImageItem 
+                  source={require('../../assets/talk.jpg')}  
+                />
+                <TextContainerImage>Conversar</TextContainerImage>
+              </ContainerContent>
+              <ContainerContent>
+                <ImageItem 
+                  source={require('../../assets/meetpeople.jpg')}  
+                />
+                <TextContainerImage>Conhecer</TextContainerImage>
+                <TextContainerImage>pessoas</TextContainerImage>
+              </ContainerContent>
 
-                
-                  <ContainerContent>
-                      <Image 
-                        source={require('../../assets/meetpeople.jpg')}  
-                        style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                        />
-                      <TextContainerImage>Conhecer</TextContainerImage>
-                      <TextContainerImage>pessoas</TextContainerImage>
-                  </ContainerContent>
-
-                  <ContainerContent>
-                      <Image 
-                        source={require('../../assets/romanticdinner.jpg')}  
-                        style={{width: 80, height: 80, borderRadius: 80/ 2}} 
-                        />
-                      <TextContainerImage>Jantar </TextContainerImage>
-                      <TextContainerImage> romântico</TextContainerImage>
-                  </ContainerContent>
-              </ContainerImage>
-
-              <TextMatcher>Até quanto pretendem gastar?</TextMatcher>
-
+              <ContainerContent>
+                <ImageItem 
+                  source={require('../../assets/romanticdinner.jpg')}  
+                />
+                <TextContainerImage>Jantar </TextContainerImage>
+                <TextContainerImage> romântico</TextContainerImage>
+              </ContainerContent>
+            </ContainerImage>
+            <TextMatcher>Até quanto pretendem gastar?</TextMatcher>
+            <View style={{flex:1, 
+              flexDirection: "column", 
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
               <PriceRole>
                 <PriceRoleText> Até:</PriceRoleText>
-                <InputMatcher/>
+                <InputMatcher />
                 <PriceRoleText> , 00</PriceRoleText>
               </PriceRole>
-              
               <ButtonViewRole
-                  onPress={() => {console.log("Foi")}}
-              >
-                VER ROLÊS
-              </ButtonViewRole>
-
-         
+                onPress={() => {console.log("Foi")}}
+                >
+              VER ROLÊS
+              </ButtonViewRole>         
+            </View>
+          </Container>
         </ScrollView>
       </KeyboardAvoidingView>
 

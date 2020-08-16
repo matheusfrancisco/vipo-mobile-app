@@ -1,37 +1,44 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
+
+export const ImageItem = styled(Image)`
+  /* flex: 1; */
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+`;
 
 export const Container = styled.View`
-  padding: 0 0px ${Platform.OS === 'android' ? 20 : 40}px;
 `;
 
 export const ContainerImage = styled.View`
-  padding: 0 0px ${Platform.OS === 'android' ? 20 : 40}px;
-  margin-left: 10px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
 `;
 
 export const ContainerContent= styled.View`
-  flex-direction:column;
-  margin-right: 50px;
+  margin: 24px;
 `;
 
 export const TextContainerImage = styled.Text`
   color: #FFF;
   text-align: center;
-  margin-top: 2px;
 `;
 
 
 export const SearchRole = styled.View`
+  width: 100%;
+  height: 100px;
   background-color: #871F9A;
-
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PriceRole = styled.View`
   flex-direction: row;
-  margin-left: 120px;
-  
+  justify-content: center;
 `;
 
 export const PriceRoleText = styled.Text`
@@ -52,6 +59,6 @@ export const Title = styled.Text`
   font-size: 25px;
   color: #fff;
   font-family: 'RobotoSlab-Medium';
-  margin: 30px;
-  text-align: center;
 `;
+
+
