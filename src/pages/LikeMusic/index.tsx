@@ -3,22 +3,25 @@ import {
   KeyboardAvoidingView,
   ScrollView, 
   Platform, 
-  Image 
+  Image, 
+  Text
 } from 'react-native';
 import { 
   Container, 
-  TextLikeMusical,
   ContainerImage,
-  ContainerContent as ContainerContent,
+  ContainerContent,
   TextContainerImage,
+  HeaderLikeMusic,
+  HeaderText as HeaderText,
   ButtonIconHelp,
+  Bn,
 } from './styles';
 import IconHelp from '../../components/IconHelp';
 import logo from '../../assets/logo.png'
 import { useNavigation } from '@react-navigation/native'
 import ButtonNext from '../../components/ButtonNext';
 
-const LikeMusical: React.FC = () => {
+const LikeMusic: React.FC = () => {
   const navigation = useNavigation();
 
   return  (
@@ -34,14 +37,15 @@ const LikeMusical: React.FC = () => {
         >
           
           <Container>
-           <Image source={logo} style={{
-              width:80,
-              height:80,
-              marginLeft: 150,
-            }} />
-              <TextLikeMusical>Queremos conhecer seu estilo musical.</TextLikeMusical>
-              <TextLikeMusical>O que você gosta de ouvir ?</TextLikeMusical>
-          </Container>
+            <HeaderLikeMusic>
+              <Image source={logo} style={{
+                  width:80,
+                  height:80,
+                  marginLeft:90,
+                }} />
+              <HeaderText>Queremos conhecer seu estilo musical.</HeaderText>
+              <HeaderText>O que você gosta de ouvir ?</HeaderText>
+            </HeaderLikeMusic>
           
               
           <ContainerImage>
@@ -185,7 +189,10 @@ const LikeMusical: React.FC = () => {
 
           </ContainerImage>
 
+          </Container>
+          <Bn>
             <ButtonNext>Próximo</ButtonNext>
+          </Bn>
           <ButtonIconHelp>
             <IconHelp />
           </ButtonIconHelp>
@@ -198,4 +205,4 @@ const LikeMusical: React.FC = () => {
   )
 };
 
-export default LikeMusical;
+export default LikeMusic;

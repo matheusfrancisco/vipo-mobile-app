@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import MatcherParty from '../pages/MatcherParty';
-import LikeMusical from '../pages/LikeMusical';
+import LikeMusical from '../pages/LikeMusic';
 import TasteFood from '../pages/TasteFood';
 
 const Auth = createStackNavigator();

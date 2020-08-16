@@ -1,40 +1,36 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-
 
 export const Container = styled.View`
   align-items: center;
 `;
 
-export const HeaderTasteFood = styled.View`
+export const HeaderLikeMusic = styled.View`
   justify-content: center;
   padding: 30px;
 `;
 
+export const HeaderText = styled.Text`
+  font-size: 15px;
+  color: #fff;
+  font-family: 'RobotoSlab-Medium';
+`;
+
 export const ContainerImage = styled.View`
   flex-direction: row;
-  padding: 20px;
+  padding: 15px;
 `;
 
 export const ContainerContent= styled.View`
   flex-direction:column;
-  margin: 0px 50px;
+  margin: 0px 15px;
 `;
 
 export const TextContainerImage = styled.Text`
   color: #FFF;
   text-align: center;
-  margin-top: 2px;
 `;
 
-
-export const TextLikeMusical = styled.Text`
-  font-size: 15px;
-  color: #fff;
-  font-family: 'RobotoSlab-Medium';
- 
-`;
 
 export const ButtonIconHelp = styled.TouchableOpacity`
   position: absolute;
@@ -52,5 +48,5 @@ export const ButtonIconHelp = styled.TouchableOpacity`
 `;
 
 export const Bn = styled.View`
-  margin: 215px 120px;
+  margin: 18px 120px;
 `;
