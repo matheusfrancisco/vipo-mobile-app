@@ -31,6 +31,7 @@ interface AuthContextData {
   signOut(): void;
   loading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
+  fakeSingIn(): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -77,10 +78,19 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const fakeSingIn = useCallback(async () => {
+    const fakeUser =  {
+      id: "string",
+      avatar_url: "string",
+      name: "string",
+      email: "string",
+    }
+    setData({ token: "fake", user: fakeUser });
+  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, loading, signIn, signOut}}
+      value={{ user: data.user, loading, signIn, signOut, fakeSingIn }}
     >
       {children}
     </AuthContext.Provider>

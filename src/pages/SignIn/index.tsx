@@ -44,7 +44,7 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const { signIn } = useAuth();
+  const { signIn, fakeSingIn } = useAuth();
   
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -60,7 +60,8 @@ const SignIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-
+        
+        await fakeSingIn();
         // await signIn({
         //   email: data.email,
         //   password: data.password,
