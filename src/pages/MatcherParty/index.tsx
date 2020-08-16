@@ -5,8 +5,9 @@ import {
   Platform,
   View,
   Text,
-  Image
 } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Title,
@@ -26,7 +27,9 @@ import ButtonViewRole from '../../components/ButtonViewRole';
 import InputMatcher from '../../components/InputMatcher';
 const MatcherParty: React.FC = () => {
 
+  const navigation = useNavigation();
   const [selectedValue, setValue] = useState("1");
+
   return  (
     <>
       <KeyboardAvoidingView 
@@ -106,7 +109,7 @@ const MatcherParty: React.FC = () => {
                 <PriceRoleText> , 00</PriceRoleText>
               </PriceRole>
               <ButtonViewRole
-                onPress={() => {console.log("Foi")}}
+                onPress={() => { navigation.navigate("Match") }}
                 >
               VER ROLÊS
               </ButtonViewRole>         

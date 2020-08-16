@@ -21,7 +21,6 @@ import {
 import IconUser from '../../components/IconUser';
 import IconMenu from '../../components/IconMenu';
 import IconHelp from '../../components/IconHelp';
-import { NavigationContainer } from '@react-navigation/native';
 
 
 const Seach: React.FC = () => { 
@@ -48,7 +47,7 @@ const Seach: React.FC = () => {
               <Title>PROCURAR UM ROLÊ</Title>
             </View>
 
-            <RectButton onPress={() => { navigation.navigate('Match') }}>
+            <RectButton onPress={() => { navigation.navigate('MatcherParty') }}>
               <Image source={logo} style={{
                 width:150,
                 height:150,
