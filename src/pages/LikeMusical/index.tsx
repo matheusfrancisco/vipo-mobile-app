@@ -1,20 +1,20 @@
 import React from 'react';
-import { KeyboardAvoidingView,
-         ScrollView, 
-         Platform, 
-         Image 
-        } from 'react-native';
-import { Container, 
-         TextLikeMusical,
-         ContainerImage,
-         ContainerContent as ContainerContent,
-         TextContainerImage,
-         ButtonIconHelp,
-       } from './styles';
+import { 
+  KeyboardAvoidingView,
+  ScrollView, 
+  Platform, 
+  Image 
+} from 'react-native';
+import { 
+  Container, 
+  TextLikeMusical,
+  ContainerImage,
+  ContainerContent as ContainerContent,
+  TextContainerImage,
+  ButtonIconHelp,
+} from './styles';
 import IconHelp from '../../components/IconHelp';
-import InputMatcher from '../../components/InputMatcher';
 import logo from '../../assets/logo.png'
-import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native'
 import ButtonNext from '../../components/ButtonNext';
 
@@ -47,7 +47,7 @@ const LikeMusical: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/styleMusic/eletronica.jpeg')}  
+              source={require('../../assets/style-music/eletronica.jpeg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}} 
               />
               <TextContainerImage> Eletronica</TextContainerImage>
@@ -55,7 +55,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/funk.jpg')}  
+                source={require('../../assets/style-music/funk.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Funk</TextContainerImage>
@@ -63,7 +63,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/pagode.jpg')}  
+                source={require('../../assets/style-music/pagode.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Pagode</TextContainerImage>
@@ -71,7 +71,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/rock.jpg')}  
+                source={require('../../assets/style-music/rock.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Rock</TextContainerImage>
@@ -82,7 +82,7 @@ const LikeMusical: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/styleMusic/forró.jpg')}  
+              source={require('../../assets/style-music/forró.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}} 
               />
               <TextContainerImage>Forró</TextContainerImage>
@@ -90,7 +90,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/jazz.jpeg')}  
+                source={require('../../assets/style-music/jazz.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Jazz</TextContainerImage>
@@ -98,7 +98,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/pop.jpg')}  
+                source={require('../../assets/style-music/pop.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Pop</TextContainerImage>
@@ -106,7 +106,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/reggae.jpeg')}  
+                source={require('../../assets/style-music/reggae.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Reggae</TextContainerImage>
@@ -117,7 +117,7 @@ const LikeMusical: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/styleMusic/samba.jpg')}  
+              source={require('../../assets/style-music/samba.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}}  
               />
               <TextContainerImage> Samba</TextContainerImage>
@@ -125,7 +125,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/sertanejo.jpg')}  
+                source={require('../../assets/style-music/sertanejo.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Sertanejo</TextContainerImage>
@@ -133,7 +133,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/hiphop.jpg')}  
+                source={require('../../assets/style-music/hiphop.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Hip Hop</TextContainerImage>
@@ -141,7 +141,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/mpb.jpg')}  
+                source={require('../../assets/style-music/mpb.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>MPB</TextContainerImage>
@@ -152,7 +152,7 @@ const LikeMusical: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/styleMusic/indie.jpg')}  
+              source={require('../../assets/style-music/indie.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}}  
               />
               <TextContainerImage> Indie</TextContainerImage>
@@ -160,7 +160,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/reggaeton.jpg')}  
+                source={require('../../assets/style-music/reggaeton.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Reggaeton</TextContainerImage>
@@ -168,7 +168,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/rap.jpg')}  
+                source={require('../../assets/style-music/rap.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Rap</TextContainerImage>
@@ -176,7 +176,7 @@ const LikeMusical: React.FC = () => {
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/styleMusic/rockalternativo.jpeg')}  
+                source={require('../../assets/style-music/rockalternativo.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
               <TextContainerImage>Rock </TextContainerImage>
