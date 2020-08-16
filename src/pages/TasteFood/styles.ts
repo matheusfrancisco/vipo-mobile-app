@@ -51,6 +51,6 @@ export const ButtonIconHelp = styled.TouchableOpacity`
   flex-direction: row;
 `;
 
-export const Bn = styled.View`
+export const ButtonWarpper = styled.View`
   margin: 215px 120px;
 `;
