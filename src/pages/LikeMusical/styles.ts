@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
-
 
 export const Container = styled.View`
   padding: 0 0px ${Platform.OS === 'android' ? 20 : 40}px;
@@ -15,8 +13,7 @@ export const ContainerImage = styled.View`
 
 export const ContainerContent= styled.View`
   flex-direction:column;
-  margin-right: 40px;
-  margin-bottom: 25px;
+  margin-right: 50px;
 `;
 
 export const TextContainerImage = styled.Text`
@@ -26,12 +23,29 @@ export const TextContainerImage = styled.Text`
 `;
 
 
-export const TextLikeMusical = styled.Text`
+export const SearchRole = styled.View`
+  background-color: #871F9A;
+
+`;
+
+export const PriceRole = styled.View`
+  flex-direction: row;
+  margin-left: 120px;
+  
+`;
+
+export const PriceRoleText = styled.Text`
+  text-align: center;
+  margin: 0px 10px;
+  color: #fff;
+`;
+
+export const TextMatcher = styled.Text`
   font-size: 15px;
   color: #fff;
   font-family: 'RobotoSlab-Medium';
-  margin: 5px 0px;
-  text-align: center;
+  margin: 20px;
+  text-align: left;
 `;
 
 export const Title = styled.Text`
@@ -40,19 +54,4 @@ export const Title = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 30px;
   text-align: center;
-`;
-
-export const ButtonIconHelp = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0%;
-  background: #312e28;
-  border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
-
-  justify-content:center;
-  align-items: center;
-  flex-direction: row;
 `;
