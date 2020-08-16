@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, ScrollView, Platform, Text, Image } from 'react-native';
-import { Title, Container, SearchRole, TextMatcher, ContainerImage, ContainerContent as ContainerContent, TextContainerImage } from './styles';
-import SmoothPicker from "react-native-smooth-picker";
-
+import { KeyboardAvoidingView,
+         ScrollView, 
+         Platform, 
+         Text, 
+         Image 
+        } from 'react-native';
+import { Title,
+         Container, 
+         SearchRole,
+         TextMatcher, 
+         ContainerImage,
+         ContainerContent as ContainerContent,
+         TextContainerImage,
+         PriceRole,
+         PriceRoleText, 
+       } from './styles';
+import ButtonViewRole from '../../components/ButtonViewRole';
+import logo from '../../assets/logo.png';
+import InputMatcher from '../../components/InputMatcher';
 const MatcherParty: React.FC = () => {
   // const [selected, setSelected] = useState();
 
@@ -11,6 +26,16 @@ const MatcherParty: React.FC = () => {
   //     selected: index
   //   });
   // };
+  const options = [
+    {
+      img: '../../assets/drink.jpg',
+      txt: 'Beber',
+    },
+    {
+      img: '../../assets/food.jpg',
+      txt: 'Dançar'
+    }
+  ];
 
   return  (
     <>
@@ -42,22 +67,76 @@ const MatcherParty: React.FC = () => {
                 )}
               /> */}
               <TextMatcher>Quais os planos para hoje?</TextMatcher>
+              
               <ContainerImage>
+                <ContainerContent>         
+                  <Image 
+                  source={require('../../assets/drink.jpg')}  
+                  style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                  />
+                  <TextContainerImage> Beber</TextContainerImage>
+                </ContainerContent>
+
                 <ContainerContent>
                   <Image 
-                      source={require('../../assets/drink.jpg')}  
-                      style={{width: 100, height: 100, borderRadius: 100/ 2}} 
-                  />
-                    <TextContainerImage> Beber</TextContainerImage>
-              </ContainerContent>
-              <ContainerContent>
+                    source={require('../../assets/food.jpg')}  
+                    style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                    />
+                  <TextContainerImage>Comer</TextContainerImage>
+                </ContainerContent>
+
+                <ContainerContent>
                   <Image 
-                      source={require('../../assets/food.jpg')}  
-                      style={{width: 100, height: 100, borderRadius: 100/ 2}} 
-                  />
-                    <TextContainerImage>Comer</TextContainerImage>
-              </ContainerContent>
-            </ContainerImage>
+                    source={require('../../assets/dance.jpg')}  
+                    style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                    />
+                  <TextContainerImage>Dançar</TextContainerImage>
+                </ContainerContent>                
+              </ContainerImage>
+              
+              <ContainerImage>
+                <ContainerContent>
+                    <Image 
+                      source={require('../../assets/talk.jpg')}  
+                      style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                      />
+                    <TextContainerImage>Conversar</TextContainerImage>
+                </ContainerContent>
+
+                
+                  <ContainerContent>
+                      <Image 
+                        source={require('../../assets/meetpeople.jpg')}  
+                        style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                        />
+                      <TextContainerImage>Conhecer</TextContainerImage>
+                      <TextContainerImage>pessoas</TextContainerImage>
+                  </ContainerContent>
+
+                  <ContainerContent>
+                      <Image 
+                        source={require('../../assets/romanticdinner.jpg')}  
+                        style={{width: 80, height: 80, borderRadius: 80/ 2}} 
+                        />
+                      <TextContainerImage>Jantar </TextContainerImage>
+                      <TextContainerImage> romântico</TextContainerImage>
+                  </ContainerContent>
+              </ContainerImage>
+
+              <TextMatcher>Até quanto pretendem gastar?</TextMatcher>
+
+              <PriceRole>
+                <PriceRoleText> Até:</PriceRoleText>
+                <InputMatcher/>
+                <PriceRoleText> , 00</PriceRoleText>
+              </PriceRole>
+              
+              <ButtonViewRole
+                  onPress={() => {console.log("Foi")}}
+              >
+                VER ROLÊS
+              </ButtonViewRole>
+
          
         </ScrollView>
       </KeyboardAvoidingView>

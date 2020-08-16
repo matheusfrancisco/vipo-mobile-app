@@ -13,7 +13,7 @@ export const ContainerImage = styled.View`
 
 export const ContainerContent= styled.View`
   flex-direction:column;
-  margin-right: 20px;
+  margin-right: 50px;
 `;
 
 export const TextContainerImage = styled.Text`
@@ -28,6 +28,17 @@ export const SearchRole = styled.View`
 
 `;
 
+export const PriceRole = styled.View`
+  flex-direction: row;
+  margin-left: 120px;
+  
+`;
+
+export const PriceRoleText = styled.Text`
+  text-align: center;
+  margin: 0px 10px;
+  color: #fff;
+`;
 
 export const TextMatcher = styled.Text`
   font-size: 15px;
