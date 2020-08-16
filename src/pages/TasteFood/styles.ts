@@ -50,3 +50,7 @@ export const ButtonIconHelp = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
 `;
+
+export const Bn = styled.View`
+  margin: 215px 120px;
+`;

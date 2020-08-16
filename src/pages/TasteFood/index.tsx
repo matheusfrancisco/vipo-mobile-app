@@ -13,6 +13,7 @@ import {
   TextContainerImage,
   ButtonIconHelp,
   HeaderTasteFood,
+  Bn,
 } from './styles';
 import IconHelp from '../../components/IconHelp';
 import logo from '../../assets/logo.png'
@@ -86,8 +87,10 @@ const TasteFood: React.FC = () => {
           </ContainerImage>
 
           </Container>
-
-          <ButtonNext>Próximo</ButtonNext>
+          
+          <Bn>
+            <ButtonNext>Próximo</ButtonNext>
+          </Bn>
           <ButtonIconHelp>
             <IconHelp />
           </ButtonIconHelp>
