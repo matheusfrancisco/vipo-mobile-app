@@ -3,8 +3,7 @@ import {
   KeyboardAvoidingView,
   ScrollView, 
   Platform, 
-  Image, 
-  Text
+  Image,
 } from 'react-native';
 import { 
   Container, 
@@ -21,7 +20,7 @@ import logo from '../../assets/logo.png'
 import { useNavigation } from '@react-navigation/native'
 import ButtonNext from '../../components/ButtonNext';
 
-const LikeMusic: React.FC = () => {
+const TasteDrink: React.FC = () => {
   const navigation = useNavigation();
 
   return  (
@@ -43,42 +42,42 @@ const LikeMusic: React.FC = () => {
                   height:80,
                   marginLeft:90,
                 }} />
-              <HeaderText>Queremos conhecer seu estilo musical.</HeaderText>
-              <HeaderText>O que você gosta de ouvir ?</HeaderText>
+              <HeaderText>O que você gosta de beber?</HeaderText>
             </HeaderLikeMusic>
           
               
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/style-music/eletronica.jpeg')}  
+              source={require('../../assets/taste-drink/sugarcaneliquor.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}} 
               />
-              <TextContainerImage> Eletronica</TextContainerImage>
+              <TextContainerImage> Cachaça</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/funk.jpg')}  
+                source={require('../../assets/taste-drink/coffee.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Funk</TextContainerImage>
+              <TextContainerImage>Café</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/pagode.jpg')}  
+                source={require('../../assets/taste-drink/beer.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Pagode</TextContainerImage>
+              <TextContainerImage>Cerveja</TextContainerImage>
             </ContainerContent> 
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/rock.jpg')}  
+                source={require('../../assets/taste-drink/craftbeer.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Rock</TextContainerImage>
+              <TextContainerImage>Cerveja </TextContainerImage>
+              <TextContainerImage> artesanal</TextContainerImage>
             </ContainerContent>    
 
           </ContainerImage>
@@ -86,34 +85,34 @@ const LikeMusic: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/style-music/forró.jpg')}  
+              source={require('../../assets/taste-drink/chopp.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}} 
               />
-              <TextContainerImage>Forró</TextContainerImage>
+              <TextContainerImage>Chopp</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/jazz.jpeg')}  
+                source={require('../../assets/taste-drink/gin.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Jazz</TextContainerImage>
+              <TextContainerImage>Gin</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/pop.jpg')}  
+                source={require('../../assets/taste-drink/tequila.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Pop</TextContainerImage>
+              <TextContainerImage>Tequila</TextContainerImage>
             </ContainerContent> 
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/reggae.jpeg')}  
+                source={require('../../assets/taste-drink/wine.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Reggae</TextContainerImage>
+              <TextContainerImage>Vinho</TextContainerImage>
             </ContainerContent>    
 
           </ContainerImage>
@@ -121,34 +120,34 @@ const LikeMusic: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/style-music/samba.jpg')}  
+              source={require('../../assets/taste-drink/vodkadrink.png')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}}  
               />
-              <TextContainerImage> Samba</TextContainerImage>
+              <TextContainerImage> Vodca</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/sertanejo.jpg')}  
+                source={require('../../assets/taste-drink/whisky.png')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Sertanejo</TextContainerImage>
+              <TextContainerImage>Whisky</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/hiphop.jpg')}  
+                source={require('../../assets/taste-drink/champagne.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Hip Hop</TextContainerImage>
+              <TextContainerImage>Champagne</TextContainerImage>
             </ContainerContent> 
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/mpb.jpg')}  
+                source={require('../../assets/taste-drink/brandy.jpeg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>MPB</TextContainerImage>
+              <TextContainerImage>Conhaque</TextContainerImage>
             </ContainerContent>    
 
           </ContainerImage>
@@ -156,36 +155,35 @@ const LikeMusic: React.FC = () => {
           <ContainerImage>
             <ContainerContent>         
               <Image 
-              source={require('../../assets/style-music/indie.jpg')}  
+              source={require('../../assets/taste-drink/soda.jpg')}  
               style={{width: 60, height: 60, borderRadius: 60/ 2}}  
               />
-              <TextContainerImage> Indie</TextContainerImage>
+              <TextContainerImage> Refrigerante </TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/reggaeton.jpg')}  
+                source={require('../../assets/taste-drink/juice.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Reggaeton</TextContainerImage>
+              <TextContainerImage>Suco</TextContainerImage>
             </ContainerContent>
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/rap.jpg')}  
+                source={require('../../assets/taste-drink/saque.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Rap</TextContainerImage>
+              <TextContainerImage>Saquê</TextContainerImage>
             </ContainerContent> 
 
             <ContainerContent>
               <Image 
-                source={require('../../assets/style-music/rockalternativo.jpeg')}  
+                source={require('../../assets/taste-drink/liquor.jpg')}  
                 style={{width: 60, height: 60, borderRadius: 60/ 2}}  
                 />
-              <TextContainerImage>Rock </TextContainerImage>
-              <TextContainerImage> Alternativo</TextContainerImage>
-            </ContainerContent>    
+              <TextContainerImage>Licor</TextContainerImage>
+            </ContainerContent> 
 
           </ContainerImage>
 
@@ -205,4 +203,4 @@ const LikeMusic: React.FC = () => {
   )
 };
 
-export default LikeMusic;
+export default TasteDrink;
