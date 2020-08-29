@@ -18,7 +18,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import ButtonFacebook from "../../components/Facebook";
 import ButtonGoogle from "../../components/Google";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logoVertical.png";
 
 import getValidationErrors from "../../utils/getValidationErrors";
 import { useAuth } from "../../hooks/auth";
@@ -93,8 +93,8 @@ const SignIn: React.FC = () => {
             <Image
               source={logo}
               style={{
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
               }}
             />
             <View>
