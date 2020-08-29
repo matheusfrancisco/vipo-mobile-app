@@ -19,7 +19,7 @@ import api from "../../services/api";
 
 import getvalidationErrors from "../../utils/getValidationErrors";
 
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logoVertical.png";
 
 interface SignUpData {
   name: string;
@@ -90,8 +90,8 @@ const SignUp: React.FC = () => {
             <Image
               source={logo}
               style={{
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
               }}
             />
             <View>
