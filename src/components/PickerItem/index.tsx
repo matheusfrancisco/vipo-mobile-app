@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
-import { Container } from './styles';
-import { 
-  Picker,
-} from '@react-native-community/picker';
-
+import React, { useState } from "react";
+import { Container } from "./styles";
+import { Picker } from "@react-native-community/picker";
 
 const PickerItem: any = ({ setSelectedValue, selectedValue }: any) => {
-  
   return (
     <Container>
       <Picker
         selectedValue={selectedValue}
         style={{
-          height: 50, 
-          width: 280, 
+          height: 50,
+          width: 280,
           alignItems: "center",
-          color: "white"
+          color: "#fff",
         }}
-        onValueChange={(itemValue) => { 
-          setSelectedValue(itemValue) 
+        onValueChange={(itemValue) => {
+          setSelectedValue(itemValue);
         }}
       >
         <Picker.Item label="Apenas eu" value="1" />
@@ -31,7 +27,6 @@ const PickerItem: any = ({ setSelectedValue, selectedValue }: any) => {
       </Picker>
     </Container>
   );
-}
-
+};
 
 export default PickerItem;
