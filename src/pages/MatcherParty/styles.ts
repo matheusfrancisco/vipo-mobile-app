@@ -37,6 +37,7 @@ export const SearchRole = styled.View`
 export const PriceRole = styled.View`
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 10px;
 `;
 
 export const PriceRoleText = styled.Text`
@@ -49,7 +50,7 @@ export const TextMatcher = styled.Text`
   font-size: 15px;
   color: #8257e6;
   font-family: "RobotoSlab-Medium";
-  margin: 20px;
+  margin: 15px;
   text-align: left;
 `;
 
