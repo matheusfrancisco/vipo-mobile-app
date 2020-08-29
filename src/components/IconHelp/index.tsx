@@ -1,16 +1,16 @@
-import React from 'react';
-import { RectButtonProperties } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Container } from './styles';
+import React from "react";
+import { RectButtonProperties } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Container } from "./styles";
 
-const IconHelp: React.FC = () => ( 
+const IconHelp: React.FC = () => (
   <Container>
     <Icon.Button
-        name="question-circle"
-        backgroundColor="none"
-        onPress={() => console.log("Foi")}
-      >
-    </Icon.Button>
+      name="question-circle"
+      backgroundColor="none"
+      color="#8257e6"
+      onPress={() => console.log("Foi")}
+    ></Icon.Button>
   </Container>
 );
 
