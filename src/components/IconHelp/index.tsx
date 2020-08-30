@@ -8,7 +8,7 @@ const IconHelp: React.FC = () => (
     <Icon.Button
       name="question-circle"
       backgroundColor="none"
-      color="#8257e6"
+      color="#fff"
       onPress={() => console.log("Foi")}
     ></Icon.Button>
   </Container>

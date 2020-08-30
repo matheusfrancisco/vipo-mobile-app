@@ -11,7 +11,7 @@ const PickerItem: any = ({ setSelectedValue, selectedValue }: any) => {
           height: 50,
           width: 280,
           alignItems: "center",
-          color: "#fff",
+          color: "#FF6900",
         }}
         onValueChange={(itemValue) => {
           setSelectedValue(itemValue);

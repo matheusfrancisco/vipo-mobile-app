@@ -23,7 +23,7 @@ export const ForgotPassword = styled.TouchableOpacity`
 
 export const ForgotPaswordText = styled.Text`
   font-size: 16px;
-  color: #8257e6;
+  color: #fff;
   font-family: "RobotoSlab-Medium";
 `;
 
@@ -32,7 +32,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
   left: 0;
   bottom: 0;
   right: 0%;
-  background: #312e28;
+  background: #363636;
   border-top-width: 1px;
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
@@ -43,7 +43,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
 `;
 
 export const CreateAccountButtonText = styled.Text`
-  color: #8257e6;
+  color: #fff;
   font-size: 18px;
   font-family: "RobotoSlab-Medium";
   margin-left: 16px;

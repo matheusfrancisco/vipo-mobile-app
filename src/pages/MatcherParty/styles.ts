@@ -22,14 +22,14 @@ export const ContainerContent = styled.View`
 `;
 
 export const TextContainerImage = styled.Text`
-  color: #fff;
+  color: #ff6900;
   text-align: center;
 `;
 
 export const SearchRole = styled.View`
   width: 100%;
   height: 100px;
-  background-color: #8257e6;
+  background-color: #470a68;
   justify-content: center;
   align-items: center;
 `;
@@ -43,12 +43,12 @@ export const PriceRole = styled.View`
 export const PriceRoleText = styled.Text`
   text-align: center;
   margin: 0px 10px;
-  color: #fff;
+  color: #ff6900;
 `;
 
 export const TextMatcher = styled.Text`
   font-size: 15px;
-  color: #8257e6;
+  color: #fff;
   font-family: "RobotoSlab-Medium";
   margin: 15px;
   text-align: left;

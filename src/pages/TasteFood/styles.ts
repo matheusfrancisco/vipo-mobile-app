@@ -1,7 +1,6 @@
-import styled from 'styled-components/native';
-import { Platform } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
-
+import styled from "styled-components/native";
+import { Platform } from "react-native";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 
 export const Container = styled.View`
   align-items: center;
@@ -17,23 +16,22 @@ export const ContainerImage = styled.View`
   padding: 20px;
 `;
 
-export const ContainerContent= styled.View`
-  flex-direction:column;
+export const ContainerContent = styled.View`
+  flex-direction: column;
   margin: 0px 50px;
 `;
 
 export const TextContainerImage = styled.Text`
-  color: #FFF;
+  color: #ff6900;
   text-align: center;
   margin-top: 2px;
 `;
 
-
 export const TextLikeMusical = styled.Text`
   font-size: 15px;
   color: #fff;
-  font-family: 'RobotoSlab-Medium';
- 
+  font-family: "RobotoSlab-Medium";
+  align-self: center;
 `;
 
 export const ButtonIconHelp = styled.TouchableOpacity`
@@ -46,11 +44,11 @@ export const ButtonIconHelp = styled.TouchableOpacity`
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
 
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
 `;
 
 export const ButtonWarpper = styled.View`
-  margin: 215px 120px;
+  margin: 205px 110px;
 `;

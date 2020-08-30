@@ -143,7 +143,7 @@ const SignUp: React.FC = () => {
         </ScrollView>
       </KeyboardAvoidingView>
       <BackToSingIn onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={20} color="#8257e6" />
+        <Icon name="arrow-left" size={20} color="#fff" />
         <BackToSingInText> Voltar para logon </BackToSingInText>
       </BackToSingIn>
     </>
