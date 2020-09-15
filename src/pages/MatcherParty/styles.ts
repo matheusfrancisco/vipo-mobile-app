@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { Platform, Image } from 'react-native';
+import styled from "styled-components/native";
+import { Platform, Image } from "react-native";
 
 export const ImageItem = styled(Image)`
   /* flex: 1; */
@@ -8,8 +8,7 @@ export const ImageItem = styled(Image)`
   border-radius: 40px;
 `;
 
-export const Container = styled.View`
-`;
+export const Container = styled.View``;
 
 export const ContainerImage = styled.View`
   flex: 1;
@@ -18,20 +17,19 @@ export const ContainerImage = styled.View`
   flex-direction: row;
 `;
 
-export const ContainerContent= styled.View`
+export const ContainerContent = styled.View`
   margin: 24px;
 `;
 
 export const TextContainerImage = styled.Text`
-  color: #FFF;
+  color: #ff6900;
   text-align: center;
 `;
-
 
 export const SearchRole = styled.View`
   width: 100%;
   height: 100px;
-  background-color: #871F9A;
+  background-color: #470a68;
   justify-content: center;
   align-items: center;
 `;
@@ -39,26 +37,25 @@ export const SearchRole = styled.View`
 export const PriceRole = styled.View`
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 10px;
 `;
 
 export const PriceRoleText = styled.Text`
   text-align: center;
   margin: 0px 10px;
-  color: #fff;
+  color: #ff6900;
 `;
 
 export const TextMatcher = styled.Text`
   font-size: 15px;
   color: #fff;
-  font-family: 'RobotoSlab-Medium';
-  margin: 20px;
+  font-family: "RobotoSlab-Medium";
+  margin: 15px;
   text-align: left;
 `;
 
 export const Title = styled.Text`
   font-size: 25px;
   color: #fff;
-  font-family: 'RobotoSlab-Medium';
+  font-family: "RobotoSlab-Medium";
 `;
-
-

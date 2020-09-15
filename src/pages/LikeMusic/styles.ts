@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import styled from "styled-components/native";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 
 export const Container = styled.View`
   align-items: center;
@@ -13,8 +13,8 @@ export const HeaderLikeMusic = styled.View`
 export const HeaderText = styled.Text`
   font-size: 15px;
   color: #fff;
-  font-family: 'RobotoSlab-Medium';
-  text-align: center;
+  font-family: "RobotoSlab-Medium";
+  align-self: center;
 `;
 
 export const ContainerImage = styled.View`
@@ -22,32 +22,31 @@ export const ContainerImage = styled.View`
   padding: 15px;
 `;
 
-export const ContainerContent= styled.View`
-  flex-direction:column;
+export const ContainerContent = styled.View`
+  flex-direction: column;
   margin: 0px 15px;
 `;
 
 export const TextContainerImage = styled.Text`
-  color: #FFF;
+  color: #ff6900;
   text-align: center;
 `;
-
 
 export const ButtonIconHelp = styled.TouchableOpacity`
   position: absolute;
   left: 0;
   bottom: 0;
   right: 0%;
-  background: #312e28;
+  background: #363636;
   border-top-width: 1px;
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
 
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
 `;
 
 export const ButtonWarpper = styled.View`
-  margin: 18px 120px;
+  margin: 10px 120px;
 `;
