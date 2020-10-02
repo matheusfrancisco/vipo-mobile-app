@@ -7,6 +7,7 @@ import {
   ScrollView,
   TextInput,
   Alert,
+  Text,
 } from "react-native";
 import * as Yup from "yup";
 
@@ -18,19 +19,19 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import ButtonFacebook from "../../components/Facebook";
 import ButtonGoogle from "../../components/Google";
-import logo from "../../assets/logoVertical.png";
+import logo from "../../assets/logo.png";
 
 import getValidationErrors from "../../utils/getValidationErrors";
 import { useAuth } from "../../hooks/auth";
 
+import {Title, TextH3} from "../../global"
+
 import {
   Container,
-  Title,
-  ForgotPaswordText,
-  ForgotPassword,
-  CreateAccountButton,
-  CreateAccountButtonText,
   SocialIcon,
+  ButtonText,
+  ContainerTitle,
+  ContainerTextH3,
 } from "./styles";
 
 interface SignInFormData {
@@ -93,14 +94,22 @@ const SignIn: React.FC = () => {
             <Image
               source={logo}
               style={{
-                width: 200,
-                height: 200,
-                marginTop: 20,
+                width: 218,
+                height: 218,
+                marginTop: 150,
               }}
             />
-            <View>
-              <Title>Seu app para sair</Title>
-            </View>
+            <ContainerTitle>
+              <Title>Faça seu login</Title>
+            </ContainerTitle>
+            <SocialIcon>
+                <ButtonFacebook onPress={() => console.log("Foi")}>
+                  Login with Facebook
+                </ButtonFacebook>
+                <ButtonGoogle onPress={() => console.log("Foi")}>
+                  Login with Google
+                </ButtonGoogle>
+              </SocialIcon>
 
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
@@ -127,9 +136,11 @@ const SignIn: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               />
-              <ForgotPassword onPress={() => {}}>
-                <ForgotPaswordText>Esqueci minha senha</ForgotPaswordText>
-              </ForgotPassword>
+              <ButtonText onPress={() => {}}>
+                <ContainerTextH3>
+                 <TextH3>Esqueceu sua senha ?</TextH3>
+                </ContainerTextH3>
+              </ButtonText>
 
               <Button
                 onPress={() => {
@@ -138,21 +149,17 @@ const SignIn: React.FC = () => {
               >
                 Entrar
               </Button>
-              <SocialIcon>
-                <ButtonFacebook onPress={() => console.log("Foi")}>
-                  Login with Facebook
-                </ButtonFacebook>
-                <ButtonGoogle onPress={() => console.log("Foi")}>
-                  Login with Google
-                </ButtonGoogle>
-              </SocialIcon>
+              <ButtonText onPress={() => navigation.navigate("SignUp")}>
+                <ContainerTextH3>
+                  <Text>Ainda não tem conta ?</Text>
+                  <TextH3>Crie aqui</TextH3>
+                </ContainerTextH3>
+              </ButtonText>              
+              
             </Form>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={() => navigation.navigate("SignUp")}>
-        <CreateAccountButtonText> Criar uma conta </CreateAccountButtonText>
-      </CreateAccountButton>
     </>
   );
 };
