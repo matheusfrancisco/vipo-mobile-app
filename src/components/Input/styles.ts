@@ -28,7 +28,7 @@ export const Container = styled.View<ContainerProps>`
   ${(props) =>
     props.isFocused &&
     css`
-      border-color: #470a68;
+      border-color: #DADFE2;
     `}
 `;
 
@@ -41,4 +41,5 @@ export const TextInput = styled.TextInput`
 
 export const Icon = styled(FeatherIcon)`
   margin-right: 16px;
+  color: #DADFE2;
 `;

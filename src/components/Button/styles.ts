@@ -5,11 +5,9 @@ export const Container = styled(RectButton)`
   height: 51px;
   background: #470a68;
   border-radius: 10px;
-  margin-top: 30px;
 
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
 `;
 
 export const ButtonText = styled.Text`

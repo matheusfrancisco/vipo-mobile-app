@@ -24,5 +24,14 @@ export const ContainerTitle = styled.View`
   margin: 14px 0 30px;
 `
 export const ContainerTextH3 = styled.View`
-  margin-left: 175px;
+  margin-left: 120px; 
+  margin-bottom: 40px;
+`
+export const ContainerTextPassword = styled.View`
+  margin-left: 170px;
+  margin-bottom: 20px;
+`
+export const ContainerTextLoginSocial = styled.View`
+  align-items: center;
+  margin-bottom: 30px;
 `

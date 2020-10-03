@@ -32,6 +32,9 @@ import {
   ButtonText,
   ContainerTitle,
   ContainerTextH3,
+  ContainerTextPassword,
+  ContainerTextLoginSocial,
+  Border,
 } from "./styles";
 
 interface SignInFormData {
@@ -102,15 +105,6 @@ const SignIn: React.FC = () => {
             <ContainerTitle>
               <Title>Faça seu login</Title>
             </ContainerTitle>
-            <SocialIcon>
-                <ButtonFacebook onPress={() => console.log("Foi")}>
-                  Login with Facebook
-                </ButtonFacebook>
-                <ButtonGoogle onPress={() => console.log("Foi")}>
-                  Login with Google
-                </ButtonGoogle>
-              </SocialIcon>
-
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
                 autoCorrect={false}
@@ -137,9 +131,9 @@ const SignIn: React.FC = () => {
                 }}
               />
               <ButtonText onPress={() => {}}>
-                <ContainerTextH3>
+                <ContainerTextPassword>
                  <TextH3>Esqueceu sua senha ?</TextH3>
-                </ContainerTextH3>
+                </ContainerTextPassword>
               </ButtonText>
 
               <Button
@@ -151,10 +145,20 @@ const SignIn: React.FC = () => {
               </Button>
               <ButtonText onPress={() => navigation.navigate("SignUp")}>
                 <ContainerTextH3>
-                  <Text>Ainda não tem conta ?</Text>
-                  <TextH3>Crie aqui</TextH3>
+                  <Text>Ainda não tem conta ? <TextH3>Crie aqui</TextH3></Text>
                 </ContainerTextH3>
-              </ButtonText>              
+              </ButtonText> 
+              <ContainerTextLoginSocial> 
+               <TextH3 >Ou faça seu login com</TextH3>
+              </ContainerTextLoginSocial>           
+              <SocialIcon>
+                <ButtonFacebook onPress={() => console.log("Foi")}>
+                  Login with Facebook
+                </ButtonFacebook>
+                <ButtonGoogle onPress={() => console.log("Foi")}>
+                  Login with Google
+                </ButtonGoogle>
+              </SocialIcon> 
               
             </Form>
           </Container>
