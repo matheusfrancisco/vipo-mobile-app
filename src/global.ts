@@ -1,6 +1,4 @@
 import styled from "styled-components/native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
-import { Platform } from "react-native";
 
 export const Title = styled.Text`
   font-size: 35px;
@@ -13,5 +11,11 @@ export const TextH3 = styled.Text`
   font-size: 16px;
   color: #9283BF;
   font-family: "RobotoSlab-Medium";
-
 `;
+
+export const TextDescription = styled.Text`
+  color: #000000;
+  font-family: "RobotoSlab-Medium";
+  text-align: center;
+  font-size: 16px;
+`
