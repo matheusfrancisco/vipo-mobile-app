@@ -10,12 +10,19 @@ export const Container = styled.View`
   padding: 0 30px ${Platform.OS === "android" ? 150 : 40}px;
 `;
 
-export const Title = styled.Text`
-  font-size: 25px;
-  color: #fff;
-  font-family: "RobotoSlab-Medium";
-  margin: 14px 0 54px;
-`;
+export const PrivacyTerms= styled.View`
+  border: 2px;
+  height: 15px;
+  width: 15px;
+  
+`
+
+export const ContainerTextCreateAccount = styled.View`
+  margin: 20px 0px;
+`
+export const ContainerButton = styled.View`
+  margin-top: 50px;
+`
 
 export const BackToSingIn = styled.TouchableOpacity`
   position: absolute;
@@ -30,11 +37,4 @@ export const BackToSingIn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-`;
-
-export const BackToSingInText = styled.Text`
-  color: #fff;
-  font-size: 18px;
-  font-family: "RobotoSlab-Medium";
-  margin-left: 16px;
 `;

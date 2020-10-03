@@ -17,14 +17,14 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: { backgroundColor: "#F8FBFA" },
     }}
-    initialRouteName={"SingIn"}
+    initialRouteName={"SignUp"}
   >
+    <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="TasteDrink" component={TasteDrink} />
     <Auth.Screen name="TasteFood" component={TasteFood} />
     <Auth.Screen name="MatcherParty" component={MatcherParty} />
     <Auth.Screen name="Home" component={Home} />
-    <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="LikeMusic" component={LikeMusic} />
     <Auth.Screen name="Match" component={Match} />
   </Auth.Navigator>
