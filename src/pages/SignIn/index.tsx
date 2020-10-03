@@ -1,7 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import {
   Image,
-  View,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -34,7 +33,6 @@ import {
   ContainerTextH3,
   ContainerTextPassword,
   ContainerTextLoginSocial,
-  Border,
 } from "./styles";
 
 interface SignInFormData {
