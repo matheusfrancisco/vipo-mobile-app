@@ -10,45 +10,28 @@ export const Container = styled.View`
   padding: 0 30px ${Platform.OS === "android" ? 150 : 40}px;
 `;
 
-export const Title = styled.Text`
-  font-size: 25px;
-  color: #fff;
-  font-family: "RobotoSlab-Medium";
-  margin: 14px 0 54px;
-`;
 
-export const ForgotPassword = styled.TouchableOpacity`
+export const ButtonText = styled.TouchableOpacity`
   margin-top: 10px;
-`;
-
-export const ForgotPaswordText = styled.Text`
-  font-size: 16px;
-  color: #fff;
-  font-family: "RobotoSlab-Medium";
-`;
-
-export const CreateAccountButton = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0%;
-  background: #363636;
-  border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
-
-export const CreateAccountButtonText = styled.Text`
-  color: #fff;
-  font-size: 18px;
-  font-family: "RobotoSlab-Medium";
-  margin-left: 16px;
 `;
 
 export const SocialIcon = styled.View`
   flex-direction: row;
+  margin-bottom: 25px;
 `;
+
+export const ContainerTitle = styled.View`
+  margin: 14px 0 30px;
+`
+export const ContainerTextH3 = styled.View`
+  margin-left: 120px; 
+  margin-bottom: 40px;
+`
+export const ContainerTextPassword = styled.View`
+  margin-left: 170px;
+  margin-bottom: 20px;
+`
+export const ContainerTextLoginSocial = styled.View`
+  align-items: center;
+  margin-bottom: 30px;
+`
