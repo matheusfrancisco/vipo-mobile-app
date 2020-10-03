@@ -21,6 +21,6 @@ export const ContainerTextCreateAccount = styled.View`
   margin: 20px 0px;
 `
 export const ContainerButton = styled.View`
-  margin-top: 55px;
+  margin-top: 75px;
 `
 

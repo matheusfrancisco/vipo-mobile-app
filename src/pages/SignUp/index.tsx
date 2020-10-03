@@ -93,7 +93,7 @@ const SignUp: React.FC = () => {
                 style={{
                   width: 218,
                   height: 218,
-                  marginTop: 60,
+                  marginTop: 90,
                 }}
               />
             <ContainerTextCreateAccount>
