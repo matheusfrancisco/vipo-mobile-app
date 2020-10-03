@@ -21,20 +21,6 @@ export const ContainerTextCreateAccount = styled.View`
   margin: 20px 0px;
 `
 export const ContainerButton = styled.View`
-  margin-top: 50px;
+  margin-top: 55px;
 `
 
-export const BackToSingIn = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0%;
-  background: #363636;
-  border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
