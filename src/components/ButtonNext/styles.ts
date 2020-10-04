@@ -9,9 +9,3 @@ export const Container = styled(RectButton)`
   align-items: center;
   z-index: 1;
 `;
-
-export const ButtonText = styled.Text`
-  font-family: "RobotoSlab-Medium";
-  color: #fff;
-  font-size: 16px;
-`;

@@ -19,11 +19,11 @@ const AuthRoutes: React.FC = () => (
       cardStyle: { backgroundColor: "#F8FBFA" },
     }}
 
-    initialRouteName={"RegistrationCompleted"}
+    initialRouteName={"SignUp"}
   >
-    <Auth.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
-    <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
+    <Auth.Screen name="SignIn" component={SignIn} />
+    <Auth.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
     <Auth.Screen name="TasteDrink" component={TasteDrink} />
     <Auth.Screen name="TasteFood" component={TasteFood} />
     <Auth.Screen name="MatcherParty" component={MatcherParty} />

@@ -17,15 +17,21 @@ export const TextH4 = styled.Text`
   font-size: 12px;
   color: #9283BF;
   font-family: "RobotoSlab-Medium";
-
+`;
 export const TextMin = styled.Text`
   font-size: 12px;
   color: #000;
   font-family: "RobotoSlab-Medium";
+`;
 
 export const TextDescription = styled.Text`
   color: #000000;
   font-family: "RobotoSlab-Medium";
   text-align: center;
   font-size: 16px;
-`
+`;
+export const ButtonText = styled.Text`
+  font-family: "RobotoSlab-Medium";
+  color: #fff;
+  font-size: 16px;
+`;
