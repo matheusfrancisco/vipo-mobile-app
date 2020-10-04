@@ -30,6 +30,7 @@ export const TextDescription = styled.Text`
   text-align: center;
   font-size: 16px;
 `;
+
 export const ButtonText = styled.Text`
   font-family: "RobotoSlab-Medium";
   color: #fff;
