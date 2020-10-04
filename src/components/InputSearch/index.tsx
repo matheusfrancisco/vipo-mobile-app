@@ -1,13 +1,14 @@
 import React from 'react';
-import { TextInputProps } from 'react-native';
-import { Container, TextInput, Icon } from './styles';
+import {TextInputProps} from 'react-native';
+import {Container, TextInput, Icon} from './styles';
 
 interface InputProps extends TextInputProps {
   name: string;
   icon: string;
 }
 
-const InputSearch: React.FC<InputProps> = ({ name, icon, ...rest }) => (
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const InputSearch: React.FC<InputProps> = ({name, icon, ...rest}) => (
   <Container>
     <Icon name={icon} size={20} color="#666360" />
     <TextInput
