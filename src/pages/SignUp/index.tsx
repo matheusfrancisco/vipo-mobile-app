@@ -1,7 +1,6 @@
 import React, {useRef, useCallback} from 'react';
 import {
   Image,
-  View,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -18,15 +17,22 @@ import Button from '../../components/Button';
 
 import getvalidationErrors from '../../utils/getValidationErrors';
 
+
 import logo from '../../assets/logoVertical.png';
 
 import {Container, Title, BackToSingIn, BackToSingInText} from './styles';
+
+import logo from "../../assets/logo.png";
+
+import {Title, TextH4, TextMin} from  "../../global"
 
 interface SignUpData {
   name: string;
   email: string;
   password: string;
 }
+
+import { Container, BackToSingIn, BackToSingInText, ContainerTextCreateAccount, ContainerButton, PrivacyTerms, TermsText } from "./styles";
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
@@ -85,15 +91,16 @@ const SignUp: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <Image
-              source={logo}
-              style={{
-                width: 200,
-                height: 200,
-              }}
-            />
-            <View>
+                source={logo}
+                style={{
+                  width: 218,
+                  height: 218,
+                  marginTop: 90,
+                }}
+              />
+            <ContainerTextCreateAccount>
               <Title>Crie sua conta</Title>
-            </View>
+            </ContainerTextCreateAccount>
             <Form ref={formRef} onSubmit={handleSignUp}>
               <Input
                 autoCapitalize="words"
@@ -131,18 +138,19 @@ const SignUp: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               />
-
-              <Button onPress={() => formRef.current?.submitForm()}>
-                Cadastrar
-              </Button>
+              <PrivacyTerms/>
+              <TermsText><TextMin>Você concorda com nossos <TextH4>termos de privacidade</TextH4></TextMin></TermsText>
+           
+              <ContainerButton>
+                <Button onPress={() => formRef.current?.submitForm()}>
+                  Cadastrar
+                </Button>
+              </ContainerButton>
             </Form>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <BackToSingIn onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={20} color="#fff" />
-        <BackToSingInText> Voltar para logon </BackToSingInText>
-      </BackToSingIn>
+     
     </>
   );
 };

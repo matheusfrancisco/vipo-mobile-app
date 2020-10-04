@@ -18,11 +18,13 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
+
     initialRouteName="RegistrationCompleted">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
     />
+
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="TasteDrink" component={TasteDrink} />
