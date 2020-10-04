@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const Wrapper = styled.View`
   flex: 1;
@@ -25,7 +25,7 @@ export const Title = styled.Text`
   flex: 1;
   font-size: 25px;
   color: white;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
   position: absolute;
   bottom: 18px;
   background: black;
@@ -35,7 +35,7 @@ export const Week = styled.Text`
   flex: 1;
   font-size: 10px;
   color: white;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
   position: absolute;
   bottom: 3px;
   background: black;

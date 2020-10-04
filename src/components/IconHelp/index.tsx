@@ -1,7 +1,6 @@
-import React from "react";
-import { RectButtonProperties } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Container } from "./styles";
+import React from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Container} from './styles';
 
 const IconHelp: React.FC = () => (
   <Container>
@@ -9,8 +8,8 @@ const IconHelp: React.FC = () => (
       name="question-circle"
       backgroundColor="none"
       color="#fff"
-      onPress={() => console.log("Foi")}
-    ></Icon.Button>
+      onPress={() => console.log('Foi')}
+    />
   </Container>
 );
 

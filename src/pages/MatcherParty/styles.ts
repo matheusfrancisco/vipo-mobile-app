@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { Platform, Image } from "react-native";
+import styled from 'styled-components/native';
+import { Platform, Image } from 'react-native';
 
 export const ImageItem = styled(Image)`
   /* flex: 1; */
@@ -49,7 +49,7 @@ export const PriceRoleText = styled.Text`
 export const TextMatcher = styled.Text`
   font-size: 15px;
   color: #fff;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
   margin: 15px;
   text-align: left;
 `;
@@ -57,5 +57,5 @@ export const TextMatcher = styled.Text`
 export const Title = styled.Text`
   font-size: 25px;
   color: #fff;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
 `;

@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
+import styled from 'styled-components/native';
+import {getBottomSpace} from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   align-items: center;
@@ -14,7 +14,7 @@ export const HeaderText = styled.Text`
   font-size: 15px;
   color: #fff;
   align-self: center;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
 `;
 
 export const ContainerImage = styled.View`

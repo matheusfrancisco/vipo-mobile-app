@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Image,
   View,
@@ -7,8 +7,8 @@ import {
   ImageBackground,
   Platform,
   ScrollView,
-} from "react-native";
-import { useAuth } from "../../hooks/auth";
+} from 'react-native';
+import { useAuth } from '../../hooks/auth';
 
 import {
   Container,
@@ -33,21 +33,21 @@ import {
   Calendar,
   Wrapper,
   TextMatch,
-} from "./styles";
+} from './styles';
 
 const MatchParty: React.FC = () => {
   const yourMatchs = [
     {
       id: 1,
-      name: "SputNickBar",
-      instagram: "@sputinick",
-      uri: "https://sputnikbar.com/img/sobre/30-11-2018.jpg",
+      name: 'SputNickBar',
+      instagram: '@sputinick',
+      uri: 'https://sputnikbar.com/img/sobre/30-11-2018.jpg',
       description:
-        "UUUUUUUUUUUUUm bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!",
-      ticket: "As pessoas costuman gastar R$ 60,00 neste local",
-      bonus: "Indo pelo App você ganha um shot de boas-vindas quando chegar lá",
-      openHour: "19:00",
-      closeHour: "05:00",
+        'UUUUUUUUUUUUUm bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!',
+      ticket: 'As pessoas costuman gastar R$ 60,00 neste local',
+      bonus: 'Indo pelo App você ganha um shot de boas-vindas quando chegar lá',
+      openHour: '19:00',
+      closeHour: '05:00',
     },
   ];
 
@@ -55,7 +55,7 @@ const MatchParty: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -83,7 +83,7 @@ const MatchParty: React.FC = () => {
                 <PubTicket>{yourMatchs[0].ticket}</PubTicket>
               </DescriptionInfo>
               <Offert>
-                <TextMatch style={{ textAlign: "center" }}>
+                <TextMatch style={{ textAlign: 'center' }}>
                   {yourMatchs[0].bonus}
                 </TextMatch>
               </Offert>
@@ -91,19 +91,19 @@ const MatchParty: React.FC = () => {
                 <LikedIcons>
                   <ILeft
                     name="chevron-left"
-                    onPress={() => console.log("back")}
+                    onPress={() => console.log('back')}
                   />
                   <Dislike
                     name="thumbs-o-down"
-                    onPress={() => console.log("dislike")}
+                    onPress={() => console.log('dislike')}
                   />
                   <Like
                     name="thumbs-o-up"
-                    onPress={() => console.log("like")}
+                    onPress={() => console.log('like')}
                   />
                   <INext
                     name="chevron-right"
-                    onPress={() => console.log("next")}
+                    onPress={() => console.log('next')}
                   />
                 </LikedIcons>
                 <Calendar name="calendar" />

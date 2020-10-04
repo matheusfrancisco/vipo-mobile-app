@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, {useRef, useCallback} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -6,17 +6,21 @@ import {
   ScrollView,
   TextInput,
   Alert,
-} from "react-native";
-import Icon from "react-native-vector-icons/Feather";
-import { useNavigation } from "@react-navigation/native";
-import { Form } from "@unform/mobile";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import { FormHandles } from "@unform/core";
-import * as Yup from "yup";
-import api from "../../services/api";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
+import {Form} from '@unform/mobile';
+import {FormHandles} from '@unform/core';
+import * as Yup from 'yup';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
-import getvalidationErrors from "../../utils/getValidationErrors";
+import getvalidationErrors from '../../utils/getValidationErrors';
+
+
+import logo from '../../assets/logoVertical.png';
+
+import {Container, Title, BackToSingIn, BackToSingInText} from './styles';
 
 import logo from "../../assets/logo.png";
 
@@ -42,24 +46,24 @@ const SignUp: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required("O nome obrigatório"),
+          name: Yup.string().required('O nome obrigatório'),
           email: Yup.string()
-            .email("Digite um e-mail válido")
-            .required("E-mail obrigatório"),
-          password: Yup.string().min(6, "No Mínio 6 dígitos"),
+            .email('Digite um e-mail válido')
+            .required('E-mail obrigatório'),
+          password: Yup.string().min(6, 'No Mínio 6 dígitos'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        const { name, email, password } = data;
+        // const {name, email, password} = data;
 
         // await api.post('/users', { name, email, password });
 
         Alert.alert(
-          "Cadastro realizado com sucesso",
-          "Você já pode fazer login na aplicação"
+          'Cadastro realizado com sucesso',
+          'Você já pode fazer login na aplicação',
         );
 
         navigation.goBack();
@@ -70,23 +74,21 @@ const SignUp: React.FC = () => {
           return;
         }
 
-        Alert.alert("Erro no cadastro", "Ocorreu um erro ao fazer cadastro");
+        Alert.alert('Erro no cadastro', 'Ocorreu um erro ao fazer cadastro');
       }
     },
-    [navigation]
+    [navigation],
   );
 
   return (
     <>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        enabled
-      >
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        >
+          contentContainerStyle={{flex: 1}}>
           <Container>
             <Image
                 source={logo}

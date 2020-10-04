@@ -1,7 +1,6 @@
-import React from "react";
-import { RectButtonProperties } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Container } from "./styles";
+import React from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Container} from './styles';
 
 const IconMenu: React.FC = () => (
   <Container>
@@ -9,8 +8,8 @@ const IconMenu: React.FC = () => (
       name="bars"
       backgroundColor="none"
       color="#8257e6"
-      onPress={() => console.log("Foi")}
-    ></Icon.Button>
+      onPress={() => console.log('Foi')}
+    />
   </Container>
 );
 
