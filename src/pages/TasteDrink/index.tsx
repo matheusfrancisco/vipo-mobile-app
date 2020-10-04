@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
   Image,
-} from "react-native";
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   ContainerImage,
@@ -14,11 +15,10 @@ import {
   HeaderText,
   ButtonIconHelp,
   ButtonWarpper,
-} from "./styles";
-import IconHelp from "../../components/IconHelp";
-import logo from "../../assets/logoOficial.png";
-import { useNavigation } from "@react-navigation/native";
-import ButtonNext from "../../components/ButtonNext";
+} from './styles';
+import IconHelp from '../../components/IconHelp';
+import logo from '../../assets/logoOficial.png';
+import ButtonNext from '../../components/ButtonNext';
 
 const TasteDrink: React.FC = () => {
   const navigation = useNavigation();
@@ -27,7 +27,7 @@ const TasteDrink: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -50,7 +50,7 @@ const TasteDrink: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/sugarcaneliquor.jpg")}
+                  source={require('../../assets/taste-drink/sugarcaneliquor.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage> Cachaça</TextContainerImage>
@@ -58,7 +58,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/coffee.jpg")}
+                  source={require('../../assets/taste-drink/coffee.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Café</TextContainerImage>
@@ -66,7 +66,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/beer.jpg")}
+                  source={require('../../assets/taste-drink/beer.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Cerveja</TextContainerImage>
@@ -74,7 +74,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/craftbeer.jpg")}
+                  source={require('../../assets/taste-drink/craftbeer.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Cerveja </TextContainerImage>
@@ -85,7 +85,7 @@ const TasteDrink: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/chopp.jpg")}
+                  source={require('../../assets/taste-drink/chopp.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Chopp</TextContainerImage>
@@ -93,7 +93,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/gin.jpeg")}
+                  source={require('../../assets/taste-drink/gin.jpeg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Gin</TextContainerImage>
@@ -101,7 +101,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/tequila.jpg")}
+                  source={require('../../assets/taste-drink/tequila.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Tequila</TextContainerImage>
@@ -109,7 +109,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/wine.jpeg")}
+                  source={require('../../assets/taste-drink/wine.jpeg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Vinho</TextContainerImage>
@@ -119,7 +119,7 @@ const TasteDrink: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/vodkadrink.png")}
+                  source={require('../../assets/taste-drink/vodkadrink.png')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage> Vodca</TextContainerImage>
@@ -127,7 +127,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/whisky.png")}
+                  source={require('../../assets/taste-drink/whisky.png')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Whisky</TextContainerImage>
@@ -135,7 +135,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/champagne.jpg")}
+                  source={require('../../assets/taste-drink/champagne.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Champagne</TextContainerImage>
@@ -143,7 +143,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/brandy.jpeg")}
+                  source={require('../../assets/taste-drink/brandy.jpeg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Conhaque</TextContainerImage>
@@ -153,7 +153,7 @@ const TasteDrink: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/soda.jpg")}
+                  source={require('../../assets/taste-drink/soda.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage> Refrigerante </TextContainerImage>
@@ -161,7 +161,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/juice.jpg")}
+                  source={require('../../assets/taste-drink/juice.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Suco</TextContainerImage>
@@ -169,7 +169,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/saque.jpg")}
+                  source={require('../../assets/taste-drink/saque.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Saquê</TextContainerImage>
@@ -177,7 +177,7 @@ const TasteDrink: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-drink/liquor.jpg")}
+                  source={require('../../assets/taste-drink/liquor.jpg')}
                   style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
                 />
                 <TextContainerImage>Licor</TextContainerImage>

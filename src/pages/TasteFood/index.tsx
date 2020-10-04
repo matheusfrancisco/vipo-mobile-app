@@ -1,24 +1,10 @@
-import React from "react";
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  Image,
-} from "react-native";
-import {
-  Container,
-  TextLikeMusical,
-  ContainerImage,
-  ContainerContent,
-  TextContainerImage,
-  ButtonIconHelp,
-  HeaderTasteFood,
-  ButtonWarpper,
-} from "./styles";
-import IconHelp from "../../components/IconHelp";
-import logo from "../../assets/logoOficial.png";
-import { useNavigation } from "@react-navigation/native";
-import ButtonNext from "../../components/ButtonNext";
+import React from 'react';
+import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {Container, TextLikeMusical, ContainerImage, ContainerContent, TextContainerImage, ButtonIconHelp, HeaderTasteFood,ButtonWarpper} from './styles';
+import IconHelp from '../../components/IconHelp';
+import logo from '../../assets/logoOficial.png';
+import ButtonNext from '../../components/ButtonNext';
 
 const TasteFood: React.FC = () => {
   const navigation = useNavigation();
@@ -27,7 +13,7 @@ const TasteFood: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -52,7 +38,7 @@ const TasteFood: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-food/burguer.png")}
+                  source={require('../../assets/taste-food/burguer.png')}
                   style={{ width: 80, height: 80, borderRadius: 80 / 2 }}
                 />
                 <TextContainerImage>Hambúrguer</TextContainerImage>
@@ -60,7 +46,7 @@ const TasteFood: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-food/snack.jpeg")}
+                  source={require('../../assets/taste-food/snack.jpeg')}
                   style={{ width: 80, height: 80, borderRadius: 80 / 2 }}
                 />
                 <TextContainerImage>Petisco</TextContainerImage>
@@ -70,7 +56,7 @@ const TasteFood: React.FC = () => {
             <ContainerImage>
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-food/vegan.jpg")}
+                  source={require('../../assets/taste-food/vegan.jpg')}
                   style={{ width: 80, height: 80, borderRadius: 80 / 2 }}
                 />
                 <TextContainerImage>Vegana</TextContainerImage>
@@ -78,7 +64,7 @@ const TasteFood: React.FC = () => {
 
               <ContainerContent>
                 <Image
-                  source={require("../../assets/taste-food/vegetarian.jpg")}
+                  source={require('../../assets/taste-food/vegetarian.jpg')}
                   style={{ width: 80, height: 80, borderRadius: 80 / 2 }}
                 />
                 <TextContainerImage>Vegetariana</TextContainerImage>

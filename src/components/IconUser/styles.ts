@@ -5,4 +5,3 @@ export const Container = styled(RectButton)`
   border-radius: 10px;
   margin-right: 5px;
 `;
-

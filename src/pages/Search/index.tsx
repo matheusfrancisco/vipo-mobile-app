@@ -1,26 +1,26 @@
-import React from "react";
+import React from 'react';
 import {
   Image,
   View,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-} from "react-native";
-import { RectButton } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+} from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
-import InputSearch from "../../components/InputSearch";
-import logo from "../../assets/logo.png";
+import InputSearch from '../../components/InputSearch';
+import logo from '../../assets/logo.png';
 import {
   Container,
   Title,
   SeachInput,
   HeaderIcon,
   IconHelpButton,
-} from "./styles";
-import IconUser from "../../components/IconUser";
-import IconMenu from "../../components/IconMenu";
-import IconHelp from "../../components/IconHelp";
+} from './styles';
+import IconUser from '../../components/IconUser';
+import IconMenu from '../../components/IconMenu';
+import IconHelp from '../../components/IconHelp';
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -29,7 +29,7 @@ const Seach: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -48,7 +48,7 @@ const Seach: React.FC = () => {
 
             <RectButton
               onPress={() => {
-                navigation.navigate("MatcherParty");
+                navigation.navigate('MatcherParty');
               }}
             >
               <Image

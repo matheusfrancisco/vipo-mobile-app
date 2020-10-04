@@ -7,12 +7,12 @@ interface InputProps extends TextInputProps {
   icon: string;
 }
 
-const InputSearch: React.FC<InputProps> = ({ name, icon, ...rest}) => (
+const InputSearch: React.FC<InputProps> = ({ name, icon, ...rest }) => (
   <Container>
-    <Icon name={icon} size={20} color="#666360"/>
-    <TextInput 
+    <Icon name={icon} size={20} color="#666360" />
+    <TextInput
       keyboardAppearance="dark"
-      placeholderTextColor="#666360" 
+      placeholderTextColor="#666360"
       {...rest}
     />
   </Container>

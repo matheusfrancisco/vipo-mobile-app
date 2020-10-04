@@ -5,11 +5,10 @@ import { Container, ButtonText } from './styles';
 
 interface ButtonProps extends RectButtonProperties {
   children: string;
-
 }
 
-const ButtonViewRole: React.FC<ButtonProps> =({ children, ...rest }) => (
-  <Container {...rest} >
+const ButtonViewRole: React.FC<ButtonProps> = ({ children, ...rest }) => (
+  <Container {...rest}>
     <ButtonText> {children} </ButtonText>
   </Container>
 );
