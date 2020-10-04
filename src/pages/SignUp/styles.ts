@@ -16,6 +16,9 @@ export const PrivacyTerms= styled.View`
   width: 15px;
   
 `
+export const TermsText = styled.View`
+  margin: -16px 0px 0px 25px;
+`
 
 export const ContainerTextCreateAccount = styled.View`
   margin: 20px 0px;

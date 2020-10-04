@@ -28,7 +28,7 @@ interface SignUpData {
   password: string;
 }
 
-import { Container, BackToSingIn, BackToSingInText, ContainerTextCreateAccount, ContainerButton, PrivacyTerms } from "./styles";
+import { Container, BackToSingIn, BackToSingInText, ContainerTextCreateAccount, ContainerButton, PrivacyTerms, TermsText } from "./styles";
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
@@ -137,7 +137,7 @@ const SignUp: React.FC = () => {
                 }}
               />
               <PrivacyTerms/>
-              <TextMin>Você concorda com nossos <TextH4>termos de privacidade</TextH4></TextMin>
+              <TermsText><TextMin>Você concorda com nossos <TextH4>termos de privacidade</TextH4></TextMin></TermsText>
            
               <ContainerButton>
                 <Button onPress={() => formRef.current?.submitForm()}>
