@@ -33,6 +33,7 @@ import {
   ContainerTextH3,
   ContainerTextPassword,
   ContainerTextLoginSocial,
+  TitleHeader,
 } from "./styles";
 
 interface SignInFormData {
@@ -95,14 +96,14 @@ const SignIn: React.FC = () => {
             <Image
               source={logo}
               style={{
-                width: 218,
-                height: 218,
-                marginTop: 150,
+                width:170,
+                height: 170,
+                marginTop: 30,
               }}
             />
-            <ContainerTitle>
+            <TitleHeader>
               <Title>Faça seu login</Title>
-            </ContainerTitle>
+            </TitleHeader>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Input
                 autoCorrect={false}
@@ -129,27 +130,28 @@ const SignIn: React.FC = () => {
                 }}
               />
               <ButtonText onPress={() => {}}>
-                <ContainerTextPassword>
                  <TextH3>Esqueceu sua senha ?</TextH3>
-                </ContainerTextPassword>
               </ButtonText>
 
               <Button
                 onPress={() => {
                   formRef.current?.submitForm();
                 }}
+                 style={{
+                marginTop: 40,
+              }}
               >
                 Entrar
               </Button>
               <ButtonText onPress={() => navigation.navigate("SignUp")}>
-                <ContainerTextH3>
                   <Text>Ainda não tem conta ? <TextH3>Crie aqui</TextH3></Text>
-                </ContainerTextH3>
               </ButtonText> 
               <ContainerTextLoginSocial> 
-               <TextH3 >Ou faça seu login com</TextH3>
+               <TextH3>Ou faça seu login com</TextH3>
               </ContainerTextLoginSocial>           
-              <SocialIcon>
+              <SocialIcon style={{
+                marginTop: 30,
+              }}>
                 <ButtonFacebook onPress={() => console.log("Foi")}>
                   Login with Facebook
                 </ButtonFacebook>
