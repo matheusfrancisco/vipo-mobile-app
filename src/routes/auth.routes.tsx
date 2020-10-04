@@ -9,6 +9,8 @@ import LikeMusic from "../pages/LikeMusic";
 import TasteFood from "../pages/TasteFood";
 import TasteDrink from "../pages/TasteDrink";
 import RegistrationCompleted from "../pages/RegistrationCompleted";
+import Search from "../pages/Search";
+
 
 const Auth = createStackNavigator();
 
@@ -19,17 +21,18 @@ const AuthRoutes: React.FC = () => (
       cardStyle: { backgroundColor: "#F8FBFA" },
     }}
 
-    initialRouteName={"RegistrationCompleted"}
+    initialRouteName={"LikeMusic"}
   >
+    <Auth.Screen name="LikeMusic" component={LikeMusic} />
+    <Auth.Screen name="Match" component={Match} />
+    <Auth.Screen name="Search" component={Search} />
+    <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="TasteDrink" component={TasteDrink} />
     <Auth.Screen name="TasteFood" component={TasteFood} />
     <Auth.Screen name="MatcherParty" component={MatcherParty} />
-    <Auth.Screen name="Home" component={Home} />
-    <Auth.Screen name="LikeMusic" component={LikeMusic} />
-    <Auth.Screen name="Match" component={Match} />
   </Auth.Navigator>
 );
 

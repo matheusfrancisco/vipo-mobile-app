@@ -29,3 +29,16 @@ export const TextDescription = styled.Text`
   text-align: center;
   font-size: 16px;
 `;
+
+export const TextH1 = styled.Text`
+  color: #fff;
+  font-family: "RobotoSlab-Medium";
+  text-align: center;
+  font-size: 25px;
+`
+export const TextMinAsker = styled.Text`
+  font-size: 15px;
+  color: #000;
+  font-family: "RobotoSlab-Medium";
+  align-self: center;
+`;

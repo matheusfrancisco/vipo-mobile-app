@@ -5,16 +5,9 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const HeaderLikeMusic = styled.View`
-  justify-content: center;
-  padding: 30px;
-`;
-
-export const HeaderText = styled.Text`
-  font-size: 15px;
-  color: #fff;
-  font-family: "RobotoSlab-Medium";
-  align-self: center;
+export const HeaderText = styled.View`
+  align-items: center;
+  padding: 20px;
 `;
 
 export const ContainerImage = styled.View`
@@ -27,26 +20,3 @@ export const ContainerContent = styled.View`
   margin: 0px 15px;
 `;
 
-export const TextContainerImage = styled.Text`
-  color: #ff6900;
-  text-align: center;
-`;
-
-export const ButtonIconHelp = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0%;
-  background: #363636;
-  border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
-
-export const ButtonWarpper = styled.View`
-  margin: 10px 120px;
-`;
