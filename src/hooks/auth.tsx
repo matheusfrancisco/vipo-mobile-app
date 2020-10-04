@@ -9,7 +9,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../services/api';
 
-
 interface User {
   id: string;
   avatar_url: string;
@@ -37,55 +36,52 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthUser: React.FC = ({ children }) => {
-  const [data, setData] = useState<AuthState>({} as AuthState );
+  const [data, setData] = useState<AuthState>({} as AuthState);
   const [loading, setLoading] = useState(true);
-
 
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('/sessions', { email, password });
-
 
     const { token, user } = response.data;
 
     await AsyncStorage.setItem('@Vipo:token', data.token);
     await AsyncStorage.setItem('@Vipo:user', JSON.stringify(data.user));
-    await AsyncStorage.multiSet(
-      [['@Vipo:token', data.token],
-      ['@Vipo:user', JSON.stringify(data.user)]]
-    );
+    await AsyncStorage.multiSet([
+      ['@Vipo:token', data.token],
+      ['@Vipo:user', JSON.stringify(data.user)],
+    ]);
 
     setData({ token, user });
   }, []);
 
   useEffect(() => {
-    
     async function loadStorageData(): Promise<void> {
       const [token, user] = await AsyncStorage.multiGet([
         '@Vipo:token',
-        '@Vipo:user'
+        '@Vipo:user',
       ]);
-      if(token[1] && user[1]) {
+      if (token[1] && user[1]) {
         setData({ token: token[1], user: JSON.parse(user[1]) });
       }
-      setLoading(false)
+      setLoading(false);
     }
     loadStorageData();
-  }, [])
+  }, []);
 
   const signOut = useCallback(async () => {
-    await AsyncStorage.multiRemove(['@Vipo:token','@Vipo:user']);
+    await AsyncStorage.multiRemove(['@Vipo:token', '@Vipo:user']);
 
     setData({} as AuthState);
   }, []);
 
   const fakeSingIn = useCallback(async () => {
-    const fakeUser =  {
-      id: "string",
-      avatar_url: "string",
-      name: "string",
-      email: "string",
-    }
-    setData({ token: "fake", user: fakeUser });
+    const fakeUser = {
+      id: 'string',
+      avatar_url: 'string',
+      name: 'string',
+      email: 'string',
+    };
+    setData({ token: 'fake', user: fakeUser });
   }, []);
 
   return (

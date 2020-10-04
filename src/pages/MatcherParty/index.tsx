@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
   View,
   Text,
-} from "react-native";
+} from 'react-native';
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Title,
@@ -20,20 +20,21 @@ import {
   PriceRole,
   PriceRoleText,
   ImageItem,
-} from "./styles";
+} from './styles';
 
-import PickerItem from "../../components/PickerItem";
-import ButtonViewRole from "../../components/ButtonViewRole";
-import InputMatcher from "../../components/InputMatcher";
+import PickerItem from '../../components/PickerItem';
+import ButtonViewRole from '../../components/ButtonViewRole';
+import InputMatcher from '../../components/InputMatcher';
+
 const MatcherParty: React.FC = () => {
   const navigation = useNavigation();
-  const [selectedValue, setValue] = useState("1");
+  const [selectedValue, setValue] = useState('1');
 
   return (
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView keyboardShouldPersistTaps="handled">
@@ -53,34 +54,34 @@ const MatcherParty: React.FC = () => {
             <TextMatcher>Quais os planos para hoje?</TextMatcher>
             <ContainerImage>
               <ContainerContent>
-                <ImageItem source={require("../../assets/drink.jpg")} />
+                <ImageItem source={require('../../assets/drink.jpg')} />
                 <TextContainerImage> Beber</TextContainerImage>
               </ContainerContent>
 
               <ContainerContent>
-                <ImageItem source={require("../../assets/food.jpg")} />
+                <ImageItem source={require('../../assets/food.jpg')} />
                 <TextContainerImage>Comer</TextContainerImage>
               </ContainerContent>
 
               <ContainerContent>
-                <ImageItem source={require("../../assets/dance.jpg")} />
+                <ImageItem source={require('../../assets/dance.jpg')} />
                 <TextContainerImage>Dançar</TextContainerImage>
               </ContainerContent>
             </ContainerImage>
             <ContainerImage>
               <ContainerContent>
-                <ImageItem source={require("../../assets/talk.jpg")} />
+                <ImageItem source={require('../../assets/talk.jpg')} />
                 <TextContainerImage>Conversar</TextContainerImage>
               </ContainerContent>
               <ContainerContent>
-                <ImageItem source={require("../../assets/meetpeople.jpg")} />
+                <ImageItem source={require('../../assets/meetpeople.jpg')} />
                 <TextContainerImage>Conhecer</TextContainerImage>
                 <TextContainerImage>pessoas</TextContainerImage>
               </ContainerContent>
 
               <ContainerContent>
                 <ImageItem
-                  source={require("../../assets/romanticdinner.jpg")}
+                  source={require('../../assets/romanticdinner.jpg')}
                 />
                 <TextContainerImage>Jantar </TextContainerImage>
                 <TextContainerImage> romântico</TextContainerImage>
@@ -90,9 +91,9 @@ const MatcherParty: React.FC = () => {
             <View
               style={{
                 flex: 1,
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               <PriceRole>
@@ -102,7 +103,7 @@ const MatcherParty: React.FC = () => {
               </PriceRole>
               <ButtonViewRole
                 onPress={() => {
-                  navigation.navigate("Match");
+                  navigation.navigate('Match');
                 }}
               >
                 VER ROLÊS

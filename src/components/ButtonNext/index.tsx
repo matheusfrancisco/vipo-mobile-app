@@ -5,11 +5,10 @@ import {Container} from './styles';
 import {ButtonText} from "../../global";
 interface ButtonProps extends RectButtonProperties {
   children: string;
-
 }
 
-const ButtonNext: React.FC<ButtonProps> =({ children, ...rest }) => (
-  <Container {...rest} >
+const ButtonNext: React.FC<ButtonProps> = ({children, ...rest}) => (
+  <Container {...rest}>
     <ButtonText> {children} </ButtonText>
   </Container>
 );

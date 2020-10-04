@@ -1,6 +1,5 @@
-import styled from "styled-components/native";
-import { Platform } from "react-native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
+import styled from 'styled-components/native';
+import {getBottomSpace} from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   align-items: center;
@@ -30,7 +29,7 @@ export const TextContainerImage = styled.Text`
 export const TextLikeMusical = styled.Text`
   font-size: 15px;
   color: #fff;
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
   align-self: center;
 `;
 

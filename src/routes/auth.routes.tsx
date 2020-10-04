@@ -1,14 +1,14 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
-import Match from "../pages/Match";
-import Home from "../pages/Home";
-import MatcherParty from "../pages/MatcherParty";
-import LikeMusic from "../pages/LikeMusic";
-import TasteFood from "../pages/TasteFood";
-import TasteDrink from "../pages/TasteDrink";
-import RegistrationCompleted from "../pages/RegistrationCompleted";
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
+import Match from '../pages/Match';
+import Home from '../pages/Home';
+import MatcherParty from '../pages/MatcherParty';
+import LikeMusic from '../pages/LikeMusic';
+import TasteFood from '../pages/TasteFood';
+import TasteDrink from '../pages/TasteDrink';
+import RegistrationCompleted from '../pages/RegistrationCompleted';
 
 const Auth = createStackNavigator();
 
@@ -16,11 +16,12 @@ const AuthRoutes: React.FC = () => (
   <Auth.Navigator
     screenOptions={{
       headerShown: false,
-      cardStyle: { backgroundColor: "#F8FBFA" },
+      cardStyle: {backgroundColor: '#F8FBFA'},
     }}
 
     initialRouteName={"SignUp"}
   >
+
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
