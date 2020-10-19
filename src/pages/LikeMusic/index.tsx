@@ -14,7 +14,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { TextH3, TextMinAsker } from "../../global";
 import  Header  from "../../components/Header"
-import Footer from "../../components/footer";
+import Footer from "../../components/Footer";
 
 const LikeMusic: React.FC = () => {
   const navigation = useNavigation();

@@ -15,10 +15,8 @@ import {
   ButtonIconHelp,
   ButtonWarpper,
 } from "./styles";
-import IconHelp from "../../components/IconHelp";
 import logo from "../../assets/logoOficial.png";
 import { useNavigation } from "@react-navigation/native";
-import ButtonNext from "../../components/ButtonNext";
 
 const TasteDrink: React.FC = () => {
   const navigation = useNavigation();
@@ -184,12 +182,7 @@ const TasteDrink: React.FC = () => {
               </ContainerContent>
             </ContainerImage>
           </Container>
-          <ButtonWarpper>
-            <ButtonNext>Próximo</ButtonNext>
-          </ButtonWarpper>
-          <ButtonIconHelp>
-            <IconHelp />
-          </ButtonIconHelp>
+          
         </ScrollView>
       </KeyboardAvoidingView>
     </>

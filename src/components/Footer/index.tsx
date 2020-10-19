@@ -11,16 +11,19 @@ const Footer: React.FC = () => {
        <IconBorder>
         <Icon
         name="home"
+        size={25}
         color="#000"
         onPress={() => console.log("Foi")}
         ></Icon>
         <Icon
         name="search"
+        size={25}
         color="#000"
         onPress={() => console.log("Foi")}
         ></Icon>
         <Icon
         name="user"
+        size={25}
         color="#000"
         onPress={() => console.log("Foi")}
         ></Icon>

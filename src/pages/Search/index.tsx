@@ -20,7 +20,6 @@ import {
 } from "./styles";
 import IconUser from "../../components/IconUser";
 import IconMenu from "../../components/IconMenu";
-import IconHelp from "../../components/IconHelp";
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -64,9 +63,7 @@ const Seach: React.FC = () => {
               <InputSearch name="search" icon="search" placeholder="Search" />
             </SeachInput>
           </Container>
-          <IconHelpButton>
-            <IconHelp />
-          </IconHelpButton>
+         
         </ScrollView>
       </KeyboardAvoidingView>
     </>
