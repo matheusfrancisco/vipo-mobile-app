@@ -21,11 +21,6 @@ export const SeachInput = styled.View`
   top: ${getBottomSpace() + 100}px;
 `;
 
-export const HeaderIcon = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 export const IconHelpButton = styled.TouchableOpacity`
   position: absolute;
   left: 0;
