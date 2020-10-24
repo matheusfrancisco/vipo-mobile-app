@@ -6,13 +6,9 @@ import {
   ContainerImage,
   ContainerContent,
   TextContainerImage,
-  ButtonIconHelp,
   HeaderTasteFood,
-  ButtonWarpper,
 } from './styles';
-import IconHelp from '../../components/IconHelp';
 import logo from '../../assets/logoOficial.png';
-import ButtonNext from '../../components/ButtonNext';
 
 const TasteFood: React.FC = () => {
   return (
@@ -83,13 +79,6 @@ const TasteFood: React.FC = () => {
               </ContainerContent>
             </ContainerImage>
           </Container>
-
-          <ButtonWarpper>
-            <ButtonNext>Próximo</ButtonNext>
-          </ButtonWarpper>
-          <ButtonIconHelp>
-            <IconHelp />
-          </ButtonIconHelp>
         </ScrollView>
       </KeyboardAvoidingView>
     </>
