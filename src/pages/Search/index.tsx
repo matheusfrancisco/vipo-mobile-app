@@ -11,7 +11,8 @@ import {useNavigation} from '@react-navigation/native';
 
 import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
-import {Container, Title, SeachInput} from './styles';
+import {Container, SeachInput} from './styles';
+import {TitleH1} from '../../global';
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const Seach: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <View>
-              <Title>PROCURAR UM ROLÊ</Title>
+              <TitleH1>PROCURAR UM ROLÊ</TitleH1>
             </View>
 
             <RectButton
@@ -37,8 +38,8 @@ const Seach: React.FC = () => {
               <Image
                 source={logo}
                 style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                 }}
               />
             </RectButton>

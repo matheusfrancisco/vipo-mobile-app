@@ -21,7 +21,3 @@ export const IconBars = styled.View`
   background: #a396cb;
   margin-right: 20px;
 `;
-
-export const TextNext = styled.View`
-  margin: 12px 20px 0px 0px;
-`;

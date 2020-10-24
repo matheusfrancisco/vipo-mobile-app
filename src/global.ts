@@ -42,7 +42,13 @@ export const TextMinAsker = styled.Text`
   align-self: center;
 `;
 export const ButtonText = styled.Text`
-  font-family: "RobotoSlab-Medium";
+  font-family: 'RobotoSlab-Medium';
   color: #fff;
   font-size: 16px;
+`;
+export const TitleH1 = styled.Text`
+  color: #9283bf;
+  font-family: 'RobotoSlab-Medium';
+  text-align: center;
+  font-size: 25px;
 `;
