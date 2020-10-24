@@ -29,7 +29,7 @@ const ProfileMusic: React.FC = () => {
             <Header />
             <HeaderText>
               <TextMinAsker>
-                Nós ajude a indicar os lugars de acordo com
+                Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
               <TextH3>seus gostos musicais</TextH3>
             </HeaderText>
