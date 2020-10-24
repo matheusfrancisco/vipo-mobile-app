@@ -6,8 +6,8 @@ import Match from '../pages/Match';
 import Home from '../pages/Home';
 import MatcherParty from '../pages/MatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
-import TasteFood from '../pages/TasteFood';
-import TasteDrink from '../pages/TasteDrink';
+import ProfileFood from '../pages/ProfileFood';
+import ProfileDrink from '../pages/ProfileDrink';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 
 const Auth = createStackNavigator();
@@ -26,8 +26,8 @@ const AuthRoutes: React.FC = () => (
 
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
-    <Auth.Screen name="TasteDrink" component={TasteDrink} />
-    <Auth.Screen name="TasteFood" component={TasteFood} />
+    <Auth.Screen name="ProfileDrink" component={ProfileDrink} />
+    <Auth.Screen name="ProfileFood" component={ProfileFood} />
     <Auth.Screen name="MatcherParty" component={MatcherParty} />
     <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
