@@ -173,6 +173,8 @@ const ProfileMusic: React.FC = () => {
             </ContainerImage>
           </Container>
         </ScrollView>
+        <Next />
+        <Footer />
       </KeyboardAvoidingView>
     </>
   );
