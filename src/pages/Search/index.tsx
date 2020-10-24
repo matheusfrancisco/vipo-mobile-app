@@ -11,15 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
-import {
-  Container,
-  Title,
-  SeachInput,
-  HeaderIcon,
-  IconHelpButton,
-} from './styles';
-import IconUser from '../../components/IconUser';
-import IconMenu from '../../components/IconMenu';
+import {Container, Title, SeachInput} from './styles';
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -33,11 +25,6 @@ const Seach: React.FC = () => {
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
-          <HeaderIcon>
-            <IconUser />
-            <IconMenu />
-          </HeaderIcon>
-
           <Container>
             <View>
               <Title>PROCURAR UM ROLÊ</Title>
