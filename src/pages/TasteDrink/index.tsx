@@ -4,11 +4,12 @@ import {
   Container,
   ContainerImage,
   ContainerContent,
-  TextContainerImage,
-  HeaderLikeMusic,
   HeaderText,
+  Line,
 } from './styles';
-import logo from '../../assets/logoOficial.png';
+import {TextH3, TextMinAsker} from '../../global';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const TasteDrink: React.FC = () => {
   return (
@@ -21,13 +22,14 @@ const TasteDrink: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <HeaderLikeMusic>
-              <Image
-                source={logo}
-                style={{width: 300, height: 80, marginBottom: 10}}
-              />
-              <HeaderText>O que você gosta de beber?</HeaderText>
-            </HeaderLikeMusic>
+            <Header />
+            <HeaderText>
+              <TextMinAsker>
+                Nós ajude a indicar os lugares de acordo com
+              </TextMinAsker>
+              <TextH3>suas bebibas favoritas</TextH3>
+            </HeaderText>
+            <Line />
 
             <ContainerImage>
               <ContainerContent>
@@ -35,7 +37,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/sugarcaneliquor.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage> Cachaça</TextContainerImage>
+                <TextMinAsker> Cachaça</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -43,7 +45,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/coffee.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Café</TextContainerImage>
+                <TextMinAsker>Café</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -51,7 +53,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/beer.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Cerveja</TextContainerImage>
+                <TextMinAsker>Cerveja</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -59,8 +61,8 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/craftbeer.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Cerveja </TextContainerImage>
-                <TextContainerImage> artesanal</TextContainerImage>
+                <TextMinAsker>Cerveja </TextMinAsker>
+                <TextMinAsker> artesanal</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
 
@@ -70,7 +72,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/chopp.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Chopp</TextContainerImage>
+                <TextMinAsker>Chopp</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -78,7 +80,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/gin.jpeg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Gin</TextContainerImage>
+                <TextMinAsker>Gin</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -86,7 +88,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/tequila.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Tequila</TextContainerImage>
+                <TextMinAsker>Tequila</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -94,7 +96,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/wine.jpeg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Vinho</TextContainerImage>
+                <TextMinAsker>Vinho</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
 
@@ -104,7 +106,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/vodkadrink.png')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage> Vodca</TextContainerImage>
+                <TextMinAsker> Vodca</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -112,7 +114,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/whisky.png')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Whisky</TextContainerImage>
+                <TextMinAsker>Whisky</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -120,7 +122,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/champagne.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Champagne</TextContainerImage>
+                <TextMinAsker>Champagne</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -128,7 +130,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/brandy.jpeg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Conhaque</TextContainerImage>
+                <TextMinAsker>Conhaque</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
 
@@ -138,7 +140,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/soda.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage> Refrigerante </TextContainerImage>
+                <TextMinAsker> Refrigerante </TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -146,7 +148,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/juice.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Suco</TextContainerImage>
+                <TextMinAsker>Suco</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -154,7 +156,7 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/saque.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Saquê</TextContainerImage>
+                <TextMinAsker>Saquê</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -162,11 +164,12 @@ const TasteDrink: React.FC = () => {
                   source={require('../../assets/taste-drink/liquor.jpg')}
                   style={{width: 60, height: 60, borderRadius: 60 / 2}}
                 />
-                <TextContainerImage>Licor</TextContainerImage>
+                <TextMinAsker>Licor</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
           </Container>
         </ScrollView>
+        <Footer />
       </KeyboardAvoidingView>
     </>
   );

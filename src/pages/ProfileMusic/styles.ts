@@ -36,6 +36,5 @@ export const Line = styled.Text`
   height: 20px;
   width: 80%;
   position: relative;
-  left: 10px;
-  bottom: 8px;
+  bottom: 20px;
 `;

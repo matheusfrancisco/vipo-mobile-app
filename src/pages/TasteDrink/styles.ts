@@ -1,6 +1,20 @@
 import styled from 'styled-components/native';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 
+export const Line = styled.Text`
+  border-bottom-width: 1px;
+  border-bottom-color: #9283bf;
+  height: 20px;
+  width: 80%;
+  position: relative;
+  bottom: 20px;
+`;
+
+export const HeaderText = styled.View`
+  align-items: center;
+  padding: 20px;
+`;
+
 export const Container = styled.View`
   align-items: center;
 `;
@@ -8,13 +22,6 @@ export const Container = styled.View`
 export const HeaderLikeMusic = styled.View`
   justify-content: center;
   padding: 30px;
-`;
-
-export const HeaderText = styled.Text`
-  font-size: 15px;
-  color: #fff;
-  align-self: center;
-  font-family: 'RobotoSlab-Medium';
 `;
 
 export const ContainerImage = styled.View`
