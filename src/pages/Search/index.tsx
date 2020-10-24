@@ -6,8 +6,8 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import {RectButton} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
@@ -20,7 +20,6 @@ import {
 } from './styles';
 import IconUser from '../../components/IconUser';
 import IconMenu from '../../components/IconMenu';
-import IconHelp from '../../components/IconHelp';
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -28,14 +27,12 @@ const Seach: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled
-      >
+        enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        >
+          contentContainerStyle={{flex: 1}}>
           <HeaderIcon>
             <IconUser />
             <IconMenu />
@@ -49,8 +46,7 @@ const Seach: React.FC = () => {
             <RectButton
               onPress={() => {
                 navigation.navigate('MatcherParty');
-              }}
-            >
+              }}>
               <Image
                 source={logo}
                 style={{
@@ -64,9 +60,6 @@ const Seach: React.FC = () => {
               <InputSearch name="search" icon="search" placeholder="Search" />
             </SeachInput>
           </Container>
-          <IconHelpButton>
-            <IconHelp />
-          </IconHelpButton>
         </ScrollView>
       </KeyboardAvoidingView>
     </>

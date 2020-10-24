@@ -5,7 +5,7 @@ import SignUp from '../pages/SignUp';
 import Match from '../pages/Match';
 import Home from '../pages/Home';
 import MatcherParty from '../pages/MatcherParty';
-import LikeMusic from '../pages/LikeMusic';
+import ProfileMusic from '../pages/ProfileMusic';
 import TasteFood from '../pages/TasteFood';
 import TasteDrink from '../pages/TasteDrink';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
@@ -18,7 +18,6 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-
     initialRouteName="RegistrationCompleted">
     <Auth.Screen
       name="RegistrationCompleted"
@@ -31,7 +30,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="TasteFood" component={TasteFood} />
     <Auth.Screen name="MatcherParty" component={MatcherParty} />
     <Auth.Screen name="Home" component={Home} />
-    <Auth.Screen name="LikeMusic" component={LikeMusic} />
+    <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
   </Auth.Navigator>
 );
