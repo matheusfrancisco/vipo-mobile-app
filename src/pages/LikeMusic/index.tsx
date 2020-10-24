@@ -10,6 +10,8 @@ import {
   ContainerImage,
   ContainerContent,
   HeaderText,
+  Line,
+  Next
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { TextH3, TextMinAsker } from "../../global";
@@ -36,7 +38,7 @@ const LikeMusic: React.FC = () => {
               <TextMinAsker>Nós ajude a indicar os lugars de acordo com</TextMinAsker>
               <TextH3>seus gostos musicais</TextH3>
             </HeaderText>
-
+            <Line/> 
             <ContainerImage>
               <ContainerContent>
                 <Image
@@ -45,7 +47,6 @@ const LikeMusic: React.FC = () => {
                 />
                 <TextMinAsker> Eletronica</TextMinAsker>
               </ContainerContent>
-
               <ContainerContent>
                 <Image
                   source={require("../../assets/style-music/funk.jpg")}
@@ -53,7 +54,6 @@ const LikeMusic: React.FC = () => {
                 />
                 <TextMinAsker>Funk</TextMinAsker>
               </ContainerContent>
-
               <ContainerContent>
                 <Image
                   source={require("../../assets/style-music/pagode.jpg")}
@@ -61,7 +61,6 @@ const LikeMusic: React.FC = () => {
                 />
                 <TextMinAsker>Pagode</TextMinAsker>
               </ContainerContent>
-
               <ContainerContent>
                 <Image
                   source={require("../../assets/style-music/rock.jpg")}
@@ -70,7 +69,6 @@ const LikeMusic: React.FC = () => {
                 <TextMinAsker>Rock</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
-
             <ContainerImage>
               <ContainerContent>
                 <Image
@@ -104,7 +102,6 @@ const LikeMusic: React.FC = () => {
                 <TextMinAsker>Reggae</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
-
             <ContainerImage>
               <ContainerContent>
                 <Image
@@ -138,7 +135,6 @@ const LikeMusic: React.FC = () => {
                 <TextMinAsker>MPB</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
-
             <ContainerImage>
               <ContainerContent>
                 <Image
@@ -174,8 +170,9 @@ const LikeMusic: React.FC = () => {
               </ContainerContent>
             </ContainerImage>
           </Container>
-          <Footer/>
         </ScrollView>
+        <Next/>
+        <Footer/>
       </KeyboardAvoidingView>
     </>
   );

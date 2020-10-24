@@ -10,5 +10,5 @@ export const Container = styled.View`
 export const IconBorder = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px;
+  margin: 10px 50px 10px 50px;
 `;

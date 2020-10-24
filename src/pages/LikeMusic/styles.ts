@@ -1,7 +1,4 @@
 import styled from "styled-components/native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
-import { StyleSheet } from "react-native";
-
 
 export const Container = styled.View`
   align-items: center;
@@ -20,6 +17,27 @@ export const ContainerImage = styled.View`
 export const ContainerContent = styled.View`
   flex-direction: column;
   margin: 0px 15px;
+`;
+
+export const Next = styled.View`
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: 46px;
+  top: 716px;
+  background: #C1BCCC;
+  border-radius: 1px;
+  transform: rotate(-180deg);
+`;
+
+export const Line = styled.Text`
+  border-bottom-width: 1px;
+  border-bottom-color: #9283BF;
+  height: 20px;
+  width: 80%;
+  position: relative;
+  left: 10px;
+  bottom: 8px;
 `;
 
 
