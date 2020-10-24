@@ -10,8 +10,7 @@ export const Container = styled.View`
   padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
 
-
-export const Title = styled.Text`
+export const TitleSingUp = styled.Text`
   font-size: 25px;
   color: #fff;
   font-family: 'RobotoSlab-Medium';
@@ -27,25 +26,22 @@ export const BackToSingIn = styled.TouchableOpacity`
   border-top-width: 1px;
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
-
-export const PrivacyTerms= styled.View`
+`;
+export const PrivacyTerms = styled.View`
   border: 2px;
   height: 15px;
   width: 15px;
-  
-`
+`;
 export const TermsText = styled.View`
   margin: -16px 0px 0px 25px;
-`
-
+`;
 
 export const ContainerTextCreateAccount = styled.View`
   margin: 20px 0px;
-`
+`;
 export const ContainerButton = styled.View`
   margin-top: 75px;
-`
-
+`;
 
 export const BackToSingInText = styled.Text`
   color: #fff;
@@ -53,4 +49,3 @@ export const BackToSingInText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
 `;
-
