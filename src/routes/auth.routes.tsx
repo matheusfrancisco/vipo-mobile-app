@@ -5,7 +5,7 @@ import SignUp from "../pages/SignUp";
 import Match from "../pages/Match";
 import Home from "../pages/Home";
 import MatcherParty from "../pages/MatcherParty";
-import LikeMusic from "../pages/LikeMusic";
+import ProfileMusic from "../pages/ProfileMusic";
 import TasteFood from "../pages/TasteFood";
 import TasteDrink from "../pages/TasteDrink";
 import RegistrationCompleted from "../pages/RegistrationCompleted";
@@ -21,9 +21,9 @@ const AuthRoutes: React.FC = () => (
       cardStyle: { backgroundColor: "#F8FBFA" },
     }}
 
-    initialRouteName={"LikeMusic"}
+    initialRouteName={"ProfileMusic"}
   >
-    <Auth.Screen name="LikeMusic" component={LikeMusic} />
+    <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
     <Auth.Screen name="Search" component={Search} />
     <Auth.Screen name="Home" component={Home} />

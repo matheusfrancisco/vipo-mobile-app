@@ -18,7 +18,7 @@ import { TextH3, TextMinAsker } from "../../global";
 import  Header  from "../../components/Header"
 import Footer from "../../components/Footer";
 
-const LikeMusic: React.FC = () => {
+const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();
 
   return (
@@ -178,4 +178,4 @@ const LikeMusic: React.FC = () => {
   );
 };
 
-export default LikeMusic;
+export default ProfileMusic;
