@@ -41,3 +41,8 @@ export const TextMinAsker = styled.Text`
   font-family: 'RobotoSlab-Medium';
   align-self: center;
 `;
+export const ButtonText = styled.Text`
+  font-family: "RobotoSlab-Medium";
+  color: #fff;
+  font-size: 16px;
+`;
