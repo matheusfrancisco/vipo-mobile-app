@@ -7,7 +7,6 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import {Form} from '@unform/mobile';
 import {FormHandles} from '@unform/core';
@@ -17,14 +16,9 @@ import Button from '../../components/Button';
 
 import getvalidationErrors from '../../utils/getValidationErrors';
 
+import logo from '../../assets/logo.png';
 
-import logo from '../../assets/logoVertical.png';
-
-import {Container, Title, BackToSingIn, BackToSingInText} from './styles';
-
-import logo from "../../assets/logo.png";
-
-import {Title, TextH4, TextMin} from  "../../global"
+import {Title, TextH4, TextMin} from '../../global';
 
 interface SignUpData {
   name: string;
@@ -32,7 +26,13 @@ interface SignUpData {
   password: string;
 }
 
-import { Container, BackToSingIn, BackToSingInText, ContainerTextCreateAccount, ContainerButton, PrivacyTerms, TermsText } from "./styles";
+import {
+  Container,
+  ContainerTextCreateAccount,
+  ContainerButton,
+  PrivacyTerms,
+  TermsText,
+} from './styles';
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
@@ -91,13 +91,13 @@ const SignUp: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <Image
-                source={logo}
-                style={{
-                  width: 218,
-                  height: 218,
-                  marginTop: 90,
-                }}
-              />
+              source={logo}
+              style={{
+                width: 218,
+                height: 218,
+                marginTop: 90,
+              }}
+            />
             <ContainerTextCreateAccount>
               <Title>Crie sua conta</Title>
             </ContainerTextCreateAccount>
@@ -138,9 +138,14 @@ const SignUp: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               />
-              <PrivacyTerms/>
-              <TermsText><TextMin>Você concorda com nossos <TextH4>termos de privacidade</TextH4></TextMin></TermsText>
-           
+              <PrivacyTerms />
+              <TermsText>
+                <TextMin>
+                  Você concorda com nossos{' '}
+                  <TextH4>termos de privacidade</TextH4>
+                </TextMin>
+              </TermsText>
+
               <ContainerButton>
                 <Button onPress={() => formRef.current?.submitForm()}>
                   Cadastrar
@@ -150,7 +155,6 @@ const SignUp: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-     
     </>
   );
 };
