@@ -4,7 +4,7 @@ import Home from '../pages/Home';
 import MatchParty from '../pages/Match';
 import MatcherParty from '../pages/MatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
-import TasteFood from '../pages/TasteFood';
+import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 
 const App = createStackNavigator();
@@ -19,7 +19,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="MatcherParty" component={MatcherParty} />
     <App.Screen name="Match" component={MatchParty} />
     <App.Screen name="ProfileMusic" component={ProfileMusic} />
-    <App.Screen name="TasteFood" component={TasteFood} />
+    <App.Screen name="ProfileFood" component={ProfileFood} />
     <App.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}

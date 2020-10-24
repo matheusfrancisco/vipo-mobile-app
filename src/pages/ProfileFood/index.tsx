@@ -11,7 +11,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {TextH3, TextMinAsker} from '../../global';
 
-const TasteFood: React.FC = () => {
+const ProfileFood: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
@@ -86,4 +86,4 @@ const TasteFood: React.FC = () => {
   );
 };
 
-export default TasteFood;
+export default ProfileFood;
