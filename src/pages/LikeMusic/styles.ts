@@ -1,20 +1,12 @@
 import styled from 'styled-components/native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   align-items: center;
 `;
 
-export const HeaderLikeMusic = styled.View`
-  justify-content: center;
-  padding: 30px;
-`;
-
-export const HeaderText = styled.Text`
-  font-size: 15px;
-  color: #fff;
-  font-family: 'RobotoSlab-Medium';
-  align-self: center;
+export const HeaderText = styled.View`
+  align-items: center;
+  padding: 20px;
 `;
 
 export const ContainerImage = styled.View`
@@ -27,26 +19,23 @@ export const ContainerContent = styled.View`
   margin: 0px 15px;
 `;
 
-export const TextContainerImage = styled.Text`
-  color: #ff6900;
-  text-align: center;
-`;
-
-export const ButtonIconHelp = styled.TouchableOpacity`
+export const Next = styled.View`
   position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0%;
-  background: #363636;
-  border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0 ${16 + getBottomSpace()}px;
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  width: 4px;
+  height: 4px;
+  left: 46px;
+  top: 716px;
+  background: #c1bccc;
+  border-radius: 1px;
+  transform: rotate(-180deg);
 `;
 
-export const ButtonWarpper = styled.View`
-  margin: 10px 120px;
+export const Line = styled.Text`
+  border-bottom-width: 1px;
+  border-bottom-color: #9283bf;
+  height: 20px;
+  width: 80%;
+  position: relative;
+  left: 10px;
+  bottom: 8px;
 `;
