@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, IconBorder} from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
+import {TextH1} from "../../global";
 
 const Footer: React.FC = () => {
 
