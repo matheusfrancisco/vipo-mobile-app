@@ -2,13 +2,14 @@ import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
 import {
   Container,
-  TextLikeMusical,
   ContainerImage,
   ContainerContent,
-  TextContainerImage,
-  HeaderTasteFood,
+  HeaderText,
+  Line,
 } from './styles';
-import logo from '../../assets/logoOficial.png';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import {TextH3, TextMinAsker} from '../../global';
 
 const TasteFood: React.FC = () => {
   return (
@@ -21,15 +22,14 @@ const TasteFood: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <HeaderTasteFood>
-              <Image
-                source={logo}
-                style={{width: 300, height: 80, marginBottom: 10}}
-              />
-              <TextLikeMusical>
-                Quando você sai, o que gosta de comer?
-              </TextLikeMusical>
-            </HeaderTasteFood>
+            <Header />
+            <HeaderText>
+              <TextMinAsker>
+                Nós ajude a indicar os lugars de acordo com
+              </TextMinAsker>
+              <TextH3>suas comidas preferidas</TextH3>
+            </HeaderText>
+            <Line />
 
             <ContainerImage>
               <ContainerContent>
@@ -37,7 +37,7 @@ const TasteFood: React.FC = () => {
                   source={require('../../assets/taste-food/burguer.png')}
                   style={{width: 80, height: 80, borderRadius: 80 / 2}}
                 />
-                <TextContainerImage>Hambúrguer</TextContainerImage>
+                <TextMinAsker>Hambúrguer</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -49,7 +49,7 @@ const TasteFood: React.FC = () => {
                     borderRadius: 80 / 2,
                   }}
                 />
-                <TextContainerImage>Petisco</TextContainerImage>
+                <TextMinAsker>Petisco</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
 
@@ -63,7 +63,7 @@ const TasteFood: React.FC = () => {
                     borderRadius: 80 / 2,
                   }}
                 />
-                <TextContainerImage>Vegana</TextContainerImage>
+                <TextMinAsker>Vegana</TextMinAsker>
               </ContainerContent>
 
               <ContainerContent>
@@ -75,11 +75,12 @@ const TasteFood: React.FC = () => {
                     borderRadius: 80 / 2,
                   }}
                 />
-                <TextContainerImage>Vegetariana</TextContainerImage>
+                <TextMinAsker>Vegetariana</TextMinAsker>
               </ContainerContent>
             </ContainerImage>
           </Container>
         </ScrollView>
+        <Footer />
       </KeyboardAvoidingView>
     </>
   );
