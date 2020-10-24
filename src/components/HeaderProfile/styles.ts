@@ -8,13 +8,16 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
-export const IconBorder = styled.View`
+export const IconUser = styled.View`
   margin: 20px 0px 25px 20px;
   border-width: 6px;
   border-color: #a396cb;
   background: #a396cb;
 `;
-
-export const TextNext = styled.View`
-  margin: 12px 20px 0px 0px;
+export const IconBars = styled.View`
+  margin: 20px 0px 25px 20px;
+  border-width: 6px;
+  border-color: #a396cb;
+  background: #a396cb;
+  margin-right: 20px;
 `;
