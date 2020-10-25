@@ -6,11 +6,10 @@ export const Container = styled.View`
   padding: 0 16px;
   background: #f8fbfa;
   border-radius: 10px;
-  margin-bottom: 8px;
   flex-direction: row;
   align-items: center;
   border: #dadfe2;
-  margin-left: 20px;
+  margin: 0px 0px 30px 20px;
 `;
 
 export const TextInput = styled.TextInput`

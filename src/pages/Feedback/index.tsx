@@ -10,8 +10,10 @@ import {
   ContainerRow,
   ContainerCenter,
   ImageItem,
+  ContainerImage,
 } from './styles';
 import InputFeedback from '../../components/InputFeedback';
+import Footer from '../../components/Footer';
 
 const Feedback: React.FC = () => {
   return (
@@ -20,7 +22,14 @@ const Feedback: React.FC = () => {
         <Header>
           <Title>E ai, como foi o rolê?</Title>
         </Header>
-        <ImageItem source={require('../../assets/feedback/download.jpeg')} />
+
+        <ContainerImage>
+          <ImageItem source={require('../../assets/feedback/emoji2.png')} />
+          <ImageItem source={require('../../assets/feedback/emoji1.png')} />
+          <ImageItem source={require('../../assets/feedback/emoji3.png')} />
+          <ImageItem source={require('../../assets/feedback/emoji4.png')} />
+          <ImageItem source={require('../../assets/feedback/emoji5.png')} />
+        </ContainerImage>
 
         <FeedbackMax>
           <TextH3Bold>O que você mais gostou?</TextH3Bold>
@@ -110,6 +119,7 @@ const Feedback: React.FC = () => {
         </TextH3Bold>
       </FeedbackMax>
       <InputFeedback />
+      <Footer />
     </>
   );
 };

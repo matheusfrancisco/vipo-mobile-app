@@ -26,7 +26,13 @@ export const Container = styled.View`
 `;
 
 export const ImageItem = styled.Image`
-  margin: 10px;
+  width: 50px;
+  height: 50px;
+`;
+
+export const ContainerImage = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
 `;
 
 export const FeedbackTypes = styled.View`
