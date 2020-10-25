@@ -1,9 +1,21 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
 import {useAuth} from '../../hooks/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IconLocalion from 'react-native-vector-icons/Octicons';
+import IconEvil from 'react-native-vector-icons/EvilIcons';
 
-import {ImageBanner, Title} from './styles';
+import {
+  ImageBanner,
+  Title,
+  Description,
+  Line,
+  Informations,
+  MarginText,
+  PositionIcon,
+  Footer,
+} from './styles';
+import {TextDescription, TextMin} from '../../global';
 
 const MatchParty: React.FC = () => {
   const yourMatchs = [
@@ -31,16 +43,51 @@ const MatchParty: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <ImageBanner source={yourMatchs[0]}>
-            <Title>
-              {yourMatchs[0].name}
-              <Icon.Button
-                name="calendar"
-                backgroundColor="#000"
-                onPress={() => console.log('Foi')}
-              />
-            </Title>
+            <Title>{yourMatchs[0].name}</Title>
           </ImageBanner>
+
+          <Description>
+            <TextDescription>
+              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+              ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            </TextDescription>
+          </Description>
+          <Line />
+
+          <Informations>
+            <PositionIcon>
+              <Icon name="calendar" size={30} color="#470A68" />
+            </PositionIcon>
+            <MarginText>
+              <TextMin> Seg à Dom - 18:00 até 22:00</TextMin>
+            </MarginText>
+          </Informations>
+
+          <Informations>
+            <PositionIcon>
+              <IconLocalion name="location" size={30} color="#470A68" />
+            </PositionIcon>
+            <MarginText>
+              <TextMin> Jardim das avenidas</TextMin>
+            </MarginText>
+          </Informations>
+
+          <Informations>
+            <PositionIcon>
+              <Icon name="money" size={30} color="#470A68" />
+            </PositionIcon>
+            <MarginText>
+              <TextMin> Preço médio - R$ 60,00</TextMin>
+            </MarginText>
+          </Informations>
         </ScrollView>
+
+        <Footer>
+          <IconEvil name="close" size={30} color="red" />
+          <Icon name="send-o" size={30} color="#000" />
+          <IconEvil name="heart" size={40} color="green" />
+        </Footer>
       </KeyboardAvoidingView>
     </>
   );
