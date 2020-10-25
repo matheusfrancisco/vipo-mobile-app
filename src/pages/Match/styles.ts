@@ -39,43 +39,6 @@ export const Informations = styled.View`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 10px;
-<<<<<<< HEAD
-=======
-  padding: 10px 10px;
-  border-color: #ff6900;
-`;
-
-export const Liked = styled.View`
-  margin-top: 10px;
-`;
-
-export const LikedIcons = styled.View`
-  border: 1px;
-  height: 200px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-color: #ff6900;
-`;
-
-export const INext = styled(Icon)`
-  font-size: 30px;
-  text-align: right;
-  color: #ff6900;
-  margin-right: 2px;
-`;
-
-export const ILeft = styled(Icon)`
-  font-size: 30px;
-  color: #ff6900;
-  margin-left: 2px;
-`;
-
-export const Like = styled(Icon)`
-  font-size: 50px;
-  color: green;
-  margin-top: -50px;
->>>>>>> Add page feedback
 `;
 
 export const MarginText = styled.View`
