@@ -1,9 +1,14 @@
 import React from 'react';
+<<<<<<< HEAD
 import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
 import {useAuth} from '../../hooks/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocalion from 'react-native-vector-icons/Octicons';
 import IconEvil from 'react-native-vector-icons/EvilIcons';
+=======
+import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import {useAuth} from '../../hooks/auth';
+>>>>>>> Add page feedback
 
 import {
   ImageBanner,
@@ -42,6 +47,7 @@ const MatchParty: React.FC = () => {
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
+<<<<<<< HEAD
           <ImageBanner source={yourMatchs[0]}>
             <Title>{yourMatchs[0].name}</Title>
           </ImageBanner>
@@ -81,6 +87,57 @@ const MatchParty: React.FC = () => {
               <TextMin> Preço médio - R$ 60,00</TextMin>
             </MarginText>
           </Informations>
+=======
+          <Wrapper>
+            <ImageBanner source={yourMatchs[0]}>
+              <Title>{yourMatchs[0].name}</Title>
+              <Week> Agenda da semana </Week>
+            </ImageBanner>
+            <Container>
+              <Insta>{yourMatchs[0].instagram}</Insta>
+              <Line />
+            </Container>
+            <Informations>
+              <Description>{yourMatchs[0].description}</Description>
+              <DescriptionInfo>
+                <PubInformations>
+                  <TextMatch style={{marginBottom: 8}}>
+                    {`${yourMatchs[0].openHour} - ${yourMatchs[0].closeHour}`}
+                  </TextMatch>
+                  <TextMatch>República +</TextMatch>
+                </PubInformations>
+                <PubTicket>{yourMatchs[0].ticket}</PubTicket>
+              </DescriptionInfo>
+              <Offert>
+                <TextMatch style={{textAlign: 'center'}}>
+                  {yourMatchs[0].bonus}
+                </TextMatch>
+              </Offert>
+              <Liked>
+                <LikedIcons>
+                  <ILeft
+                    name="chevron-left"
+                    onPress={() => console.log('back')}
+                  />
+                  <Dislike
+                    name="thumbs-o-down"
+                    onPress={() => console.log('dislike')}
+                  />
+                  <Like
+                    name="thumbs-o-up"
+                    onPress={() => console.log('like')}
+                  />
+                  <INext
+                    name="chevron-right"
+                    onPress={() => console.log('next')}
+                  />
+                </LikedIcons>
+                <Calendar name="calendar" />
+                <Share name="share-square" />
+              </Liked>
+            </Informations>
+          </Wrapper>
+>>>>>>> Add page feedback
         </ScrollView>
 
         <Footer>
