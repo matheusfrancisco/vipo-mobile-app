@@ -9,7 +9,7 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   border: #dadfe2;
-  margin: 0px 0px 30px 20px;
+  margin: 0px 0px 35px 20px;
 `;
 
 export const TextInput = styled.TextInput`
