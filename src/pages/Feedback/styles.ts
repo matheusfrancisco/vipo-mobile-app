@@ -25,6 +25,10 @@ export const Container = styled.View`
   margin: 10px;
 `;
 
+export const ImageItem = styled.Image`
+  margin: 10px;
+`;
+
 export const FeedbackTypes = styled.View`
   margin: 5px;
   border-width: 1px;

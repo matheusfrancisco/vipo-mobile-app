@@ -9,6 +9,7 @@ import {
   Container,
   ContainerRow,
   ContainerCenter,
+  ImageItem,
 } from './styles';
 import InputFeedback from '../../components/InputFeedback';
 
@@ -19,6 +20,7 @@ const Feedback: React.FC = () => {
         <Header>
           <Title>E ai, como foi o rolê?</Title>
         </Header>
+        <ImageItem source={require('../../assets/feedback/download.jpeg')} />
 
         <FeedbackMax>
           <TextH3Bold>O que você mais gostou?</TextH3Bold>
