@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   Title,
@@ -33,10 +33,9 @@ const MatcherParty: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{flex: 1}}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled
-      >
+        enabled>
         <ScrollView keyboardShouldPersistTaps="handled">
           <Container>
             <SearchRole>
@@ -94,8 +93,7 @@ const MatcherParty: React.FC = () => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}
-            >
+              }}>
               <PriceRole>
                 <PriceRoleText> Até:</PriceRoleText>
                 <InputMatcher />
@@ -104,8 +102,7 @@ const MatcherParty: React.FC = () => {
               <ButtonViewRole
                 onPress={() => {
                   navigation.navigate('Match');
-                }}
-              >
+                }}>
                 VER ROLÊS
               </ButtonViewRole>
             </View>

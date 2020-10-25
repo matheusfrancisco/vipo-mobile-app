@@ -1,5 +1,5 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
 import {useAuth} from '../../hooks/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocalion from 'react-native-vector-icons/Octicons';
@@ -15,7 +15,7 @@ import {
   PositionIcon,
   Footer,
 } from './styles';
-import {TextDescription, TextMin} from '../../global';
+import {Description, TextMin} from '../../global';
 
 const MatchParty: React.FC = () => {
   const yourMatchs = [
@@ -47,11 +47,11 @@ const MatchParty: React.FC = () => {
           </ImageBanner>
 
           <Description>
-            <TextDescription>
+            <Description>
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
               ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            </TextDescription>
+            </Description>
           </Description>
           <Line />
 
