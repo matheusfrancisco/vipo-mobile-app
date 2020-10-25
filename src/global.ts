@@ -19,6 +19,12 @@ export const TextH3Bold = styled.Text`
   font-family: 'RobotoSlab-Medium';
 `;
 
+export const TextBold = styled.Text`
+  font-size: 20px;
+  color: #470a68;
+  font-family: bold;
+`;
+
 export const TextH4 = styled.Text`
   font-size: 12px;
   color: #9283bf;

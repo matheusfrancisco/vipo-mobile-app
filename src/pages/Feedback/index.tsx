@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAuth} from '../../hooks/auth';
-import {Title, TextH3Bold, TextMin} from '../../global';
+import {Title, TextH3Bold, TextMin, TextBold} from '../../global';
 import {
   Header,
   FeedbackMax,
@@ -32,7 +32,9 @@ const Feedback: React.FC = () => {
         </ContainerImage>
 
         <FeedbackMax>
-          <TextH3Bold>O que você mais gostou?</TextH3Bold>
+          <TextH3Bold>
+            O que você <TextBold>mais</TextBold> gostou?
+          </TextH3Bold>
         </FeedbackMax>
         <ContainerRow>
           <FeedbackTypes>
@@ -73,7 +75,9 @@ const Feedback: React.FC = () => {
 
       <Container>
         <FeedbackMax>
-          <TextH3Bold>O que você menos gostou?</TextH3Bold>
+          <TextH3Bold>
+            O que você <TextBold>menos</TextBold> gostou?
+          </TextH3Bold>
         </FeedbackMax>
         <ContainerRow>
           <FeedbackTypes>
