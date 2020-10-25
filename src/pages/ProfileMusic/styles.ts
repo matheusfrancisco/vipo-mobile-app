@@ -31,7 +31,7 @@ export const Next = styled.View`
 `;
 
 export const Line = styled.Text`
-  border-bottom-width: 1px;
+  border-bottom-width: 3px;
   border-bottom-color: #9283bf;
   height: 20px;
   width: 80%;
