@@ -6,11 +6,8 @@ import MatcherParty from '../pages/MatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
-<<<<<<< HEAD
 import Feedback from '../pages/Feedback';
-=======
 import Profile from '../pages/Profile';
->>>>>>> wip
 
 const App = createStackNavigator();
 
@@ -25,11 +22,8 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="Match" component={MatchParty} />
     <App.Screen name="ProfileMusic" component={ProfileMusic} />
     <App.Screen name="ProfileFood" component={ProfileFood} />
-<<<<<<< HEAD
     <App.Screen name="Feedback" component={Feedback} />
-=======
     <App.Screen name="Profile" component={Profile} />
->>>>>>> wip
 
     <App.Screen
       name="RegistrationCompleted"
