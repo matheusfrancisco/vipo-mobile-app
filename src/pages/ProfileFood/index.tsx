@@ -1,12 +1,7 @@
 import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
 
-import {
-  Container,
-  ContainerImage,
-  ContainerContent,
-  HeaderText,
-} from './styles';
+import {Row, AlignContent, Container, HeaderText} from './styles';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';

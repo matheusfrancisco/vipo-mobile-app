@@ -2,13 +2,7 @@ import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {
-  Container,
-  ContainerImage,
-  ContainerContent,
-  HeaderText,
-  Next,
-} from './styles';
+import {Row, AlignContent, Container, HeaderText, Next} from './styles';
 
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';

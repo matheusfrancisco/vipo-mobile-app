@@ -50,13 +50,13 @@ const Feedback: React.FC = () => {
           </Types>
         </Row>
 
-        <ContainerCenter>
+        <AlignCenter>
           <Types>
             <AlignText>
               <TextMin>Comida</TextMin>
             </AlignText>
           </Types>
-        </ContainerCenter>
+        </AlignCenter>
 
         <Row>
           <Types>
@@ -86,11 +86,13 @@ const Feedback: React.FC = () => {
             </AlignText>
           </Types>
 
-          <Types>
-            <AlignText>
-              <TextMin>Comida</TextMin>
-            </AlignText>
-          </Types>
+          <AlignCenter>
+            <Types>
+              <AlignText>
+                <TextMin>Comida</TextMin>
+              </AlignText>
+            </Types>
+          </AlignCenter>
         </Row>
 
         <AlignCenter>

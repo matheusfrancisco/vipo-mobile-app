@@ -20,14 +20,15 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="Profile">
+    initialRouteName="Match">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
     />
 
-    <Auth.Screen name="Profile" component={Profile} />
+    <Auth.Screen name="Feedback" component={Feedback} />
     <Auth.Screen name="SignIn" component={SignIn} />
+    <Auth.Screen name="Profile" component={Profile} />
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="ProfileDrink" component={ProfileDrink} />
     <Auth.Screen name="ProfileFood" component={ProfileFood} />
@@ -35,7 +36,6 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
-    <Auth.Screen name="Feedback" component={Feedback} />
   </Auth.Navigator>
 );
 
