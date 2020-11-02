@@ -12,6 +12,7 @@ import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
 import ResetPassword from '../pages/ResetPassword';
+import Landing from '../pages/Landing';
 
 const Auth = createStackNavigator();
 
@@ -21,12 +22,12 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="ResetPassword">
+    initialRouteName="Landing">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
     />
-
+    <Auth.Screen name="Landing" component={Landing} />
     <Auth.Screen name="Feedback" component={Feedback} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="Profile" component={Profile} />
