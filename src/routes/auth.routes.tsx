@@ -26,6 +26,7 @@ const AuthRoutes: React.FC = () => (
       component={RegistrationCompleted}
     />
 
+    <Auth.Screen name="Profile" component={Profile} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="ProfileDrink" component={ProfileDrink} />
@@ -35,7 +36,6 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
     <Auth.Screen name="Feedback" component={Feedback} />
-    <Auth.Screen name="Profile" component={Profile} />
   </Auth.Navigator>
 );
 

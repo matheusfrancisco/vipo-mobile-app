@@ -1,14 +1,23 @@
 import React from 'react';
+import IconLocation from 'react-native-vector-icons/Octicons';
 import {useAuth} from '../../hooks/auth';
-import Search from '../Search';
-import HeaderProfile from '../../components/HeaderProfile';
-import {Header, IconBorder, Container, AlignText, ImageItem} from './styles';
+import {
+  Header,
+  IconBorder,
+  Container,
+  AlignText,
+  ImageItem,
+  Colunn,
+  Line,
+  AlignLocation,
+  AlignIcon,
+} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import Footer from '../../components/Footer';
-import {Title2, TextBold, Text16Bold} from '../../global';
+import {Title2, Text16Bold, TextMin} from '../../global';
 
-const Home: React.FC = () => {
+const Profile: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
@@ -33,7 +42,17 @@ const Home: React.FC = () => {
             <AlignText>
               <Title2>Olá, Theresa !</Title2>
             </AlignText>
-            <Text16Bold>Minhas Informações</Text16Bold>
+            <Colunn>
+              <Text16Bold>Minhas Informações</Text16Bold>
+            </Colunn>
+            <Line />
+            <AlignIcon>
+              <IconLocation name="location" size={20} color="#470A68" />
+              <TextMin> São Paulo - Jardins</TextMin>
+            </AlignIcon>
+            <AlignIcon>
+              <TextMin> example@gmail.com</TextMin>
+            </AlignIcon>
           </Container>
         </ScrollView>
         <Footer />
@@ -42,4 +61,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Profile;

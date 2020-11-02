@@ -8,7 +8,7 @@ export const Title = styled.Text`
 `;
 
 export const Title2 = styled.Text`
-  font-size: 35px;
+  font-size: 45px;
   color: #000;
   font-family: 'RobotoSlab-Medium';
   font-weight: bold;
