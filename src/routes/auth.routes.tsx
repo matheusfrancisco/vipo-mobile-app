@@ -11,6 +11,7 @@ import ProfileDrink from '../pages/ProfileDrink';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
+import ResetPassword from '../pages/ResetPassword';
 
 const Auth = createStackNavigator();
 
@@ -20,7 +21,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="Match">
+    initialRouteName="ResetPassword">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
@@ -36,6 +37,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
+    <Auth.Screen name="ResetPassword" component={ResetPassword} />
   </Auth.Navigator>
 );
 

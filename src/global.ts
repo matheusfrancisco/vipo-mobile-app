@@ -14,6 +14,13 @@ export const Title2 = styled.Text`
   font-weight: bold;
 `;
 
+export const Title3 = styled.Text`
+  font-size: 25px;
+  color: #470a68;
+  font-family: 'RobotoSlab-Medium';
+  font-weight: bold;
+`;
+
 export const TextH3 = styled.Text`
   font-size: 16px;
   color: #9283bf;
