@@ -5,11 +5,11 @@ import {
   ContainerImage,
   ContainerContent,
   HeaderText,
-  Line,
 } from './styles';
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Line from '../../components/Line';
 
 const ProfileDrink: React.FC = () => {
   return (

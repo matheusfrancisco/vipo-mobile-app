@@ -37,16 +37,6 @@ export const Colunn = styled.View`
   align-self: center;
 `;
 
-export const Line = styled.Text`
-  border-bottom-width: 1px;
-  border-bottom-color: #000;
-  height: 20px;
-  width: 60%;
-  position: relative;
-  align-self: center;
-  bottom: 20px;
-`;
-
 export const AlignIcon = styled.View`
   margin: 20px;
   flex-direction: row;

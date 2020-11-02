@@ -8,7 +8,6 @@ import {
   AlignText,
   ImageItem,
   Colunn,
-  Line,
   AlignLocation,
   AlignIcon,
 } from './styles';
@@ -16,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import Footer from '../../components/Footer';
 import {Title2, Text16Bold, TextMin} from '../../global';
+import Line from '../../components/Line';
 
 const Profile: React.FC = () => {
   return (

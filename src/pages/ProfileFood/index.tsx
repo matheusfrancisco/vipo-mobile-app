@@ -5,11 +5,11 @@ import {
   ContainerImage,
   ContainerContent,
   HeaderText,
-  Line,
 } from './styles';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {TextH3, TextMinAsker} from '../../global';
+import Line from '../../components/Line';
 
 const ProfileFood: React.FC = () => {
   return (

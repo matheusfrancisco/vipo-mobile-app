@@ -9,13 +9,13 @@ import {
   ImageBanner,
   Title,
   Description,
-  Line,
   Informations,
   MarginText,
   PositionIcon,
   Footer,
 } from './styles';
 import {TextDescription, TextMin} from '../../global';
+import Line from '../../components/Line';
 
 const MatchParty: React.FC = () => {
   const yourMatchs = [

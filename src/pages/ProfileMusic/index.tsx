@@ -6,12 +6,12 @@ import {
   ContainerImage,
   ContainerContent,
   HeaderText,
-  Line,
   Next,
 } from './styles';
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Line from '../../components/Line';
 
 const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();
