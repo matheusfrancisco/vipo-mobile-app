@@ -25,7 +25,6 @@ const RegistrationCompleted: React.FC = () => {
             <Title>Cadastro concluído </Title>
 
             <TextDescription>
-              {' '}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. .
             </TextDescription>

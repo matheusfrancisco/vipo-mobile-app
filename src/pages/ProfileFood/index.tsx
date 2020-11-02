@@ -1,12 +1,6 @@
 import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
-import {
-  Container,
-  ContainerImage,
-  ContainerContent,
-  HeaderText,
-  Line,
-} from './styles';
+import {Container, Row, AlignContent, HeaderText, Line} from './styles';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {TextH3, TextMinAsker} from '../../global';
@@ -31,16 +25,16 @@ const ProfileFood: React.FC = () => {
             </HeaderText>
             <Line />
 
-            <ContainerImage>
-              <ContainerContent>
+            <Row>
+              <AlignContent>
                 <Image
                   source={require('../../assets/taste-food/burguer.png')}
                   style={{width: 80, height: 80, borderRadius: 80 / 2}}
                 />
                 <TextMinAsker>Hambúrguer</TextMinAsker>
-              </ContainerContent>
+              </AlignContent>
 
-              <ContainerContent>
+              <AlignContent>
                 <Image
                   source={require('../../assets/taste-food/snack.jpeg')}
                   style={{
@@ -50,11 +44,11 @@ const ProfileFood: React.FC = () => {
                   }}
                 />
                 <TextMinAsker>Petisco</TextMinAsker>
-              </ContainerContent>
-            </ContainerImage>
+              </AlignContent>
+            </Row>
 
-            <ContainerImage>
-              <ContainerContent>
+            <Row>
+              <AlignContent>
                 <Image
                   source={require('../../assets/taste-food/vegan.jpg')}
                   style={{
@@ -64,9 +58,9 @@ const ProfileFood: React.FC = () => {
                   }}
                 />
                 <TextMinAsker>Vegana</TextMinAsker>
-              </ContainerContent>
+              </AlignContent>
 
-              <ContainerContent>
+              <AlignContent>
                 <Image
                   source={require('../../assets/taste-food/vegetarian.jpg')}
                   style={{
@@ -76,8 +70,8 @@ const ProfileFood: React.FC = () => {
                   }}
                 />
                 <TextMinAsker>Vegetariana</TextMinAsker>
-              </ContainerContent>
-            </ContainerImage>
+              </AlignContent>
+            </Row>
           </Container>
         </ScrollView>
         <Footer />
