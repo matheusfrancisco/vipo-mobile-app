@@ -29,12 +29,3 @@ export const Next = styled.View`
   border-radius: 1px;
   transform: rotate(-180deg);
 `;
-
-export const Line = styled.Text`
-  border-bottom-width: 3px;
-  border-bottom-color: #9283bf;
-  height: 20px;
-  width: 80%;
-  position: relative;
-  bottom: 20px;
-`;

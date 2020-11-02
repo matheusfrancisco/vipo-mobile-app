@@ -7,7 +7,7 @@ import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
-import Apresentation from '../pages/Apresentation';
+import Profile from '../pages/Profile';
 
 const App = createStackNavigator();
 
@@ -23,7 +23,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="ProfileMusic" component={ProfileMusic} />
     <App.Screen name="ProfileFood" component={ProfileFood} />
     <App.Screen name="Feedback" component={Feedback} />
-    <App.Screen name="Apresentation" component={Apresentation} />
+    <App.Screen name="Profile" component={Profile} />
 
     <App.Screen
       name="RegistrationCompleted"
