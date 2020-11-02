@@ -4,13 +4,13 @@ import {Title, TextH3Bold, TextMin, TextBold} from '../../global';
 import {
   Header,
   FeedbackMax,
-  FeedbackTypes,
+  Types,
   AlignText,
   Container,
-  ContainerRow,
-  ContainerCenter,
+  Row,
+  AlignCenter,
   ImageItem,
-  ContainerImage,
+  Image,
 } from './styles';
 import InputFeedback from '../../components/InputFeedback';
 import Footer from '../../components/Footer';
@@ -23,54 +23,54 @@ const Feedback: React.FC = () => {
           <Title>E ai, como foi o rolê?</Title>
         </Header>
 
-        <ContainerImage>
+        <Image>
           <ImageItem source={require('../../assets/feedback/emoji2.png')} />
           <ImageItem source={require('../../assets/feedback/emoji1.png')} />
           <ImageItem source={require('../../assets/feedback/emoji3.png')} />
           <ImageItem source={require('../../assets/feedback/emoji4.png')} />
           <ImageItem source={require('../../assets/feedback/emoji5.png')} />
-        </ContainerImage>
+        </Image>
 
         <FeedbackMax>
           <TextH3Bold>
             O que você <TextBold>mais</TextBold> gostou?
           </TextH3Bold>
         </FeedbackMax>
-        <ContainerRow>
-          <FeedbackTypes>
+        <Row>
+          <Types>
             <AlignText>
               <TextMin>Atendimento</TextMin>
             </AlignText>
-          </FeedbackTypes>
+          </Types>
 
-          <FeedbackTypes>
+          <Types>
             <AlignText>
               <TextMin>Comida</TextMin>
             </AlignText>
-          </FeedbackTypes>
-        </ContainerRow>
+          </Types>
+        </Row>
 
         <ContainerCenter>
-          <FeedbackTypes>
+          <Types>
             <AlignText>
               <TextMin>Comida</TextMin>
             </AlignText>
-          </FeedbackTypes>
+          </Types>
         </ContainerCenter>
 
-        <ContainerRow>
-          <FeedbackTypes>
+        <Row>
+          <Types>
             <AlignText>
               <TextMin>Ambiente</TextMin>
             </AlignText>
-          </FeedbackTypes>
+          </Types>
 
-          <FeedbackTypes>
+          <Types>
             <AlignText>
               <TextMin>Música</TextMin>
             </AlignText>
-          </FeedbackTypes>
-        </ContainerRow>
+          </Types>
+        </Row>
       </Container>
 
       <Container>
@@ -79,41 +79,41 @@ const Feedback: React.FC = () => {
             O que você <TextBold>menos</TextBold> gostou?
           </TextH3Bold>
         </FeedbackMax>
-        <ContainerRow>
-          <FeedbackTypes>
+        <Row>
+          <Types>
             <AlignText>
               <TextMin>Atendimento</TextMin>
             </AlignText>
-          </FeedbackTypes>
+          </Types>
 
-          <FeedbackTypes>
+          <Types>
             <AlignText>
               <TextMin>Comida</TextMin>
             </AlignText>
-          </FeedbackTypes>
-        </ContainerRow>
+          </Types>
+        </Row>
 
-        <ContainerCenter>
-          <FeedbackTypes>
+        <AlignCenter>
+          <Types>
             <AlignText>
               <TextMin>Comida</TextMin>
             </AlignText>
-          </FeedbackTypes>
-        </ContainerCenter>
+          </Types>
+        </AlignCenter>
 
-        <ContainerRow>
-          <FeedbackTypes>
+        <Row>
+          <Types>
             <AlignText>
               <TextMin>Ambiente</TextMin>
             </AlignText>
-          </FeedbackTypes>
+          </Types>
 
-          <FeedbackTypes>
+          <Types>
             <AlignText>
               <TextMin>Música</TextMin>
             </AlignText>
-          </FeedbackTypes>
-        </ContainerRow>
+          </Types>
+        </Row>
       </Container>
 
       <FeedbackMax>

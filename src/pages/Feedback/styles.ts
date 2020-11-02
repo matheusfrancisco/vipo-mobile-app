@@ -13,11 +13,11 @@ export const AlignText = styled.View`
   align-self: center;
 `;
 
-export const ContainerRow = styled.View`
+export const Row = styled.View`
   flex-direction: row;
   justify-content: space-around;
 `;
-export const ContainerCenter = styled.View`
+export const AlignCenter = styled.View`
   align-self: center;
 `;
 
@@ -30,12 +30,12 @@ export const ImageItem = styled.Image`
   height: 50px;
 `;
 
-export const ContainerImage = styled.View`
+export const Image = styled.View`
   flex-direction: row;
   justify-content: space-around;
 `;
 
-export const FeedbackTypes = styled.View`
+export const Types = styled.View`
   margin: 5px;
   border-width: 1px;
   width: 90px;
