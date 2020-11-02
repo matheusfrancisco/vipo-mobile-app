@@ -77,3 +77,10 @@ export const TitleH1 = styled.Text`
   text-align: center;
   font-size: 25px;
 `;
+export const TitleH1Bold = styled.Text`
+  color: #9283bf;
+  font-family: 'RobotoSlab-Medium';
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+`;

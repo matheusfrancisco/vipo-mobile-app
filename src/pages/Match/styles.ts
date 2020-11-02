@@ -25,16 +25,6 @@ export const Description = styled.View`
   align-items: center;
 `;
 
-export const Line = styled.Text`
-  border-bottom-width: 3px;
-  border-bottom-color: #000;
-  height: 5px;
-  width: 80%;
-  position: relative;
-  bottom: 10px;
-  align-self: center;
-`;
-
 export const Informations = styled.View`
   flex-direction: row;
   justify-content: space-around;

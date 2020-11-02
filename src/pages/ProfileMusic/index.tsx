@@ -1,10 +1,19 @@
 import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Container, Row, AlignContent, HeaderText, Line, Next} from './styles';
+
+import {
+  Container,
+  ContainerImage,
+  ContainerContent,
+  HeaderText,
+  Next,
+} from './styles';
+
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Line from '../../components/Line';
 
 const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();

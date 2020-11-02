@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View``;
 
+
 export const AlignIconHeader = styled.View`
   border-width: 1px;
   padding: 10px;
@@ -11,6 +12,7 @@ export const AlignIconHeader = styled.View`
   border-radius: 2px;
   border-color: #a396cb;
 `;
+
 
 export const Header = styled.View`
   background: #9283bf;
@@ -45,16 +47,6 @@ export const Colunn = styled.View`
   margin-top: 40px;
   margin-bottom: 10px;
   align-self: center;
-`;
-
-export const Line = styled.Text`
-  border-bottom-width: 1px;
-  border-bottom-color: #000;
-  height: 20px;
-  width: 60%;
-  position: relative;
-  align-self: center;
-  bottom: 20px;
 `;
 
 export const AlignIcon = styled.View`
