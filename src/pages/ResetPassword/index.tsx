@@ -84,28 +84,24 @@ const ResetPassword: React.FC = () => {
               style={{width: 170, height: 170, marginTop: 40}}
             />
             <TitleHeader>
-              <Title3>Esqueceu sua senha ?</Title3>
+              <Title3>Redefinição enviada</Title3>
             </TitleHeader>
-            <TextMinAsker>Não esquenta, vamos dar um jeito nisso.</TextMinAsker>
+            <TextMinAsker>
+              Boa, agora é só checar o e-mail que foi enviado e aproveitar os
+              rolês.
+            </TextMinAsker>
             <Form ref={formRef} onSubmit={handleSignIn}>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
-                keyboardType="email-address"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
               <Button
                 onPress={() => {
                   formRef.current?.submitForm();
                 }}
-                style={{marginBottom: -60, marginTop: 40}}>
-                Recuperar Senha
+                style={{
+                  marginBottom: -60,
+                  marginTop: 40,
+                  width: 300,
+                  height: 45,
+                }}>
+                Fazer login
               </Button>
             </Form>
           </Container>
