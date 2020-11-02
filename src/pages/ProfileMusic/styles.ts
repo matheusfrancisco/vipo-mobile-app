@@ -9,12 +9,12 @@ export const HeaderText = styled.View`
   padding: 20px;
 `;
 
-export const ContainerImage = styled.View`
+export const Row = styled.View`
   flex-direction: row;
   padding: 15px;
 `;
 
-export const ContainerContent = styled.View`
+export const AlignContent = styled.View`
   flex-direction: column;
   margin: 0px 15px;
 `;

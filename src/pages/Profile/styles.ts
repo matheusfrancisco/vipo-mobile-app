@@ -2,6 +2,18 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View``;
 
+
+export const AlignIconHeader = styled.View`
+  border-width: 1px;
+  padding: 10px;
+  align-items: flex-end;
+  background-color: #a396cb;
+  margin: -20px 80px 0px 270px;
+  border-radius: 2px;
+  border-color: #a396cb;
+`;
+
+
 export const Header = styled.View`
   background: #9283bf;
   width: 100%;
