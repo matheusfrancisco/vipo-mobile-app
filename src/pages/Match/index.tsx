@@ -15,10 +15,10 @@ import {
   Footer,
 } from './styles';
 
-import {TextMin} from '../../global';
+import {TextMin, TextDescription} from '../../global';
 import Line from '../../components/Line';
 
-const MatchParty: React.FC = () => {
+const Match: React.FC = () => {
   const yourMatchs = [
     {
       id: 1,
@@ -48,11 +48,11 @@ const MatchParty: React.FC = () => {
           </ImageBanner>
 
           <Description>
-            <Description>
+            <TextDescription>
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
               ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            </Description>
+            </TextDescription>
           </Description>
           <Line />
 
@@ -94,4 +94,4 @@ const MatchParty: React.FC = () => {
   );
 };
 
-export default MatchParty;
+export default Match;

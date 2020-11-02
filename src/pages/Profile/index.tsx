@@ -4,7 +4,6 @@ import IconLocation from 'react-native-vector-icons/Octicons';
 import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
-
 import {useAuth} from '../../hooks/auth';
 import {
   Header,
@@ -13,8 +12,8 @@ import {
   AlignText,
   ImageItem,
   Colunn,
-  AlignLocation,
   AlignIcon,
+  AlignIconHeader,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
@@ -22,7 +21,6 @@ import Footer from '../../components/Footer';
 import {Title2, Text16Bold, TextMin} from '../../global';
 
 import Line from '../../components/Line';
-
 
 const Profile: React.FC = () => {
   return (
@@ -62,7 +60,6 @@ const Profile: React.FC = () => {
               <TextMin> São Paulo - Jardins</TextMin>
             </AlignIcon>
             <AlignIcon>
-
               <IconEmail name="email" size={20} color="#470A68" />
 
               <TextMin> example@gmail.com</TextMin>
