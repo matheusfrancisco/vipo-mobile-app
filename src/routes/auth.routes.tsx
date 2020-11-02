@@ -36,7 +36,6 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
     <Auth.Screen name="Feedback" component={Feedback} />
-    <Auth.Screen name="Apresentation" component={Apresentation} />
   </Auth.Navigator>
 );
 
