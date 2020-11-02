@@ -10,6 +10,7 @@ import ProfileFood from '../pages/ProfileFood';
 import ProfileDrink from '../pages/ProfileDrink';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
+import Profile from '../pages/Profile';
 
 const Auth = createStackNavigator();
 
@@ -19,12 +20,13 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="Feedback">
+    initialRouteName="Profile">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
     />
 
+    <Auth.Screen name="Profile" component={Profile} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="ProfileDrink" component={ProfileDrink} />
