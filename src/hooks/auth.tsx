@@ -30,7 +30,6 @@ interface AuthContextData {
   signOut(): void;
   loading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
-  fakeSingIn(): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -40,15 +39,15 @@ const AuthUser: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('/sessions', { email, password });
+    const response = await api.post('/signin', { email, password });
 
     const { token, user } = response.data;
 
-    await AsyncStorage.setItem('@Vipo:token', data.token);
-    await AsyncStorage.setItem('@Vipo:user', JSON.stringify(data.user));
+    await AsyncStorage.setItem('@Vipo:token', token);
+    await AsyncStorage.setItem('@Vipo:user', JSON.stringify(user));
     await AsyncStorage.multiSet([
-      ['@Vipo:token', data.token],
-      ['@Vipo:user', JSON.stringify(data.user)],
+      ['@Vipo:token', token],
+      ['@Vipo:user', JSON.stringify(user)],
     ]);
 
     setData({ token, user });
@@ -74,19 +73,10 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  const fakeSingIn = useCallback(async () => {
-    const fakeUser = {
-      id: 'string',
-      avatar_url: 'string',
-      name: 'string',
-      email: 'string',
-    };
-    setData({ token: 'fake', user: fakeUser });
-  }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, loading, signIn, signOut, fakeSingIn }}
+      value={{ user: data.user, loading, signIn, signOut }}
     >
       {children}
     </AuthContext.Provider>
