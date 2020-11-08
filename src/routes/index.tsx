@@ -5,12 +5,12 @@ import {ActivityIndicator, View} from 'react-native';
 import AuthRoutes from './auth.routes';
 import AppRoutes from './app.routes';
 
-import {useAuth} from '../hooks/auth';
+import { useAuth } from '../hooks/auth';
 
 const Routes: React.FC = () => {
-  const {user, loading} = useAuth();
-  // user = {};
-  if (loading) {
+  const { user, loading } = useAuth();
+
+  if ( false ) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <ActivityIndicator size="large" color="#999" />

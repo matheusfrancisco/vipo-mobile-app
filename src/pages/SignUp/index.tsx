@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, { useRef, useCallback } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -7,9 +7,9 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -18,7 +18,9 @@ import getvalidationErrors from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.png';
 
-import {Title, TextH4, TextMin} from '../../global';
+import { Title, TextH4, TextMin } from '../../global';
+
+import api from '../../services/api';
 
 interface SignUpData {
   name: string;
@@ -58,14 +60,14 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        // const {name, email, password} = data;
-
-        // await api.post('/users', { name, email, password });
-
-        Alert.alert(
-          'Cadastro realizado com sucesso',
-          'Você já pode fazer login na aplicação',
-        );
+        const res = await api.post('/users', data);
+        
+        if (res.status == 201) {
+          Alert.alert(
+            'Cadastro realizado com sucesso',
+            'Você já pode fazer login na aplicação',
+          );
+        }
 
         navigation.goBack();
       } catch (error) {

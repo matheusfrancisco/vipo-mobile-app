@@ -43,7 +43,7 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const {fakeSingIn} = useAuth();
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -60,11 +60,11 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await fakeSingIn();
-        // await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // })
+        await signIn({
+          email: data.email,
+          password: data.password,
+        })
+        
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
@@ -75,7 +75,7 @@ const SignIn: React.FC = () => {
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
       }
     },
-    [fakeSingIn],
+    [signIn],
   );
 
   return (
