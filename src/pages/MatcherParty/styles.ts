@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Platform, Image } from 'react-native';
+import {Platform, Image} from 'react-native';
 
 export const ImageItem = styled(Image)`
   /* flex: 1; */
@@ -10,52 +10,18 @@ export const ImageItem = styled(Image)`
 
 export const Container = styled.View``;
 
-export const ContainerImage = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
-
-export const ContainerContent = styled.View`
-  margin: 24px;
-`;
-
-export const TextContainerImage = styled.Text`
-  color: #ff6900;
-  text-align: center;
-`;
-
-export const SearchRole = styled.View`
-  width: 100%;
-  height: 100px;
+export const Header = styled.View`
+  width: 395px;
+  height: 320px;
   background-color: #470a68;
   justify-content: center;
   align-items: center;
-`;
-
-export const PriceRole = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 10px;
-`;
-
-export const PriceRoleText = styled.Text`
-  text-align: center;
-  margin: 0px 10px;
-  color: #ff6900;
-`;
-
-export const TextMatcher = styled.Text`
-  font-size: 15px;
-  color: #fff;
-  font-family: 'RobotoSlab-Medium';
-  margin: 15px;
-  text-align: left;
+  border-radius: 40px;
+  margin-top: -30px;
 `;
 
 export const Title = styled.Text`
-  font-size: 25px;
   color: #fff;
-  font-family: 'RobotoSlab-Medium';
+
+  margin-left: 20px;
 `;

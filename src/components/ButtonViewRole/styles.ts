@@ -9,3 +9,6 @@ export const Container = styled(RectButton)`
   justify-content: center;
   align-items: center;
 `;
+export const TextButton = styled.Text`
+  color: #fff;
+`;

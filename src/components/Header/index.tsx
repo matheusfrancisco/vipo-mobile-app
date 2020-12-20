@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, IconBorder, TextNext} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {TextH1} from '../../global';
+import {Title3} from '../../global';
 
 const Header: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
           />
         </IconBorder>
         <TextNext>
-          <TextH1 onPress={() => console.log('Foi')}>Próxima</TextH1>
+          <Title3 onPress={() => console.log('Foi')}>Próxima</Title3>
         </TextNext>
       </Container>
     </>

@@ -9,8 +9,10 @@ export const Container = styled.View`
   padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
 
-export const View = styled.View`
+export const View = styled.Text`
   margin-top: 20px;
+  color: #9283bf;
+  text-align: center;
 `;
 
 export const SeachInput = styled.View`

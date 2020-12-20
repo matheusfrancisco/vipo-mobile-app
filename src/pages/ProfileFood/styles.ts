@@ -18,3 +18,6 @@ export const HeaderText = styled.View`
   align-items: center;
   padding: 20px;
 `;
+export const TextFood = styled.View`
+  color: #9283bf;
+`;

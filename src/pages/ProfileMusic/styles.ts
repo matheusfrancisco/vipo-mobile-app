@@ -29,3 +29,6 @@ export const Next = styled.View`
   border-radius: 1px;
   transform: rotate(-180deg);
 `;
+export const TextMusic = styled.Text`
+  color: #9283bf;
+`;

@@ -49,3 +49,8 @@ export const ButtonIconHelp = styled.TouchableOpacity`
 export const ButtonWarpper = styled.View`
   margin: 20px 120px;
 `;
+
+export const TextDrink = styled.Text`
+  margin: 20px 120px;
+  font-size: 16px;
+`;

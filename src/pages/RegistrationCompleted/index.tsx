@@ -3,7 +3,7 @@ import {Image, KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
 
 import logo from '../../assets/logo.png';
 
-import {Title, TextDescription} from '../../global';
+import {Title, TextH3} from '../../global';
 import Button from '../../components/Button';
 import {Container} from './styles';
 
@@ -24,10 +24,10 @@ const RegistrationCompleted: React.FC = () => {
             />
             <Title>Cadastro concluído </Title>
 
-            <TextDescription>
+            <TextH3>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. .
-            </TextDescription>
+            </TextH3>
 
             <Button style={{height: 51, width: 330, marginBottom: -50}}>
               Entrar
