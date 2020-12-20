@@ -8,6 +8,7 @@ import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
+import Landing from '../pages/Landing';
 
 const App = createStackNavigator();
 
@@ -24,6 +25,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="ProfileFood" component={ProfileFood} />
     <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="Profile" component={Profile} />
+    <App.Screen name="Landing" component={Landing} />
 
     <App.Screen
       name="RegistrationCompleted"
