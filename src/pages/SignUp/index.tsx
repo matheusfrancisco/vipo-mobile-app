@@ -6,8 +6,10 @@ import {
   ScrollView,
   TextInput,
   Alert,
-  CheckBox,
 } from 'react-native';
+
+import CheckBox from '@react-native-community/checkbox';
+
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
@@ -146,8 +148,10 @@ const SignUp: React.FC = () => {
                 }}
               /> 
               <CheckBox
+                disabled={false}
                 value={checked}
-                onValueChange={setChecked}
+                onValueChange={(newValue) => setChecked(newValue)}
+
               />
               
               <TermsText>
