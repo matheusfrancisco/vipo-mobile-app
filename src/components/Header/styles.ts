@@ -15,6 +15,8 @@ export const IconBorder = styled.View`
   background: #a396cb;
 `;
 
-export const TextNext = styled.View`
+export const TextNext = styled.Text`
   margin: 12px 20px 0px 0px;
+  color: #fff;
+  text-align: center;
 `;

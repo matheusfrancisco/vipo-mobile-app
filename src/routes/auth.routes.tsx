@@ -4,7 +4,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Match from '../pages/Match';
 import Home from '../pages/Home';
-import MatcherParty from '../pages/MatcherParty';
+import PickerMatcherParty from '../pages/PickerMatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import ProfileDrink from '../pages/ProfileDrink';
@@ -22,7 +22,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="ProfileMusic">
+    initialRouteName="PickerMatcherParty">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
@@ -34,7 +34,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="SignUp" component={SignUp} />
     <Auth.Screen name="ProfileDrink" component={ProfileDrink} />
     <Auth.Screen name="ProfileFood" component={ProfileFood} />
-    <Auth.Screen name="MatcherParty" component={MatcherParty} />
+    <Auth.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
     <Auth.Screen name="Home" component={Home} />
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />

@@ -32,6 +32,7 @@ import {
   ContainerButton,
   PrivacyTerms,
   TermsText,
+  ColorText,
 } from './styles';
 
 const SignUp: React.FC = () => {
@@ -141,8 +142,10 @@ const SignUp: React.FC = () => {
               <PrivacyTerms />
               <TermsText>
                 <TextMin>
-                  Você concorda com nossos{' '}
-                  <TextH4>termos de privacidade</TextH4>
+                  Você concorda com nossos
+                  <ColorText>
+                    <TextH4>termos de privacidade</TextH4>
+                  </ColorText>
                 </TextMin>
               </TermsText>
 

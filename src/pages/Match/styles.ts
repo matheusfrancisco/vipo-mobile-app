@@ -20,11 +20,12 @@ export const ImageBanner = styled.ImageBackground`
   align-items: center;
 `;
 
-export const Description = styled.View`
+export const Description = styled.Text`
   margin: 20px;
   align-items: center;
+  color: #000000;
+  text-align: center;
 `;
-
 export const Informations = styled.View`
   flex-direction: row;
   justify-content: space-around;

@@ -15,7 +15,7 @@ import {
   Footer,
 } from './styles';
 
-import {TextMin, TextDescription} from '../../global';
+import {TextMin, TextH3} from '../../global';
 import Line from '../../components/Line';
 
 const Match: React.FC = () => {
@@ -48,11 +48,11 @@ const Match: React.FC = () => {
           </ImageBanner>
 
           <Description>
-            <TextDescription>
+            <TextH3>
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
               ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
               Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            </TextDescription>
+            </TextH3>
           </Description>
           <Line />
 

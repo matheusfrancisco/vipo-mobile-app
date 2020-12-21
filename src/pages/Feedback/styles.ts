@@ -5,10 +5,10 @@ export const Header = styled.Text`
   margin: 10px;
 `;
 
-export const FeedbackMax = styled.View`
+export const FeedbackMax = styled.Text`
   margin: 20px;
+  color: #470a68;
 `;
-
 export const AlignText = styled.View`
   align-self: center;
 `;
@@ -24,6 +24,10 @@ export const AlignCenter = styled.View`
 export const Container = styled.View`
   margin: 10px;
 `;
+export const ColorText = styled.Text`
+color: #470a68;
+`;
+
 
 export const ImageItem = styled.Image`
   width: 50px;

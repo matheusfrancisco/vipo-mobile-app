@@ -7,3 +7,7 @@ export const Container = styled.View`
   justify-content: space-between;
   padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
+export const TextRegistration = styled.Text`
+  text-align: center;
+  color: #000000;
+`;

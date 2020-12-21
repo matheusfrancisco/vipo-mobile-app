@@ -11,6 +11,7 @@ export const Container = styled.View`
 export const ButtonText = styled.TouchableOpacity`
   margin-top: 10px;
   align-items: flex-end;
+  color: #9283bf;
 `;
 
 export const SocialIcon = styled.View`

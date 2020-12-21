@@ -48,3 +48,6 @@ export const BackToSingInText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
 `;
+export const ColorText = styled.Text`
+  color: #9283bf;
+`;
