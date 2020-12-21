@@ -32,7 +32,7 @@ export const PrivacyTerms = styled.View`
   width: 15px;
 `;
 export const TermsText = styled.View`
-  margin: -16px 0px 0px 25px;
+  margin: -25px 0px 0px 35px;
 `;
 
 export const ContainerTextCreateAccount = styled.View`

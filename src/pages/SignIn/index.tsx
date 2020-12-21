@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import * as Yup from 'yup';
 
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -21,9 +21,9 @@ import ButtonGoogle from '../../components/Google';
 import logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import {useAuth} from '../../hooks/auth';
+import { useAuth} from '../../hooks/auth';
 
-import {Title, TextH3} from '../../global';
+import { Title, TextH3 } from '../../global';
 
 import {
   Container,
@@ -82,7 +82,7 @@ const SignIn: React.FC = () => {
     <>
       <KeyboardAvoidingView
         style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        behavior={ Platform.OS === 'ios' ? 'padding' : undefined }
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
