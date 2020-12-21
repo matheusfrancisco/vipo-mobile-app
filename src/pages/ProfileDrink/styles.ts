@@ -1,5 +1,6 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
+import {RectButton} from 'react-native-gesture-handler';
 
 export const HeaderText = styled.View`
   align-items: center;
@@ -48,4 +49,14 @@ export const ButtonIconHelp = styled.TouchableOpacity`
 
 export const ButtonWarpper = styled.View`
   margin: 20px 120px;
+`;
+interface Props {
+  select?: boolean;
+}
+export const ContainerText = styled(RectButton)<Props>`
+  ${(props) =>
+    props.select &&
+    css`
+      opacity: 0.3;
+    `}
 `;
