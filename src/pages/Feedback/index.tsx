@@ -1,78 +1,125 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useAuth} from '../../hooks/auth';
 import {Title, TextH3, TextMin, TextH2} from '../../global';
 import {
   Header,
   FeedbackMax,
   Types,
-  AlignText,
   Container,
   Row,
   AlignCenter,
   ImageItem,
   Image,
   ColorText,
+  SelectFeedback,
 } from './styles';
 import InputFeedback from '../../components/InputFeedback';
 import Footer from '../../components/Footer';
+import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
+import Button from '../../components/Button';
 
 const Feedback: React.FC = () => {
+  const [bodyOne, setBodyOne] = useState(false);
+  const [bodyTwo, setBodyTwo] = useState(false);
+  const [bodyThree, setBodyThree] = useState(false);
+  const [bodyFour, setBodyFour] = useState(false);
+  const [bodyFive, setBodyFive] = useState(false);
+  const [bodySix, setBodySix] = useState(false);
+  const [bodySeven, setBodySeven] = useState(false);
+  const [bodyEight, setBodyEight] = useState(false);
+  const [bodyNine, setBodyNine] = useState(false);
+  const [bodyTen, setBodyTen] = useState(false);
+  const [FeedbackOne, setFeedbackOne] = useState(false);
+  const [FeedbackTwo, setFeedbackTwo] = useState(false);
+  const [FeedbackThree, setFeedbackThree] = useState(false);
+  const [FeedbackFour, setFeedbackFour] = useState(false);
+  const [FeedbackFive, setFeedbackFive] = useState(false);
+
+
+
   return (
     <>
+    <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled>
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{flex: 1}}>
       <Container>
         <Header>
           <Title>E ai, como foi o rolê?</Title>
         </Header>
 
         <Image>
-          <ImageItem source={require('../../assets/feedback/emoji2.png')} />
-          <ImageItem source={require('../../assets/feedback/emoji1.png')} />
-          <ImageItem source={require('../../assets/feedback/emoji3.png')} />
-          <ImageItem source={require('../../assets/feedback/emoji4.png')} />
-          <ImageItem source={require('../../assets/feedback/emoji5.png')} />
+          <SelectFeedback select={FeedbackOne} onPress={() => {
+             setFeedbackOne(!FeedbackOne);
+           }}>
+            <ImageItem source={require('../../assets/feedback/emoji2.png')} />
+          </SelectFeedback>
+          <SelectFeedback select={FeedbackTwo} onPress={() => {
+             setFeedbackTwo(!FeedbackTwo);
+           }}>
+            <ImageItem source={require('../../assets/feedback/emoji1.png')} />
+           </SelectFeedback>
+           <SelectFeedback select={FeedbackThree} onPress={() => {
+             setFeedbackThree(!FeedbackThree);
+           }}>
+            <ImageItem source={require('../../assets/feedback/emoji3.png')} />
+           </SelectFeedback>
+           <SelectFeedback select={FeedbackFour} onPress={() => {
+             setFeedbackFour(!FeedbackFour);
+           }}>
+            <ImageItem source={require('../../assets/feedback/emoji4.png')} />
+           </SelectFeedback>
+           <SelectFeedback select={FeedbackFive} onPress={() => {
+             setFeedbackFive(!FeedbackFive);
+           }}>
+            <ImageItem source={require('../../assets/feedback/emoji5.png')} />
+           </SelectFeedback>
         </Image>
 
         <FeedbackMax>
           <TextH3>
             O que você 
             <ColorText>
-              <TextH2>mais</TextH2> gostou?
+              <TextH2> mais </TextH2> gostou?
             </ColorText>
           </TextH3>
         </FeedbackMax>
         <Row>
-          <Types>
-            <AlignText>
-              <TextMin>Atendimento</TextMin>
-            </AlignText>
+          <Types  select={bodyOne} onPress={() => {
+             setBodyOne(!bodyOne);
+           }}>
+              <TextMin >Atendimento</TextMin>
           </Types>
 
-          <Types>
-            <AlignText>
+          <Types  select={bodyTwo} onPress={() => {
+             setBodyTwo(!bodyTwo);
+           }}>
               <TextMin>Comida</TextMin>
-            </AlignText>
           </Types>
         </Row>
 
         <AlignCenter>
-          <Types>
-            <AlignText>
+          <Types  select={bodyThree} onPress={() => {
+             setBodyThree(!bodyThree);
+           }}>
               <TextMin>Comida</TextMin>
-            </AlignText>
           </Types>
         </AlignCenter>
 
         <Row>
-          <Types>
-            <AlignText>
+          <Types  select={bodyFour} onPress={() => {
+             setBodyFour(!bodyFour);
+           }}>
               <TextMin>Ambiente</TextMin>
-            </AlignText>
           </Types>
 
-          <Types>
-            <AlignText>
+          <Types  select={bodyFive} onPress={() => {
+             setBodyFive(!bodyFive);
+           }}>
               <TextMin>Música</TextMin>
-            </AlignText>
           </Types>
         </Row>
       </Container>
@@ -82,49 +129,50 @@ const Feedback: React.FC = () => {
           <TextH3>
             O que você 
             <ColorText>
-              <TextH2>menos</TextH2> gostou?
+              <TextH2> menos </TextH2> gostou?
             </ColorText>
           </TextH3>
         </FeedbackMax>
         <Row>
-          <Types>
-            <AlignText>
+          <Types  select={bodySix} onPress={() => {
+             setBodySix(!bodySix);
+           }}>
               <TextMin>Atendimento</TextMin>
-            </AlignText>
           </Types>
 
           <AlignCenter>
-            <Types>
-              <AlignText>
-                <TextMin>Comida</TextMin>
-              </AlignText>
+            <Types  select={bodySeven} onPress={() => {
+             setBodySeven(!bodySeven);
+           }}>
+              <TextMin>Comida</TextMin>
             </Types>
           </AlignCenter>
         </Row>
 
         <AlignCenter>
-          <Types>
-            <AlignText>
-              <TextMin>Comida</TextMin>
-            </AlignText>
+          <Types  select={bodyEight} onPress={() => {
+             setBodyEight(!bodyEight);
+           }}>
+            <TextMin>Comida</TextMin>
           </Types>
         </AlignCenter>
 
         <Row>
-          <Types>
-            <AlignText>
+          <Types  select={bodyNine} onPress={() => {
+             setBodyNine(!bodyNine);
+           }}>
               <TextMin>Ambiente</TextMin>
-            </AlignText>
           </Types>
 
-          <Types>
-            <AlignText>
+          <Types  select={bodyTen} onPress={() => {
+             setBodyTen(!bodyTen);
+           }}>
               <TextMin>Música</TextMin>
-            </AlignText>
           </Types>
         </Row>
       </Container>
 
+      </ScrollView>
       <FeedbackMax>
         <TextH3>
           Este espaço é para você nos informar sobre o rolê. Fique a vontade, o
@@ -132,7 +180,11 @@ const Feedback: React.FC = () => {
         </TextH3>
       </FeedbackMax>
       <InputFeedback />
-      <Footer />
+      {/* <Footer /> */}
+      <Button  style={{margin: 10}}>
+        Enviar
+      </Button>
+      </KeyboardAvoidingView>
     </>
   );
 };
