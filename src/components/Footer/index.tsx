@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             size={25}
             color="#000"
             onPress={() => {
-              navigation.navigate('MatcherParty');
+              navigation.navigate('PickerMatcherParty');
             }}
           />
           <Icon

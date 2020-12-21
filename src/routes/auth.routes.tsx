@@ -24,7 +24,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="PickerMatcherParty">
+    initialRouteName="Landing">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
