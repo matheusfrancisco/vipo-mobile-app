@@ -1,8 +1,11 @@
 import React from 'react';
 import {Container, IconBorder} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const Footer: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <Container>
@@ -11,19 +14,25 @@ const Footer: React.FC = () => {
             name="home"
             size={25}
             color="#000"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              navigation.navigate('MatcherParty');
+            }}
           />
           <Icon
             name="search"
             size={25}
             color="#000"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              navigation.navigate('Search');
+            }}
           />
           <Icon
             name="user"
             size={25}
             color="#000"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}
           />
         </IconBorder>
       </Container>

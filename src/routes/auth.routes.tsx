@@ -13,6 +13,8 @@ import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
 import ResetPassword from '../pages/ResetPassword';
 import Landing from '../pages/Landing';
+import Search from '../pages/Search';
+
 
 const Auth = createStackNavigator();
 
@@ -39,6 +41,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="ProfileMusic" component={ProfileMusic} />
     <Auth.Screen name="Match" component={Match} />
     <Auth.Screen name="ResetPassword" component={ResetPassword} />
+    <Auth.Screen name="Search" component={Search} />
   </Auth.Navigator>
 );
 
