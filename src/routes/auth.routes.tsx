@@ -12,8 +12,11 @@ import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
 import ResetPassword from '../pages/ResetPassword';
-import Landing from '../pages/Landing';
+import LandingPage from '../pages/LandingPage';
 import Search from '../pages/Search';
+import LandingPageTwo from '../pages/LandingPage/landingPageTwo';
+import LandingPageThree from '../pages/LandingPage/landingPageThree';
+import LandingPageFour from '../pages/LandingPage/landingPageFour';
 
 
 const Auth = createStackNavigator();
@@ -29,7 +32,7 @@ const AuthRoutes: React.FC = () => (
       name="RegistrationCompleted"
       component={RegistrationCompleted}
     />
-    <Auth.Screen name="Landing" component={Landing} />
+    <Auth.Screen name="LandingPage" component={LandingPage} />
     <Auth.Screen name="Feedback" component={Feedback} />
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="Profile" component={Profile} />
@@ -42,6 +45,10 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="Match" component={Match} />
     <Auth.Screen name="ResetPassword" component={ResetPassword} />
     <Auth.Screen name="Search" component={Search} />
+    <Auth.Screen name="LandingPageTwo" component={LandingPageTwo} />
+    <Auth.Screen name="LandingPageThree" component={LandingPageThree} />
+    <Auth.Screen name="LandingPageFour" component={LandingPageFour} />
+
   </Auth.Navigator>
 );
 

@@ -11,14 +11,14 @@ export const Container = styled.View`
 `;
 
 export const ImageContainer = styled.Image`
-  width: 300px;
-  height: 195px;
-  left: 54px;
-  top: 60px;
+  /* width: 300px;
+  height: 200px; */
+  align-self:center;
+  margin-top: 30px;
 `;
 export const AlignText = styled.Text`
   text-align: center;
-  margin: 80px 50px 0px 50px;
+  margin-top: 40px;
 `;
 
 export const AlignNext = styled.View`
