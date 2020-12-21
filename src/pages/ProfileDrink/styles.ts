@@ -60,3 +60,7 @@ export const ContainerText = styled(RectButton)<Props>`
       opacity: 0.3;
     `}
 `;
+export const TextDrink = styled.Text`
+  margin: 20px 120px;
+  font-size: 16px;
+`;

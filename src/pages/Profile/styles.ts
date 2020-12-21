@@ -54,3 +54,6 @@ export const AlignIcon = styled.View`
   flex-direction: row;
   justify-content: space-around;
 `;
+export const ColorText = styled.Text`
+  color: #9283bf;
+`;

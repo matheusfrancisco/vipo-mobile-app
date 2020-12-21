@@ -2,7 +2,7 @@ import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Container, HeaderText} from './styles';
+import {Container, HeaderText, TextMusic} from './styles';
 
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';
@@ -36,8 +36,9 @@ const ProfileMusic: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextH3>seus gostos musicais</TextH3>
-            </HeaderText>
+              <TextMusic>
+                <TextH3>seus gostos musicais</TextH3>
+              </TextMusic>            </HeaderText>
             <Line />
 
             <BodyProfileMusic />

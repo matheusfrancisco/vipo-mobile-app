@@ -29,3 +29,6 @@ export const ContainerText = styled(RectButton)<Props>`
       opacity: 0.3;
     `}
 `;
+export const TextFood = styled.Text`
+  color: #9283bf;
+`;

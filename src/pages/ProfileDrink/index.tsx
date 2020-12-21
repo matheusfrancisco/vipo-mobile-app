@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
-import {Container, HeaderText} from './styles';
+import {Container, HeaderText, TextDrink} from './styles';
 import {TextH3, TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -29,8 +29,9 @@ const ProfileDrink: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextH3>suas bebibas favoritas</TextH3>
-            </HeaderText>
+              <TextDrink>
+                <TextH3>suas bebibas favoritas</TextH3>
+              </TextDrink>            </HeaderText>
             <Line />
             <BodyProfileDrink />
           </Container>

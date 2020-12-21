@@ -30,3 +30,6 @@ export const ContainerText = styled(RectButton)<Props>`
       opacity: 0.3;
     `}
 `;
+export const TextMusic = styled.Text`
+  color: #9283bf;
+`;

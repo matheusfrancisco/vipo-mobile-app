@@ -2,7 +2,7 @@ import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Row, AlignContent, Container, HeaderText} from './styles';
+import {Row, AlignContent, Container, HeaderText, TextFood} from './styles';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -35,8 +35,9 @@ const ProfileFood: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextH3>suas comidas preferidas</TextH3>
-            </HeaderText>
+              <TextFood>
+                <TextH3>suas comidas preferidas</TextH3>
+              </TextFood>            </HeaderText>
             <Line />
 
             <BodyProfileFood />

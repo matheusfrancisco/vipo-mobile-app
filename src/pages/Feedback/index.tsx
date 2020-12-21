@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAuth} from '../../hooks/auth';
-import {Title, TextH3Bold, TextMin, TextBold} from '../../global';
+import {Title, TextH3, TextMin, TextH2} from '../../global';
 import {
   Header,
   FeedbackMax,
@@ -11,6 +11,7 @@ import {
   AlignCenter,
   ImageItem,
   Image,
+  ColorText,
 } from './styles';
 import InputFeedback from '../../components/InputFeedback';
 import Footer from '../../components/Footer';
@@ -32,9 +33,12 @@ const Feedback: React.FC = () => {
         </Image>
 
         <FeedbackMax>
-          <TextH3Bold>
-            O que você <TextBold>mais</TextBold> gostou?
-          </TextH3Bold>
+          <TextH3>
+            O que você 
+            <ColorText>
+              <TextH2>mais</TextH2> gostou?
+            </ColorText>
+          </TextH3>
         </FeedbackMax>
         <Row>
           <Types>
@@ -75,9 +79,12 @@ const Feedback: React.FC = () => {
 
       <Container>
         <FeedbackMax>
-          <TextH3Bold>
-            O que você <TextBold>menos</TextBold> gostou?
-          </TextH3Bold>
+          <TextH3>
+            O que você 
+            <ColorText>
+              <TextH2>menos</TextH2> gostou?
+            </ColorText>
+          </TextH3>
         </FeedbackMax>
         <Row>
           <Types>
@@ -119,10 +126,10 @@ const Feedback: React.FC = () => {
       </Container>
 
       <FeedbackMax>
-        <TextH3Bold>
+        <TextH3>
           Este espaço é para você nos informar sobre o rolê. Fique a vontade, o
           feedback é anônimo (denunciar, criticar, sugerir, elogiar).
-        </TextH3Bold>
+        </TextH3>
       </FeedbackMax>
       <InputFeedback />
       <Footer />
