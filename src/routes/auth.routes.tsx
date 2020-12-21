@@ -4,7 +4,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Match from '../pages/Match';
 import Home from '../pages/Home';
-import MatcherParty from '../pages/MatcherParty';
+import MatcherParty from '../pages/PickerMatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import ProfileDrink from '../pages/ProfileDrink';

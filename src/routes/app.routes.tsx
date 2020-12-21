@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../pages/Home';
 import MatchParty from '../pages/Match';
-import MatcherParty from '../pages/MatcherParty';
+import PickerMatcherParty from '../pages/PickerMatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
@@ -19,7 +19,7 @@ const AppRoutes: React.FC = () => (
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}>
     <App.Screen name="Home" component={Home} />
-    <App.Screen name="MatcherParty" component={MatcherParty} />
+    <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
     <App.Screen name="Match" component={MatchParty} />
     <App.Screen name="ProfileMusic" component={ProfileMusic} />
     <App.Screen name="ProfileFood" component={ProfileFood} />
