@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
+import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   align-items: center;
@@ -17,4 +18,14 @@ export const AlignContent = styled.View`
 export const HeaderText = styled.View`
   align-items: center;
   padding: 20px;
+`;
+interface Props {
+  select?: boolean;
+}
+export const ContainerText = styled(RectButton)<Props>`
+  ${(props) =>
+    props.select &&
+    css`
+      opacity: 0.3;
+    `}
 `;

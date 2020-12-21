@@ -1,5 +1,6 @@
 import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {Row, AlignContent, Container, HeaderText} from './styles';
 
@@ -7,8 +8,13 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {TextH3, TextMinAsker} from '../../global';
 import Line from '../../components/Line';
+import BodyProfileFood from './Body';
 
 const ProfileFood: React.FC = () => {
+  const navigation = useNavigation();
+  const undoPage = () => {
+    navigation.goBack();
+  };
   return (
     <>
       <KeyboardAvoidingView
@@ -19,62 +25,21 @@ const ProfileFood: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Header />
+            <Header
+              onPress={() => {
+                navigation.navigate('ProfileDrink');
+              }}
+              onPressBack={undoPage}
+            />
             <HeaderText>
               <TextMinAsker>
-                Nós ajude a indicar os lugars de acordo com
+                Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
               <TextH3>suas comidas preferidas</TextH3>
             </HeaderText>
             <Line />
 
-            <Row>
-              <AlignContent>
-                <Image
-                  source={require('../../assets/taste-food/burguer.png')}
-                  style={{width: 80, height: 80, borderRadius: 80 / 2}}
-                />
-                <TextMinAsker>Hambúrguer</TextMinAsker>
-              </AlignContent>
-
-              <AlignContent>
-                <Image
-                  source={require('../../assets/taste-food/snack.jpeg')}
-                  style={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: 80 / 2,
-                  }}
-                />
-                <TextMinAsker>Petisco</TextMinAsker>
-              </AlignContent>
-            </Row>
-
-            <Row>
-              <AlignContent>
-                <Image
-                  source={require('../../assets/taste-food/vegan.jpg')}
-                  style={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: 80 / 2,
-                  }}
-                />
-                <TextMinAsker>Vegana</TextMinAsker>
-              </AlignContent>
-
-              <AlignContent>
-                <Image
-                  source={require('../../assets/taste-food/vegetarian.jpg')}
-                  style={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: 80 / 2,
-                  }}
-                />
-                <TextMinAsker>Vegetariana</TextMinAsker>
-              </AlignContent>
-            </Row>
+            <BodyProfileFood />
           </Container>
         </ScrollView>
         <Footer />

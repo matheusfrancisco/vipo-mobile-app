@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Container, IconBorder, TextNext} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TextH1} from '../../global';
 
-const Header: React.FC = () => {
+interface Props {
+  onPress: () => void;
+  onPressBack: () => void;
+}
+
+const Header: React.FC<Props> = ({onPress, onPressBack}: Props) => {
   return (
     <>
       <Container>
@@ -11,11 +16,13 @@ const Header: React.FC = () => {
           <Icon
             name="chevron-left"
             color="#fff"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              onPressBack();
+            }}
           />
         </IconBorder>
         <TextNext>
-          <TextH1 onPress={() => console.log('Foi')}>Próxima</TextH1>
+          <TextH1 onPress={() => onPress()}>Próxima</TextH1>
         </TextNext>
       </Container>
     </>

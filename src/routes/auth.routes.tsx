@@ -22,7 +22,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="Landing">
+    initialRouteName="ProfileMusic">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
