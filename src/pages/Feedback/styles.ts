@@ -25,12 +25,11 @@ export const Container = styled.View`
 export const ColorText = styled.Text`
 color: #470a68;
 `;
-export const SelectFeedback = styled.Text<Props>`
+export const SelectFeedback = styled(RectButton)<Props>`
   ${(props) =>
       props.select &&
       css`
         opacity: 0.3;
-        margin-top:-20px;
         
       `}
 `;
