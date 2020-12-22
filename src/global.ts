@@ -35,7 +35,7 @@ export const TextH4 = styled.Text`
 `;
 export const TextMin = styled.Text`
   font-size: 12px;
-  color: #000;
+  /* color: #000; */
   font-family: 'RobotoSlab-Medium';
 `;
 
