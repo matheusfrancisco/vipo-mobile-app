@@ -142,12 +142,12 @@ const Profile: React.FC = () => {
                 />
               </IconBorder>
             </Header>
-            <UserAvatarButton onPress={() => {handleUpdateAvatar}}>
+            <UserAvatarButton >
               <ImageItem source={image} />
             </UserAvatarButton>
 
             <AlignIconHeader >
-              <IconEdit name="camera" size={20} color="#fff" onPress={() => {handleUpdateAvatar}}/>
+              <IconEdit name="camera" size={20} color="#fff" />
             </AlignIconHeader>
 
             <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
