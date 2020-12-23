@@ -30,6 +30,7 @@ const Profile: React.FC = () => {
   const undoPage = () => {
     navigation.goBack();
   };
+  
   return (
     <>
       <KeyboardAvoidingView

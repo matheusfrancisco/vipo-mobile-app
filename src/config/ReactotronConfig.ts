@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
     .use(reactotronSaga(conf))
     .connect()
 
-  tron.clear()
+  // tron.clear()
 
   console.tron = tron
 }

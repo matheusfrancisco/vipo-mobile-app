@@ -21,14 +21,14 @@ export interface ApplicationState {
 
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
-    ? vipo.tron.createSagaMonitor()
+    ? console.tron.createSagaMonitor()
     : null
 
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
 
 const enhancer: StoreEnhancer =
   process.env.NODE_ENV === 'development'
-    ? compose(vipo.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
+    ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
     : applyMiddleware(sagaMiddleware)
 
 const store: Store = createStore(persistReducers(rootReducer), enhancer)
