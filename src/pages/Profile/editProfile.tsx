@@ -24,6 +24,7 @@ import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
+import image from '../../assets/profile/profile.jpg'
 import ImagePicker from 'react-native-image-picker';
 interface ProfileFormData{
   name: string,
@@ -57,6 +58,14 @@ const Profile: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
+        const {
+          name,
+          email,
+        } = data;
+        const formData = {
+          name,
+          email,
+        };
 
         const response = await api.put('/profile', FormData);
         updateUser(response.data);
@@ -104,7 +113,7 @@ const Profile: React.FC = () => {
         data.append('avatar', {
           uri: response.uri,
           type: 'image/jpeg',
-          name: `${user.id}.jpg`,
+          // name: `${user.id}.jpg`,
         });
 
         api.patch('users/avatar', data).then((apiResponse) => {
@@ -112,7 +121,7 @@ const Profile: React.FC = () => {
         });
       },
     );
-  }, [user.id, updateUser]);
+  }, [ updateUser]);
 
   return (
     <>
@@ -134,7 +143,7 @@ const Profile: React.FC = () => {
               </IconBorder>
             </Header>
             <UserAvatarButton onPress={() => {handleUpdateAvatar}}>
-              <ImageItem source={{ uri: user.avatar_url }} />
+              <ImageItem source={image} />
             </UserAvatarButton>
 
             <AlignIconHeader >

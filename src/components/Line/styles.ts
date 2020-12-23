@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const LineBottom = styled.Text`
-  border-bottom-width: 1px;
+  border-bottom-width: 2px;
   border-bottom-color: gray;
   height: 20px;
   width: 60%;
