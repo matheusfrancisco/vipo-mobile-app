@@ -34,6 +34,9 @@ export const AlignText = styled.View`
   align-self: center;
   margin-top: 50px;
 `;
+export const UserAvatarButton = styled.TouchableOpacity`
+  
+`;
 export const ImageItem = styled.Image`
   width: 50%;
   align-self: center;
@@ -57,3 +60,12 @@ export const AlignIcon = styled.View`
 export const ColorText = styled.Text`
   color: #9283bf;
 `;
+
+export const ContainerButton = styled.View`
+  margin: 20px;
+  width: 90%;
+  bottom: 0px;
+`
+export const ContainerForm = styled.View`
+  margin: 20px;
+`
