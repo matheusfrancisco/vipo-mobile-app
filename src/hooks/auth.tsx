@@ -31,7 +31,6 @@ interface AuthContextData {
   loading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   fakeSingIn(): Promise<void>;
-  updateUser(user: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -75,17 +74,6 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  const updateUser =useCallback(
-    async(user: User) => {
-      await AsyncStorage.setItem('@Vipo:user', JSON.stringify(user));
-      setData({
-        token: data.token,
-        user,
-      });
-    },
-    [setData, data.token],
-  );
-
   const fakeSingIn = useCallback(async () => {
     const fakeUser = {
       id: 'string',
@@ -98,7 +86,7 @@ const AuthUser: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, loading, signIn, signOut, fakeSingIn, updateUser}}
+      value={{ user: data.user, loading, signIn, signOut, fakeSingIn }}
     >
       {children}
     </AuthContext.Provider>
