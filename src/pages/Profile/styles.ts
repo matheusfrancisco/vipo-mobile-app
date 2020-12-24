@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View``;
 
@@ -13,6 +14,18 @@ export const AlignIconHeader = styled.View`
   border-color: #a396cb;
 `;
 
+export const ContainerButton = styled.View`
+  margin: 20px;
+  width: 90%;
+  bottom: 0px;
+`
+export const ContainerForm = styled.View`
+  margin: 20px;
+`
+
+export const UserAvatarButton = styled.TouchableOpacity`
+  
+`;
 
 export const Header = styled.View`
   background: #9283bf;
@@ -22,7 +35,7 @@ export const Header = styled.View`
   justify-content: space-between;
 `;
 
-export const IconBorder = styled.View`
+export const IconBorder = styled(RectButton)`
   margin: 20px 0px 110px 20px;
   border-width: 10px;
   border-color: #a396cb;

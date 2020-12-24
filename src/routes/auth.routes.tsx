@@ -17,6 +17,7 @@ import Search from '../pages/Search';
 import LandingPageTwo from '../pages/LandingPage/landingPageTwo';
 import LandingPageThree from '../pages/LandingPage/landingPageThree';
 import LandingPageFour from '../pages/LandingPage/landingPageFour';
+import EditProfile from '../pages/Profile/editProfile';
 
 
 const Auth = createStackNavigator();
@@ -48,6 +49,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="LandingPageTwo" component={LandingPageTwo} />
     <Auth.Screen name="LandingPageThree" component={LandingPageThree} />
     <Auth.Screen name="LandingPageFour" component={LandingPageFour} />
+    <Auth.Screen name="EditProfile" component={EditProfile} />
 
   </Auth.Navigator>
 );
