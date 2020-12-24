@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import * as Yup from 'yup';
 
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -21,9 +21,9 @@ import ButtonGoogle from '../../components/Google';
 import logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import {useAuth} from '../../hooks/auth';
+import { useAuth} from '../../hooks/auth';
 
-import {Title, TextH3} from '../../global';
+import { Title, TextH3 } from '../../global';
 
 import {
   Container,
@@ -43,7 +43,7 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const {fakeSingIn} = useAuth();
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -60,11 +60,11 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await fakeSingIn();
-        // await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // })
+        await signIn({
+          email: data.email,
+          password: data.password,
+        })
+        
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
@@ -75,14 +75,14 @@ const SignIn: React.FC = () => {
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
       }
     },
-    [fakeSingIn],
+    [signIn],
   );
 
   return (
     <>
       <KeyboardAvoidingView
         style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        behavior={ Platform.OS === 'ios' ? 'padding' : undefined }
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"

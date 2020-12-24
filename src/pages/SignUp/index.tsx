@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -7,9 +7,12 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+
+import CheckBox from '@react-native-community/checkbox';
+
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -18,7 +21,9 @@ import getvalidationErrors from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.png';
 
-import {Title, TextH4, TextMin} from '../../global';
+import { Title, TextH4, TextMin } from '../../global';
+
+import api from '../../services/api';
 
 interface SignUpData {
   name: string;
@@ -30,7 +35,6 @@ import {
   Container,
   ContainerTextCreateAccount,
   ContainerButton,
-  PrivacyTerms,
   TermsText,
   ColorText,
 } from './styles';
@@ -40,12 +44,16 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const checkRef = useRef<CheckBox>(null);
+
+  const [checked, setChecked] = useState(false);
 
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
       try {
+      
         formRef.current?.setErrors({});
-
+        
         const schema = Yup.object().shape({
           name: Yup.string().required('O nome obrigatório'),
           email: Yup.string()
@@ -58,14 +66,14 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        // const {name, email, password} = data;
-
-        // await api.post('/users', { name, email, password });
-
-        Alert.alert(
-          'Cadastro realizado com sucesso',
-          'Você já pode fazer login na aplicação',
-        );
+        const res = await api.post('/users', data);
+        
+        if (res.status == 201) {
+          Alert.alert(
+            'Cadastro realizado com sucesso',
+            'Você já pode fazer login na aplicação',
+          );
+        }
 
         navigation.goBack();
       } catch (error) {
@@ -138,8 +146,14 @@ const SignUp: React.FC = () => {
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
                 }}
+              /> 
+              <CheckBox
+                disabled={false}
+                value={checked}
+                onValueChange={(newValue) => setChecked(newValue)}
+
               />
-              <PrivacyTerms />
+              
               <TermsText>
                 <TextMin>
                   Você concorda com nossos
@@ -148,14 +162,25 @@ const SignUp: React.FC = () => {
                   </ColorText>
                 </TextMin>
               </TermsText>
+        
 
               <ContainerButton>
-                <Button onPress={() => formRef.current?.submitForm()}>
+                <Button
+                  onPress={() => {
+                    if (!checked) {
+                      Alert.alert('Por favor, aceite nossos termos de privacidade');
+                    } else {
+                      formRef.current?.submitForm()
+                    }
+                  }}
+                >
                   Cadastrar
                 </Button>
               </ContainerButton>
             </Form>
           </Container>
+     
+
         </ScrollView>
       </KeyboardAvoidingView>
     </>
