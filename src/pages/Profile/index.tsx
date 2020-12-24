@@ -22,8 +22,14 @@ import Footer from '../../components/Footer';
 import {Title2, TextH2, TextMin} from '../../global';
 
 import Line from '../../components/Line';
+import { useNavigation } from '@react-navigation/native';
 
 const Profile: React.FC = () => {
+  const navigation = useNavigation();
+
+  const undoPage = () => {
+    navigation.goBack();
+  };
   return (
     <>
       <KeyboardAvoidingView
@@ -36,17 +42,19 @@ const Profile: React.FC = () => {
           <Container>
             <Header>
               <IconBorder>
-                <Icon
+              <Icon
                   name="chevron-left"
                   color="#fff"
-                  onPress={() => console.log('Foi')}
+                  onPress={() => {}} onPress={undoPage}
                 />
               </IconBorder>
             </Header>
             <ImageItem source={require('../../assets/profile/profile.jpg')} />
 
             <AlignIconHeader>
-              <IconEdit name="edit" size={20} color="#fff" />
+            <IconEdit name="edit" size={20} color="#fff" onPress={() => {
+                navigation.navigate('EditProfile');
+              }}/>
             </AlignIconHeader>
 
             <AlignText>
