@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import {Container, ImageContainer, AlignText, BannerOne} from './styles';
-import landingPageThree from './landingPageThree';
+import landingPageThree from './LandingPageThree';
 
 import {Title} from '../../global';
 import Button from '../../components/Button';

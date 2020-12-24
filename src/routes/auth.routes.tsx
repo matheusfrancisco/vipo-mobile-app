@@ -14,10 +14,10 @@ import Profile from '../pages/Profile';
 import ResetPassword from '../pages/ResetPassword';
 import LandingPage from '../pages/LandingPage';
 import Search from '../pages/Search';
-import LandingPageTwo from '../pages/LandingPage/landingPageTwo';
-import LandingPageThree from '../pages/LandingPage/landingPageThree';
-import LandingPageFour from '../pages/LandingPage/landingPageFour';
-import EditProfile from '../pages/Profile/editProfile';
+import LandingPageTwo from '../pages/LandingPage/LandingPageTwo';
+import LandingPageThree from '../pages/LandingPage/LandingPageThree';
+import LandingPageFour from '../pages/LandingPage/LandingPageFour';
+import EditProfile from '../pages/Profile/EditProfile';
 
 
 const Auth = createStackNavigator();
@@ -28,7 +28,7 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: {backgroundColor: '#F8FBFA'},
     }}
-    initialRouteName="Feedback">
+    initialRouteName="Profile">
     <Auth.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
