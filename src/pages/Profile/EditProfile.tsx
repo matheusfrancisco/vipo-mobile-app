@@ -13,7 +13,7 @@ import {
   UserAvatarButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {KeyboardAvoidingView, ScrollView, TextInput, Alert} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, TextInput, Alert, Platform} from 'react-native';
 import Footer from '../../components/Footer';
 import {FormHandles} from '@unform/core';
 import * as Yup from 'yup';
@@ -67,7 +67,6 @@ const EditProfile: React.FC = () => {
         };
 
         const response = await api.put('/profile', FormData);
-        updateUser(response.data);
 
         Alert.alert(
           'Perfil atualizado com sucesso',

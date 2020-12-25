@@ -32,6 +32,7 @@ import {
   ContainerTextLoginSocial,
   TitleHeader,
 } from './styles';
+import { useSelector } from 'react-redux';
 
 interface SignInFormData {
   email: string;
