@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
+// Imports: Reducers
+import profile from './profile/index';
 
+// Redux: Root Reducer
+const rootReducer = combineReducers({
+  profile,
+});
 
-export default combineReducers({
-  // auth,
-  
-})
+// Exports
+export default rootReducer;

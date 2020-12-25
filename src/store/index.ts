@@ -1,40 +1,29 @@
-import {
-  applyMiddleware,
-  compose,
-  createStore,
-  Store,
-  StoreEnhancer,
-} from 'redux'
-import createSagaMiddleware from 'redux-saga'
+import { createStore, applyMiddleware } from 'redux';
+// import { createLogger } from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
-import { persistStore } from 'redux-persist'
-import persistReducers from './persistReducers'
+// Imports: Redux Root Reducer
+import rootReducer from './modules/rootReducer';
 
-import rootReducer from './modules/rootReducer'
-// eslint-disable-next-line import/no-cycle
-import rootSaga from './modules/rootSaga'
+// Imports: Redux Root Saga
+import { rootSaga } from './modules/rootSaga';
 
+// Middleware: Redux Saga
+const sagaMiddleware = createSagaMiddleware();
 
-export interface ApplicationState {
-  // auth: AuthState
+// Redux: Store
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    sagaMiddleware,
+    // createLogger(),
+  ),
+);
+
+// Middleware: Redux Saga
+sagaMiddleware.run(rootSaga);
+
+// Exports
+export {
+  store,
 }
-
-const sagaMonitor =
-  process.env.NODE_ENV === 'development'
-    ? console.tron.createSagaMonitor()
-    : null
-
-const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
-
-const enhancer: StoreEnhancer =
-  process.env.NODE_ENV === 'development'
-    ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
-    : applyMiddleware(sagaMiddleware)
-
-const store: Store = createStore(persistReducers(rootReducer), enhancer)
-
-const persistor = persistStore(store)
-
-sagaMiddleware.run(rootSaga)
-
-export { persistor, store }
