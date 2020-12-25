@@ -4,7 +4,6 @@ import IconLocation from 'react-native-vector-icons/Octicons';
 import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
-import {useAuth} from '../../hooks/auth';
 import {
   Header,
   IconBorder,
@@ -17,12 +16,13 @@ import {
   ColorText,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {KeyboardAvoidingView, ScrollView} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import Footer from '../../components/Footer';
 import {Title2, TextH2, TextMin} from '../../global';
 
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const Profile: React.FC = () => {
   const navigation = useNavigation();
@@ -31,6 +31,7 @@ const Profile: React.FC = () => {
     navigation.goBack();
   };
   
+
   return (
     <>
       <KeyboardAvoidingView
@@ -46,7 +47,7 @@ const Profile: React.FC = () => {
               <Icon
                   name="chevron-left"
                   color="#fff"
-                  onPress={() => {}} onPress={undoPage}
+                  onPress={undoPage}
                 />
               </IconBorder>
             </Header>
