@@ -12,7 +12,9 @@ const Header: React.FC<Props> = ({onPress, onPressBack}: Props) => {
   return (
     <>
       <Container>
-        <IconBorder>
+        <IconBorder onPress={() => {
+              onPressBack();
+            }}>
           <Icon
             name="chevron-left"
             color="#fff"
