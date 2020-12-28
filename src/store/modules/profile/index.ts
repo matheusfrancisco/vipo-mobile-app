@@ -1,9 +1,9 @@
 import { ProfileState } from "./types";
 
 const initialProfileState = {
-  name: '',
-  address: '',
-  email: '',
+  name: 'Matheus Francisco',
+  address: 'Sao Francisco SP',
+  email: 'm@gmail.com',
 };
 
 const reducer = (state = initialProfileState, action: any) => {

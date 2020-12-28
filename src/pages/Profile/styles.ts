@@ -27,7 +27,7 @@ export const UserAvatarButton = styled.TouchableOpacity`
   
 `;
 
-export const Header = styled.View`
+export const HeaderProfile = styled.View`
   background: #9283bf;
   width: 100%;
   height: 160px;
@@ -44,8 +44,7 @@ export const IconBorder = styled(RectButton)`
 `;
 
 export const AlignText = styled.View`
-  align-self: center;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 export const ImageItem = styled.Image`
   width: 50%;
@@ -63,10 +62,27 @@ export const Colunn = styled.View`
 `;
 
 export const AlignIcon = styled.View`
-  margin: 20px;
+  margin: 10px;
   flex-direction: row;
   justify-content: space-around;
 `;
 export const ColorText = styled.Text`
   color: #9283bf;
 `;
+
+export const ColorTextButton = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6px;
+`;
+
+export const ButtonEditLike = styled(RectButton)`
+  width: 134px;
+  height: 36px;
+  background-color: #9283BF;
+  border-radius: 5px;
+  margin-left: 200px;
+  margin-top: 20px;
+`;
+

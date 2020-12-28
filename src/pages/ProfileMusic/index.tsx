@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Line from '../../components/Line';
 import BodyProfileMusic from './Body';
+import HeaderSalveInfo from '../../components/HeaderSalveInfo';
 
 const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();
@@ -28,7 +29,7 @@ const ProfileMusic: React.FC = () => {
           <Container>
             <Header
               onPress={() => {
-                navigation.navigate('ProfileFood');
+                navigation.navigate('Profile');
               }}
               onPressBack={undoPage}
             />
@@ -36,9 +37,10 @@ const ProfileMusic: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextMusic>
-                <TextH3>seus gostos musicais</TextH3>
-              </TextMusic>            </HeaderText>
+              <TextMinAsker>
+                seus gostos musicais
+              </TextMinAsker>
+            </HeaderText>
             <Line />
 
             <BodyProfileMusic />

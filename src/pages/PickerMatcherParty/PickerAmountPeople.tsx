@@ -8,7 +8,7 @@ const PickerAmountPeople: React.FC = () => {
   const [bodyThree, setBodyThree] = useState(false);
   const [bodyFour, setBodyFour] = useState(false);
   const [bodyFive, setBodyFive] = useState(false);
-
+  
   const buttons = [
     {
       set: (value: boolean) => {
@@ -20,6 +20,7 @@ const PickerAmountPeople: React.FC = () => {
     {
       set: (value: boolean) => {
         setBodyTwo(value);
+
       },
       id: '2',
       value: bodyTwo,

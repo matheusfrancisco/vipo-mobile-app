@@ -12,6 +12,7 @@ export const Title2 = styled.Text`
   color: #000;
   font-family: 'RobotoSlab-Medium';
   font-weight: bold;
+  text-align: center;
 `;
 
 export const Title3 = styled.Text`
@@ -29,13 +30,8 @@ export const TextH2 = styled.Text`
   font-family: bold;
 `;
 
-export const TextH4 = styled.Text`
-  font-size: 12px;
-  font-family: 'RobotoSlab-Medium';
-`;
 export const TextMin = styled.Text`
   font-size: 12px;
-  /* color: #000; */
   font-family: 'RobotoSlab-Medium';
 `;
 
@@ -44,4 +40,9 @@ export const TextMinAsker = styled.Text`
   color: #000;
   font-family: 'RobotoSlab-Medium';
   align-self: center;
+`;
+
+export const TextH5 = styled.Text`
+  font-size: 14px;
+  font-family: 'RobotoSlab-Medium';
 `;
