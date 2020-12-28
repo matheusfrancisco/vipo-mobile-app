@@ -2,11 +2,14 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../pages/Home';
 import MatchParty from '../pages/Match';
+import PickerMatcherParty from '../pages/PickerMatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileFood from '../pages/ProfileFood';
 import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
+import EditProfile from '../pages/Profile/EditProfile';
+
 import LandingPage from '../pages/LandingPage';
 
 const App = createStackNavigator();

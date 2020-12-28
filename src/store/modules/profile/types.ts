@@ -1,0 +1,5 @@
+
+export enum ProfileTypes {
+    "GET_PROFILE_INFORMATION" = "@profil/GET_PROFILE_INFORMATION",
+    "GET_PROFILE_REQUEST" = "@profil/GET_PROFILE_REQUEST",
+}

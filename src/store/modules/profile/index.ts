@@ -1,11 +1,15 @@
-const initialState = {
+import { ProfileTypes } from "./types";
+
+const initialProfileState = {
   name: '',
   address: '',
   email: '',
 };
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state = initialProfileState, action: any) => {
   switch (action.type) {
+    case ProfileTypes.GET_PROFILE_INFORMATION:
+      return {...state, ...action.payload}
     default: {
       return state;
     }
