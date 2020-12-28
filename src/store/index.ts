@@ -8,15 +8,25 @@ import rootReducer from './modules/rootReducer';
 // Imports: Redux Root Saga
 import { rootSaga } from './modules/rootSaga';
 
+import { ProfileState } from './modules/profile/types'
+
+export interface ApplicationState {
+  profile: ProfileState
+}
+
+
+const middlewares = [];
+
 // Middleware: Redux Saga
 const sagaMiddleware = createSagaMiddleware();
+
+middlewares.push(sagaMiddleware);
 
 // Redux: Store
 const store = createStore(
   rootReducer,
   applyMiddleware(
-    sagaMiddleware,
-    // createLogger(),
+   sagaMiddleware
   ),
 );
 

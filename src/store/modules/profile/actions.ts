@@ -1,10 +1,9 @@
 import { action } from 'typesafe-actions'
-import { ProfileTypes } from './types'
-import { AnyAction } from 'redux'
+import { ProfileState } from './types'
 
-export const getProfileInformationsRequest = (profileInformation: AnyAction) => {
-  action(ProfileTypes.GET_PROFILE_REQUEST, { profileInformation })
-}
-export const getProfileSucess = (profileInformation: AnyAction) => {
-  action(ProfileTypes.GET_PROFILE_INFORMATION, { profileInformation })
-}
+export const getProfileInformationsRequest = (profileInformation: any) => ({
+  type: action(ProfileState.GET_PROFILE_REQUEST, { profileInformation })
+})
+export const getProfileSucess = (profileInformation: any) => ({
+  type: action(ProfileState.GET_PROFILE_INFORMATION, { profileInformation })
+})

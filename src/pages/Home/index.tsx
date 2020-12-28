@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import Search from '../Search';
 import HeaderProfile from '../../components/HeaderProfile';
 import  Footer  from '../../components/Footer';
-// import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hooks/auth';
-// import { getProfileInformationsRequest } from '../../store/modules/profile/actions';
+import { useDispatch } from 'react-redux';
+import { getProfileInformationsRequest } from '../../store/modules/profile/actions';
 
 const Home: React.FC = () => {
   const { user } = useAuth();
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(getProfileInformationsRequest(user))
-  // }, [])
-  
+  useEffect(() => {
+      dispatch(getProfileInformationsRequest({user}))
+  }, [user, dispatch])
+
   return (
     <>
       <HeaderProfile />

@@ -4,6 +4,6 @@ import  profile from './profile/saga'
 // Redux Saga: Root Saga
 export function* rootSaga () {
   yield all([
-    // profile,
+    profile,
   ]);
 };

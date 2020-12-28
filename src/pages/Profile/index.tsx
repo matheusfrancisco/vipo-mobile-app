@@ -23,9 +23,12 @@ import {Title2, TextH2, TextMin} from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { ApplicationState } from '../../store';
 
 const Profile: React.FC = () => {
   const navigation = useNavigation();
+
+  const  profile  = useSelector((state: ApplicationState) => state.profile)
 
   const undoPage = () => {
     navigation.goBack();
@@ -43,7 +46,7 @@ const Profile: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <Header>
-              <IconBorder>
+              <IconBorder onPress={undoPage}>
               <Icon
                   name="chevron-left"
                   color="#fff"

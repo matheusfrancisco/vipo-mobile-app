@@ -1,17 +1,24 @@
 import React from 'react';
 import {Container, IconUser, IconBars} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const HeaderProfile: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <Container>
-        <IconUser>
+        <IconUser onPress={() => {
+              navigation.navigate('Profile');
+            }}>
           <Icon
             name="user"
             size={15}
             color="#fff"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}
           />
         </IconUser>
         <IconBars>

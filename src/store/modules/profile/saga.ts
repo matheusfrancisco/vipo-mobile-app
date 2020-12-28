@@ -1,12 +1,11 @@
 import {  takeLatest, put, all } from 'redux-saga/effects';
-import { ProfileTypes } from './types'
+import { ProfileState } from './types'
 import { getProfileSucess } from './actions';
-import { AnyAction } from 'redux';
 
-function* getProfileInformations(a : AnyAction) {
-  console.log(a, 'oiii')
+function* getProfileInformations({profileInformations} : any) {
+  
   try {
-    // put(getProfileSucess(profileInformations))
+    put(getProfileSucess(profileInformations))
   }
   catch (error) {
     console.log(error);
@@ -14,5 +13,5 @@ function* getProfileInformations(a : AnyAction) {
 }
 
 export default all([
-  takeLatest(ProfileTypes.GET_PROFILE_REQUEST, getProfileInformations),
+  takeLatest(ProfileState.GET_PROFILE_REQUEST, getProfileInformations),
 ])

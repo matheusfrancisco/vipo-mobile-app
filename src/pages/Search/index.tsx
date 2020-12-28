@@ -33,7 +33,7 @@ const Seach: React.FC = () => {
 
             <RectButton
               onPress={() => {
-                navigation.navigate('MatcherParty');
+                navigation.navigate('PickerMatcherParty');
               }}>
               <Image
                 source={logo}
