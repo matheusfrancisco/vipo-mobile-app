@@ -2,14 +2,13 @@ import React from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Container, HeaderText, TextMusic} from './styles';
+import {Container, HeaderText} from './styles';
 
-import {TextH3, TextMinAsker} from '../../global';
+import { TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Line from '../../components/Line';
 import BodyProfileMusic from './Body';
-import HeaderSalveInfo from '../../components/HeaderSalveInfo';
 
 const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();

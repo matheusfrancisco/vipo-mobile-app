@@ -7,15 +7,12 @@ import IconPlus from 'react-native-vector-icons/Feather';
 import Footer from '../../components/Footer';
 
 import {Title3} from '../../global';
-import {useNavigation} from '@react-navigation/native';
-import {RectButton} from 'react-native-gesture-handler';
 import Button from '../../components/Button';
 import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 
 const PickerMatcherParty: React.FC = () => {
-  const navigation = useNavigation();
   const informacoes = [
     {title: 'Para quantas pessoas ? ', id: 'AmountPeople'},
     {title: 'Quais os planos para hoje ?', id: 'PlansToday'},

@@ -51,3 +51,8 @@ export const BackToSingInText = styled.Text`
 export const ColorText = styled.Text`
   color: #9283bf;
 `;
+
+export const TextRegistration = styled.Text`
+  text-align: center;
+  color: #000000;
+`;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
-import {Container, HeaderText, TextDrink} from './styles';
-import {TextH3, TextMinAsker} from '../../global';
+import {Container, HeaderText} from './styles';
+import { TextMinAsker} from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Line from '../../components/Line';

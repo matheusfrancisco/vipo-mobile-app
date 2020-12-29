@@ -13,7 +13,6 @@ import {useNavigation} from '@react-navigation/native';
 import {Form} from '@unform/mobile';
 import {FormHandles} from '@unform/core';
 
-import Input from '../../components/Input';
 import Button from '../../components/Button';
 import logo from '../../assets/logo.png';
 
@@ -22,14 +21,14 @@ import {useAuth} from '../../hooks/auth';
 
 import {Title3, TextMinAsker} from '../../global';
 
-import {Container, TitleHeader } from './styles';
+import {Container, TitleHeader} from './styles';
 
 interface SignInFormData {
   email: string;
   password: string;
 }
 
-const ResetPassword: React.FC = () => {
+const EmailSend: React.FC = () => {
   const navigation = useNavigation();
 
   const formRef = useRef<FormHandles>(null);
@@ -44,6 +43,7 @@ const ResetPassword: React.FC = () => {
           email: Yup.string()
             .email('Digite um e-mail válido')
             .required('E-mail obrigatório'),
+          password: Yup.string().required('Senha obrigatório'),
         });
 
         await schema.validate(data, {
@@ -83,27 +83,16 @@ const ResetPassword: React.FC = () => {
               style={{width: 170, height: 170, marginTop: 40}}
             />
             <TitleHeader>
-              <Title3>Esqueceu sua senha ?</Title3>
+              <Title3>Redefinição enviada</Title3>
             </TitleHeader>
             <TextMinAsker>
-              Não esquenta, vamos dar um jeito nisso..
+              Boa, agora é só checar o e-mail que foi enviado e aproveitar os
+              rolês.
             </TextMinAsker>
-            <Form ref={formRef} onSubmit={handleSignIn}>
-                <Input
-                  keyboardType="email-address"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="email"
-                  icon="mail"
-                  placeholder="E-mail"
-                  returnKeyType="next"
-                />
-              </Form>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Button
                 onPress={() => {
-                  // formRef.current?.submitForm();
-                  navigation.navigate('EmailSend')
+                  navigation.navigate('SignIn')
                 }}
                 style={{
                   marginBottom: -60,
@@ -111,7 +100,7 @@ const ResetPassword: React.FC = () => {
                   width: 300,
                   height: 45,
                 }}>
-                Recuperar senha
+                Fazer login
               </Button>
             </Form>
           </Container>
@@ -121,4 +110,4 @@ const ResetPassword: React.FC = () => {
   );
 };
 
-export default ResetPassword;
+export default EmailSend;

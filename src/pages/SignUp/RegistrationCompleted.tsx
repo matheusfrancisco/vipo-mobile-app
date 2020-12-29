@@ -5,9 +5,12 @@ import logo from '../../assets/logo.png';
 
 import {Title, TextH3} from '../../global';
 import Button from '../../components/Button';
-import {Container} from './styles';
+import {Container} from '../RegistrationCompleted/styles';
+import { useNavigation } from '@react-navigation/native';
 
 const RegistrationCompleted: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -29,8 +32,11 @@ const RegistrationCompleted: React.FC = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua. .
             </TextH3>
 
-            <Button style={{height: 51, width: 330, marginBottom: -50}}>
-              Entrar
+            <Button style={{height: 51, width: 330, marginBottom: -50}}
+            onPress={() => {
+                  navigation.navigate('SignIn')
+                }}>
+              Fazer Login
             </Button>
           </Container>
         </ScrollView>

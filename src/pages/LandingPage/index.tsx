@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../../assets/logoOficial.png';
 import landingOne from '../../assets/landingPage/one.png';
-import pountOne from '../../assets/landingPage/pountOne.png';
 
 import {useNavigation} from '@react-navigation/native';
 import {

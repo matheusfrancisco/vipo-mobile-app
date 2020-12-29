@@ -158,7 +158,7 @@ const SignUp: React.FC = () => {
                 <TextMin>
                   Você concorda com nossos
                   <ColorText>
-                  >termos de privacidade>
+                  termos de privacidade
                   </ColorText>
                 </TextMin>
               </TermsText>
@@ -170,7 +170,8 @@ const SignUp: React.FC = () => {
                     if (!checked) {
                       Alert.alert('Por favor, aceite nossos termos de privacidade');
                     } else {
-                      formRef.current?.submitForm()
+                      // formRef.current?.submitForm()
+                      navigation.navigate('RegistrationCompleted')
                     }
                   }}
                 >

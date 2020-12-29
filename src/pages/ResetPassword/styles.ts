@@ -15,6 +15,6 @@ export const ButtonText = styled.TouchableOpacity`
 
 export const TitleHeader = styled.Text`
   text-align: center;
-  color: #470a68;
+  color: #9283BF;
   font-weight: bold;
 `;
