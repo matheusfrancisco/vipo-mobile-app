@@ -120,7 +120,7 @@ const SignIn: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               />
-              <ButtonText onPress={() => {}}>
+              <ButtonText onPress={() => navigation.navigate('ResetPassword')}>
                 <TextH3>Esqueceu sua senha ?</TextH3>
               </ButtonText>
 

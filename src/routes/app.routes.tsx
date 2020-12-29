@@ -6,10 +6,13 @@ import PickerMatcherParty from '../pages/PickerMatcherParty';
 import ProfileMusic from '../pages/ProfileMusic';
 import ProfileDrink from '../pages/ProfileDrink';
 import ProfileFood from '../pages/ProfileFood';
-import RegistrationCompleted from '../pages/RegistrationCompleted';
 import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
 import EditProfile from '../pages/Profile/EditProfile';
+import EmailSend from '../pages/ResetPassword/EmailSend';
+import ResetPassword from '../pages/ResetPassword';
+import RegistrationCompleted from '../pages/SignUp/RegistrationCompleted';
+
 
 import LandingPage from '../pages/LandingPage';
 
@@ -30,6 +33,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="Profile" component={Profile} />
     <App.Screen name="LandingPage" component={LandingPage} />
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
+    <App.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
 
 
     <App.Screen

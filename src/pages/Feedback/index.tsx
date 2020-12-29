@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {useAuth} from '../../hooks/auth';
 import {Title, TextH3, TextMin, TextH2} from '../../global';
 import {
   Header,
