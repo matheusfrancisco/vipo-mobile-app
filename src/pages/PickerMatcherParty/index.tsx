@@ -21,6 +21,8 @@ const PickerMatcherParty: React.FC = () => {
     {title: 'Quais os planos para hoje ?', id: 'PlansToday'},
     {title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson'},
   ];
+  const [body, setBody] = useState({});
+
   const components = {
     AmountPeople: () => {
       return <PickerAmountPeople />;

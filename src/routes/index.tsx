@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {ActivityIndicator, View} from 'react-native';
 
@@ -17,7 +17,8 @@ const Routes: React.FC = () => {
       </View>
     );
   }
-  return false ? <AppRoutes /> : <AuthRoutes />;
+  
+  return user ? <AppRoutes /> : <AuthRoutes />;
 };
 
 export default Routes;

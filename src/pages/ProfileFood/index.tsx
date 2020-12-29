@@ -27,7 +27,7 @@ const ProfileFood: React.FC = () => {
           <Container>
             <Header
               onPress={() => {
-                navigation.navigate('ProfileDrink');
+                navigation.navigate('ProfileMusic');
               }}
               onPressBack={undoPage}
             />
@@ -35,9 +35,8 @@ const ProfileFood: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextFood>
-                <TextH3>suas comidas preferidas</TextH3>
-              </TextFood>            </HeaderText>
+              <TextMinAsker>suas comidas preferidas</TextMinAsker>
+            </HeaderText>
             <Line />
 
             <BodyProfileFood />

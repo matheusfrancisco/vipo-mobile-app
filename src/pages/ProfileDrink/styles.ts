@@ -54,7 +54,7 @@ interface Props {
   select?: boolean;
 }
 export const ContainerText = styled(RectButton)<Props>`
-  ${(props) =>
+  ${(props: any) =>
     props.select &&
     css`
       opacity: 0.3;

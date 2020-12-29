@@ -9,8 +9,8 @@ export const Container = styled.View`
 `;
 
 export const IconUser = styled.View`
-  margin: 20px 0px 25px 20px;
-  border-width: 6px;
+  margin: 18px 0px 25px 20px;
+  border-width: 8px;
   border-color: #a396cb;
   background: #a396cb;
 `;

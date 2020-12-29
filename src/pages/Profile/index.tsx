@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IconLocation from 'react-native-vector-icons/Octicons';
 
 import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
 import {
-  Header,
   IconBorder,
   Container,
   AlignText,
@@ -14,19 +13,26 @@ import {
   AlignIcon,
   AlignIconHeader,
   ColorText,
+  ButtonEditLike,
+  ColorTextButton,
+  HeaderProfile,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import Footer from '../../components/Footer';
-import {Title2, TextH2, TextMin} from '../../global';
+import {Title2, TextH2, TextMin, TextH5} from '../../global';
 
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { ApplicationState } from '../../store';
+
 
 const Profile: React.FC = () => {
   const navigation = useNavigation();
 
+  const { profile }  = useSelector((state: ApplicationState) => state)
+  console.log(profile)
   const undoPage = () => {
     navigation.goBack();
   };
@@ -42,15 +48,15 @@ const Profile: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Header>
-              <IconBorder>
+            <HeaderProfile>
+              <IconBorder onPress={undoPage}>
               <Icon
                   name="chevron-left"
                   color="#fff"
                   onPress={undoPage}
                 />
               </IconBorder>
-            </Header>
+            </HeaderProfile>
             <ImageItem source={require('../../assets/profile/profile.jpg')} />
 
             <AlignIconHeader>
@@ -60,7 +66,7 @@ const Profile: React.FC = () => {
             </AlignIconHeader>
 
             <AlignText>
-              <Title2>Olá, Theresa !</Title2>
+              <Title2>Olá, {profile.name} !</Title2>
             </AlignText>
             <Colunn>
               <ColorText>
@@ -70,13 +76,22 @@ const Profile: React.FC = () => {
             <Line />
             <AlignIcon>
               <IconLocation name="location" size={20} color="#470A68" />
-              <TextMin> São Paulo - Jardins</TextMin>
+              <TextMin> {profile.address}</TextMin>
             </AlignIcon>
             <AlignIcon>
               <IconEmail name="email" size={20} color="#470A68" />
 
-              <TextMin> example@gmail.com</TextMin>
+            <TextMin> {profile.email}</TextMin>
             </AlignIcon>
+            <ButtonEditLike  onPress={() => {
+                navigation.navigate('ProfileDrink');
+              }}>
+              <ColorTextButton >
+                <TextH5>
+                  Altere seus gostos
+                </TextH5>
+              </ColorTextButton>
+            </ButtonEditLike>
           </Container>
         </ScrollView>
         <Footer />

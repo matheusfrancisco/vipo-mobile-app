@@ -24,14 +24,19 @@ const ProfileDrink: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Header onPress={() => {}} onPressBack={undoPage} />
+            <Header 
+            onPress={() => {
+                navigation.navigate('ProfileFood');
+              }}
+            onPressBack={undoPage} />
             <HeaderText>
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextDrink>
-                <TextH3>suas bebibas favoritas</TextH3>
-              </TextDrink>            </HeaderText>
+              <TextMinAsker>
+                suas bebibas favoritas
+              </TextMinAsker>
+            </HeaderText>
             <Line />
             <BodyProfileDrink />
           </Container>

@@ -21,7 +21,7 @@ import getvalidationErrors from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.png';
 
-import { Title, TextH4, TextMin } from '../../global';
+import { Title, TextMin } from '../../global';
 
 import api from '../../services/api';
 
@@ -158,7 +158,7 @@ const SignUp: React.FC = () => {
                 <TextMin>
                   Você concorda com nossos
                   <ColorText>
-                    <TextH4>termos de privacidade</TextH4>
+                  >termos de privacidade>
                   </ColorText>
                 </TextMin>
               </TermsText>
