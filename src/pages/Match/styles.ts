@@ -38,6 +38,9 @@ export const MarginText = styled.View`
 
 export const PositionIcon = styled.View`
   margin-bottom: 10px;
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
 `;
 
 export const Footer = styled.View`
