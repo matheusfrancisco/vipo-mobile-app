@@ -11,6 +11,7 @@ import Button from '../../components/Button';
 import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
+import { useNavigation } from '@react-navigation/native';
 
 const PickerMatcherParty: React.FC = () => {
   const informacoes = [
@@ -19,6 +20,7 @@ const PickerMatcherParty: React.FC = () => {
     {title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson'},
   ];
   const [body, setBody] = useState({});
+  const navigation = useNavigation();
 
   const components = {
     AmountPeople: () => {
@@ -70,7 +72,9 @@ const PickerMatcherParty: React.FC = () => {
           </Container>
         </ScrollView>
         <Button
-          onPress={() => console.log('Foi')}
+          onPress={() => {
+            navigation.navigate('RoleFound');
+          }}
           style={{
             margin: 10,
             width: 365,

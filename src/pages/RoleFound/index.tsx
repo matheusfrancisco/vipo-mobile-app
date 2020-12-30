@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocation from 'react-native-vector-icons/EvilIcons';
 import Footer from '../../components/Footer';
 
-const History: React.FC = () => {
+const RoleFound: React.FC = () => {
   const navigation = useNavigation();
   const undoPage = () => {
     navigation.goBack();
@@ -35,7 +35,7 @@ const History: React.FC = () => {
                 />
             </IconBorder>
             <Title>
-              <Title3>Meus últimos rolês</Title3>
+              <Title3>Rolês encontrados</Title3>
             </Title>
             <ContainerHistory>
               <ImageItem source={require('../../assets/history/bar.jpg')} />
@@ -92,4 +92,4 @@ const History: React.FC = () => {
   );
 };
 
-export default History;
+export default RoleFound;

@@ -105,7 +105,7 @@ const PickerPlansToday: React.FC = () => {
               clickedButtons('4');
               setBodyFour(!bodyFour);
             }}>
-            Conhecer gente nova 😍{' '}
+            Conhecer gente nova 😍
           </BodyPlansToday>
         </ContainerPickerRow>
         <ContainerPickerRow>
