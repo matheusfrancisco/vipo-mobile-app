@@ -26,7 +26,9 @@ const HeaderProfile: React.FC = () => {
             name="bars"
             size={15}
             color="#fff"
-            onPress={() => console.log('Foi')}
+            onPress={() => {
+              navigation.navigate('History');
+            }}
           />
         </IconBars>
       </Container>

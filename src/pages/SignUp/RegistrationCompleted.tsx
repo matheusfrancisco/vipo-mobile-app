@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 
 import {Title, TextH3} from '../../global';
 import Button from '../../components/Button';
-import {Container} from '../RegistrationCompleted/styles';
+import {Container} from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 const RegistrationCompleted: React.FC = () => {

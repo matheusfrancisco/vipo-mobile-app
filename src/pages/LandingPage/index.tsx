@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {Container, ImageContainer, AlignText, BannerOne} from './styles';
+import {Container, ImageContainer, AlignText, BannerOne, ContainerBanner} from './styles';
 import {Title} from '../../global';
 import Button from '../../components/Button';
 
@@ -33,7 +33,23 @@ function LandingPage() {
         contentContainerStyle={{flex: 1}}>
         <Container>
           <BannerOne>
-            <Image source={logo} style={{width: 150, height: 40, margin: 20}} />
+            <ContainerBanner>
+              <Image source={logo} style={{width: 150, height: 40, margin: 20}} />
+              <Button
+                onPress={() => {
+                  navigation.navigate('SignIn');
+                }}
+                style={{
+                  marginRight: 20,
+                  marginTop: 25,
+                  width: 60,
+                  height: 30,
+                  backgroundColor: '#F2994A',
+                }}
+                >
+              Pular
+              </Button>
+            </ContainerBanner>
 
             <ImageContainer source={landingOne} style={{width: 300, height: 200}}/>
             <AlignText>
@@ -53,7 +69,7 @@ function LandingPage() {
               height: 50,
               backgroundColor: '#F2994A',
             }}>
-            Bora começar
+            Próximo
           </Button>
         </Container>
       </ScrollView>

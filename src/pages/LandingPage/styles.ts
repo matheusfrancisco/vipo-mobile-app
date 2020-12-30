@@ -11,8 +11,6 @@ export const Container = styled.View`
 `;
 
 export const ImageContainer = styled.Image`
-  /* width: 300px;
-  height: 200px; */
   align-self:center;
   margin-top: 30px;
 `;
@@ -25,3 +23,8 @@ export const AlignNext = styled.View`
   flex-direction: row;
 `;
 export const BannerOne = styled.View``;
+
+export const ContainerBanner = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
