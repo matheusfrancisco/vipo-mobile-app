@@ -7,12 +7,15 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
-export const Title2 = styled.Text`
-  font-size: 45px;
-  color: #000;
+export const Title4 = styled.Text`
+  font-size: 35px;
   font-family: 'RobotoSlab-Medium';
   font-weight: bold;
-  text-align: center;
+`;
+export const Title2 = styled.Text`
+  font-size: 45px;
+  font-family: 'RobotoSlab-Medium';
+  font-weight: bold;
 `;
 
 export const Title3 = styled.Text`

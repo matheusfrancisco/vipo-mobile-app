@@ -48,3 +48,29 @@ export const Footer = styled.View`
   justify-content: space-around;
   margin-bottom: 20px;
 `;
+
+export const ContainerTitle = styled.Text`
+  text-align: center;
+  color: #9283BF;
+  margin-top: 20px;
+`;
+export const ContainerDescription = styled.Text`
+  text-align: center;
+  color:#000;
+  margin: 12px;
+`;
+
+export const BoxBorder = styled.Text`
+  border: 2px solid #9283BF;
+  width: 90%;
+  height: 12%;
+  margin: 20px;
+  background-color: #9283BF;
+  border-radius: 10px;
+  margin-top: 30px;
+  text-align: center;
+  color: #fff;
+  padding-top: 10px;
+`
+export const Container = styled.View`
+`;
