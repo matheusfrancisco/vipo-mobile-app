@@ -9,12 +9,40 @@ import {Container, Title, IconBorder, ContainerHistory, ImageItem, TitleImage, C
 import {Title3, TextMin} from '../../global';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocation from 'react-native-vector-icons/EvilIcons';
+import Footer from '../../components/Footer';
 
 const History: React.FC = () => {
   const navigation = useNavigation();
   const undoPage = () => {
     navigation.goBack();
   };
+
+  const items = [
+    {
+      id: '1',
+      title: "Bar do leo",
+      image: require('../../assets/history/bar.jpg'),
+      date: 'Seg à Dom - 18:00 à 22:00',
+      location: 'Vila Madalena',
+      value: 'Preço médio - R$ 60,00'
+    },
+    {
+      id: '2',
+      title: "Bar do jao",
+      image: require('../../assets/history/bar.jpg'),
+      date: 'Seg à Dom - 18:00 à 22:00',
+      location: 'Vila Madalena',
+      value: 'Preço médio - R$ 60,00'
+    },
+    {
+      id: '3',
+      title: "Bar do leo",
+      image: require('../../assets/history/bar.jpg'),
+      date: 'Seg à Dom - 18:00 à 22:00',
+      location: 'Vila Madalena',
+      value: 'Preço médio - R$ 60,00'
+    }
+  ];
   
   return (
     <>
@@ -23,8 +51,8 @@ const History: React.FC = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+         style={{ flex: 1 }}
+          >
           <Container>
             <IconBorder onPress={undoPage}>
               <Icon
@@ -36,55 +64,57 @@ const History: React.FC = () => {
             <Title>
               <Title3>Meus últimos rolês</Title3>
             </Title>
-            <ContainerHistory>
-              <ImageItem source={require('../../assets/history/bar.jpg')} />
-              <TitleImage>
-                <Title3>
-                Bar do Leo
-                </Title3>
-              </TitleImage>
-                <Item>
-                  <IconLocation
-                    name="calendar"
-                    color="#000"
-                    onPress={undoPage}
-                    size={28}
-                    style={{marginLeft: 10}}
-                  />
-                  <ContainerText>
-                    <TextMin>Seg à Dom - 18:00 até 22:00</TextMin>
-                  </ContainerText>
-                </Item>
-              
-                <Item>
-                  <IconLocation
-                    name="location"
-                    color="#000"
-                    onPress={undoPage}
-                    size={20}
-                    style={{marginLeft: -20}}
-                  />
-                  <ContainerText>
-                    <TextMin>Vila Madalena</TextMin>
-                  </ContainerText>
-                </Item>
+            {items.map((item) => {
+              return (<ContainerHistory>
+                <ImageItem source={item.image} />
+                <TitleImage>
+                  <Title3>
+                  {item.title}
+                  </Title3>
+                </TitleImage>
+                  <Item>
+                    <IconLocation
+                      name="calendar"
+                      color="#000"
+                      onPress={undoPage}
+                      size={28}
+                      style={{marginLeft: 10}}
+                    />
+                    <ContainerText>
+                      <TextMin>{item.date}</TextMin>
+                    </ContainerText>
+                  </Item>
                 
-                <Item>
-                  <Icon
-                    name="money"
-                    color="#000"
-                    onPress={undoPage}
-                    size={20}
-                    style={{marginLeft: 10}}
-                  />
-                  <ContainerText>
-                    <TextMin>Preço médio - R$ 60,00</TextMin>
-                  </ContainerText>
-                </Item>
-              
-            </ContainerHistory>
+                  <Item>
+                    <IconLocation
+                      name="location"
+                      color="#000"
+                      onPress={undoPage}
+                      size={20}
+                      style={{marginLeft: -20}}
+                    />
+                    <ContainerText>
+                      <TextMin>{item.location}</TextMin>
+                    </ContainerText>
+                  </Item>
+                  
+                  <Item>
+                    <Icon
+                      name="money"
+                      color="#000"
+                      onPress={undoPage}
+                      size={20}
+                      style={{marginLeft: 10}}
+                    />
+                    <ContainerText>
+                      <TextMin>{item.value}</TextMin>
+                    </ContainerText>
+                  </Item>
+                
+              </ContainerHistory>)})}
           </Container>
         </ScrollView>
+        <Footer/>
       </KeyboardAvoidingView>
     </>
   );

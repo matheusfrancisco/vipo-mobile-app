@@ -13,9 +13,7 @@ export const Title = styled.Text`
   color: #9283bf;
   font-weight: bold;
   text-decoration:underline;
-  top: 0;
-  margin-top: 70px;
-  position: absolute;
+  margin-top: 20px;
 `;
 export const IconBorder = styled(RectButton)`
   border-width: 10px;
@@ -31,8 +29,9 @@ export const IconBorder = styled(RectButton)`
 export const ContainerHistory = styled.View`
   width: 340px;
   height: 235px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 15px;
+  margin: 20px;
 `
 
 export const ImageItem = styled.Image`
@@ -44,7 +43,6 @@ export const ImageItem = styled.Image`
 export const TitleImage = styled.Text`
   color: #fff;
   font-weight: bold;
-  top: 0;
   position:absolute;
   margin-top: 25px;
   margin-left: 10px;
