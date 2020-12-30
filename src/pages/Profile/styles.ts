@@ -43,8 +43,10 @@ export const IconBorder = styled(RectButton)`
   border-radius: 0.1px;
 `;
 
-export const AlignText = styled.View`
+export const AlignText = styled.Text`
   margin-top: 20px;
+  color: #000;
+  text-align: center;
 `;
 export const ImageItem = styled.Image`
   width: 50%;

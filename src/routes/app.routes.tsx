@@ -11,6 +11,7 @@ import Feedback from '../pages/Feedback';
 import Profile from '../pages/Profile';
 import EditProfile from '../pages/Profile/EditProfile';
 import History from '../pages/History';
+import CheckMatch from '../pages/Match/CheckMatch';
 
 
 import LandingPage from '../pages/LandingPage';
@@ -34,6 +35,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
     <App.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
     <App.Screen name="History" component={History} />
+    <App.Screen name="CheckMatch" component={CheckMatch} />
 
   </App.Navigator>
 );

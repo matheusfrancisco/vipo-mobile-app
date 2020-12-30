@@ -16,8 +16,11 @@ import {
 
 import {TextMin, TextH3} from '../../global';
 import Line from '../../components/Line';
+import { useNavigation } from '@react-navigation/native';
 
 const Match: React.FC = () => {
+  const navigation = useNavigation();
+
   const yourMatchs = [
     {
       id: 1,
@@ -84,7 +87,7 @@ const Match: React.FC = () => {
         <Footer>
           <IconEvil name="close" size={30} color="red" />
           <Icon name="send-o" size={30} color="#000" />
-          <IconEvil name="heart" size={40} color="green" />
+          <IconEvil onPress={() => { navigation.navigate('CheckMatch');}} name="heart" size={40} color="green" />
         </Footer>
       </KeyboardAvoidingView>
     </>
