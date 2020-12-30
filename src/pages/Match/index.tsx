@@ -1,6 +1,5 @@
 import React from 'react';
 import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
-import {useAuth} from '../../hooks/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocalion from 'react-native-vector-icons/Octicons';
 import IconEvil from 'react-native-vector-icons/EvilIcons';
@@ -29,8 +28,8 @@ const Match: React.FC = () => {
         'UUUUUUUUUUUUUm bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!',
       ticket: 'As pessoas costuman gastar R$ 60,00 neste local',
       bonus: 'Indo pelo App você ganha um shot de boas-vindas quando chegar lá',
-      openHour: '19:00',
-      closeHour: '05:00',
+      date: 'Seg à Dom - 18:00 até 22:00',
+      location: 'Vila Madalena',
     },
   ];
 
@@ -49,9 +48,7 @@ const Match: React.FC = () => {
 
           <Description>
             <TextH3>
-              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-              ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            {yourMatchs[0].description}
             </TextH3>
           </Description>
           <Line />
@@ -61,7 +58,7 @@ const Match: React.FC = () => {
               <Icon name="calendar" size={30} color="#470A68" />
             </PositionIcon>
             <MarginText>
-              <TextMin> Seg à Dom - 18:00 até 22:00</TextMin>
+              <TextMin> {yourMatchs[0].date}</TextMin>
             </MarginText>
           </Informations>
 
@@ -70,7 +67,7 @@ const Match: React.FC = () => {
               <IconLocalion name="location" size={30} color="#470A68" />
             </PositionIcon>
             <MarginText>
-              <TextMin> Jardim das avenidas</TextMin>
+              <TextMin>{yourMatchs[0].location}</TextMin>
             </MarginText>
           </Informations>
 
@@ -79,7 +76,7 @@ const Match: React.FC = () => {
               <Icon name="money" size={30} color="#470A68" />
             </PositionIcon>
             <MarginText>
-              <TextMin> Preço médio - R$ 60,00</TextMin>
+              <TextMin>{yourMatchs[0].ticket}</TextMin>
             </MarginText>
           </Informations>
         </ScrollView>
