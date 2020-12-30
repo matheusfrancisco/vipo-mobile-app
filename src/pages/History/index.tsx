@@ -9,6 +9,7 @@ import {Container, Title, IconBorder, ContainerHistory, ImageItem, TitleImage, C
 import {Title3, TextMin} from '../../global';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocation from 'react-native-vector-icons/EvilIcons';
+import Footer from '../../components/Footer';
 
 const History: React.FC = () => {
   const navigation = useNavigation();
@@ -113,6 +114,7 @@ const History: React.FC = () => {
               </ContainerHistory>)})}
           </Container>
         </ScrollView>
+        <Footer/>
       </KeyboardAvoidingView>
     </>
   );
