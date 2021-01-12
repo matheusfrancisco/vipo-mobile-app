@@ -27,6 +27,7 @@ const ProfileMusic: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <Header
+              text="Salvar"
               onPress={() => {
                 navigation.navigate('Profile');
               }}

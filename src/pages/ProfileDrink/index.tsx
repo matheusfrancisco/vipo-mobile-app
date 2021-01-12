@@ -25,6 +25,7 @@ const ProfileDrink: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <Header 
+            text="Próximo"
             onPress={() => {
                 navigation.navigate('ProfileFood');
               }}

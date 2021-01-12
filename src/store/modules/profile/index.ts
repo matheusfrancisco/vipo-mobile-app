@@ -1,4 +1,4 @@
-import { ProfileState } from "./types";
+import { ProfileTypes } from "./types";
 
 const initialProfileState = {
   name: 'Matheus Francisco',
@@ -8,7 +8,7 @@ const initialProfileState = {
 
 const reducer = (state = initialProfileState, action: any) => {
   switch (action.type) {
-    case ProfileState.GET_PROFILE_INFORMATION: {
+    case ProfileTypes.GET_PROFILE_INFORMATION: {
       const user = action.payload
 
       return {...state, 

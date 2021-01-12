@@ -6,9 +6,10 @@ import { Title3} from '../../global';
 interface Props {
   onPress: () => void;
   onPressBack: () => void;
+  text: string;
 }
 
-const Header: React.FC<Props> = ({onPress, onPressBack}: Props) => {
+const Header: React.FC<Props> = ({ onPress, onPressBack, text }: Props) => {
   return (
     <>
       <Container>
@@ -24,7 +25,7 @@ const Header: React.FC<Props> = ({onPress, onPressBack}: Props) => {
           />
         </IconBorder>
         <TextNext>
-          <Title3 onPress={() => onPress()}>Próxima</Title3>
+          <Title3 onPress={() => onPress()}>{ text }</Title3>
         </TextNext>
       </Container>
     </>

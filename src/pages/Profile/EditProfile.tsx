@@ -3,7 +3,7 @@ import IconEdit from 'react-native-vector-icons/Entypo';
 
 import {useAuth} from '../../hooks/auth';
 import {
-  Header,
+  HeaderProfile,
   IconBorder,
   Container,
   ImageItem,
@@ -100,7 +100,7 @@ const EditProfile: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Header >
+            <HeaderProfile >
               <IconBorder onPress={undoPage} >
                 <Icon
                   name="chevron-left"
@@ -108,7 +108,7 @@ const EditProfile: React.FC = () => {
                   onPress={undoPage}
                 />
               </IconBorder>
-            </Header>
+            </HeaderProfile>
             <UserAvatarButton >
               <ImageItem source={image} />
             </UserAvatarButton>
@@ -132,7 +132,7 @@ const EditProfile: React.FC = () => {
                 <Input
                   ref={adressInputref}
                   autoCapitalize="none"
-                  name="location"
+                  name="address"
                   icon="map-pin"
                   returnKeyType="next"
                   placeholder="Endereço"

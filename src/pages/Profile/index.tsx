@@ -20,7 +20,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import Footer from '../../components/Footer';
-import {Title2, TextH2, TextMin, TextH5} from '../../global';
+import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
@@ -32,7 +32,7 @@ const Profile: React.FC = () => {
   const navigation = useNavigation();
 
   const { profile }  = useSelector((state: ApplicationState) => state)
-  console.log(profile)
+
   const undoPage = () => {
     navigation.goBack();
   };
