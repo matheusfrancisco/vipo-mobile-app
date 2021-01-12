@@ -1,5 +1,5 @@
 import {  takeLatest, put, all } from 'redux-saga/effects';
-import { ProfileState } from './types'
+import { ProfileTypes } from './types'
 import { getProfileSucess } from './actions';
 
 function* getProfileInformations({profileInformations} : any) {
@@ -13,5 +13,5 @@ function* getProfileInformations({profileInformations} : any) {
 }
 
 export default all([
-  takeLatest(ProfileState.GET_PROFILE_REQUEST, getProfileInformations),
+  takeLatest(ProfileTypes.GET_PROFILE_REQUEST, getProfileInformations),
 ])
