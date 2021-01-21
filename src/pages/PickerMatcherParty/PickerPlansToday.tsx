@@ -6,7 +6,20 @@ import {
   ContainerPickerColumn,
 } from './styles';
 
-const PickerPlansToday: React.FC = () => {
+//#TODO think how do not duplicate this code
+interface StateAnswer {
+  likes: Array<string>;
+  numberOfPeople: number;
+  howMuch: string;
+}
+interface PickerPlansTodayParams {
+  setPick: (statePrevious: StateAnswer, values: {}) => void
+  answers: StateAnswer
+}
+
+
+
+const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) => {
   const [bodyOne, setBodyOne] = useState(false);
   const [bodyTwo, setBodyTwo] = useState(false);
   const [bodyThree, setBodyThree] = useState(false);
@@ -69,15 +82,34 @@ const PickerPlansToday: React.FC = () => {
     });
   };
 
+  const setPickPlansToday = (planForToday: string) => {
+    const likesPrevious = answers['likes']
+    const hasLunch = (likesPrevious.indexOf(planForToday) > -1);
+    if (hasLunch) {
+      likesPrevious.filter((l: string) => l !== planForToday ? true : false)
+    } else {
+      likesPrevious.push(planForToday)
+    }
+    setPick(answers, {likes: likesPrevious})
+  }
   return (
     <>
       <ContainerPickerColumn>
         <ContainerPickerRow>
+           {/* #TODO
+            BodyPlansToday here can be an [].map(<BodyPlansToday...></BodyPlansToday>)
+            and we caan remove the duplicated code
+            */}
+            {/* ## BUUG
+            need select only tree
+            I think we need fix the UI/UX select
+            */}
           <BodyPlansToday
             select={bodyOne}
             onPress={() => {
               clickedButtons('1');
               setBodyOne(!bodyOne);
+              setPickPlansToday("lunch")
             }}>
             Comer 🍔
           </BodyPlansToday>
@@ -86,6 +118,7 @@ const PickerPlansToday: React.FC = () => {
             onPress={() => {
               clickedButtons('2');
               setBodyTwo(!bodyTwo);
+              setPickPlansToday("drink")
             }}>
             Beber 🍹
           </BodyPlansToday>
@@ -96,6 +129,8 @@ const PickerPlansToday: React.FC = () => {
             onPress={() => {
               clickedButtons('3');
               setBodyThree(!bodyThree);
+              setPickPlansToday("talk")
+
             }}>
             Conversar 🗣
           </BodyPlansToday>
@@ -104,6 +139,8 @@ const PickerPlansToday: React.FC = () => {
             onPress={() => {
               clickedButtons('4');
               setBodyFour(!bodyFour);
+              setPickPlansToday("meetPeople")
+
             }}>
             Conhecer gente nova 😍{' '}
           </BodyPlansToday>
@@ -114,6 +151,8 @@ const PickerPlansToday: React.FC = () => {
             onPress={() => {
               clickedButtons('5');
               setBodyFive(!bodyFive);
+              setPickPlansToday("dance")
+
             }}>
             Dançar 🕺
           </BodyPlansToday>
@@ -122,6 +161,8 @@ const PickerPlansToday: React.FC = () => {
             onPress={() => {
               clickedButtons('6');
               setBodySix(!bodySix);
+              setPickPlansToday("lovers")
+
             }}>
             Rolê romântico ❤
           </BodyPlansToday>

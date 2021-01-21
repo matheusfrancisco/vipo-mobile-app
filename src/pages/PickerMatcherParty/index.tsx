@@ -13,6 +13,12 @@ import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
 
+interface StateAnswer {
+  likes: Array<string>;
+  numberOfPeople: number;
+  howMuch: string;
+}
+
 const PickerMatcherParty: React.FC = () => {
   const informacoes = [
     {title: 'Para quantas pessoas ? ', id: 'AmountPeople'},
@@ -21,17 +27,26 @@ const PickerMatcherParty: React.FC = () => {
   ];
   const navigation = useNavigation();
 
-  const [body, setBody] = useState({});
+  const [answers, setAnswered] = useState({
+    likes: Array(),
+    numberOfPeople: 0,
+    howMuch: ""
+  });
+
+
+  const setPick = (statePrevious: StateAnswer, values: {}) => {
+    setAnswered({...statePrevious, ...values})
+  }
 
   const components = {
     AmountPeople: () => {
-      return <PickerAmountPeople />;
+      return <PickerAmountPeople setPick={setPick}  answers={answers}/>;
     },
     PlansToday: () => {
-      return <PickerPlansToday />;
+      return <PickerPlansToday setPick={setPick}  answers={answers}/>;
     },
     SpendingPerson: () => {
-      return <PickerSpendingPerson />;
+      return <PickerSpendingPerson setPick={setPick}  answers={answers} />;
     },
   };
   const [open, setOpen] = useState('');
@@ -74,6 +89,8 @@ const PickerMatcherParty: React.FC = () => {
         </ScrollView>
         <Button
            onPress={() => {
+            console.log(answers, "answers to sent to backend")
+            //## See how I can pass informations in react navtive using navigation
             navigation.navigate('Match');
           }}
           style={{
