@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform, Text, Alert} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, Platform, Text, Alert, View} from 'react-native';
 
 import {Container, Header, Title, PickerItem, TextH5, Expander} from './styles';
 import IconPlus from 'react-native-vector-icons/Feather';
@@ -102,31 +102,47 @@ const PickerMatcherParty: React.FC = () => {
             })}
           </Container>
         </ScrollView>
-        <Button
-           onPress={() => {
-            if (checkAnswers(answers)) {
-              Alert.alert(
-                'Você precisa responder todas as perguntas para',
-                'recomendarmos o melhor lugar para você',
-              );
-              
-            } else {
-              //## See how I can pass informations in react navtive using navigation
-              //## craete some loading to waiting for recommendations
-              console.log(answers, "answers to sent to backend")
+        <View style={{flexDirection: 'row'}}>
+
+          <Button
+            onPress={() => {
+                navigation.navigate('Home');
+            }}
+            style={{
+              marginLeft: 20,
+              marginRight: 10,
+              width: 150,
+              marginBottom: 5,
+              // position: 'absolute',
+              bottom: 0,
+            }}>
+            Voltar
+          </Button>
+          <Button
+            onPress={() => {
+              if (checkAnswers(answers)) {
+                Alert.alert(
+                  'Você precisa responder todas as perguntas para',
+                  'recomendarmos o melhor lugar para você',
+                );
+                
+              } else {
+                //## See how I can pass informations in react navtive using navigation
+                //## craete some loading to waiting for recommendations
+                console.log(answers, "answers to sent to backend")
 
 
-              navigation.navigate('Match');
-            }
-          }}
-          style={{
-            margin: 10,
-            width: 365,
-            position: 'absolute',
-            bottom: 0,
-          }}>
-          Encontrar o meu role 🎉
-        </Button>
+                navigation.navigate('Match');
+              }
+            }}
+            style={{
+              width: 200,
+              // position: 'absolute',
+              bottom: 0,
+            }}>
+            Encontrar o meu role 🎉
+          </Button>
+        </View>
       </KeyboardAvoidingView>
       {/* <Footer /> */}
     </>
