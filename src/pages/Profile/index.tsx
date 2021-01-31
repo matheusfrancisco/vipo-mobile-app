@@ -31,6 +31,7 @@ const Profile: React.FC = () => {
   const navigation = useNavigation();
   //#TODO fix state
   const { profile }  = useSelector((state: any) => state)
+  console.log("state profile:", profile)
 
   const undoPage = () => {
     navigation.goBack();
