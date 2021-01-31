@@ -33,13 +33,12 @@ function LandingPage() {
 
   useEffect(() => {
     if (access === 'true') {
-      resolveAccesse()
       navigation.navigate('SignIn');
     } else {
       resolveAccesse()
       setFirstAccess()
     }
-  }, [access])
+  }, [])
 
   return (
     <KeyboardAvoidingView

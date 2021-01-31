@@ -13,9 +13,6 @@ import EditProfile from '../pages/Profile/EditProfile';
 import History from '../pages/History';
 import CheckMatch from '../pages/Match/CheckMatch';
 
-
-import LandingPage from '../pages/LandingPage';
-
 const App = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
@@ -31,7 +28,6 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="ProfileDrink" component={ProfileDrink} />
     <App.Screen name="Profile" component={Profile} />
     <App.Screen name="EditProfile" component={EditProfile} />
-    <App.Screen name="LandingPage" component={LandingPage} />
     <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
     <App.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
