@@ -5,6 +5,7 @@ import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import {rootSaga} from "./modules/rootSaga";
 import {allReducer} from "./modules/allReducers";
 import active from "../../active.env"
+import AsyncStorage from "@react-native-community/async-storage";
 
 /**
  * Use this instead storage of reduxPersist
@@ -24,6 +25,10 @@ const middleware = [
 
 if (active === `dev`) { 
   const logger = createLogger({logger:console})
+  //#TODO see how we reset the local storage when we had in dev mode
+  //#TODO for instance when we needed to reset uncommented the line 30
+  //AsyncStorage.clear().then(() => console.log('Cleared'))
+  
   middleware.push(logger);
 }
 

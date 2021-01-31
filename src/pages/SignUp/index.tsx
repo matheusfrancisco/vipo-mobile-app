@@ -69,13 +69,12 @@ const SignUp: React.FC = () => {
         const res = await api.post('/users', data);
         
         if (res.status == 201) {
-          Alert.alert(
-            'Cadastro realizado com sucesso',
-            'Você já pode fazer login na aplicação',
-          );
+          console.log('created')
+          navigation.navigate('RegistrationCompleted')
+        } else  {
+          navigation.goBack();
         }
 
-        navigation.goBack();
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getvalidationErrors(error);
@@ -170,8 +169,7 @@ const SignUp: React.FC = () => {
                     if (!checked) {
                       Alert.alert('Por favor, aceite nossos termos de privacidade');
                     } else {
-                      // formRef.current?.submitForm()
-                      navigation.navigate('RegistrationCompleted')
+                      formRef.current?.submitForm()
                     }
                   }}
                 >

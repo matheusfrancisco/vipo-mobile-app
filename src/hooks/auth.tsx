@@ -93,4 +93,12 @@ function useAuth(): AuthContextData {
   return context;
 }
 
-export { AuthUser, useAuth };
+async function getToken(): Promise<string|null> {
+  const [token, user] = await AsyncStorage.multiGet([
+    '@Vipo:token',
+    '@Vipo:user',
+  ]);
+  return token[1];
+}
+
+export { AuthUser, useAuth, getToken };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/logoOficial.png';
 import landingOne from '../../assets/landingPage/one.png';
 
@@ -14,14 +14,32 @@ import {
 import {Container, ImageContainer, AlignText, BannerOne, ContainerBanner} from './styles';
 import {Title} from '../../global';
 import Button from '../../components/Button';
+import { setFirstAccess, hasAccess } from '../../hooks/firstAccess';
 
 function LandingPage() {
   const {navigate} = useNavigation();
   const navigation = useNavigation();
+  const [access, setAccess] = useState('false')
 
   function handleNavigateToFormPage() {
     navigate('Form');
   }
+
+  const resolveAccesse = () => {
+    const hasAccs = hasAccess().then((access) => {
+      if (access) setAccess(access)
+    });   
+  }
+
+  useEffect(() => {
+    if (access === 'true') {
+      resolveAccesse()
+      navigation.navigate('SignIn');
+    } else {
+      resolveAccesse()
+      setFirstAccess()
+    }
+  }, [access])
 
   return (
     <KeyboardAvoidingView

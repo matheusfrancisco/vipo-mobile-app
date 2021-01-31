@@ -33,7 +33,7 @@ const EmailSend: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const {fakeSingIn} = useAuth();
+  // const {fakeSingIn} = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -50,7 +50,7 @@ const EmailSend: React.FC = () => {
           abortEarly: false,
         });
 
-        await fakeSingIn();
+        // await fakeSingIn();
         // await signIn({
         //   email: data.email,
         //   password: data.password,
@@ -65,7 +65,9 @@ const EmailSend: React.FC = () => {
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
       }
     },
-    [fakeSingIn],
+    [
+      //fakeSingIn
+    ],
   );
 
   return (

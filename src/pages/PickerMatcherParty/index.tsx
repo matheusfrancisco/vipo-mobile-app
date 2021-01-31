@@ -14,6 +14,7 @@ import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { answeredRecommendtionsRequest } from '../../store/modules/recommendations/actions';
+import { sendRecommendations } from '../../store/modules/recommendations/saga';
 
 interface StateAnswer {
   likes: Array<string>;
@@ -113,7 +114,6 @@ const PickerMatcherParty: React.FC = () => {
               marginRight: 10,
               width: 150,
               marginBottom: 5,
-              // position: 'absolute',
               bottom: 0,
             }}>
             Voltar
@@ -130,8 +130,9 @@ const PickerMatcherParty: React.FC = () => {
                 //## See how I can pass informations in react navtive using navigation
                 //## craete some loading to waiting for recommendations
                 console.log(answers, "answers to sent to backend")
-
-
+                
+                const rec = sendRecommendations(answers)
+                console.log(rec)
                 navigation.navigate('Match');
               }
             }}
