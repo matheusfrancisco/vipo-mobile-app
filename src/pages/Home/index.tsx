@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     <>
       <HeaderProfile />
       <Search />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

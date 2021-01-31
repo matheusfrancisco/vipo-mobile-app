@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {KeyboardAvoidingView, ScrollView, Platform, Text, Alert} from 'react-native';
 
 import {Container, Header, Title, PickerItem, TextH5, Expander} from './styles';
 import IconPlus from 'react-native-vector-icons/Feather';
@@ -12,11 +12,19 @@ import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { answeredRecommendtionsRequest } from '../../store/modules/recommendations/actions';
 
 interface StateAnswer {
   likes: Array<string>;
   numberOfPeople: number;
   howMuch: string;
+}
+
+const checkAnswers = (answers: StateAnswer) => {
+  if (answers.howMuch === "" || answers.numberOfPeople === 0 || answers.likes === Array()) {
+    return true
+  }
 }
 
 const PickerMatcherParty: React.FC = () => {
@@ -26,13 +34,20 @@ const PickerMatcherParty: React.FC = () => {
     {title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson'},
   ];
   const navigation = useNavigation();
+  const state  = useSelector((state: any) => state)
+  console.log("initialState:", state)
 
   const [answers, setAnswered] = useState({
-    likes: Array(),
+    howMuch: '',
     numberOfPeople: 0,
-    howMuch: ""
+    likes: Array(),
   });
+  
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(answeredRecommendtionsRequest(answers))
 
+  }, [answers])
 
   const setPick = (statePrevious: StateAnswer, values: {}) => {
     setAnswered({...statePrevious, ...values})
@@ -89,9 +104,20 @@ const PickerMatcherParty: React.FC = () => {
         </ScrollView>
         <Button
            onPress={() => {
-            console.log(answers, "answers to sent to backend")
-            //## See how I can pass informations in react navtive using navigation
-            navigation.navigate('Match');
+            if (checkAnswers(answers)) {
+              Alert.alert(
+                'Você precisa responder todas as perguntas para',
+                'recomendarmos o melhor lugar para você',
+              );
+              
+            } else {
+              //## See how I can pass informations in react navtive using navigation
+              //## craete some loading to waiting for recommendations
+              console.log(answers, "answers to sent to backend")
+
+
+              navigation.navigate('Match');
+            }
           }}
           style={{
             margin: 10,
@@ -102,7 +128,7 @@ const PickerMatcherParty: React.FC = () => {
           Encontrar o meu role 🎉
         </Button>
       </KeyboardAvoidingView>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

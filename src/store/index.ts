@@ -23,7 +23,6 @@ const middleware = [
 ];
 
 if (active === `dev`) { 
-  console.log("add logger")
   const logger = createLogger({logger:console})
   middleware.push(logger);
 }
