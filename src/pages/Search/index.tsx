@@ -28,7 +28,7 @@ const Seach: React.FC = () => {
           contentContainerStyle={{flex: 1}}>
           <Container>
             <View>
-              <Title3>PROCURAR UM ROLÊ</Title3>
+              <Title3>Toque para Procurar um Rolê</Title3>
             </View>
 
             <RectButton

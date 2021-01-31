@@ -14,8 +14,12 @@ const HeaderProfile: React.FC = () => {
             }}>
           <Icon
             name="user"
-            size={15}
-            color="#fff"
+            size={38}
+            style={{
+              alignContent: 'center',
+              textAlign: 'center'
+            }}
+            color="#a396cb"
             onPress={() => {
               navigation.navigate('Profile');
             }}
@@ -24,8 +28,12 @@ const HeaderProfile: React.FC = () => {
         <IconBars>
           <Icon
             name="bars"
-            size={15}
-            color="#fff"
+            size={38}
+            color="#a396cb"
+            style={{
+              alignContent: 'center',
+              textAlign: 'center'
+            }}
             onPress={() => {
               navigation.navigate('History');
             }}
