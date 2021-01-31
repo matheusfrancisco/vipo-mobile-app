@@ -6,6 +6,7 @@ import {
   ScrollView,
   TextInput,
   Alert,
+  Text
 } from 'react-native';
 import * as Yup from 'yup';
 

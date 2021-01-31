@@ -29,10 +29,10 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="ProfileMusic" component={ProfileMusic} />
     <App.Screen name="ProfileFood" component={ProfileFood} />
     <App.Screen name="ProfileDrink" component={ProfileDrink} />
-    <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="Profile" component={Profile} />
     <App.Screen name="EditProfile" component={EditProfile} />
     <App.Screen name="LandingPage" component={LandingPage} />
+    <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
     <App.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
     <App.Screen name="History" component={History} />

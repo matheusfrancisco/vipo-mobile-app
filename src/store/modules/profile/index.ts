@@ -9,12 +9,11 @@ const initialProfileState = {
 const reducer = (state = initialProfileState, action: any) => {
   switch (action.type) {
     case ProfileTypes.GET_PROFILE_INFORMATION: {
-      const user = action.payload
-
+      const { profile } = action.payload.profileInformation
       return {...state, 
-        name: user.name,
+        name: profile.name,
         // address: user.address,
-        email: user.email
+        email: profile.email
       }
       
     }

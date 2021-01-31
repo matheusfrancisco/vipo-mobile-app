@@ -25,13 +25,12 @@ import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { ApplicationState } from '../../store';
 
 
 const Profile: React.FC = () => {
   const navigation = useNavigation();
-
-  const { profile }  = useSelector((state: ApplicationState) => state)
+  //#TODO fix state
+  const { profile }  = useSelector((state: any) => state)
 
   const undoPage = () => {
     navigation.goBack();
