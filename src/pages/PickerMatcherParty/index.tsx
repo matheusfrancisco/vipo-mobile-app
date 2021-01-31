@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {KeyboardAvoidingView, ScrollView, Platform, Text, Alert, View} from 'react-native';
 
 import {Container, Header, Title, PickerItem, TextH5, Expander} from './styles';
 import IconPlus from 'react-native-vector-icons/Feather';
@@ -12,6 +12,21 @@ import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { answeredRecommendtionsRequest } from '../../store/modules/recommendations/actions';
+import { sendRecommendations } from '../../store/modules/recommendations/saga';
+
+interface StateAnswer {
+  likes: Array<string>;
+  numberOfPeople: number;
+  howMuch: string;
+}
+
+const checkAnswers = (answers: StateAnswer) => {
+  if (answers.howMuch === "" || answers.numberOfPeople === 0 || answers.likes === Array()) {
+    return true
+  }
+}
 
 const PickerMatcherParty: React.FC = () => {
   const informacoes = [
@@ -20,18 +35,34 @@ const PickerMatcherParty: React.FC = () => {
     {title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson'},
   ];
   const navigation = useNavigation();
+  const state  = useSelector((state: any) => state)
+  console.log("initialState:", state)
 
-  const [body, setBody] = useState({});
+  const [answers, setAnswered] = useState({
+    howMuch: '',
+    numberOfPeople: 0,
+    likes: Array(),
+  });
+  
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(answeredRecommendtionsRequest(answers))
+
+  }, [answers])
+
+  const setPick = (statePrevious: StateAnswer, values: {}) => {
+    setAnswered({...statePrevious, ...values})
+  }
 
   const components = {
     AmountPeople: () => {
-      return <PickerAmountPeople />;
+      return <PickerAmountPeople setPick={setPick}  answers={answers}/>;
     },
     PlansToday: () => {
-      return <PickerPlansToday />;
+      return <PickerPlansToday setPick={setPick}  answers={answers}/>;
     },
     SpendingPerson: () => {
-      return <PickerSpendingPerson />;
+      return <PickerSpendingPerson setPick={setPick}  answers={answers} />;
     },
   };
   const [open, setOpen] = useState('');
@@ -72,20 +103,49 @@ const PickerMatcherParty: React.FC = () => {
             })}
           </Container>
         </ScrollView>
-        <Button
-           onPress={() => {
-            navigation.navigate('Match');
-          }}
-          style={{
-            margin: 10,
-            width: 365,
-            position: 'absolute',
-            bottom: 0,
-          }}>
-          Encontrar o meu role 🎉
-        </Button>
+        <View style={{flexDirection: 'row'}}>
+
+          <Button
+            onPress={() => {
+                navigation.navigate('Home');
+            }}
+            style={{
+              marginLeft: 20,
+              marginRight: 10,
+              width: 150,
+              marginBottom: 5,
+              bottom: 0,
+            }}>
+            Voltar
+          </Button>
+          <Button
+            onPress={() => {
+              if (checkAnswers(answers)) {
+                Alert.alert(
+                  'Você precisa responder todas as perguntas para',
+                  'recomendarmos o melhor lugar para você',
+                );
+                
+              } else {
+                //## See how I can pass informations in react navtive using navigation
+                //## craete some loading to waiting for recommendations
+                console.log(answers, "answers to sent to backend")
+                
+                const rec = sendRecommendations(answers)
+                console.log(rec)
+                navigation.navigate('Match');
+              }
+            }}
+            style={{
+              width: 200,
+              // position: 'absolute',
+              bottom: 0,
+            }}>
+            Encontrar o meu role 🎉
+          </Button>
+        </View>
       </KeyboardAvoidingView>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -2,7 +2,17 @@ import React, {useState} from 'react';
 
 import {Body, ContainerPickerRow} from './styles';
 
-const PickerAmountPeople: React.FC = () => {
+interface StateAnswer {
+  likes: Array<string>;
+  numberOfPeople: number;
+  howMuch: string;
+}
+interface PickerAmmountParams {
+  setPick: (statePrevious: StateAnswer, values: {}) => void
+  answers: StateAnswer
+}
+
+const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) => {
   const [bodyOne, setBodyOne] = useState(false);
   const [bodyTwo, setBodyTwo] = useState(false);
   const [bodyThree, setBodyThree] = useState(false);
@@ -60,11 +70,16 @@ const PickerAmountPeople: React.FC = () => {
 
   return (
     <ContainerPickerRow>
+      {/* #TODO
+       body here can be an [].map(<Body ...></Body>)
+       and we caan remove the duplicated code
+      */}
       <Body
         select={bodyOne}
         onPress={() => {
           clickedButtons('1');
           setBodyOne(!bodyOne);
+          setPick(answers, {numberOfPeople: 1})
         }}>
         1
       </Body>
@@ -73,6 +88,8 @@ const PickerAmountPeople: React.FC = () => {
         onPress={() => {
           clickedButtons('2');
           setBodyTwo(!bodyTwo);
+          setPick(answers, {numberOfPeople: 2})
+
         }}>
         2
       </Body>
@@ -81,6 +98,8 @@ const PickerAmountPeople: React.FC = () => {
         onPress={() => {
           clickedButtons('3');
           setBodyThree(!bodyThree);
+          setPick(answers, {numberOfPeople: 3})
+
         }}>
         3
       </Body>
@@ -89,6 +108,8 @@ const PickerAmountPeople: React.FC = () => {
         onPress={() => {
           clickedButtons('4');
           setBodyFour(!bodyFour);
+          setPick(answers, {numberOfPeople: 4})
+
         }}>
         4
       </Body>
@@ -97,6 +118,8 @@ const PickerAmountPeople: React.FC = () => {
         onPress={() => {
           clickedButtons('5');
           setBodyFive(!bodyFive);
+          setPick(answers, {numberOfPeople: 5})
+
         }}>
         5
       </Body>

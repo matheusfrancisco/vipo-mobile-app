@@ -1,17 +1,17 @@
-import {  takeLatest, put, all } from 'redux-saga/effects';
-import { ProfileTypes } from './types'
+import { put } from 'redux-saga/effects';
 import { getProfileSucess } from './actions';
+import { ProfileTypes } from './types'
+import {  takeLatest, all } from 'redux-saga/effects';
 
-function* getProfileInformations({profileInformations} : any) {
-  
+export function* getProfileInformations({ profileInformations } : any) {
   try {
     put(getProfileSucess(profileInformations))
   }
   catch (error) {
-    console.log(error);
+    console.log(error,);
   }
 }
 
-export default all([
-  takeLatest(ProfileTypes.GET_PROFILE_REQUEST, getProfileInformations),
-])
+export default function* watch() {
+  yield takeLatest(ProfileTypes.GET_PROFILE_REQUEST, getProfileInformations);
+}

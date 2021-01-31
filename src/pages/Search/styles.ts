@@ -6,6 +6,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: space-around;
+  /* #TODO need to add a background to home page */
   padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
 

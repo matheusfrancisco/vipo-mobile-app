@@ -11,14 +11,14 @@ const Home: React.FC = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      dispatch(getProfileInformationsRequest({user}))
+    dispatch(getProfileInformationsRequest(user))
   }, [user, dispatch])
 
   return (
     <>
       <HeaderProfile />
       <Search />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

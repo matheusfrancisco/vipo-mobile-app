@@ -25,6 +25,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
 import image from '../../assets/profile/profile.jpg'
+import { useSelector } from 'react-redux';
 interface ProfileFormData{
   name: string,
   adress: string,
@@ -33,7 +34,9 @@ interface ProfileFormData{
 }
 
 const EditProfile: React.FC = () => {
-  const {user} = useAuth();
+  //#TODO type to application state must be create
+  const { profile }  = useSelector((state: any) => state)
+  console.log("state profile:", profile)
   const navigation = useNavigation();
 
   const undoPage = () => {
@@ -117,7 +120,7 @@ const EditProfile: React.FC = () => {
               <IconEdit name="camera" size={20} color="#fff" />
             </AlignIconHeader>
 
-            <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={profile} ref={formRef} onSubmit={handleSignUp}>
               <ContainerForm>
                 <Input
                   autoCapitalize="words"

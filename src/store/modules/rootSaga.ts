@@ -1,9 +1,9 @@
-import { all } from 'redux-saga/effects';
-import  profile from './profile/saga'
+import {all} from "redux-saga/effects";
 
-// Redux Saga: Root Saga
-export function* rootSaga () {
-  yield all([
-    profile,
-  ]);
+
+import profileSaga from "./profile/saga";
+import answerSaga from "./recommendations/saga";
+
+export const rootSaga = function* rootSaga() {
+  yield all([profileSaga(), answerSaga()]);
 };

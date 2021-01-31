@@ -1,39 +1,44 @@
-import { createStore, applyMiddleware } from 'redux';
-// import { createLogger } from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from "redux-saga";
+import {createLogger} from "redux-logger";
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 
-// Imports: Redux Root Reducer
-import rootReducer from './modules/rootReducer';
+import {rootSaga} from "./modules/rootSaga";
+import {allReducer} from "./modules/allReducers";
+import active from "../../active.env"
+import AsyncStorage from "@react-native-community/async-storage";
 
-// Imports: Redux Root Saga
-import { rootSaga } from './modules/rootSaga';
-
-import { ProfileState } from './modules/profile/types'
-
-export interface ApplicationState {
-  profile: ProfileState
-}
-
-
-const middlewares = [];
-
-// Middleware: Redux Saga
+/**
+ * Use this instead storage of reduxPersist
+ *
+ */
+// import { reduxPersistStorage } from '@utils'
+// const persistConfig = {
+//     ...
+//     storage: reduxPersistStorage
+//   }
+const devMode = __DEV__;
 const sagaMiddleware = createSagaMiddleware();
+const middleware = [
+  ...getDefaultMiddleware({serializableCheck: false}),
+  sagaMiddleware,
+];
 
-middlewares.push(sagaMiddleware);
-
-// Redux: Store
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-   sagaMiddleware
-  ),
-);
-
-// Middleware: Redux Saga
-sagaMiddleware.run(rootSaga);
-
-// Exports
-export {
-  store,
+if (active === `dev`) { 
+  const logger = createLogger({logger:console})
+  //#TODO see how we reset the local storage when we had in dev mode
+  //#TODO for instance when we needed to reset uncommented the line 30
+  // AsyncStorage.clear().then(() => console.log('Cleared'))
+  
+  middleware.push(logger);
 }
+
+const storeConfig = () => {
+  const store = configureStore({
+    reducer: allReducer,
+    devTools: devMode,
+    middleware,
+  });
+  sagaMiddleware.run(rootSaga);
+  return store;
+};
+export const store = storeConfig();
