@@ -19,25 +19,24 @@ import { setFirstAccess, hasAccess } from '../../hooks/firstAccess';
 function LandingPage() {
   const {navigate} = useNavigation();
   const navigation = useNavigation();
-  const [access, setAccess] = useState('false')
 
   function handleNavigateToFormPage() {
     navigate('Form');
   }
 
-  const resolveAccesse = () => {
-    const hasAccs = hasAccess().then((access) => {
-      if (access) setAccess(access)
-    });   
+  const resolveAccesse = async () => {
+    return await hasAccess()
   }
 
   useEffect(() => {
-    if (access === 'true') {
-      navigation.navigate('SignIn');
-    } else {
-      resolveAccesse()
-      setFirstAccess()
-    }
+    resolveAccesse().then(access => {
+      if (access === 'true')  {
+        navigation.navigate('SignIn')
+      } else {
+        setFirstAccess()
+      }
+
+    })
   }, [])
 
   return (
