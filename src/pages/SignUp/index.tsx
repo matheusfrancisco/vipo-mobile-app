@@ -8,8 +8,6 @@ import {
   Alert,
 } from 'react-native';
 
-import CheckBox from '@react-native-community/checkbox';
-
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
@@ -21,10 +19,11 @@ import getvalidationErrors from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.png';
 
-import { Title, TextMin } from '../../global';
+import { Title, TextItalic } from '../../global';
 
 import api from '../../services/api';
-
+import DatePicker from 'react-native-datepicker'
+import RNPickerSelect from 'react-native-picker-select';
 interface SignUpData {
   name: string;
   email: string;
@@ -35,8 +34,12 @@ import {
   Container,
   ContainerTextCreateAccount,
   ContainerButton,
-  TermsText,
-  ColorText,
+  Row,
+  DatePickerText,
+  Genre,
+  GenreText,
+  TextTerms,
+  ContainerInput,
 } from './styles';
 
 const SignUp: React.FC = () => {
@@ -44,9 +47,10 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
-  const checkRef = useRef<CheckBox>(null);
 
-  const [checked, setChecked] = useState(false);
+  const dateNow = new Date()
+  const [date, setDate] = useState(dateNow.toJSON());
+  const [gender, setGender] = useState({title: "Gênero"})
 
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
@@ -101,24 +105,40 @@ const SignUp: React.FC = () => {
             <Image
               source={logo}
               style={{
-                width: 218,
-                height: 218,
-                marginTop: 90,
+                width: 160,
+                height: 160,
+                marginTop: 130,
               }}
             />
             <ContainerTextCreateAccount>
               <Title>Crie sua conta</Title>
             </ContainerTextCreateAccount>
             <Form ref={formRef} onSubmit={handleSignUp}>
-              <Input
-                autoCapitalize="words"
-                name="name"
-                icon="user"
-                placeholder="Nome"
-                onSubmitEditing={() => {
-                  emailInputref.current?.focus();
-                }}
-              />
+              <Row>
+                <ContainerInput>
+                  <Input
+                    autoCapitalize="words"
+                    name="name"
+                    icon=""
+                    placeholder="Nome"
+                    onSubmitEditing={() => {
+                      emailInputref.current?.focus();
+                    }}
+                  />
+                </ContainerInput>
+                <ContainerInput>
+                  <Input
+                    autoCapitalize="words"
+                    name="sobrenome"
+                    icon=""
+                    placeholder="Sobrenome"
+                    onSubmitEditing={() => {
+                      emailInputref.current?.focus();
+                    }}
+                    
+                  />
+                </ContainerInput>
+              </Row>
 
               <Input
                 ref={emailInputref}
@@ -146,31 +166,55 @@ const SignUp: React.FC = () => {
                   formRef.current?.submitForm();
                 }}
               /> 
-              <CheckBox
-                disabled={false}
-                value={checked}
-                onValueChange={(newValue) => setChecked(newValue)}
-
-              />
-              
-              <TermsText>
-                <TextMin>
-                  Você concorda com nossos
-                  <ColorText>
-                  termos de privacidade
-                  </ColorText>
-                </TextMin>
-              </TermsText>
-        
-
+                <DatePickerText>Data de nascimento: </DatePickerText>
+                <DatePicker
+                  style={{width: 330}}
+                  date={date}
+                  mode="date"
+                  placeholder="select date"
+                  format="YYYY-MM-DD"
+                  minDate="1760-05-01"
+                  maxDate="2020-06-01"
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  customStyles={{
+                    dateIcon: {
+                      position: 'absolute',
+                      left: 0,
+                      top: 4,
+                      marginLeft: 15
+                    },
+                    dateInput: {
+                      marginLeft: 0,
+                      borderRadius: 10,
+                      borderColor: '#dadfe2',
+                    }
+                  }}
+                  onDateChange={(date) => {setDate(date)}}
+                />
+                <Genre>
+                  <RNPickerSelect
+                    onValueChange={(value) => setGender({title: value})}
+                    items={[
+                        { label: 'Feminino', value: 'Feminino' },
+                        { label: 'Masculino', value: 'Masculino' },
+                        { label: 'Neutro', value: 'Neutro' },
+                    ]}
+                    pickerProps={{
+                    accessibilityLabel: gender.title,
+                  }}
+                  >
+                  <GenreText>{gender.title}</GenreText>
+                  </RNPickerSelect>
+                </Genre>
+                <TextTerms>
+                  Ao clicar em Cadastrar, você concorda com nossos 
+                  <TextItalic> Termos, Política de dados e Política de Cookies.</TextItalic>
+                </TextTerms>
               <ContainerButton>
                 <Button
                   onPress={() => {
-                    if (!checked) {
-                      Alert.alert('Por favor, aceite nossos termos de privacidade');
-                    } else {
-                      formRef.current?.submitForm()
-                    }
+                    formRef.current?.submitForm()
                   }}
                 >
                   Cadastrar
