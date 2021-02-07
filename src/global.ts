@@ -49,3 +49,7 @@ export const TextH5 = styled.Text`
   font-size: 14px;
   font-family: 'RobotoSlab-Medium';
 `;
+
+export const TextItalic = styled.Text`
+  text-decoration: underline;
+`

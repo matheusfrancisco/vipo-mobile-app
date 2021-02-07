@@ -26,20 +26,12 @@ export const BackToSingIn = styled.TouchableOpacity`
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
 `;
-export const PrivacyTerms = styled.View`
-  border: 2px;
-  height: 15px;
-  width: 15px;
-`;
-export const TermsText = styled.View`
-  margin: -25px 0px 0px 35px;
-`;
 
 export const ContainerTextCreateAccount = styled.View`
   margin: 20px 0px;
 `;
 export const ContainerButton = styled.View`
-  margin-top: 75px;
+  margin-top: 40px;
 `;
 
 export const BackToSingInText = styled.Text`
@@ -48,11 +40,36 @@ export const BackToSingInText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
 `;
-export const ColorText = styled.Text`
-  color: #9283bf;
+
+export const Row = styled.View`
+  flex-direction: row;
+  width: 165px;
+`
+export const DatePickerText = styled.Text`
+  font-size: 15px;
+  font-family: 'RobotoSlab-Medium';
+  margin-bottom: 15px;
+`
+
+export const Genre = styled.View`
+  margin-top: 15px;
+  border: 1px solid #dadfe2;
+  border-radius: 10px;
+`
+
+export const GenreText = styled.Text`
+  font-size: 15px;
+  font-family: 'RobotoSlab-Medium';
+  margin: 5px 0px 10px 15px;
+`
+
+export const TextTerms = styled.Text`
+  font-size: 12px;
+  font-family: 'RobotoSlab-Medium';
+  margin-top: 20px;
 `;
 
-export const TextRegistration = styled.Text`
-  text-align: center;
-  color: #000000;
-`;
+export const ContainerInput = styled.View`
+  width: 158px;
+  margin-right: 15px;
+  `
