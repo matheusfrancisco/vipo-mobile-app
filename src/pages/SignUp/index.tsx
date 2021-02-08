@@ -5,7 +5,9 @@ import {
   Platform,
   ScrollView,
   TextInput,
+  DatePickerAndroid,
   Alert,
+  Picker,
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -46,6 +48,8 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
+  const genderRef = useRef<RNPickerSelect>(null);
+  const birthDateRef = useRef<DatePicker>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
   const dateNow = new Date();
@@ -54,6 +58,7 @@ const SignUp: React.FC = () => {
 
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
+      console.log(data, "Entrou")
       try {
         formRef.current?.setErrors({});
 
@@ -117,7 +122,7 @@ const SignUp: React.FC = () => {
                   <Input
                     autoCapitalize="words"
                     name="name"
-                    icon=""
+                    icon="text"
                     placeholder="Nome"
                     onSubmitEditing={() => {
                       emailInputref.current?.focus();
@@ -127,8 +132,8 @@ const SignUp: React.FC = () => {
                 <ContainerInput>
                   <Input
                     autoCapitalize="words"
-                    name="sobrenome"
-                    icon=""
+                    name="lastName"
+                    icon="text"
                     placeholder="Sobrenome"
                     onSubmitEditing={() => {
                       emailInputref.current?.focus();
@@ -160,7 +165,7 @@ const SignUp: React.FC = () => {
                 textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => {
-                  formRef.current?.submitForm();
+                  birthDateRef.current?.onPressDate()
                 }}
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
