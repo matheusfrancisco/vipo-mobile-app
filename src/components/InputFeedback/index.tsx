@@ -1,8 +1,8 @@
 import React from 'react';
-import {Container, TextInput} from './styles';
+import { Container, TextInput } from './styles';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const InputFeedback: React.FC = ({...rest}) => (
+const InputFeedback: React.FC = ({ ...rest }) => (
   <Container>
     <TextInput
       keyboardAppearance="dark"

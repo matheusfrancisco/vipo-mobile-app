@@ -12,7 +12,7 @@ export const Container = styled.View`
 export const Title = styled.Text`
   color: #9283bf;
   font-weight: bold;
-  text-decoration:underline;
+  text-decoration: underline;
   margin-top: 20px;
 `;
 export const IconBorder = styled(RectButton)`
@@ -32,29 +32,28 @@ export const ContainerHistory = styled.View`
   border: 2px solid #000;
   border-radius: 15px;
   margin: 20px;
-`
+`;
 
 export const ImageItem = styled.Image`
   width: 100%;
   height: 40%;
   border-radius: 10px;
-`
+`;
 
 export const TitleImage = styled.Text`
   color: #fff;
   font-weight: bold;
-  position:absolute;
+  position: absolute;
   margin-top: 25px;
   margin-left: 10px;
-`
+`;
 
 export const Item = styled.View`
- padding: 10px;
- flex-direction: row;
- justify-content: space-evenly;
-`
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
 
 export const ContainerText = styled.Text`
   align-self: center;
-
-`
+`;

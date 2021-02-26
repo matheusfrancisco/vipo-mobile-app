@@ -73,11 +73,8 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-
   return (
-    <AuthContext.Provider
-      value={{ user: data.user, loading, signIn, signOut }}
-    >
+    <AuthContext.Provider value={{ user: data.user, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -93,7 +90,7 @@ function useAuth(): AuthContextData {
   return context;
 }
 
-async function getToken(): Promise<string|null> {
+async function getToken(): Promise<string | null> {
   const [token, user] = await AsyncStorage.multiGet([
     '@Vipo:token',
     '@Vipo:user',

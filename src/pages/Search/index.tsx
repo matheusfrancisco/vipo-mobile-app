@@ -6,13 +6,13 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import {RectButton} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
+import { RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import InputSearch from '../../components/InputSearch';
 import logo from '../../assets/logo.png';
-import {Container, SeachInput} from './styles';
-import {Title3} from '../../global';
+import { Container, SeachInput } from './styles';
+import { Title3 } from '../../global';
 
 const Seach: React.FC = () => {
   const navigation = useNavigation();
@@ -20,12 +20,12 @@ const Seach: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <View>
               <Title3>Toque para Procurar um Rolê</Title3>

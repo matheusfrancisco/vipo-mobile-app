@@ -1,12 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform, Text, Alert, View} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  Text,
+  Alert,
+  View,
+} from 'react-native';
 
-import {Container, Header, Title, PickerItem, TextH5, Expander} from './styles';
+import {
+  Container,
+  Header,
+  Title,
+  PickerItem,
+  TextH5,
+  Expander,
+} from './styles';
 import IconPlus from 'react-native-vector-icons/Feather';
 
 import Footer from '../../components/Footer';
 
-import {Title3} from '../../global';
+import { Title3 } from '../../global';
 import Button from '../../components/Button';
 import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
@@ -23,46 +37,49 @@ interface StateAnswer {
 }
 
 const checkAnswers = (answers: StateAnswer) => {
-  if (answers.howMuch === "" || answers.numberOfPeople === 0 || answers.likes === Array()) {
-    return true
+  if (
+    answers.howMuch === '' ||
+    answers.numberOfPeople === 0 ||
+    answers.likes === Array()
+  ) {
+    return true;
   }
-}
+};
 
 const PickerMatcherParty: React.FC = () => {
   const informacoes = [
-    {title: 'Para quantas pessoas ? ', id: 'AmountPeople'},
-    {title: 'Quais os planos para hoje ?', id: 'PlansToday'},
-    {title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson'},
+    { title: 'Para quantas pessoas ? ', id: 'AmountPeople' },
+    { title: 'Quais os planos para hoje ?', id: 'PlansToday' },
+    { title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson' },
   ];
   const navigation = useNavigation();
-  const state  = useSelector((state: any) => state)
-  console.log("initialState:", state)
+  const state = useSelector((state: any) => state);
+  console.log('initialState:', state);
 
   const [answers, setAnswered] = useState({
     howMuch: '',
     numberOfPeople: 0,
     likes: Array(),
   });
-  
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(answeredRecommendtionsRequest(answers))
 
-  }, [answers])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(answeredRecommendtionsRequest(answers));
+  }, [answers]);
 
   const setPick = (statePrevious: StateAnswer, values: {}) => {
-    setAnswered({...statePrevious, ...values})
-  }
+    setAnswered({ ...statePrevious, ...values });
+  };
 
   const components = {
     AmountPeople: () => {
-      return <PickerAmountPeople setPick={setPick}  answers={answers}/>;
+      return <PickerAmountPeople setPick={setPick} answers={answers} />;
     },
     PlansToday: () => {
-      return <PickerPlansToday setPick={setPick}  answers={answers}/>;
+      return <PickerPlansToday setPick={setPick} answers={answers} />;
     },
     SpendingPerson: () => {
-      return <PickerSpendingPerson setPick={setPick}  answers={answers} />;
+      return <PickerSpendingPerson setPick={setPick} answers={answers} />;
     },
   };
   const [open, setOpen] = useState('');
@@ -70,7 +87,7 @@ const PickerMatcherParty: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView keyboardShouldPersistTaps="handled">
@@ -103,11 +120,10 @@ const PickerMatcherParty: React.FC = () => {
             })}
           </Container>
         </ScrollView>
-        <View style={{flexDirection: 'row'}}>
-
+        <View style={{ flexDirection: 'row' }}>
           <Button
             onPress={() => {
-                navigation.navigate('Home');
+              navigation.navigate('Home');
             }}
             style={{
               marginLeft: 20,
@@ -125,14 +141,13 @@ const PickerMatcherParty: React.FC = () => {
                   'Você precisa responder todas as perguntas para',
                   'recomendarmos o melhor lugar para você',
                 );
-                
               } else {
                 //## See how I can pass informations in react navtive using navigation
                 //## craete some loading to waiting for recommendations
-                console.log(answers, "answers to sent to backend")
-                
-                const rec = sendRecommendations(answers)
-                console.log(rec)
+                console.log(answers, 'answers to sent to backend');
+
+                const rec = sendRecommendations(answers);
+                console.log(rec);
                 navigation.navigate('Match');
               }
             }}

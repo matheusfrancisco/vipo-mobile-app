@@ -1,5 +1,5 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocalion from 'react-native-vector-icons/Octicons';
 import IconEvil from 'react-native-vector-icons/EvilIcons';
@@ -14,15 +14,15 @@ import {
   Footer,
 } from './styles';
 
-import {TextMin, TextH3} from '../../global';
+import { TextMin, TextH3 } from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 const Match: React.FC = () => {
   const navigation = useNavigation();
-  const { answersQuestion }  = useSelector((state: any) => state)
-  console.log("answersQuestion: 1", answersQuestion)
+  const { answersQuestion } = useSelector((state: any) => state);
+  console.log('answersQuestion: 1', answersQuestion);
   const yourMatchs = [
     {
       id: 1,
@@ -41,20 +41,18 @@ const Match: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <ImageBanner source={yourMatchs[0]}>
             <Title>{yourMatchs[0].name}</Title>
           </ImageBanner>
 
           <Description>
-            <TextH3>
-            {yourMatchs[0].description}
-            </TextH3>
+            <TextH3>{yourMatchs[0].description}</TextH3>
           </Description>
           <Line />
 
@@ -89,7 +87,14 @@ const Match: React.FC = () => {
         <Footer>
           <IconEvil name="close" size={30} color="red" />
           <Icon name="send-o" size={30} color="#000" />
-          <IconEvil onPress={() => { navigation.navigate('CheckMatch');}} name="heart" size={40} color="green" />
+          <IconEvil
+            onPress={() => {
+              navigation.navigate('CheckMatch');
+            }}
+            name="heart"
+            size={40}
+            color="green"
+          />
         </Footer>
       </KeyboardAvoidingView>
     </>

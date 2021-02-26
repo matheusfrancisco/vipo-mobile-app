@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, IconUser, IconBars} from './styles';
+import { Container, IconUser, IconBars } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,15 +9,16 @@ const HeaderProfile: React.FC = () => {
   return (
     <>
       <Container>
-        <IconUser onPress={() => {
-              navigation.navigate('Profile');
-            }}>
+        <IconUser
+          onPress={() => {
+            navigation.navigate('Profile');
+          }}>
           <Icon
             name="user"
             size={38}
             style={{
               alignContent: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
             color="#a396cb"
             onPress={() => {
@@ -32,7 +33,7 @@ const HeaderProfile: React.FC = () => {
             color="#a396cb"
             style={{
               alignContent: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
             onPress={() => {
               navigation.navigate('History');

@@ -11,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const ImageContainer = styled.Image`
-  align-self:center;
+  align-self: center;
   margin-top: 30px;
 `;
 export const AlignText = styled.Text`

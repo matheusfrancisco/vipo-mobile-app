@@ -18,7 +18,7 @@ import {
   HeaderProfile,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
+import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
 import Footer from '../../components/Footer';
 import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 
@@ -26,43 +26,42 @@ import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
-
 const Profile: React.FC = () => {
   const navigation = useNavigation();
   //#TODO fix state
-  const { profile }  = useSelector((state: any) => state)
-  console.log("state profile:", profile)
+  const { profile } = useSelector((state: any) => state);
+  console.log('state profile:', profile);
 
   const undoPage = () => {
     navigation.goBack();
   };
-  
 
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <HeaderProfile>
               <IconBorder onPress={undoPage}>
-              <Icon
-                  name="chevron-left"
-                  color="#fff"
-                  onPress={undoPage}
-                />
+                <Icon name="chevron-left" color="#fff" onPress={undoPage} />
               </IconBorder>
             </HeaderProfile>
             <ImageItem source={require('../../assets/profile/profile.jpg')} />
 
             <AlignIconHeader>
-            <IconEdit name="edit" size={20} color="#fff" onPress={() => {
-                navigation.navigate('EditProfile');
-              }}/>
+              <IconEdit
+                name="edit"
+                size={20}
+                color="#fff"
+                onPress={() => {
+                  navigation.navigate('EditProfile');
+                }}
+              />
             </AlignIconHeader>
 
             <AlignText>
@@ -81,15 +80,14 @@ const Profile: React.FC = () => {
             <AlignIcon>
               <IconEmail name="email" size={20} color="#470A68" />
 
-            <TextMin> {profile.email}</TextMin>
+              <TextMin> {profile.email}</TextMin>
             </AlignIcon>
-            <ButtonEditLike  onPress={() => {
+            <ButtonEditLike
+              onPress={() => {
                 navigation.navigate('ProfileDrink');
               }}>
-              <ColorTextButton >
-                <TextH5>
-                  Altere seus gostos
-                </TextH5>
+              <ColorTextButton>
+                <TextH5>Altere seus gostos</TextH5>
               </ColorTextButton>
             </ButtonEditLike>
           </Container>

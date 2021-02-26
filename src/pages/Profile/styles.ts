@@ -3,7 +3,6 @@ import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View``;
 
-
 export const AlignIconHeader = styled.View`
   border-width: 1px;
   padding: 10px;
@@ -18,14 +17,12 @@ export const ContainerButton = styled.View`
   margin: 20px;
   width: 90%;
   bottom: 0px;
-`
+`;
 export const ContainerForm = styled.View`
   margin: 20px;
-`
-
-export const UserAvatarButton = styled.TouchableOpacity`
-  
 `;
+
+export const UserAvatarButton = styled.TouchableOpacity``;
 
 export const HeaderProfile = styled.View`
   background: #9283bf;
@@ -82,9 +79,8 @@ export const ColorTextButton = styled.Text`
 export const ButtonEditLike = styled(RectButton)`
   width: 134px;
   height: 36px;
-  background-color: #9283BF;
+  background-color: #9283bf;
   border-radius: 5px;
   margin-left: 200px;
   margin-top: 20px;
 `;
-

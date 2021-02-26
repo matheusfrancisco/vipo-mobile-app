@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import {Body, ContainerPickerRow} from './styles';
+import { Body, ContainerPickerRow } from './styles';
 
 interface StateAnswer {
   likes: Array<string>;
@@ -8,17 +8,20 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerAmmountParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void
-  answers: StateAnswer
+  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  answers: StateAnswer;
 }
 
-const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) => {
+const PickerAmountPeople: React.FC<PickerAmmountParams> = ({
+  setPick,
+  answers,
+}) => {
   const [bodyOne, setBodyOne] = useState(false);
   const [bodyTwo, setBodyTwo] = useState(false);
   const [bodyThree, setBodyThree] = useState(false);
   const [bodyFour, setBodyFour] = useState(false);
   const [bodyFive, setBodyFive] = useState(false);
-  
+
   const buttons = [
     {
       set: (value: boolean) => {
@@ -30,7 +33,6 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
     {
       set: (value: boolean) => {
         setBodyTwo(value);
-
       },
       id: '2',
       value: bodyTwo,
@@ -79,7 +81,7 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
         onPress={() => {
           clickedButtons('1');
           setBodyOne(!bodyOne);
-          setPick(answers, {numberOfPeople: 1})
+          setPick(answers, { numberOfPeople: 1 });
         }}>
         1
       </Body>
@@ -88,8 +90,7 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
         onPress={() => {
           clickedButtons('2');
           setBodyTwo(!bodyTwo);
-          setPick(answers, {numberOfPeople: 2})
-
+          setPick(answers, { numberOfPeople: 2 });
         }}>
         2
       </Body>
@@ -98,8 +99,7 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
         onPress={() => {
           clickedButtons('3');
           setBodyThree(!bodyThree);
-          setPick(answers, {numberOfPeople: 3})
-
+          setPick(answers, { numberOfPeople: 3 });
         }}>
         3
       </Body>
@@ -108,8 +108,7 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
         onPress={() => {
           clickedButtons('4');
           setBodyFour(!bodyFour);
-          setPick(answers, {numberOfPeople: 4})
-
+          setPick(answers, { numberOfPeople: 4 });
         }}>
         4
       </Body>
@@ -118,8 +117,7 @@ const PickerAmountPeople: React.FC<PickerAmmountParams> = ({setPick, answers}) =
         onPress={() => {
           clickedButtons('5');
           setBodyFive(!bodyFive);
-          setPick(answers, {numberOfPeople: 5})
-
+          setPick(answers, { numberOfPeople: 5 });
         }}>
         5
       </Body>

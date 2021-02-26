@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {
   ContainerPickerRow,
@@ -13,13 +13,14 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerPlansTodayParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void
-  answers: StateAnswer
+  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  answers: StateAnswer;
 }
 
-
-
-const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) => {
+const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({
+  setPick,
+  answers,
+}) => {
   const [bodyOne, setBodyOne] = useState(false);
   const [bodyTwo, setBodyTwo] = useState(false);
   const [bodyThree, setBodyThree] = useState(false);
@@ -83,24 +84,24 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
   };
 
   const setPickPlansToday = (planForToday: string) => {
-    const likesPrevious = answers['likes']
-    const hasLunch = (likesPrevious.indexOf(planForToday) > -1);
+    const likesPrevious = answers['likes'];
+    const hasLunch = likesPrevious.indexOf(planForToday) > -1;
     if (hasLunch) {
-      likesPrevious.filter((l: string) => l !== planForToday ? true : false)
+      likesPrevious.filter((l: string) => (l !== planForToday ? true : false));
     } else {
-      likesPrevious.push(planForToday)
+      likesPrevious.push(planForToday);
     }
-    setPick(answers, {likes: likesPrevious})
-  }
+    setPick(answers, { likes: likesPrevious });
+  };
   return (
     <>
       <ContainerPickerColumn>
         <ContainerPickerRow>
-           {/* #TODO
+          {/* #TODO
             BodyPlansToday here can be an [].map(<BodyPlansToday...></BodyPlansToday>)
             and we caan remove the duplicated code
             */}
-            {/* ## BUUG
+          {/* ## BUUG
             need select only tree
             I think we need fix the UI/UX select
             */}
@@ -109,7 +110,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('1');
               setBodyOne(!bodyOne);
-              setPickPlansToday("lunch")
+              setPickPlansToday('lunch');
             }}>
             Comer 🍔
           </BodyPlansToday>
@@ -118,7 +119,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('2');
               setBodyTwo(!bodyTwo);
-              setPickPlansToday("drink")
+              setPickPlansToday('drink');
             }}>
             Beber 🍹
           </BodyPlansToday>
@@ -129,8 +130,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('3');
               setBodyThree(!bodyThree);
-              setPickPlansToday("talk")
-
+              setPickPlansToday('talk');
             }}>
             Conversar 🗣
           </BodyPlansToday>
@@ -139,8 +139,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('4');
               setBodyFour(!bodyFour);
-              setPickPlansToday("meetPeople")
-
+              setPickPlansToday('meetPeople');
             }}>
             Conhecer gente nova 😍{' '}
           </BodyPlansToday>
@@ -151,8 +150,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('5');
               setBodyFive(!bodyFive);
-              setPickPlansToday("dance")
-
+              setPickPlansToday('dance');
             }}>
             Dançar 🕺
           </BodyPlansToday>
@@ -161,8 +159,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({setPick, answers}) 
             onPress={() => {
               clickedButtons('6');
               setBodySix(!bodySix);
-              setPickPlansToday("lovers")
-
+              setPickPlansToday('lovers');
             }}>
             Rolê romântico ❤
           </BodyPlansToday>

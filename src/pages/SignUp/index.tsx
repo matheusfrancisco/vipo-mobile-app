@@ -22,7 +22,7 @@ import logo from '../../assets/logo.png';
 import { Title, TextItalic } from '../../global';
 
 import api from '../../services/api';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 import RNPickerSelect from 'react-native-picker-select';
 interface SignUpData {
   name: string;
@@ -48,16 +48,15 @@ const SignUp: React.FC = () => {
   const emailInputref = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
-  const dateNow = new Date()
+  const dateNow = new Date();
   const [date, setDate] = useState(dateNow.toJSON());
-  const [gender, setGender] = useState({title: "Gênero"})
+  const [gender, setGender] = useState({ title: 'Gênero' });
 
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
       try {
-      
         formRef.current?.setErrors({});
-        
+
         const schema = Yup.object().shape({
           name: Yup.string().required('O nome obrigatório'),
           email: Yup.string()
@@ -71,14 +70,13 @@ const SignUp: React.FC = () => {
         });
 
         const res = await api.post('/users', data);
-        
+
         if (res.status == 201) {
-          console.log('created')
-          navigation.navigate('RegistrationCompleted')
-        } else  {
+          console.log('created');
+          navigation.navigate('RegistrationCompleted');
+        } else {
           navigation.goBack();
         }
-
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getvalidationErrors(error);
@@ -95,12 +93,12 @@ const SignUp: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Image
               source={logo}
@@ -135,7 +133,6 @@ const SignUp: React.FC = () => {
                     onSubmitEditing={() => {
                       emailInputref.current?.focus();
                     }}
-                    
                   />
                 </ContainerInput>
               </Row>
@@ -165,65 +162,66 @@ const SignUp: React.FC = () => {
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
                 }}
-              /> 
-                <DatePickerText>Data de nascimento: </DatePickerText>
-                <DatePicker
-                  style={{width: 330}}
-                  date={date}
-                  mode="date"
-                  placeholder="select date"
-                  format="YYYY-MM-DD"
-                  minDate="1760-05-01"
-                  maxDate="2020-06-01"
-                  confirmBtnText="Confirm"
-                  cancelBtnText="Cancel"
-                  customStyles={{
-                    dateIcon: {
-                      position: 'absolute',
-                      left: 0,
-                      top: 4,
-                      marginLeft: 15
-                    },
-                    dateInput: {
-                      marginLeft: 0,
-                      borderRadius: 10,
-                      borderColor: '#dadfe2',
-                    }
-                  }}
-                  onDateChange={(date) => {setDate(date)}}
-                />
-                <Genre>
-                  <RNPickerSelect
-                    onValueChange={(value) => setGender({title: value})}
-                    items={[
-                        { label: 'Feminino', value: 'Feminino' },
-                        { label: 'Masculino', value: 'Masculino' },
-                        { label: 'Neutro', value: 'Neutro' },
-                    ]}
-                    pickerProps={{
+              />
+              <DatePickerText>Data de nascimento: </DatePickerText>
+              <DatePicker
+                style={{ width: 330 }}
+                date={date}
+                mode="date"
+                placeholder="select date"
+                format="YYYY-MM-DD"
+                minDate="1760-05-01"
+                maxDate="2020-06-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 15,
+                  },
+                  dateInput: {
+                    marginLeft: 0,
+                    borderRadius: 10,
+                    borderColor: '#dadfe2',
+                  },
+                }}
+                onDateChange={(date) => {
+                  setDate(date);
+                }}
+              />
+              <Genre>
+                <RNPickerSelect
+                  onValueChange={(value) => setGender({ title: value })}
+                  items={[
+                    { label: 'Feminino', value: 'Feminino' },
+                    { label: 'Masculino', value: 'Masculino' },
+                    { label: 'Neutro', value: 'Neutro' },
+                  ]}
+                  pickerProps={{
                     accessibilityLabel: gender.title,
-                  }}
-                  >
+                  }}>
                   <GenreText>{gender.title}</GenreText>
-                  </RNPickerSelect>
-                </Genre>
-                <TextTerms>
-                  Ao clicar em Cadastrar, você concorda com nossos 
-                  <TextItalic> Termos, Política de dados e Política de Cookies.</TextItalic>
-                </TextTerms>
+                </RNPickerSelect>
+              </Genre>
+              <TextTerms>
+                Ao clicar em Cadastrar, você concorda com nossos
+                <TextItalic>
+                  {' '}
+                  Termos, Política de dados e Política de Cookies.
+                </TextItalic>
+              </TextTerms>
               <ContainerButton>
                 <Button
                   onPress={() => {
-                    formRef.current?.submitForm()
-                  }}
-                >
+                    formRef.current?.submitForm();
+                  }}>
                   Cadastrar
                 </Button>
               </ContainerButton>
             </Form>
           </Container>
-     
-
         </ScrollView>
       </KeyboardAvoidingView>
     </>

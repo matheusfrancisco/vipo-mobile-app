@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
-import {useAuth} from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 import {
   HeaderProfile,
   IconBorder,
@@ -13,9 +13,15 @@ import {
   UserAvatarButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {KeyboardAvoidingView, ScrollView, TextInput, Alert, Platform} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  TextInput,
+  Alert,
+  Platform,
+} from 'react-native';
 import Footer from '../../components/Footer';
-import {FormHandles} from '@unform/core';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
@@ -24,19 +30,18 @@ import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
-import image from '../../assets/profile/profile.jpg'
+import image from '../../assets/profile/profile.jpg';
 import { useSelector } from 'react-redux';
-interface ProfileFormData{
-  name: string,
-  adress: string,
-  email: string
-
+interface ProfileFormData {
+  name: string;
+  adress: string;
+  email: string;
 }
 
 const EditProfile: React.FC = () => {
   //#TODO type to application state must be create
-  const { profile }  = useSelector((state: any) => state)
-  console.log("state profile:", profile)
+  const { profile } = useSelector((state: any) => state);
+  console.log('state profile:', profile);
   const navigation = useNavigation();
 
   const undoPage = () => {
@@ -53,17 +58,13 @@ const EditProfile: React.FC = () => {
 
         const schema = Yup.object().shape({
           name: Yup.string(),
-          email: Yup.string()
-            .email('Digite um e-mail válido')
+          email: Yup.string().email('Digite um e-mail válido'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
-        const {
-          name,
-          email,
-        } = data;
+        const { name, email } = data;
         const formData = {
           name,
           email,
@@ -71,9 +72,7 @@ const EditProfile: React.FC = () => {
 
         const response = await api.put('/profile', FormData);
 
-        Alert.alert(
-          'Perfil atualizado com sucesso',
-        );
+        Alert.alert('Perfil atualizado com sucesso');
 
         navigation.goBack();
       } catch (error) {
@@ -82,41 +81,36 @@ const EditProfile: React.FC = () => {
           formRef.current?.setErrors(errors);
           return;
         }
-        
-        Alert.alert('Erro na atualização do perfil',
-         'Ocorreu um erro ao atualizar seu perfil, tente novamente.'
+
+        Alert.alert(
+          'Erro na atualização do perfil',
+          'Ocorreu um erro ao atualizar seu perfil, tente novamente.',
         );
       }
     },
-    [navigation]
+    [navigation],
   );
-
-
 
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
-            <HeaderProfile >
-              <IconBorder onPress={undoPage} >
-                <Icon
-                  name="chevron-left"
-                  color="#fff"
-                  onPress={undoPage}
-                />
+            <HeaderProfile>
+              <IconBorder onPress={undoPage}>
+                <Icon name="chevron-left" color="#fff" onPress={undoPage} />
               </IconBorder>
             </HeaderProfile>
-            <UserAvatarButton >
+            <UserAvatarButton>
               <ImageItem source={image} />
             </UserAvatarButton>
 
-            <AlignIconHeader >
+            <AlignIconHeader>
               <IconEdit name="camera" size={20} color="#fff" />
             </AlignIconHeader>
 
@@ -157,12 +151,12 @@ const EditProfile: React.FC = () => {
                   }}
                 />
               </ContainerForm>
-              </Form>
-              <ContainerButton>
-                <Button onPress={() => formRef.current?.submitForm()}>
-                    Salvar
-                </Button>
-              </ContainerButton>
+            </Form>
+            <ContainerButton>
+              <Button onPress={() => formRef.current?.submitForm()}>
+                Salvar
+              </Button>
+            </ContainerButton>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>

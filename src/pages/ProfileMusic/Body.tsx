@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {Image} from 'react-native';
+import React, { useState } from 'react';
+import { Image } from 'react-native';
 
-import {Row, AlignContent, ContainerText} from './styles';
+import { Row, AlignContent, ContainerText } from './styles';
 
-import {TextMinAsker} from '../../global';
+import { TextMinAsker } from '../../global';
 
 const BodyProfileMusic: React.FC = () => {
   const [bodyOne, setBodyOne] = useState(false);
@@ -34,7 +34,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/eletronica.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Eletronica</TextMinAsker>
@@ -48,7 +48,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/funk.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Funk</TextMinAsker>
@@ -62,7 +62,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/pagode.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Pagode</TextMinAsker>
@@ -76,7 +76,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/rock.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Rock</TextMinAsker>
@@ -92,7 +92,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/forró.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Forró</TextMinAsker>
@@ -106,7 +106,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/jazz.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Jazz</TextMinAsker>
@@ -120,7 +120,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/pop.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Pop</TextMinAsker>
@@ -134,7 +134,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/reggae.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Reggae</TextMinAsker>
@@ -150,7 +150,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/samba.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Samba</TextMinAsker>
@@ -164,7 +164,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/sertanejo.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Sertanejo</TextMinAsker>
@@ -178,7 +178,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/hiphop.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Hip Hop</TextMinAsker>
@@ -192,7 +192,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/mpb.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>MPB</TextMinAsker>
@@ -208,7 +208,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/indie.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Indie</TextMinAsker>
@@ -222,7 +222,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/reggaeton.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Reggaeton</TextMinAsker>
@@ -236,7 +236,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/rap.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Rap</TextMinAsker>
@@ -250,7 +250,7 @@ const BodyProfileMusic: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/style-music/rockalternativo.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Rock </TextMinAsker>
