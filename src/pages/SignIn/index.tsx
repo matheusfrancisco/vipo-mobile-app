@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -21,7 +21,7 @@ import ButtonGoogle from '../../components/Google';
 import logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import { useAuth} from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 
 import { Title, TextH3 } from '../../global';
 
@@ -59,12 +59,11 @@ const SignIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        
+
         await signIn({
           email: data.email,
           password: data.password,
-        })
-        
+        });
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
@@ -81,16 +80,16 @@ const SignIn: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior={ Platform.OS === 'ios' ? 'padding' : undefined }
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Image
               source={logo}
-              style={{width: 170, height: 170, marginTop: 30}}
+              style={{ width: 170, height: 170, marginTop: 30 }}
             />
             <TitleHeader>
               <Title>Faça seu login</Title>
@@ -128,7 +127,7 @@ const SignIn: React.FC = () => {
                 onPress={() => {
                   formRef.current?.submitForm();
                 }}
-                style={{marginTop: 40}}>
+                style={{ marginTop: 40 }}>
                 Entrar
               </Button>
               <ButtonText onPress={() => navigation.navigate('SignUp')}>
@@ -139,7 +138,7 @@ const SignIn: React.FC = () => {
               <ContainerTextLoginSocial>
                 <TextH3>Ou faça seu login com</TextH3>
               </ContainerTextLoginSocial>
-              <SocialIcon style={{marginTop: 30}}>
+              <SocialIcon style={{ marginTop: 30 }}>
                 <ButtonFacebook onPress={() => console.log('Foi')}>
                   Login with Facebook
                 </ButtonFacebook>

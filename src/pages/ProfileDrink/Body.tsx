@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Image} from 'react-native';
-import {Row, AlignContent, ContainerText} from './styles';
-import {TextMinAsker} from '../../global';
+import React, { useState } from 'react';
+import { Image } from 'react-native';
+import { Row, AlignContent, ContainerText } from './styles';
+import { TextMinAsker } from '../../global';
 
 const BodyProfileDrink: React.FC = () => {
   const [bodyOne, setBodyOne] = useState(false);
@@ -32,7 +32,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/sugarcaneliquor.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Cachaça</TextMinAsker>
@@ -46,7 +46,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/coffee.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Café</TextMinAsker>
@@ -60,7 +60,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/beer.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Cerveja</TextMinAsker>
@@ -74,7 +74,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/craftbeer.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Cerveja </TextMinAsker>
@@ -91,7 +91,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/chopp.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Chopp</TextMinAsker>
@@ -105,7 +105,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/gin.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Gin</TextMinAsker>
@@ -119,7 +119,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/tequila.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Tequila</TextMinAsker>
@@ -133,7 +133,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/wine.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Vinho</TextMinAsker>
@@ -149,7 +149,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/vodkadrink.png')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Vodca</TextMinAsker>
@@ -163,7 +163,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/whisky.png')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Whisky</TextMinAsker>
@@ -177,7 +177,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/champagne.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Champagne</TextMinAsker>
@@ -191,7 +191,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/brandy.jpeg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Conhaque</TextMinAsker>
@@ -207,7 +207,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/soda.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker> Refrigerante </TextMinAsker>
@@ -221,7 +221,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/juice.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Suco</TextMinAsker>
@@ -235,7 +235,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/saque.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Saquê</TextMinAsker>
@@ -249,7 +249,7 @@ const BodyProfileDrink: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-drink/liquor.jpg')}
-              style={{width: 60, height: 60, borderRadius: 60 / 2}}
+              style={{ width: 60, height: 60, borderRadius: 60 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Licor</TextMinAsker>

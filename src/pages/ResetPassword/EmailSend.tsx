@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -9,19 +9,19 @@ import {
 } from 'react-native';
 import * as Yup from 'yup';
 
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 
 import Button from '../../components/Button';
 import logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import {useAuth} from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 
-import {Title3, TextMinAsker} from '../../global';
+import { Title3, TextMinAsker } from '../../global';
 
-import {Container, TitleHeader} from './styles';
+import { Container, TitleHeader } from './styles';
 
 interface SignInFormData {
   email: string;
@@ -73,16 +73,16 @@ const EmailSend: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Image
               source={logo}
-              style={{width: 170, height: 170, marginTop: 40}}
+              style={{ width: 170, height: 170, marginTop: 40 }}
             />
             <TitleHeader>
               <Title3>Redefinição enviada</Title3>
@@ -94,7 +94,7 @@ const EmailSend: React.FC = () => {
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Button
                 onPress={() => {
-                  navigation.navigate('SignIn')
+                  navigation.navigate('SignIn');
                 }}
                 style={{
                   marginBottom: -60,

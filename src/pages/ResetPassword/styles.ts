@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -15,6 +15,6 @@ export const ButtonText = styled.TouchableOpacity`
 
 export const TitleHeader = styled.Text`
   text-align: center;
-  color: #9283BF;
+  color: #9283bf;
   font-weight: bold;
 `;

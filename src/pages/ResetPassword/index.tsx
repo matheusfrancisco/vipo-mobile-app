@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -6,24 +6,24 @@ import {
   ScrollView,
   TextInput,
   Alert,
-  Text
+  Text,
 } from 'react-native';
 import * as Yup from 'yup';
 
-import {useNavigation} from '@react-navigation/native';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { useNavigation } from '@react-navigation/native';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
-import {useAuth} from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 
-import {Title3, TextMinAsker} from '../../global';
+import { Title3, TextMinAsker } from '../../global';
 
-import {Container, TitleHeader } from './styles';
+import { Container, TitleHeader } from './styles';
 
 interface SignInFormData {
   email: string;
@@ -74,16 +74,16 @@ const ResetPassword: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Image
               source={logo}
-              style={{width: 170, height: 170, marginTop: 40}}
+              style={{ width: 170, height: 170, marginTop: 40 }}
             />
             <TitleHeader>
               <Title3>Esqueceu sua senha ?</Title3>
@@ -92,21 +92,21 @@ const ResetPassword: React.FC = () => {
               Não esquenta, vamos dar um jeito nisso..
             </TextMinAsker>
             <Form ref={formRef} onSubmit={handleSignIn}>
-                <Input
-                  keyboardType="email-address"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="email"
-                  icon="mail"
-                  placeholder="E-mail"
-                  returnKeyType="next"
-                />
-              </Form>
+              <Input
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                returnKeyType="next"
+              />
+            </Form>
             <Form ref={formRef} onSubmit={handleSignIn}>
               <Button
                 onPress={() => {
                   // formRef.current?.submitForm();
-                  navigation.navigate('EmailSend')
+                  navigation.navigate('EmailSend');
                 }}
                 style={{
                   marginBottom: -60,

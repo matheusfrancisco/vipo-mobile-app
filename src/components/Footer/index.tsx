@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, IconBorder} from './styles';
+import { Container, IconBorder } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 

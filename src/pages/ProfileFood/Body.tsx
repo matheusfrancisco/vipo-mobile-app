@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {Image} from 'react-native';
+import React, { useState } from 'react';
+import { Image } from 'react-native';
 
-import {Row, AlignContent, ContainerText} from './styles';
+import { Row, AlignContent, ContainerText } from './styles';
 
-import {TextMinAsker} from '../../global';
+import { TextMinAsker } from '../../global';
 
 const BodyProfileFood: React.FC = () => {
   const [bodyOne, setBodyOne] = useState(false);
@@ -21,7 +21,7 @@ const BodyProfileFood: React.FC = () => {
             }}>
             <Image
               source={require('../../assets/taste-food/burguer.png')}
-              style={{width: 80, height: 80, borderRadius: 80 / 2}}
+              style={{ width: 80, height: 80, borderRadius: 80 / 2 }}
             />
           </ContainerText>
           <TextMinAsker>Hambúrguer</TextMinAsker>

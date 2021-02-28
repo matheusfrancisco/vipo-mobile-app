@@ -1,10 +1,10 @@
 import React from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import {Container, HeaderText} from './styles';
+import { Container, HeaderText } from './styles';
 
-import { TextMinAsker} from '../../global';
+import { TextMinAsker } from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Line from '../../components/Line';
@@ -19,12 +19,12 @@ const ProfileMusic: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Header
               text="Salvar"
@@ -37,9 +37,7 @@ const ProfileMusic: React.FC = () => {
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
               </TextMinAsker>
-              <TextMinAsker>
-                seus gostos musicais
-              </TextMinAsker>
+              <TextMinAsker>seus gostos musicais</TextMinAsker>
             </HeaderText>
             <Line />
 

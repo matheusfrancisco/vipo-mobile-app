@@ -23,15 +23,14 @@ export const Container = styled.View`
   margin: 10px;
 `;
 export const ColorText = styled.Text`
-color: #470a68;
+  color: #470a68;
 `;
 export const SelectFeedback = styled(RectButton)<Props>`
   ${(props) =>
-      props.select &&
-      css`
-        opacity: 0.3;
-        
-      `}
+    props.select &&
+    css`
+      opacity: 0.3;
+    `}
 `;
 
 export const ImageItem = styled.Image`
@@ -58,7 +57,7 @@ export const Types = styled.Text<Props>`
   ${(props) =>
     props.select &&
     css`
-     background-color: #9283BF;
-     font-weight: bold;
+      background-color: #9283bf;
+      font-weight: bold;
     `}
 `;

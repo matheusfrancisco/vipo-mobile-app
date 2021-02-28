@@ -1,12 +1,17 @@
 import React from 'react';
-import {KeyboardAvoidingView, ScrollView, Platform, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  Image,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Container, HeaderText } from './styles';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import {TextH3, TextMinAsker} from '../../global';
+import { TextH3, TextMinAsker } from '../../global';
 import Line from '../../components/Line';
 import BodyProfileFood from './Body';
 
@@ -18,12 +23,12 @@ const ProfileFood: React.FC = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{flex: 1}}>
+          contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Header
               text="Próximo"

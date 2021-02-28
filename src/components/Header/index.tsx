@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Container, IconBorder, TextNext} from './styles';
+import React, { useState } from 'react';
+import { Container, IconBorder, TextNext } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Title3} from '../../global';
+import { Title3 } from '../../global';
 
 interface Props {
   onPress: () => void;
@@ -13,9 +13,10 @@ const Header: React.FC<Props> = ({ onPress, onPressBack, text }: Props) => {
   return (
     <>
       <Container>
-        <IconBorder onPress={() => {
-              onPressBack();
-            }}>
+        <IconBorder
+          onPress={() => {
+            onPressBack();
+          }}>
           <Icon
             name="chevron-left"
             color="#fff"
@@ -25,7 +26,7 @@ const Header: React.FC<Props> = ({ onPress, onPressBack, text }: Props) => {
           />
         </IconBorder>
         <TextNext>
-          <Title3 onPress={() => onPress()}>{ text }</Title3>
+          <Title3 onPress={() => onPress()}>{text}</Title3>
         </TextNext>
       </Container>
     </>

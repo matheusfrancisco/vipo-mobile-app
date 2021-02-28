@@ -52,4 +52,4 @@ export const TextH5 = styled.Text`
 
 export const TextItalic = styled.Text`
   text-decoration: underline;
-`
+`;

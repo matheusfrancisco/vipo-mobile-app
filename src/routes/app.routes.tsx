@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../pages/Home';
 import Match from '../pages/Match';
 import PickerMatcherParty from '../pages/PickerMatcherParty';
@@ -19,7 +19,7 @@ const AppRoutes: React.FC = () => (
   <App.Navigator
     screenOptions={{
       headerShown: false,
-      cardStyle: {backgroundColor: '#F8FBFA'},
+      cardStyle: { backgroundColor: '#F8FBFA' },
     }}>
     <App.Screen name="Home" component={Home} />
     <App.Screen name="Match" component={Match} />
@@ -30,11 +30,12 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="EditProfile" component={EditProfile} />
     <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
-    <App.Screen name="RegistrationCompleted" component={RegistrationCompleted} />
+    <App.Screen
+      name="RegistrationCompleted"
+      component={RegistrationCompleted}
+    />
     <App.Screen name="History" component={History} />
     <App.Screen name="CheckMatch" component={CheckMatch} />
-
-
   </App.Navigator>
 );
 

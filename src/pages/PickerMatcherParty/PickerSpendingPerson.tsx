@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {
   ContainerPickerRow,
@@ -12,11 +12,14 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerSpendingPersonParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void
-  answers: StateAnswer
+  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  answers: StateAnswer;
 }
 
-const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({setPick, answers}) => {
+const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({
+  setPick,
+  answers,
+}) => {
   const [bodyOne, setBodyOne] = useState(false);
   const [bodyTwo, setBodyTwo] = useState(false);
   const [bodyThree, setBodyThree] = useState(false);
@@ -72,7 +75,7 @@ const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({setPick, an
             onPress={() => {
               clickedButtons('1');
               setBodyOne(!bodyOne);
-              setPick(answers, {howMuch: "R$ 0 - R$ 50"})
+              setPick(answers, { howMuch: 'R$ 0 - R$ 50' });
             }}>
             R$ 0 - R$ 50{' '}
           </BodySpendingPerson>
@@ -81,7 +84,7 @@ const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({setPick, an
             onPress={() => {
               clickedButtons('2');
               setBodyTwo(!bodyTwo);
-              setPick(answers, {howMuch: "R$ 51 - R$ 100"})
+              setPick(answers, { howMuch: 'R$ 51 - R$ 100' });
             }}>
             R$ 51 - R$ 100
           </BodySpendingPerson>
@@ -92,7 +95,7 @@ const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({setPick, an
             onPress={() => {
               clickedButtons('3');
               setBodyThree(!bodyThree);
-              setPick(answers, {howMuch: "R$ 101 - R$ 200"})
+              setPick(answers, { howMuch: 'R$ 101 - R$ 200' });
             }}>
             R$ 101 - R$ 200
           </BodySpendingPerson>
@@ -101,7 +104,7 @@ const PickerSpendingPerson: React.FC<PickerSpendingPersonParams> = ({setPick, an
             onPress={() => {
               clickedButtons('4');
               setBodyFour(!bodyFour);
-              setPick(answers, {howMuch: "R$ 200 +"})
+              setPick(answers, { howMuch: 'R$ 200 +' });
             }}>
             R$ 200 +{' '}
           </BodySpendingPerson>

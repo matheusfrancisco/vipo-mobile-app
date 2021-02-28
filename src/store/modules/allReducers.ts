@@ -1,8 +1,7 @@
-import {combineReducers} from "@reduxjs/toolkit";
+import { combineReducers } from '@reduxjs/toolkit';
 
-
-import profile from "./profile/index";
-import answers from "./recommendations/index";
+import profile from './profile/index';
+import answers from './recommendations/index';
 
 export const allReducer = combineReducers({
   profile: profile,

@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components/native';
-import {getBottomSpace} from 'react-native-iphone-x-helper';
-import {RectButton} from 'react-native-gesture-handler';
+import styled, { css } from 'styled-components/native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const HeaderText = styled.View`
   align-items: center;

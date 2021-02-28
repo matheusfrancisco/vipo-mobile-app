@@ -51,26 +51,25 @@ export const Footer = styled.View`
 
 export const ContainerTitle = styled.Text`
   text-align: center;
-  color: #9283BF;
+  color: #9283bf;
   margin-top: 20px;
 `;
 export const ContainerDescription = styled.Text`
   text-align: center;
-  color:#000;
+  color: #000;
   margin: 12px;
 `;
 
 export const BoxBorder = styled.Text`
-  border: 2px solid #9283BF;
+  border: 2px solid #9283bf;
   width: 90%;
   height: 12%;
   margin: 20px;
-  background-color: #9283BF;
+  background-color: #9283bf;
   border-radius: 10px;
   margin-top: 30px;
   text-align: center;
   color: #fff;
   padding-top: 10px;
-`
-export const Container = styled.View`
 `;
+export const Container = styled.View``;

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import {Platform} from 'react-native';
-import {getBottomSpace} from 'react-native-iphone-x-helper';
+import { Platform } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   flex: 1;
@@ -44,24 +44,24 @@ export const BackToSingInText = styled.Text`
 export const Row = styled.View`
   flex-direction: row;
   width: 165px;
-`
+`;
 export const DatePickerText = styled.Text`
   font-size: 15px;
   font-family: 'RobotoSlab-Medium';
   margin-bottom: 15px;
-`
+`;
 
 export const Genre = styled.View`
   margin-top: 15px;
   border: 1px solid #dadfe2;
   border-radius: 10px;
-`
+`;
 
 export const GenreText = styled.Text`
   font-size: 15px;
   font-family: 'RobotoSlab-Medium';
   margin: 5px 0px 10px 15px;
-`
+`;
 
 export const TextTerms = styled.Text`
   font-size: 12px;
@@ -72,4 +72,4 @@ export const TextTerms = styled.Text`
 export const ContainerInput = styled.View`
   width: 158px;
   margin-right: 15px;
-  `
+`;
