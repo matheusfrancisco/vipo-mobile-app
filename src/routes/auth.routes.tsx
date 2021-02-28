@@ -9,7 +9,6 @@ import LandingPage from '../pages/LandingPage';
 import LandingPageTwo from '../pages/LandingPage/LandingPageTwo';
 import LandingPageThree from '../pages/LandingPage/LandingPageThree';
 import LandingPageFour from '../pages/LandingPage/LandingPageFour';
-import Feedback from '../pages/Feedback';
 
 
 const Auth = createStackNavigator();
