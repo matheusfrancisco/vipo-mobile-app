@@ -1,11 +1,13 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   TextInput,
+  DatePickerAndroid,
   Alert,
+  Picker,
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -36,8 +38,8 @@ import {
   ContainerButton,
   Row,
   DatePickerText,
-  Genre,
-  GenreText,
+  Gender,
+  GenderText,
   TextTerms,
   ContainerInput,
 } from './styles';
@@ -46,19 +48,31 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
+  const lastName = useRef<TextInput>(null);
+  const genderRef = useRef<RNPickerSelect>(null);
+  const birthDateRef = useRef<DatePicker>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
   const dateNow = new Date();
   const [date, setDate] = useState(dateNow.toJSON());
   const [gender, setGender] = useState({ title: 'Gênero' });
-
+  const [selectedGender, setSlectedGender] = useState("") 
+  
+  useEffect(() => {
+    console.log(gender.title)
+    if(gender.title != 'Gênero') {
+      setSlectedGender(gender.title)
+    }
+  },[gender])
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
+      console.log(data, "Entrou")
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           name: Yup.string().required('O nome obrigatório'),
+          lastName: Yup.string().required('O sobrenome obrigatório'),
           email: Yup.string()
             .email('Digite um e-mail válido')
             .required('E-mail obrigatório'),
@@ -68,8 +82,11 @@ const SignUp: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-
-        const res = await api.post('/users', data);
+        console.log(date, selectedGender, gender)
+        const res = await api.post('/users', { ...data,
+            gender: selectedGender,
+            birthDate: date
+        });
 
         if (res.status == 201) {
           console.log('created');
@@ -117,18 +134,19 @@ const SignUp: React.FC = () => {
                   <Input
                     autoCapitalize="words"
                     name="name"
-                    icon=""
+                    icon="mail"
                     placeholder="Nome"
                     onSubmitEditing={() => {
-                      emailInputref.current?.focus();
+                      lastName.current?.focus();
                     }}
                   />
                 </ContainerInput>
                 <ContainerInput>
                   <Input
+                    ref={lastName}
                     autoCapitalize="words"
-                    name="sobrenome"
-                    icon=""
+                    name="lastName"
+                    icon="mail"
                     placeholder="Sobrenome"
                     onSubmitEditing={() => {
                       emailInputref.current?.focus();
@@ -160,11 +178,12 @@ const SignUp: React.FC = () => {
                 textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => {
-                  formRef.current?.submitForm();
+                  birthDateRef.current?.onPressDate()
                 }}
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
               <DatePicker
+                ref={birthDateRef}
                 style={{ width: 330 }}
                 date={date}
                 mode="date"
@@ -191,20 +210,23 @@ const SignUp: React.FC = () => {
                   setDate(date);
                 }}
               />
-              <Genre>
+              <Gender>
                 <RNPickerSelect
-                  onValueChange={(value) => setGender({ title: value })}
+                  ref={genderRef}
+                  onValueChange={(value) => { 
+                    setSlectedGender(value)
+                    setGender({title: value})}}
                   items={[
-                    { label: 'Feminino', value: 'Feminino' },
-                    { label: 'Masculino', value: 'Masculino' },
-                    { label: 'Neutro', value: 'Neutro' },
+                    { label: 'Female', value: 'Female' },
+                    { label: 'Male', value: 'Male' },
+                    { label: 'Neuter', value: 'Neuter' },
                   ]}
                   pickerProps={{
                     accessibilityLabel: gender.title,
                   }}>
-                  <GenreText>{gender.title}</GenreText>
+                  <GenderText>{gender.title}</GenderText>
                 </RNPickerSelect>
-              </Genre>
+              </Gender>
               <TextTerms>
                 Ao clicar em Cadastrar, você concorda com nossos
                 <TextItalic>

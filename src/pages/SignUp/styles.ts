@@ -51,13 +51,13 @@ export const DatePickerText = styled.Text`
   margin-bottom: 15px;
 `;
 
-export const Genre = styled.View`
+export const Gender = styled.View`
   margin-top: 15px;
   border: 1px solid #dadfe2;
   border-radius: 10px;
 `;
 
-export const GenreText = styled.Text`
+export const GenderText = styled.Text`
   font-size: 15px;
   font-family: 'RobotoSlab-Medium';
   margin: 5px 0px 10px 15px;
