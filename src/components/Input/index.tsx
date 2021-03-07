@@ -78,7 +78,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
         defaultValue={defaultValue}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
-        onChangeText={(value) => {
+        onChangeText={(value: any) => {
           inputValueRef.current.value = value;
         }}
         {...rest}

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -49,7 +49,7 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
   const lastName = useRef<TextInput>(null);
-  // const genderRef = useRef<RNPickerSelect>(null);
+  const genderRef = useRef<RNPickerSelect>(null);
   const birthDateRef = useRef<DatePicker>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
@@ -58,6 +58,12 @@ const SignUp: React.FC = () => {
   const [gender, setGender] = useState({ title: 'Gênero' });
   const [selectedGender, setSlectedGender] = useState("") 
   
+  useEffect(() => {
+    console.log(gender.title)
+    if(gender.title != 'Gênero') {
+      setSlectedGender(gender.title)
+    }
+  },[gender])
   const handleSignUp = useCallback(
     async (data: SignUpData) => {
       console.log(data, "Entrou")
@@ -76,7 +82,7 @@ const SignUp: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        console.log(date, selectedGender)
+        console.log(date, selectedGender, gender)
         const res = await api.post('/users', { ...data,
             gender: selectedGender,
             birthDate: date
@@ -177,6 +183,7 @@ const SignUp: React.FC = () => {
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
               <DatePicker
+                ref={birthDateRef}
                 style={{ width: 330 }}
                 date={date}
                 mode="date"
@@ -205,6 +212,7 @@ const SignUp: React.FC = () => {
               />
               <Gender>
                 <RNPickerSelect
+                  ref={genderRef}
                   onValueChange={(value) => { 
                     setSlectedGender(value)
                     setGender({title: value})}}
