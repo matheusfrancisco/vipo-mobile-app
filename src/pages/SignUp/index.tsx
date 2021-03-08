@@ -56,12 +56,12 @@ const SignUp: React.FC = () => {
   const dateNow = new Date();
   const [date, setDate] = useState(dateNow.toJSON());
   const [gender, setGender] = useState({ title: 'Gênero' });
-  const [selectedGender, setSlectedGender] = useState("") 
+  const [selectedGender, setSelectedGender] = useState("") 
   
   useEffect(() => {
     console.log(gender.title)
     if(gender.title != 'Gênero') {
-      setSlectedGender(gender.title)
+      setSelectedGender(gender.title)
     }
   },[gender])
   const handleSignUp = useCallback(
@@ -214,7 +214,7 @@ const SignUp: React.FC = () => {
                 <RNPickerSelect
                   ref={genderRef}
                   onValueChange={(value) => { 
-                    setSlectedGender(value)
+                    setSelectedGender(value)
                     setGender({title: value})}}
                   items={[
                     { label: 'Female', value: 'Female' },
