@@ -5,9 +5,7 @@ import {
   Platform,
   ScrollView,
   TextInput,
-  DatePickerAndroid,
   Alert,
-  Picker,
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -26,6 +24,7 @@ import { Title, TextItalic } from '../../global';
 import api from '../../services/api';
 import DatePicker from 'react-native-datepicker';
 import RNPickerSelect from 'react-native-picker-select';
+
 interface SignUpData {
   name: string;
   email: string;
@@ -56,56 +55,56 @@ const SignUp: React.FC = () => {
   const dateNow = new Date();
   const [date, setDate] = useState(dateNow.toJSON());
   const [gender, setGender] = useState({ title: 'Gênero' });
-  const [selectedGender, setSelectedGender] = useState("") 
-  
+  const [selectedGender, setSelectedGender] = useState('');
+
   useEffect(() => {
-    console.log(gender.title)
-    if(gender.title != 'Gênero') {
-      setSelectedGender(gender.title)
+    if (selectedGender) {
+      return setGender({ title: selectedGender });
     }
-  },[gender])
-  const handleSignUp = useCallback(
-    async (data: SignUpData) => {
-      console.log(data, "Entrou")
-      try {
-        formRef.current?.setErrors({});
+    return setGender({ title: 'Gênero' });
+  }, [selectedGender]);
 
-        const schema = Yup.object().shape({
-          name: Yup.string().required('O nome obrigatório'),
-          lastName: Yup.string().required('O sobrenome obrigatório'),
-          email: Yup.string()
-            .email('Digite um e-mail válido')
-            .required('E-mail obrigatório'),
-          password: Yup.string().min(6, 'No Mínio 6 dígitos'),
-        });
+  const handleSignUp = async (data: SignUpData) => {
+    try {
+      formRef.current?.setErrors({});
 
-        await schema.validate(data, {
-          abortEarly: false,
-        });
-        console.log(date, selectedGender, gender)
-        const res = await api.post('/users', { ...data,
-            gender: selectedGender,
-            birthDate: date
-        });
+      const schema = Yup.object().shape({
+        name: Yup.string().required('O nome obrigatório'),
+        lastName: Yup.string().required('O sobrenome obrigatório'),
+        email: Yup.string()
+          .email('Digite um e-mail válido')
+          .required('E-mail obrigatório'),
+        password: Yup.string().min(6, 'No Mínio 6 dígitos'),
+      });
 
-        if (res.status == 201) {
-          console.log('created');
-          navigation.navigate('RegistrationCompleted');
-        } else {
-          navigation.goBack();
-        }
-      } catch (error) {
-        if (error instanceof Yup.ValidationError) {
-          const errors = getvalidationErrors(error);
-          formRef.current?.setErrors(errors);
-          return;
-        }
+      await schema.validate(data, {
+        abortEarly: false,
+      });
 
-        Alert.alert('Erro no cadastro', 'Ocorreu um erro ao fazer cadastro');
+      const newUser = {
+        ...data,
+        gender: selectedGender,
+        birthDate: date,
+      };
+      
+      const res = await api.post('/users', newUser);
+
+      if (res.status == 201) {
+        console.log('created');
+        navigation.navigate('RegistrationCompleted');
+      } else {
+        navigation.goBack();
       }
-    },
-    [navigation],
-  );
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        const errors = getvalidationErrors(error);
+        formRef.current?.setErrors(errors);
+        return;
+      }
+
+      Alert.alert('Erro no cadastro', 'Ocorreu um erro ao fazer cadastro');
+    }
+  };
 
   return (
     <>
@@ -178,7 +177,7 @@ const SignUp: React.FC = () => {
                 textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => {
-                  birthDateRef.current?.onPressDate()
+                  birthDateRef.current?.onPressDate();
                 }}
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
@@ -213,9 +212,7 @@ const SignUp: React.FC = () => {
               <Gender>
                 <RNPickerSelect
                   ref={genderRef}
-                  onValueChange={(value) => { 
-                    setSelectedGender(value)
-                    setGender({title: value})}}
+                  onValueChange={(value) => setSelectedGender(value)}
                   items={[
                     { label: 'Female', value: 'Female' },
                     { label: 'Male', value: 'Male' },

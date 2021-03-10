@@ -120,7 +120,7 @@ const SignIn: React.FC = () => {
                 }}
               />
               <ButtonText onPress={() => navigation.navigate('ResetPassword')}>
-                <TextH3>Esqueceu sua senha ?</TextH3>
+                <TextH3>Esqueceu sua senha?</TextH3>
               </ButtonText>
 
               <Button
@@ -132,7 +132,7 @@ const SignIn: React.FC = () => {
               </Button>
               <ButtonText onPress={() => navigation.navigate('SignUp')}>
                 <Text>
-                  Ainda não tem conta ?<TextH3>Crie aqui</TextH3>
+                  Ainda não tem conta? <TextH3>Crie aqui</TextH3>
                 </Text>
               </ButtonText>
               <ContainerTextLoginSocial>
