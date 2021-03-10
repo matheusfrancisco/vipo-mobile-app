@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -212,6 +212,7 @@ const SignUp: React.FC = () => {
               <Gender>
                 <RNPickerSelect
                   ref={genderRef}
+                  placeholder={{}}
                   onValueChange={(value) => setSelectedGender(value)}
                   items={[
                     { label: 'Female', value: 'Female' },
