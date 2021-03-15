@@ -14,6 +14,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import DatePicker from '../../components/DatePicker';
 
 import getvalidationErrors from '../../utils/getValidationErrors';
 
@@ -22,7 +23,6 @@ import logo from '../../assets/logo.png';
 import { Title, TextItalic } from '../../global';
 
 import api from '../../services/api';
-import DatePicker from 'react-native-datepicker';
 import RNPickerSelect from 'react-native-picker-select';
 
 interface SignUpData {
@@ -49,11 +49,11 @@ const SignUp: React.FC = () => {
   const emailInputref = useRef<TextInput>(null);
   const lastName = useRef<TextInput>(null);
   const genderRef = useRef<RNPickerSelect>(null);
-  const birthDateRef = useRef<DatePicker>(null);
+  const birthDateRef = useRef(null);
   const passwordInputRef = useRef<TextInput>(null);
 
   const dateNow = new Date();
-  const [date, setDate] = useState(dateNow.toJSON());
+  const [date, setDate] = useState(dateNow);
   const [gender, setGender] = useState({ title: 'Gênero' });
   const [selectedGender, setSelectedGender] = useState('');
 
@@ -84,9 +84,9 @@ const SignUp: React.FC = () => {
       const newUser = {
         ...data,
         gender: selectedGender,
-        birthDate: date,
+        birthDate: date.toJSON(),
       };
-      
+    
       const res = await api.post('/users', newUser);
 
       if (res.status == 201) {
@@ -133,7 +133,7 @@ const SignUp: React.FC = () => {
                   <Input
                     autoCapitalize="words"
                     name="name"
-                    icon="mail"
+                    icon="user"
                     placeholder="Nome"
                     onSubmitEditing={() => {
                       lastName.current?.focus();
@@ -145,7 +145,7 @@ const SignUp: React.FC = () => {
                     ref={lastName}
                     autoCapitalize="words"
                     name="lastName"
-                    icon="mail"
+                    icon="user"
                     placeholder="Sobrenome"
                     onSubmitEditing={() => {
                       emailInputref.current?.focus();
@@ -181,33 +181,9 @@ const SignUp: React.FC = () => {
                 }}
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
-              <DatePicker
-                ref={birthDateRef}
-                style={{ width: 330 }}
-                date={date}
-                mode="date"
-                placeholder="select date"
-                format="YYYY-MM-DD"
-                minDate="1760-05-01"
-                maxDate="2020-06-01"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: 'absolute',
-                    left: 0,
-                    top: 4,
-                    marginLeft: 15,
-                  },
-                  dateInput: {
-                    marginLeft: 0,
-                    borderRadius: 10,
-                    borderColor: '#dadfe2',
-                  },
-                }}
-                onDateChange={(date) => {
-                  setDate(date);
-                }}
+              <DatePicker 
+                date={date} 
+                setDate={(selectedDate) => setDate(selectedDate)}
               />
               <Gender>
                 <RNPickerSelect
