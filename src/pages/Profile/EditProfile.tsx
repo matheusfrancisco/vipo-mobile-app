@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
 import { useAuth } from '../../hooks/auth';
@@ -24,29 +24,36 @@ import Footer from '../../components/Footer';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import getvalidationErrors from '../../utils/getValidationErrors';
 import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import api from '../../services/api';
+import Client from '../../services/api';
 import image from '../../assets/profile/profile.jpg';
 import { useSelector } from 'react-redux';
+
 interface ProfileFormData {
   name: string;
   adress: string;
   email: string;
 }
 
-const EditProfile: React.FC = () => {
-  //#TODO type to application state must be create
-  const { profile } = useSelector((state: any) => state);
-  console.log('state profile:', profile);
-  const navigation = useNavigation();
+type ParamList = {
+  EditProfile: {
+    user: ProfileFormData
+  }
+};
 
-  const undoPage = () => {
-    navigation.goBack();
-  };
+export type EditProfileParams = RouteProp<
+  ParamList,
+  'EditProfile'
+>;
+
+const EditProfile: React.FC = () => {
+  const navigation = useNavigation();
+  const { params: { user } } = useRoute<EditProfileParams>()
+
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
@@ -70,7 +77,7 @@ const EditProfile: React.FC = () => {
           email,
         };
 
-        const response = await api.put('/profile', FormData);
+        const response = await Client.http.put('/profile', FormData);
 
         Alert.alert('Perfil atualizado com sucesso');
 
@@ -102,19 +109,12 @@ const EditProfile: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}>
           <Container>
             <HeaderProfile>
-              <IconBorder onPress={undoPage}>
-                <Icon name="chevron-left" color="#fff" onPress={undoPage} />
+              <IconBorder onPress={navigation.goBack}>
+                <Icon name="chevron-left" color="#fff" onPress={navigation.goBack} />
               </IconBorder>
             </HeaderProfile>
-            <UserAvatarButton>
-              <ImageItem source={image} />
-            </UserAvatarButton>
 
-            <AlignIconHeader>
-              <IconEdit name="camera" size={20} color="#fff" />
-            </AlignIconHeader>
-
-            <Form initialData={profile} ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
               <ContainerForm>
                 <Input
                   autoCapitalize="words"
@@ -152,6 +152,7 @@ const EditProfile: React.FC = () => {
                 />
               </ContainerForm>
             </Form>
+            {/* #TODO move save button to bottom */}
             <ContainerButton>
               <Button onPress={() => formRef.current?.submitForm()}>
                 Salvar

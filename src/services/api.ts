@@ -2,8 +2,18 @@ import axios from 'axios';
 //#TODO need change when env is productions
 import env from '../config/env';
 
-const api = axios.create({
-  baseURL: env.DEV_API,
-});
+class Client {
+  static http = axios.create({
+    baseURL: env.DEV_API,
+  });
 
-export default api;
+  static addHttpHeader = (key: string, value: string) => {
+    Client.http.defaults.headers[key] = value;
+  };
+
+  static removeHttpHeader = (key: string) => {
+    delete Client.http.defaults.headers[key];
+  };
+}
+
+export default Client;

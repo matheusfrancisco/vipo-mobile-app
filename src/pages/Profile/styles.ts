@@ -75,12 +75,18 @@ export const ColorTextButton = styled.Text`
   text-align: center;
   margin-top: 6px;
 `;
+export const FooterProfile = styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 12px;
+  padding-left: 40px;
+  padding-right: 40px;
+`;
 
 export const ButtonEditLike = styled(RectButton)`
   width: 134px;
   height: 36px;
   background-color: #9283bf;
   border-radius: 5px;
-  margin-left: 200px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 `;
