@@ -8,10 +8,9 @@ import {
   IconBorder,
   Container,
   AlignText,
-  ImageItem,
   Colunn,
   AlignIcon,
-  AlignIconHeader,
+  FooterProfile,
   ColorText,
   ButtonEditLike,
   ColorTextButton,
@@ -19,7 +18,6 @@ import {
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
-import Footer from '../../components/Footer';
 import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 
 import Line from '../../components/Line';
@@ -65,18 +63,6 @@ const Profile: React.FC = () => {
                 <Icon name="chevron-left" color="#fff" onPress={undoPage} />
               </IconBorder>
             </HeaderProfile>
-            <ImageItem source={require('../../assets/profile/profile.jpg')} />
-
-            <AlignIconHeader>
-              <IconEdit
-                name="edit"
-                size={20}
-                color="#fff"
-                onPress={() => {
-                  navigation.navigate('EditProfile');
-                }}
-              />
-            </AlignIconHeader>
 
             <AlignText>
               <Title2>Olá, {profile.name} !</Title2>
@@ -96,17 +82,29 @@ const Profile: React.FC = () => {
 
               <TextMin> {profile.email}</TextMin>
             </AlignIcon>
-            <ButtonEditLike
-              onPress={() => {
-                navigation.navigate('ProfileDrink');
-              }}>
-              <ColorTextButton>
-                <TextH5>Altere seus gostos</TextH5>
-              </ColorTextButton>
-            </ButtonEditLike>
+
           </Container>
+          <FooterProfile>
+
+              <ButtonEditLike
+                onPress={() => {
+                  navigation.navigate('EditProfile');
+                }}>
+                <ColorTextButton>
+                  <TextH5>Altere seu perfil</TextH5>
+                </ColorTextButton>
+              </ButtonEditLike>
+              
+              <ButtonEditLike
+                onPress={() => {
+                  navigation.navigate('ProfileDrink');
+                }}>
+                <ColorTextButton>
+                  <TextH5>Altere seus gostos</TextH5>
+                </ColorTextButton>
+              </ButtonEditLike>
+            </FooterProfile>
         </ScrollView>
-        <Footer />
       </KeyboardAvoidingView>
     </>
   );

@@ -108,13 +108,6 @@ const EditProfile: React.FC = () => {
                 <Icon name="chevron-left" color="#fff" onPress={undoPage} />
               </IconBorder>
             </HeaderProfile>
-            <UserAvatarButton>
-              <ImageItem source={image} />
-            </UserAvatarButton>
-
-            <AlignIconHeader>
-              <IconEdit name="camera" size={20} color="#fff" />
-            </AlignIconHeader>
 
             <Form initialData={profile} ref={formRef} onSubmit={handleSignUp}>
               <ContainerForm>
@@ -154,6 +147,7 @@ const EditProfile: React.FC = () => {
                 />
               </ContainerForm>
             </Form>
+            {/* #TODO move save button to bottom */}
             <ContainerButton>
               <Button onPress={() => formRef.current?.submitForm()}>
                 Salvar
