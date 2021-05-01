@@ -24,7 +24,7 @@ import Footer from '../../components/Footer';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import getvalidationErrors from '../../utils/getValidationErrors';
 import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
@@ -32,22 +32,28 @@ import Button from '../../components/Button';
 import Client from '../../services/api';
 import image from '../../assets/profile/profile.jpg';
 import { useSelector } from 'react-redux';
+
 interface ProfileFormData {
   name: string;
   adress: string;
   email: string;
 }
 
+type ParamList = {
+  EditProfile: {
+    user: ProfileFormData
+  }
+};
 
+export type EditProfileParams = RouteProp<
+  ParamList,
+  'EditProfile'
+>;
 
 const EditProfile: React.FC = () => {
-  //#TODO type to application state must be create
-  const { profile } = useSelector((state: any) => state);
-  console.log('state profile:', profile);
   const navigation = useNavigation();
-  const undoPage = () => {
-    navigation.goBack();
-  };
+  const { params: { user } } = useRoute<EditProfileParams>()
+
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
@@ -92,7 +98,6 @@ const EditProfile: React.FC = () => {
     [navigation],
   );
 
-
   return (
     <>
       <KeyboardAvoidingView
@@ -104,12 +109,12 @@ const EditProfile: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}>
           <Container>
             <HeaderProfile>
-              <IconBorder onPress={undoPage}>
-                <Icon name="chevron-left" color="#fff" onPress={undoPage} />
+              <IconBorder onPress={navigation.goBack}>
+                <Icon name="chevron-left" color="#fff" onPress={navigation.goBack} />
               </IconBorder>
             </HeaderProfile>
 
-            <Form initialData={profile} ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
               <ContainerForm>
                 <Input
                   autoCapitalize="words"
