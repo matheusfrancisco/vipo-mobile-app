@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import IconEdit from 'react-native-vector-icons/Entypo';
 
 import { useAuth } from '../../hooks/auth';
@@ -29,7 +29,7 @@ import getvalidationErrors from '../../utils/getValidationErrors';
 import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import api from '../../services/api';
+import Client from '../../services/api';
 import image from '../../assets/profile/profile.jpg';
 import { useSelector } from 'react-redux';
 interface ProfileFormData {
@@ -38,12 +38,13 @@ interface ProfileFormData {
   email: string;
 }
 
+
+
 const EditProfile: React.FC = () => {
   //#TODO type to application state must be create
   const { profile } = useSelector((state: any) => state);
   console.log('state profile:', profile);
   const navigation = useNavigation();
-
   const undoPage = () => {
     navigation.goBack();
   };
@@ -70,7 +71,7 @@ const EditProfile: React.FC = () => {
           email,
         };
 
-        const response = await api.put('/profile', FormData);
+        const response = await Client.http.put('/profile', FormData);
 
         Alert.alert('Perfil atualizado com sucesso');
 
@@ -90,6 +91,7 @@ const EditProfile: React.FC = () => {
     },
     [navigation],
   );
+
 
   return (
     <>

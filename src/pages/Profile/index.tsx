@@ -25,6 +25,20 @@ import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import Client from '../../services/api';
+
+const getProfile = async() => {
+  console.log("start calling profile")
+  try {
+    const profile =  await Client.http.get('/profiles');
+    console.log(profile);
+    
+  } catch (error) {
+    console.log(error.response.data);
+
+    
+  }
+}
 
 const Profile: React.FC = () => {
   const navigation = useNavigation();

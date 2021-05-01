@@ -22,7 +22,7 @@ import logo from '../../assets/logo.png';
 
 import { Title, TextItalic } from '../../global';
 
-import api from '../../services/api';
+import Client from '../../services/api';
 import RNPickerSelect from 'react-native-picker-select';
 
 interface SignUpData {
@@ -87,7 +87,7 @@ const SignUp: React.FC = () => {
         birthDate: date.toJSON(),
       };
     
-      const res = await api.post('/users', newUser);
+      const res = await Client.http.post('/users', newUser);
 
       if (res.status == 201) {
         console.log('created');

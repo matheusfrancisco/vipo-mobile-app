@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import api from '../services/api';
+import Client from '../services/api';
 
 interface User {
   id: string;
@@ -33,21 +33,23 @@ interface AuthContextData {
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AUTH_HEADER = 'Authorization';
+const STORAGE_TOKEN = '@Vipo:token';
+const STORAGE_USER = '@Vipo:user';
 
 const AuthUser: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>({} as AuthState);
   const [loading, setLoading] = useState(true);
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('/signin', { email, password });
+    const response = await Client.http.post('/signin', { email, password });
 
     const { token, user } = response.data;
+    Client.addHttpHeader(AUTH_HEADER, `Bearer ${token}`);
 
-    await AsyncStorage.setItem('@Vipo:token', token);
-    await AsyncStorage.setItem('@Vipo:user', JSON.stringify(user));
     await AsyncStorage.multiSet([
-      ['@Vipo:token', token],
-      ['@Vipo:user', JSON.stringify(user)],
+      [STORAGE_TOKEN, token],
+      [STORAGE_USER, JSON.stringify(user)],
     ]);
 
     setData({ token, user });
@@ -56,10 +58,11 @@ const AuthUser: React.FC = ({ children }) => {
   useEffect(() => {
     async function loadStorageData(): Promise<void> {
       const [token, user] = await AsyncStorage.multiGet([
-        '@Vipo:token',
-        '@Vipo:user',
+        STORAGE_TOKEN,
+        STORAGE_USER,
       ]);
       if (token[1] && user[1]) {
+        Client.addHttpHeader(AUTH_HEADER, `Bearer ${token[1]}`);
         setData({ token: token[1], user: JSON.parse(user[1]) });
       }
       setLoading(false);
@@ -68,7 +71,8 @@ const AuthUser: React.FC = ({ children }) => {
   }, []);
 
   const signOut = useCallback(async () => {
-    await AsyncStorage.multiRemove(['@Vipo:token', '@Vipo:user']);
+    await AsyncStorage.multiRemove([STORAGE_USER, STORAGE_TOKEN]);
+    Client.removeHttpHeader(AUTH_HEADER);
 
     setData({} as AuthState);
   }, []);
