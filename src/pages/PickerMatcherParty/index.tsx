@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useReducer } from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -26,12 +26,10 @@ import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux';
-import { answeredRecommendtionsRequest } from '../../store/modules/recommendations/actions';
 import { sendRecommendations } from '../../store/modules/recommendations/saga';
 
 interface StateAnswer {
-  likes: Array<string>;
+  likes: string[];
   numberOfPeople: number;
   howMuch: string;
 }
@@ -40,7 +38,7 @@ const checkAnswers = (answers: StateAnswer) => {
   if (
     answers.howMuch === '' ||
     answers.numberOfPeople === 0 ||
-    answers.likes === Array()
+    answers.likes === []
   ) {
     return true;
   }
@@ -48,26 +46,30 @@ const checkAnswers = (answers: StateAnswer) => {
 
 const PickerMatcherParty: React.FC = () => {
   const informacoes = [
-    { title: 'Para quantas pessoas ? ', id: 'AmountPeople' },
-    { title: 'Quais os planos para hoje ?', id: 'PlansToday' },
-    { title: 'Quantos pretendem gastar\npor pessoa ?', id: 'SpendingPerson' },
+    { title: 'Para quantas pessoas ? ', id: 'AmountPeople' as const },
+    { title: 'Quais os planos para hoje ?', id: 'PlansToday' as const },
+    {
+      title: 'Quantos pretendem gastar\npor pessoa ?',
+      id: 'SpendingPerson' as const,
+    },
   ];
   const navigation = useNavigation();
-  const state = useSelector((state: any) => state);
+  const state = useReducer(
+    (reducerState: Partial<StateAnswer>) => reducerState,
+    {},
+  );
   console.log('initialState:', state);
 
-  const [answers, setAnswered] = useState({
+  const [answers, setAnswered] = useState<StateAnswer>({
     howMuch: '',
     numberOfPeople: 0,
-    likes: Array(),
+    likes: [],
   });
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(answeredRecommendtionsRequest(answers));
-  }, [answers]);
-
-  const setPick = (statePrevious: StateAnswer, values: {}) => {
+  const setPick = (
+    statePrevious: StateAnswer,
+    values: Partial<StateAnswer>,
+  ) => {
     setAnswered({ ...statePrevious, ...values });
   };
 

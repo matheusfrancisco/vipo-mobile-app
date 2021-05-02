@@ -17,12 +17,12 @@ import {
 import { TextMin, TextH3 } from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 
 const Match: React.FC = () => {
   const navigation = useNavigation();
-  const { answersQuestion } = useSelector((state: any) => state);
-  console.log('answersQuestion: 1', answersQuestion);
+
+  // TODO get answersQuestions
+
   const yourMatchs = [
     {
       id: 1,
