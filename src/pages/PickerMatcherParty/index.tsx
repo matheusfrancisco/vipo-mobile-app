@@ -26,7 +26,6 @@ import PickerAmountPeople from './PickerAmountPeople';
 import PickerPlansToday from './PickerPlansToday';
 import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
-import { sendRecommendations } from '../../store/modules/recommendations/saga';
 
 interface StateAnswer {
   likes: string[];
@@ -148,8 +147,6 @@ const PickerMatcherParty: React.FC = () => {
                 //## craete some loading to waiting for recommendations
                 console.log(answers, 'answers to sent to backend');
 
-                const rec = sendRecommendations(answers);
-                console.log(rec);
                 navigation.navigate('Match');
               }
             }}
