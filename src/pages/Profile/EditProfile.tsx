@@ -1,16 +1,11 @@
-import React, { useRef, useCallback, useEffect } from 'react';
-import IconEdit from 'react-native-vector-icons/Entypo';
+import React, { useRef, useCallback } from 'react';
 
-import { useAuth } from '../../hooks/auth';
 import {
   HeaderProfile,
   IconBorder,
   Container,
-  ImageItem,
-  AlignIconHeader,
   ContainerButton,
   ContainerForm,
-  UserAvatarButton,
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
@@ -30,8 +25,6 @@ import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Client from '../../services/api';
-import image from '../../assets/profile/profile.jpg';
-import { useSelector } from 'react-redux';
 
 interface ProfileFormData {
   name: string;
@@ -41,18 +34,17 @@ interface ProfileFormData {
 
 type ParamList = {
   EditProfile: {
-    user: ProfileFormData
-  }
+    user: ProfileFormData;
+  };
 };
 
-export type EditProfileParams = RouteProp<
-  ParamList,
-  'EditProfile'
->;
+export type EditProfileParams = RouteProp<ParamList, 'EditProfile'>;
 
 const EditProfile: React.FC = () => {
   const navigation = useNavigation();
-  const { params: { user } } = useRoute<EditProfileParams>()
+  const {
+    params: { user },
+  } = useRoute<EditProfileParams>();
 
   const formRef = useRef<FormHandles>(null);
   const emailInputref = useRef<TextInput>(null);
@@ -72,12 +64,13 @@ const EditProfile: React.FC = () => {
           abortEarly: false,
         });
         const { name, email } = data;
+
         const formData = {
           name,
           email,
         };
 
-        const response = await Client.http.put('/profile', FormData);
+        await Client.http.put('/profile', formData);
 
         Alert.alert('Perfil atualizado com sucesso');
 
@@ -110,7 +103,11 @@ const EditProfile: React.FC = () => {
           <Container>
             <HeaderProfile>
               <IconBorder onPress={navigation.goBack}>
-                <Icon name="chevron-left" color="#fff" onPress={navigation.goBack} />
+                <Icon
+                  name="chevron-left"
+                  color="#fff"
+                  onPress={navigation.goBack}
+                />
               </IconBorder>
             </HeaderProfile>
 

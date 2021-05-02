@@ -5,7 +5,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'eslint-config-prettier',
-    'eslint-config-prettier/@typescript-eslint',
   ],
+  plugins: [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "react-hooks"
+  ]
 };

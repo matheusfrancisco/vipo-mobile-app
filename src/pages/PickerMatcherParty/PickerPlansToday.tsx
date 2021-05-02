@@ -13,7 +13,7 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerPlansTodayParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  setPick: (statePrevious: StateAnswer, values: Partial<StateAnswer>) => void;
   answers: StateAnswer;
 }
 
@@ -84,7 +84,7 @@ const PickerPlansToday: React.FC<PickerPlansTodayParams> = ({
   };
 
   const setPickPlansToday = (planForToday: string) => {
-    const likesPrevious = answers['likes'];
+    const likesPrevious = answers.likes;
     const hasLunch = likesPrevious.indexOf(planForToday) > -1;
     if (hasLunch) {
       likesPrevious.filter((l: string) => (l !== planForToday ? true : false));

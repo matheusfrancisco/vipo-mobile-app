@@ -8,7 +8,7 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerAmmountParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  setPick: (statePrevious: StateAnswer, values: Partial<StateAnswer>) => void;
   answers: StateAnswer;
 }
 

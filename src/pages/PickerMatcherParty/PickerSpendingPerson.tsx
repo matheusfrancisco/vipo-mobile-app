@@ -12,7 +12,7 @@ interface StateAnswer {
   howMuch: string;
 }
 interface PickerSpendingPersonParams {
-  setPick: (statePrevious: StateAnswer, values: {}) => void;
+  setPick: (statePrevious: StateAnswer, values: Partial<StateAnswer>) => void;
   answers: StateAnswer;
 }
 
