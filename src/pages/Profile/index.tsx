@@ -35,6 +35,11 @@ interface IProfile {
     lastName: string;
     email: string;
     address?: string;
+    profileInformations: {
+        foods: Array<string>;
+        drinks: Array<string>;
+        musicals: Array<string>;
+    }
   };
 }
 
@@ -134,7 +139,9 @@ const Profile: React.FC = () => {
 
                 <ButtonEditLike
                   onPress={() => {
-                    navigation.navigate('ProfileDrink');
+                    navigation.navigate('ProfileDrink', {
+                        profileInformations: profile.user.profileInformations,
+                    });
                   }}>
                   <ColorTextButton>
                     <TextH5>Altere seus gostos</TextH5>

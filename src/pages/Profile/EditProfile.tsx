@@ -32,6 +32,7 @@ interface ProfileFormData {
   lastName: string;
 }
 
+//#TODO move to a comum place to all components use.
 type ParamList = {
   EditProfile: {
     user: ProfileFormData;
