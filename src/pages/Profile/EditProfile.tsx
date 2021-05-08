@@ -20,18 +20,19 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
-import getvalidationErrors from '../../utils/getValidationErrors';
 import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Client from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 interface ProfileFormData {
   name: string;
-  adress: string;
-  email: string;
+  address: string;
+  lastName: string;
 }
 
+//#TODO move to a comum place to all components use.
 type ParamList = {
   EditProfile: {
     user: ProfileFormData;
@@ -42,12 +43,13 @@ export type EditProfileParams = RouteProp<ParamList, 'EditProfile'>;
 
 const EditProfile: React.FC = () => {
   const navigation = useNavigation();
+  const auth = useAuth();
   const {
     params: { user },
   } = useRoute<EditProfileParams>();
 
   const formRef = useRef<FormHandles>(null);
-  const emailInputref = useRef<TextInput>(null);
+  const lastNameInputRef = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
 
   const handleSignUp = useCallback(
@@ -56,31 +58,37 @@ const EditProfile: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string(),
-          email: Yup.string().email('Digite um e-mail válido'),
+          name: Yup.string().required(),
+          lastName: Yup.string().required(),
+          address: Yup.string(),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
-        const { name, email } = data;
+        const { name, lastName, address } = data;
 
         const formData = {
           name,
-          email,
+          lastName,
+          address,
         };
+        console.log(formData);
 
-        await Client.http.put('/profile', formData);
+        const response = await Client.http.patch('/users', formData);
+
+        await auth.updateUser(response.data);
 
         Alert.alert('Perfil atualizado com sucesso');
 
         navigation.goBack();
       } catch (error) {
-        if (error instanceof Yup.ValidationError) {
-          const errors = getvalidationErrors(error);
-          formRef.current?.setErrors(errors);
-          return;
-        }
+        // if (error instanceof Yup.ValidationError) {
+        //   const errors = getvalidationErrors(error);
+        //   formRef.current?.setErrors(errors);
+        //   return;
+        // }
+        console.log(error);
 
         Alert.alert(
           'Erro na atualização do perfil',
@@ -88,7 +96,7 @@ const EditProfile: React.FC = () => {
         );
       }
     },
-    [navigation],
+    [navigation, auth],
   );
 
   return (
@@ -120,6 +128,18 @@ const EditProfile: React.FC = () => {
                   returnKeyType="next"
                   placeholder="Nome"
                   onSubmitEditing={() => {
+                    lastNameInputRef.current?.focus();
+                  }}
+                />
+                <Input
+                  ref={lastNameInputRef}
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="lastName"
+                  icon="user"
+                  placeholder="Sobrenome"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
                     adressInputref.current?.focus();
                   }}
                 />
@@ -130,22 +150,6 @@ const EditProfile: React.FC = () => {
                   icon="map-pin"
                   returnKeyType="next"
                   placeholder="Endereço"
-                  onSubmitEditing={() => {
-                    emailInputref.current?.focus();
-                  }}
-                />
-                <Input
-                  ref={emailInputref}
-                  keyboardType="email-address"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="email"
-                  icon="mail"
-                  placeholder="E-mail"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {
-                    emailInputref.current?.focus();
-                  }}
                 />
               </ContainerForm>
             </Form>

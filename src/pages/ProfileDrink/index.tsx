@@ -5,15 +5,36 @@ import { TextMinAsker } from '../../global';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Line from '../../components/Line';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import BodyProfileDrink from './Body';
+
+interface IProfileDrink {
+    profileInformations: {
+        foods: Array<string>;
+        drinks: Array<string>;
+        musicals: Array<string>;
+    }
+  }
+
+type ParamList = {
+    ProfileDrink: {
+      profileInformations: IProfileDrink;
+    };
+  };
+
+export type EditProfileParams = RouteProp<ParamList, 'ProfileDrink'>;
+
 
 const ProfileDrink: React.FC = () => {
   const navigation = useNavigation();
+  const {
+    params: { profileInformations },
+  } = useRoute<EditProfileParams>();
 
   const undoPage = () => {
     navigation.goBack();
   };
+
   return (
     <>
       <KeyboardAvoidingView

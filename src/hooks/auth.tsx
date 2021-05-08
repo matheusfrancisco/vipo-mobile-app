@@ -11,9 +11,10 @@ import Client from '../services/api';
 
 interface User {
   id: string;
-  avatar_url: string;
   name: string;
+  lastName: string;
   email: string;
+  address?: string;
 }
 interface AuthState {
   token: string;
@@ -27,9 +28,10 @@ interface SignInCredentials {
 
 interface AuthContextData {
   user: User;
-  signOut(): void;
   loading: boolean;
+  signOut(): void;
   signIn(credentials: SignInCredentials): Promise<void>;
+  updateUser(user: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -77,8 +79,18 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(async (user: User) => {
+    await AsyncStorage.setItem(STORAGE_USER, JSON.stringify(user));
+
+    setData((data) => ({
+      user,
+      token: data.token,
+    }));
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: data.user, loading, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ user: data.user, loading, signIn, signOut, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -94,12 +106,4 @@ function useAuth(): AuthContextData {
   return context;
 }
 
-async function getToken(): Promise<string | null> {
-  const [token, user] = await AsyncStorage.multiGet([
-    '@Vipo:token',
-    '@Vipo:user',
-  ]);
-  return token[1];
-}
-
-export { AuthUser, useAuth, getToken };
+export { AuthUser, useAuth };
