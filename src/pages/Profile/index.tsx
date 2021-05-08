@@ -22,6 +22,7 @@ import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 import Line from '../../components/Line';
 import { useNavigation } from '@react-navigation/native';
 import Client from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 interface IProfile {
   user: {
@@ -32,14 +33,15 @@ interface IProfile {
   }
 }
 
-const getProfile = async() => {
+const getProfile = async(
+    signOut: () => void
+) => {
   try {
     const response=  await Client.http.get<IProfile>('/profiles');
-    
     return response.data
   } catch (error) {
-    console.error(error.response.data);
-
+    console.log(error.response)
+    signOut();
     return null
   }
 }
@@ -47,12 +49,13 @@ const getProfile = async() => {
 const Profile: React.FC = () => {
   const [profile, setProfile] = useState<IProfile | null>(null)
   const [loading, setLoading] = useState(true)
+  const { signOut } = useAuth();
 
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
-      const profile = await getProfile()
+      const profile = await getProfile(signOut)
 
       setProfile(profile)
       setLoading(false)
@@ -120,7 +123,7 @@ const Profile: React.FC = () => {
                   <TextH5>Altere seu perfil</TextH5>
                 </ColorTextButton>
               </ButtonEditLike>
-              
+
               <ButtonEditLike
                 onPress={() => {
                   navigation.navigate('ProfileDrink');

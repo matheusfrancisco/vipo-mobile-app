@@ -28,8 +28,8 @@ import Client from '../../services/api';
 
 interface ProfileFormData {
   name: string;
-  adress: string;
-  email: string;
+  address: string;
+  lastName: string;
 }
 
 type ParamList = {
@@ -47,7 +47,7 @@ const EditProfile: React.FC = () => {
   } = useRoute<EditProfileParams>();
 
   const formRef = useRef<FormHandles>(null);
-  const emailInputref = useRef<TextInput>(null);
+  const lastNameInputRef = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
 
   const handleSignUp = useCallback(
@@ -63,24 +63,27 @@ const EditProfile: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        const { name, email } = data;
+        const { name, lastName, address } = data;
 
         const formData = {
           name,
-          email,
+          lastName,
+          address,
         };
+        console.log(formData)
 
-        await Client.http.put('/profile', formData);
+        await Client.http.patch('/users', formData);
 
         Alert.alert('Perfil atualizado com sucesso');
 
         navigation.goBack();
       } catch (error) {
-        if (error instanceof Yup.ValidationError) {
-          const errors = getvalidationErrors(error);
-          formRef.current?.setErrors(errors);
-          return;
-        }
+        // if (error instanceof Yup.ValidationError) {
+        //   const errors = getvalidationErrors(error);
+        //   formRef.current?.setErrors(errors);
+        //   return;
+        // }
+        console.log(error)
 
         Alert.alert(
           'Erro na atualização do perfil',
@@ -120,6 +123,18 @@ const EditProfile: React.FC = () => {
                   returnKeyType="next"
                   placeholder="Nome"
                   onSubmitEditing={() => {
+                    lastNameInputRef.current?.focus();
+                  }}
+                />
+                <Input
+                  ref={lastNameInputRef}
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="lastName"
+                  icon="user"
+                  placeholder="Sobrenome"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
                     adressInputref.current?.focus();
                   }}
                 />
@@ -130,22 +145,6 @@ const EditProfile: React.FC = () => {
                   icon="map-pin"
                   returnKeyType="next"
                   placeholder="Endereço"
-                  onSubmitEditing={() => {
-                    emailInputref.current?.focus();
-                  }}
-                />
-                <Input
-                  ref={emailInputref}
-                  keyboardType="email-address"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="email"
-                  icon="mail"
-                  placeholder="E-mail"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {
-                    emailInputref.current?.focus();
-                  }}
                 />
               </ContainerForm>
             </Form>

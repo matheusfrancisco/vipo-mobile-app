@@ -12,7 +12,8 @@ const envs = {
     SOUNDS: Platform.OS === 'android' || false,
   },
   dev: {
-    DEV_API: 'http://192.168.16.111:3000',
+    //DEV_API: 'http://192.168.16.111:3000',
+    DEV_API: 'http://10.0.2.2:3000',
     SOUNDS: Platform.OS === 'android' || false,
   },
 };
