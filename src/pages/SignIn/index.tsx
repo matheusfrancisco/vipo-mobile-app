@@ -9,6 +9,7 @@ import {
   Text,
 } from 'react-native';
 import * as Yup from 'yup';
+import { AxiosError } from 'axios';
 
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
@@ -69,6 +70,10 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(error);
           formRef.current?.setErrors(errors);
           return;
+        }
+
+        if (error.isAxiosError) {
+          console.error(error.response.data);
         }
 
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');

@@ -20,11 +20,11 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
-import getvalidationErrors from '../../utils/getValidationErrors';
 import { Form } from '@unform/mobile';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Client from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 interface ProfileFormData {
   name: string;
@@ -42,6 +42,7 @@ export type EditProfileParams = RouteProp<ParamList, 'EditProfile'>;
 
 const EditProfile: React.FC = () => {
   const navigation = useNavigation();
+  const auth = useAuth();
   const {
     params: { user },
   } = useRoute<EditProfileParams>();
@@ -56,8 +57,9 @@ const EditProfile: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string(),
-          email: Yup.string().email('Digite um e-mail válido'),
+          name: Yup.string().required(),
+          lastName: Yup.string().required(),
+          address: Yup.string(),
         });
 
         await schema.validate(data, {
@@ -70,9 +72,11 @@ const EditProfile: React.FC = () => {
           lastName,
           address,
         };
-        console.log(formData)
+        console.log(formData);
 
-        await Client.http.patch('/users', formData);
+        const response = await Client.http.patch('/users', formData);
+
+        await auth.updateUser(response.data);
 
         Alert.alert('Perfil atualizado com sucesso');
 
@@ -83,7 +87,7 @@ const EditProfile: React.FC = () => {
         //   formRef.current?.setErrors(errors);
         //   return;
         // }
-        console.log(error)
+        console.log(error);
 
         Alert.alert(
           'Erro na atualização do perfil',
@@ -91,7 +95,7 @@ const EditProfile: React.FC = () => {
         );
       }
     },
-    [navigation],
+    [navigation, auth],
   );
 
   return (
