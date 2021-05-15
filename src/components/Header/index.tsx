@@ -20,9 +20,6 @@ const Header: React.FC<Props> = ({ onPress, onPressBack, text }: Props) => {
           <Icon
             name="chevron-left"
             color="#fff"
-            onPress={() => {
-              onPressBack();
-            }}
           />
         </IconBorder>
         <TextNext>

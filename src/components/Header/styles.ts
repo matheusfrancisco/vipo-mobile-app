@@ -8,7 +8,7 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
-export const IconBorder = styled.View`
+export const IconBorder = styled.TouchableOpacity`
   margin: 20px 0px 25px 20px;
   border-width: 6px;
   border-color: #a396cb;

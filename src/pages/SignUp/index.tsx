@@ -43,6 +43,7 @@ import {
   ContainerInput,
 } from './styles';
 
+//#TODO migrate this form to formik
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
@@ -86,7 +87,7 @@ const SignUp: React.FC = () => {
         gender: selectedGender,
         birthDate: date.toJSON(),
       };
-    
+
       const res = await Client.http.post('/users', newUser);
 
       if (res.status == 201) {
@@ -181,8 +182,8 @@ const SignUp: React.FC = () => {
                 }}
               />
               <DatePickerText>Data de nascimento: </DatePickerText>
-              <DatePicker 
-                date={date} 
+              <DatePicker
+                date={date}
                 setDate={(selectedDate) => setDate(selectedDate)}
               />
               <Gender>

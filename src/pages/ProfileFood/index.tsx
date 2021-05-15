@@ -1,22 +1,37 @@
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  Image,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 
 import { Container, HeaderText } from './styles';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { TextH3, TextMinAsker } from '../../global';
+import { TextMinAsker } from '../../global';
 import Line from '../../components/Line';
 import BodyProfileFood from './Body';
 
+interface IProfileDrink {
+  foods: Array<string>;
+  drinks: Array<string>;
+  musicals: Array<string>;
+}
+
+type ParamList = {
+  ProfileDrink: {
+    profileInformations: IProfileDrink;
+  };
+};
+
+export type EditProfileParams = RouteProp<ParamList, 'ProfileDrink'>;
+
 const ProfileFood: React.FC = () => {
   const navigation = useNavigation();
+  const {
+    params: { profileInformations },
+  } = useRoute<EditProfileParams>();
+
+  console.log(profileInformations);
   const undoPage = () => {
     navigation.goBack();
   };

@@ -38,6 +38,7 @@ interface SignInFormData {
   email: string;
   password: string;
 }
+//#TODO migrate this form to formik
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
