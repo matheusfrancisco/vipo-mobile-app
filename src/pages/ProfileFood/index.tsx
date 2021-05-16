@@ -1,15 +1,15 @@
-import React from 'react';
-import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import React, { useMemo } from 'react';
+import { ImageURISource } from 'react-native';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 
 import { Container, HeaderText } from './styles';
 
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import { TextMinAsker } from '../../global';
 import Line from '../../components/Line';
-import BodyProfileFood from './Body';
+import { Formik } from 'formik';
+import RecommendationsList from '../../components/RecommendationsList';
 
 interface IProfileDrink {
   foods: Array<string>;
@@ -25,33 +25,63 @@ type ParamList = {
 
 export type EditProfileParams = RouteProp<ParamList, 'ProfileDrink'>;
 
+interface IFoodOption {
+  name: string;
+  link: ImageURISource;
+}
+
+const foodOptions: IFoodOption[] = [
+  { link: require('../../assets/taste-food/burguer.png'), name: 'Hambúrguer' },
+  { link: require('../../assets/taste-food/snack.jpeg'), name: 'Petisco' },
+  { link: require('../../assets/taste-food/vegan.jpg'), name: 'Vegana' },
+  {
+    link: require('../../assets/taste-food/vegetarian.jpg'),
+    name: 'Vegetariana',
+  },
+];
+
 const ProfileFood: React.FC = () => {
   const navigation = useNavigation();
   const {
     params: { profileInformations },
   } = useRoute<EditProfileParams>();
 
-  console.log(profileInformations);
-  const undoPage = () => {
-    navigation.goBack();
+  const initialValues = useMemo(
+    () => ({
+      foods: foodOptions.reduce(
+        (acc, option) => ({
+          ...acc,
+          [option.name]: profileInformations.foods.includes(option.name),
+        }),
+        {},
+      ),
+    }),
+    [profileInformations.foods],
+  );
+
+  const handleSubmit = (values: typeof initialValues) => {
+    /* const drinks = Object.entries(values.drinks)
+      .map(([name, value]) => (value ? name : undefined))
+      .filter((value) => value);
+
+    navigation.navigate('ProfileFood', {
+      profileInformations: { ...profileInformations, drinks },
+    }); */
   };
+
   return (
-    <>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}>
-          <Container>
-            <Header
-              text="Próximo"
-              onPress={() => {
-                navigation.navigate('ProfileMusic');
-              }}
-              onPressBack={undoPage}
-            />
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      {({ submitForm }) => (
+        <>
+          <Header
+            text="Próximo"
+            onPress={() => {
+              submitForm();
+            }}
+            onPressBack={navigation.goBack}
+          />
+
+          <Container keyboardShouldPersistTaps="handled">
             <HeaderText>
               <TextMinAsker>
                 Nós ajude a indicar os lugares de acordo com
@@ -60,12 +90,14 @@ const ProfileFood: React.FC = () => {
             </HeaderText>
             <Line />
 
-            <BodyProfileFood />
+            <RecommendationsList
+              recommendations={foodOptions}
+              fieldName="foods"
+            />
           </Container>
-        </ScrollView>
-        <Footer />
-      </KeyboardAvoidingView>
-    </>
+        </>
+      )}
+    </Formik>
   );
 };
 

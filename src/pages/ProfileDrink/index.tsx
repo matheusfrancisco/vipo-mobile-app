@@ -132,7 +132,7 @@ const ProfileDrink: React.FC = () => {
             onPress={() => {
               submitForm();
             }}
-            onPressBack={() => navigation.goBack()}
+            onPressBack={navigation.goBack}
           />
 
           <Container keyboardShouldPersistTaps="handled">
