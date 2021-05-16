@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
 
 export const TextName = styled.Text`
   font-size: 14px;
@@ -16,25 +15,9 @@ export const Container = styled.View`
   justify-content: center;
 `;
 
-export const Row = styled.View`
-  flex-direction: row;
-  padding: 15px;
-`;
-
 export const AlignContent = styled.View`
   flex-direction: column;
   margin: 2px 15px;
   align-items: center;
   width: 80px;
-`;
-
-interface Props {
-  select?: boolean;
-}
-export const ContainerText = styled(RectButton)<Props>`
-  ${(props: any) =>
-    props.select &&
-    css`
-      opacity: 0.3;
-    `}
 `;
