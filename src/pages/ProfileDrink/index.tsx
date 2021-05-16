@@ -20,7 +20,7 @@ type ParamList = {
   };
 };
 
-export type EditProfileParams = RouteProp<ParamList, 'ProfileDrink'>;
+type ProfileDrinkParams = RouteProp<ParamList, 'ProfileDrink'>;
 
 interface IDrinkOption {
   name: string;
@@ -98,7 +98,7 @@ const ProfileDrink: React.FC = () => {
   const navigation = useNavigation();
   const {
     params: { profileInformations },
-  } = useRoute<EditProfileParams>();
+  } = useRoute<ProfileDrinkParams>();
 
   const initialValues = useMemo(
     () => ({

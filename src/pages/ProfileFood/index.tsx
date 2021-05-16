@@ -23,7 +23,7 @@ type ParamList = {
   };
 };
 
-export type EditProfileParams = RouteProp<ParamList, 'ProfileDrink'>;
+type ProfileFoodParams = RouteProp<ParamList, 'ProfileDrink'>;
 
 interface IFoodOption {
   name: string;
@@ -44,7 +44,7 @@ const ProfileFood: React.FC = () => {
   const navigation = useNavigation();
   const {
     params: { profileInformations },
-  } = useRoute<EditProfileParams>();
+  } = useRoute<ProfileFoodParams>();
 
   const initialValues = useMemo(
     () => ({
@@ -60,13 +60,13 @@ const ProfileFood: React.FC = () => {
   );
 
   const handleSubmit = (values: typeof initialValues) => {
-    /* const drinks = Object.entries(values.drinks)
+    const foods = Object.entries(values.foods)
       .map(([name, value]) => (value ? name : undefined))
       .filter((value) => value);
 
-    navigation.navigate('ProfileFood', {
-      profileInformations: { ...profileInformations, drinks },
-    }); */
+    navigation.navigate('ProfileMusic', {
+      profileInformations: { ...profileInformations, foods },
+    });
   };
 
   return (

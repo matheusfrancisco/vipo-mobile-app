@@ -1,6 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 
 import { Container, HeaderText } from './styles';
 
@@ -10,8 +10,27 @@ import Footer from '../../components/Footer';
 import Line from '../../components/Line';
 import BodyProfileMusic from './Body';
 
+interface IProfileDrink {
+  foods: Array<string>;
+  drinks: Array<string>;
+  musicals: Array<string>;
+}
+
+type ParamList = {
+  ProfileDrink: {
+    profileInformations: IProfileDrink;
+  };
+};
+
+type ProfileMusicParams = RouteProp<ParamList, 'ProfileDrink'>;
+
 const ProfileMusic: React.FC = () => {
   const navigation = useNavigation();
+  const {
+    params: { profileInformations },
+  } = useRoute<ProfileMusicParams>();
+
+  console.log(profileInformations);
 
   const undoPage = () => {
     navigation.goBack();
