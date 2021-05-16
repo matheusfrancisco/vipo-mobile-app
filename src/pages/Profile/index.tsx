@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IconLocation from 'react-native-vector-icons/Octicons';
 
 import IconEmail from 'react-native-vector-icons/Fontisto';
@@ -25,7 +25,7 @@ import {
 import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 
 import Line from '../../components/Line';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import Client from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 
@@ -36,10 +36,10 @@ interface IProfile {
     email: string;
     address?: string;
     profileInformations: {
-        foods: Array<string>;
-        drinks: Array<string>;
-        musicals: Array<string>;
-    }
+      foods: Array<string>;
+      drinks: Array<string>;
+      musicals: Array<string>;
+    };
   };
 }
 
@@ -57,18 +57,20 @@ const getProfile = async (signOut: () => void) => {
 const Profile: React.FC = () => {
   const [profile, setProfile] = useState<IProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const { signOut, user } = useAuth();
+  const { signOut } = useAuth();
 
   const navigation = useNavigation();
 
-  useEffect(() => {
-    (async () => {
-      const profile = await getProfile(signOut);
+  useFocusEffect(
+    useCallback(() => {
+      (async () => {
+        const profile = await getProfile(signOut);
 
-      setProfile(profile);
-      setLoading(false);
-    })();
-  }, [signOut, user]);
+        setProfile(profile);
+        setLoading(false);
+      })();
+    }, [signOut]),
+  );
 
   return (
     <>
@@ -140,7 +142,7 @@ const Profile: React.FC = () => {
                 <ButtonEditLike
                   onPress={() => {
                     navigation.navigate('ProfileDrink', {
-                        profileInformations: profile.user.profileInformations,
+                      profileInformations: profile.user.profileInformations,
                     });
                   }}>
                   <ColorTextButton>
