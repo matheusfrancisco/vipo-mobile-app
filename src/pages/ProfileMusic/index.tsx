@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ImageURISource } from 'react-native';
+import { Alert, ImageURISource } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 
 import { Container, HeaderText } from './styles';
@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Line from '../../components/Line';
 import RecommendationsList from '../../components/RecommendationsList';
 import { Formik } from 'formik';
+import Client from '../../services/api';
 
 interface IProfileDrink {
   foods: Array<string>;
@@ -79,16 +80,23 @@ const ProfileMusic: React.FC = () => {
     [profileInformations.musicals],
   );
 
-  const handleSubmit = (values: typeof initialValues) => {
+  const handleSubmit = async (values: typeof initialValues) => {
     const musicals = Object.entries(values.musicals)
       .map(([name, value]) => (value ? name : undefined))
       .filter((value) => value);
 
     const newProfileInformations = { ...profileInformations, musicals };
 
-    console.log(newProfileInformations);
+    try {
+      await Client.http.patch('profiles', {
+        profileInformations: newProfileInformations,
+      });
+    } catch (error) {
+      console.error(error.message);
+      Alert.alert('Aconteceu um erro ao salvar as informações');
+    }
 
-    // navigation.navigate('Profile');
+    navigation.navigate('Profile');
   };
 
   return (
