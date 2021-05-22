@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -51,11 +51,6 @@ const PickerMatcherParty: React.FC = () => {
     },
   ];
   const navigation = useNavigation();
-  const state = useReducer(
-    (reducerState: Partial<StateAnswer>) => reducerState,
-    {},
-  );
-  console.log('initialState:', state);
 
   const [answers, setAnswered] = useState<StateAnswer>({
     howMuch: '',
