@@ -16,16 +16,16 @@ const options: IOption[] = [
 ];
 
 const NumberOfPeoplePicker: React.FC = () => {
-  const [field, , helpers] = useField('howMuch');
+  const [field, , helpers] = useField('numberOfPeople');
 
   return (
     <PickerRow>
-      {options.map((option) => (
+      {options.map(({ value }) => (
         <OptionButton
-          key={`option-button-${option}`}
-          selected={option === field.value}
-          onPress={() => helpers.setValue(option)}>
-          {option}
+          key={`people-count-${value}`}
+          selected={value === field.value}
+          onPress={() => helpers.setValue(value)}>
+          {value}
         </OptionButton>
       ))}
     </PickerRow>
