@@ -18,8 +18,6 @@ import {
 } from './styles';
 import IconPlus from 'react-native-vector-icons/Feather';
 
-import Footer from '../../components/Footer';
-
 import { Title3 } from '../../global';
 import Button from '../../components/Button';
 import PickerAmountPeople from './PickerAmountPeople';
@@ -159,7 +157,6 @@ const PickerMatcherParty: React.FC = () => {
           </Button>
         </View>
       </KeyboardAvoidingView>
-      {/* <Footer /> */}
     </>
   );
 };
