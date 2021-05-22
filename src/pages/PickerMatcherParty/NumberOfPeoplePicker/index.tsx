@@ -1,6 +1,6 @@
 import { useField } from 'formik';
 import React from 'react';
-import PickerContainer from '../PickerContainer';
+import PickerRow from '../PickerRow';
 import { OptionButton } from './styles';
 
 interface IOption {
@@ -15,11 +15,11 @@ const options: IOption[] = [
   { value: 5 },
 ];
 
-const HowMuchPicker: React.FC = () => {
+const NumberOfPeoplePicker: React.FC = () => {
   const [field, , helpers] = useField('howMuch');
 
   return (
-    <PickerContainer>
+    <PickerRow>
       {options.map((option) => (
         <OptionButton
           key={`option-button-${option}`}
@@ -28,8 +28,8 @@ const HowMuchPicker: React.FC = () => {
           {option}
         </OptionButton>
       ))}
-    </PickerContainer>
+    </PickerRow>
   );
 };
 
-export default HowMuchPicker;
+export default NumberOfPeoplePicker;
