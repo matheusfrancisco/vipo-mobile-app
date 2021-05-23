@@ -1,166 +1,157 @@
-import React, { useState, useReducer } from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  Text,
-  Alert,
-  View,
-} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { ScrollView, Platform, Alert } from 'react-native';
 
 import {
+  Accordion,
+  BackButton,
+  ConfirmButton,
   Container,
+  Footer,
   Header,
-  Title,
   PickerItem,
   TextH5,
-  Expander,
+  Title,
+  Wrapper,
 } from './styles';
-import IconPlus from 'react-native-vector-icons/Feather';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import Footer from '../../components/Footer';
-
-import { Title3 } from '../../global';
-import Button from '../../components/Button';
-import PickerAmountPeople from './PickerAmountPeople';
-import PickerPlansToday from './PickerPlansToday';
-import PickerSpendingPerson from './PickerSpendingPerson';
 import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
+import NumberOfPeoplePicker from './NumberOfPeoplePicker';
+import LikesPicker from './LikesPicker';
+import HowMuchPicker from './HowMuchPicker';
+import Client from '../../services/api';
 
-interface StateAnswer {
-  likes: string[];
-  numberOfPeople: number;
+interface IValues {
   howMuch: string;
+  numberOfPeople: number;
+  like: string[];
 }
 
-const checkAnswers = (answers: StateAnswer) => {
-  if (
-    answers.howMuch === '' ||
-    answers.numberOfPeople === 0 ||
-    answers.likes === []
-  ) {
-    return true;
-  }
+const initialValues: IValues = {
+  howMuch: '',
+  numberOfPeople: 0,
+  like: [],
 };
 
+type FieldKeysEnum = 0 | 1 | 2;
+
+interface IField {
+  key: FieldKeysEnum;
+  PickerComponent: React.FC;
+  label: string;
+}
+
+const fields: IField[] = [
+  {
+    key: 0,
+    PickerComponent: NumberOfPeoplePicker,
+    label: 'Para quantas pessoas?',
+  },
+  {
+    key: 1,
+    PickerComponent: LikesPicker,
+    label: 'Quais os planos para hoje?',
+  },
+  {
+    key: 2,
+    PickerComponent: HowMuchPicker,
+    label: 'Quantos pretendem gastar\npor pessoa?',
+  },
+];
+
 const PickerMatcherParty: React.FC = () => {
-  const informacoes = [
-    { title: 'Para quantas pessoas ? ', id: 'AmountPeople' as const },
-    { title: 'Quais os planos para hoje ?', id: 'PlansToday' as const },
-    {
-      title: 'Quantos pretendem gastar\npor pessoa ?',
-      id: 'SpendingPerson' as const,
-    },
-  ];
   const navigation = useNavigation();
-  const state = useReducer(
-    (reducerState: Partial<StateAnswer>) => reducerState,
-    {},
+
+  const [expandedMenu, setExpandedMenu] = useState<FieldKeysEnum | null>(null);
+
+  const onSubmit = useCallback(
+    async ({ howMuch, like, numberOfPeople }: IValues) => {
+      const selectedLikes = Object.entries(like)
+        .map(([key, value]) => (value ? key : undefined))
+        .filter((value) => value);
+
+      const isValid = howMuch && selectedLikes.length && numberOfPeople;
+
+      if (!isValid) {
+        return Alert.alert(
+          'Preencha as informações!',
+          'Você precisa responder todas as perguntas para recomendarmos o melhor lugar para você',
+        );
+      }
+
+      try {
+        const response = await Client.http.post('users/recommendation', {
+          howMuch,
+          numberOfPeople,
+          like: selectedLikes,
+        });
+
+        // TODO do something with the received value
+        console.log(response.data);
+      } catch (error) {
+        Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
+        console.error(error.message);
+      }
+    },
+    [],
   );
-  console.log('initialState:', state);
-
-  const [answers, setAnswered] = useState<StateAnswer>({
-    howMuch: '',
-    numberOfPeople: 0,
-    likes: [],
-  });
-
-  const setPick = (
-    statePrevious: StateAnswer,
-    values: Partial<StateAnswer>,
-  ) => {
-    setAnswered({ ...statePrevious, ...values });
-  };
-
-  const components = {
-    AmountPeople: () => {
-      return <PickerAmountPeople setPick={setPick} answers={answers} />;
-    },
-    PlansToday: () => {
-      return <PickerPlansToday setPick={setPick} answers={answers} />;
-    },
-    SpendingPerson: () => {
-      return <PickerSpendingPerson setPick={setPick} answers={answers} />;
-    },
-  };
-  const [open, setOpen] = useState('');
 
   return (
-    <>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled>
-        <ScrollView keyboardShouldPersistTaps="handled">
-          <Container>
-            <Header>
-              <Title>
-                <Title3>
-                  Responda essas três perguntas para encontrarmos o rolê certo
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      {({ submitForm }) => (
+        <Wrapper
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          enabled>
+          <ScrollView keyboardShouldPersistTaps="handled">
+            <Container>
+              <Header>
+                <Title>
+                  Responda estas três perguntas para encontrarmos o rolê certo
                   para você 🔥
-                </Title3>
-              </Title>
-            </Header>
-            {informacoes.map((info) => {
-              return (
-                <PickerItem key={info.id}>
-                  <TextH5>{info.title}</TextH5>
-                  <Expander
-                    onPress={() => {
-                      if (info.id === open) {
-                        setOpen('false');
-                      } else {
-                        setOpen(info.id);
-                      }
-                    }}>
-                    <IconPlus name="plus" size={20} color="#fff" />
-                  </Expander>
-                  {open === info.id ? components[info.id]() : <Text />}
-                </PickerItem>
-              );
-            })}
-          </Container>
-        </ScrollView>
-        <View style={{ flexDirection: 'row' }}>
-          <Button
-            onPress={() => {
-              navigation.navigate('Home');
-            }}
-            style={{
-              marginLeft: 20,
-              marginRight: 10,
-              width: 150,
-              marginBottom: 5,
-              bottom: 0,
-            }}>
-            Voltar
-          </Button>
-          <Button
-            onPress={() => {
-              if (checkAnswers(answers)) {
-                Alert.alert(
-                  'Você precisa responder todas as perguntas para',
-                  'recomendarmos o melhor lugar para você',
-                );
-              } else {
-                //## See how I can pass informations in react navtive using navigation
-                //## craete some loading to waiting for recommendations
-                console.log(answers, 'answers to sent to backend');
+                </Title>
+              </Header>
 
-                navigation.navigate('Match');
-              }
-            }}
-            style={{
-              width: 200,
-              // position: 'absolute',
-              bottom: 0,
-            }}>
-            Encontrar o meu role 🎉
-          </Button>
-        </View>
-      </KeyboardAvoidingView>
-      {/* <Footer /> */}
-    </>
+              {fields.map(({ key, label, PickerComponent }) => {
+                const isExpanded = key === expandedMenu;
+
+                return (
+                  <PickerItem key={key}>
+                    <TextH5>{label}</TextH5>
+
+                    <Accordion
+                      onPress={() => {
+                        setExpandedMenu(isExpanded ? null : key);
+                      }}>
+                      <FeatherIcon
+                        name={isExpanded ? 'minus' : 'plus'}
+                        size={20}
+                        color="#fff"
+                      />
+                    </Accordion>
+
+                    {isExpanded && <PickerComponent />}
+                  </PickerItem>
+                );
+              })}
+            </Container>
+          </ScrollView>
+
+          <Footer>
+            <BackButton
+              onPress={() => {
+                navigation.navigate('Home');
+              }}>
+              Voltar
+            </BackButton>
+
+            <ConfirmButton onPress={submitForm}>
+              Encontrar o meu role 🎉
+            </ConfirmButton>
+          </Footer>
+        </Wrapper>
+      )}
+    </Formik>
   );
 };
 
