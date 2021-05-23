@@ -8,22 +8,34 @@ interface IOptionButton {
   selected: boolean;
 }
 
-export const OptionButton = styled.TouchableWithoutFeedback<IOptionButton>`
+export const OptionButton = styled.TouchableOpacity<IOptionButton>`
   border: 1px solid #9283bf;
-  width: 160px;
-  border-radius: 10px;
-  margin: 5px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  color: #333333;
-  text-align: center;
+  width: 48%;
   height: 60px;
-  padding-top: 14px;
+
+  border-radius: 10px;
+
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+
   ${({ selected }) =>
     selected &&
     css`
       background-color: #470a68;
+    `}
+`;
+
+export const OptionText = styled.Text<IOptionButton>`
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333333;
+
+  ${({ selected }) =>
+    selected &&
+    css`
       color: #fff;
     `}
 `;

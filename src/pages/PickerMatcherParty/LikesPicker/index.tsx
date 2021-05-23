@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import React, { useCallback } from 'react';
 import PickerRow from '../PickerRow';
 
-import { Container, OptionButton } from './styles';
+import { Container, OptionButton, OptionText } from './styles';
 
 type OptionValuesEnum =
   | 'lunch'
@@ -59,19 +59,28 @@ const LikesPicker: React.FC = () => {
 
   const handleSelect = useCallback(
     (value: OptionValuesEnum) => () => {
-      const alreadySelected = Object.values(field.value).filter(
+      const isSelected = field.value[value];
+
+      if (isSelected) {
+        return helpers.setValue({
+          ...field.value,
+          [value]: false,
+        });
+      }
+
+      const alreadySelectedOptions = Object.values(field.value).filter(
         (selected) => selected,
       );
 
       const canSelectMoreOptions =
-        alreadySelected.length < MAX_SELECTIONS_ALLOWED;
+        alreadySelectedOptions.length < MAX_SELECTIONS_ALLOWED;
       if (!canSelectMoreOptions) {
         return;
       }
 
       helpers.setValue({
         ...field.value,
-        [value]: !field.value[value],
+        [value]: true,
       });
     },
     [field.value, helpers],
@@ -79,14 +88,16 @@ const LikesPicker: React.FC = () => {
 
   return (
     <Container>
-      {optionsMatrix.map((row) => (
-        <PickerRow>
+      {optionsMatrix.map((row, index) => (
+        <PickerRow key={`likes-row-${index}`}>
           {row.map((option) => (
             <OptionButton
               selected={field.value[option.value]}
               key={option.value}
               onPress={handleSelect(option.value)}>
-              {option.label}
+              <OptionText selected={field.value[option.value]}>
+                {option.label}
+              </OptionText>
             </OptionButton>
           ))}
         </PickerRow>

@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import React from 'react';
 import PickerRow from '../PickerRow';
 
-import { Container, OptionButton } from './styles';
+import { Container, OptionButton, OptionText } from './styles';
 
 interface IOption {
   value: string;
@@ -18,14 +18,14 @@ const HowMuchPicker: React.FC = () => {
 
   return (
     <Container>
-      {optionsMatrix.map((row) => (
-        <PickerRow>
+      {optionsMatrix.map((row, index) => (
+        <PickerRow key={`how-much-row-${index}`}>
           {row.map(({ value }, index) => (
             <OptionButton
               key={`how-much-${index}`}
               selected={value === field.value}
               onPress={() => helpers.setValue(value)}>
-              {value}
+              <OptionText selected={value === field.value}>{value}</OptionText>
             </OptionButton>
           ))}
         </PickerRow>

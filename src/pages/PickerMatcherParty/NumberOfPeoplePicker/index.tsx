@@ -1,7 +1,7 @@
 import { useField } from 'formik';
 import React from 'react';
 import PickerRow from '../PickerRow';
-import { OptionButton } from './styles';
+import { OptionButton, OptionText } from './styles';
 
 interface IOption {
   value: number;
@@ -25,7 +25,7 @@ const NumberOfPeoplePicker: React.FC = () => {
           key={`people-count-${value}`}
           selected={value === field.value}
           onPress={() => helpers.setValue(value)}>
-          {value}
+          <OptionText selected={value === field.value}>{value}</OptionText>
         </OptionButton>
       ))}
     </PickerRow>

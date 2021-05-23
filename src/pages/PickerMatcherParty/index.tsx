@@ -13,7 +13,7 @@ import {
   Title,
   Wrapper,
 } from './styles';
-import IconPlus from 'react-native-vector-icons/Feather';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
@@ -89,26 +89,30 @@ const PickerMatcherParty: React.FC = () => {
             <Container>
               <Header>
                 <Title>
-                  Responda essas três perguntas para encontrarmos o rolê certo
+                  Responda estas três perguntas para encontrarmos o rolê certo
                   para você 🔥
                 </Title>
               </Header>
 
               {fields.map(({ key, label, PickerComponent }) => {
+                const isExpanded = key === expandedMenu;
+
                 return (
                   <PickerItem key={key}>
                     <TextH5>{label}</TextH5>
 
                     <Accordion
                       onPress={() => {
-                        setExpandedMenu((expanded) =>
-                          expanded === key ? null : key,
-                        );
+                        setExpandedMenu(isExpanded ? null : key);
                       }}>
-                      <IconPlus name="plus" size={20} color="#fff" />
+                      <FeatherIcon
+                        name={isExpanded ? 'minus' : 'plus'}
+                        size={20}
+                        color="#fff"
+                      />
                     </Accordion>
 
-                    {expandedMenu === key && <PickerComponent />}
+                    {isExpanded && <PickerComponent />}
                   </PickerItem>
                 );
               })}
