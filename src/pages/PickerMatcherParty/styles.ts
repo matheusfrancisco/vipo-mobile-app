@@ -58,17 +58,14 @@ export const Accordion = styled(RectButton)`
 
 export const Footer = styled.View`
   flex-direction: row;
+  justify-content: space-between;
+  padding: 0 5px 5px 5px;
 `;
 
 export const BackButton = styled(Button)`
-  margin-left: 20px;
-  margin-right: 10px;
-  width: 150px;
-  margin-bottom: 5px;
-  bottom: 0px;
+  width: 140px;
 `;
 
 export const ConfirmButton = styled(Button)`
   width: 200px;
-  bottom: 0px;
 `;

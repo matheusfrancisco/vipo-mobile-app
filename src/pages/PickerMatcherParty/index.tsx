@@ -20,17 +20,18 @@ import { Formik } from 'formik';
 import NumberOfPeoplePicker from './NumberOfPeoplePicker';
 import LikesPicker from './LikesPicker';
 import HowMuchPicker from './HowMuchPicker';
+import Client from '../../services/api';
 
 interface IValues {
   howMuch: string;
   numberOfPeople: number;
-  likes: string[];
+  like: string[];
 }
 
 const initialValues: IValues = {
   howMuch: '',
   numberOfPeople: 0,
-  likes: [],
+  like: [],
 };
 
 type FieldKeysEnum = 0 | 1 | 2;
@@ -65,16 +66,33 @@ const PickerMatcherParty: React.FC = () => {
   const [expandedMenu, setExpandedMenu] = useState<FieldKeysEnum | null>(null);
 
   const onSubmit = useCallback(
-    ({ howMuch, likes, numberOfPeople }: IValues) => {
-      const isValid = howMuch && likes.length && numberOfPeople;
+    async ({ howMuch, like, numberOfPeople }: IValues) => {
+      const selectedLikes = Object.entries(like)
+        .map(([key, value]) => (value ? key : undefined))
+        .filter((value) => value);
+
+      const isValid = howMuch && selectedLikes.length && numberOfPeople;
 
       if (!isValid) {
         return Alert.alert(
-          'Você precisa responder todas as perguntas para \nrecomendarmos o melhor lugar para você',
+          'Preencha as informações!',
+          'Você precisa responder todas as perguntas para recomendarmos o melhor lugar para você',
         );
       }
 
-      console.log('Valid!', howMuch, likes, numberOfPeople);
+      try {
+        const response = await Client.http.post('users/recommendation', {
+          howMuch,
+          numberOfPeople,
+          like: selectedLikes,
+        });
+
+        // TODO do something with the received value
+        console.log(response.data);
+      } catch (error) {
+        Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
+        console.error(error.message);
+      }
     },
     [],
   );

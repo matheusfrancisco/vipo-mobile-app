@@ -55,7 +55,7 @@ const optionsMatrix: Array<IOption[]> = [
 const MAX_SELECTIONS_ALLOWED = 3;
 
 const LikesPicker: React.FC = () => {
-  const [field, , helpers] = useField<ILikesValues>('likes');
+  const [field, , helpers] = useField<ILikesValues>('like');
 
   const handleSelect = useCallback(
     (value: OptionValuesEnum) => () => {

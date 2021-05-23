@@ -7,11 +7,11 @@ class Client {
     baseURL: env.DEV_API,
   });
 
-  static addHttpHeader = (key: string, value: string) => {
+  static addHttpHeader = (key: string, value: string): void => {
     Client.http.defaults.headers[key] = value;
   };
 
-  static removeHttpHeader = (key: string) => {
+  static removeHttpHeader = (key: string): void => {
     delete Client.http.defaults.headers[key];
   };
 }
