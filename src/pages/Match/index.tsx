@@ -16,88 +16,61 @@ import {
 
 import { TextMin, TextH3 } from '../../global';
 import Line from '../../components/Line';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
+import IRecommendation from './IRecommendation';
+import RecommendationDetails from './RecommendationDetails';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+type ParamList = {
+  Match: {
+    recommendations: IRecommendation[];
+  };
+};
+
+type MatchParams = RouteProp<ParamList, 'Match'>;
+
+const Tab = createMaterialTopTabNavigator();
 
 const Match: React.FC = () => {
-  const navigation = useNavigation();
+  const {
+    params: { recommendations },
+  } = useRoute<MatchParams>();
 
-  // TODO get answersQuestions
-
-  const yourMatchs = [
-    {
-      id: 1,
-      name: 'SputNickBar',
-      instagram: '@sputinick',
-      uri: 'https://sputnikbar.com/img/sobre/30-11-2018.jpg',
-      description:
-        'UUUUUUUUUUUUUm bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!m bar muito legal!',
-      ticket: 'As pessoas costuman gastar R$ 60,00 neste local',
-      bonus: 'Indo pelo App você ganha um shot de boas-vindas quando chegar lá',
-      date: 'Seg à Dom - 18:00 até 22:00',
-      location: 'Vila Madalena',
-    },
-  ];
+  const mockedRecommendations = recommendations.map((r) => ({
+    id: 1,
+    name: r.name,
+    instagram: '@sputinick',
+    banner: 'https://sputnikbar.com/img/sobre/30-11-2018.jpg',
+    description: r.description,
+    ticket: 'As pessoas costuman gastar R$ 60,00 neste local',
+    bonus: 'Indo pelo App você ganha um shot de boas-vindas quando chegar lá',
+    openAt: 'Seg à Dom - 18:00 até 22:00',
+    location: 'Vila Madalena',
+  }));
+  if (mockedRecommendations.length === 0) {
+    return null;
+  }
 
   return (
-    <>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}>
-          <ImageBanner source={yourMatchs[0]}>
-            <Title>{yourMatchs[0].name}</Title>
-          </ImageBanner>
-
-          <Description>
-            <TextH3>{yourMatchs[0].description}</TextH3>
-          </Description>
-          <Line />
-
-          <Informations>
-            <PositionIcon>
-              <Icon name="calendar" size={30} color="#470A68" />
-            </PositionIcon>
-            <MarginText>
-              <TextMin> {yourMatchs[0].date}</TextMin>
-            </MarginText>
-          </Informations>
-
-          <Informations>
-            <PositionIcon>
-              <IconLocalion name="location" size={30} color="#470A68" />
-            </PositionIcon>
-            <MarginText>
-              <TextMin>{yourMatchs[0].location}</TextMin>
-            </MarginText>
-          </Informations>
-
-          <Informations>
-            <PositionIcon>
-              <Icon name="money" size={30} color="#470A68" />
-            </PositionIcon>
-            <MarginText>
-              <TextMin>{yourMatchs[0].ticket}</TextMin>
-            </MarginText>
-          </Informations>
-        </ScrollView>
-
-        <Footer>
-          <IconEvil name="close" size={30} color="red" />
-          <Icon name="send-o" size={30} color="#000" />
-          <IconEvil
-            onPress={() => {
-              navigation.navigate('CheckMatch');
+    <Tab.Navigator lazy={true} tabBar={() => null} swipeEnabled={false}>
+      {mockedRecommendations.map((recommendation, index) => {
+        const hasNextRoute = index < mockedRecommendations.length - 1;
+        const nextRoute = `match-route-${index + 1}`;
+        return (
+          <Tab.Screen
+            name={`match-route-${index}`}
+            component={function buildRecommendationDetails() {
+              return (
+                <RecommendationDetails
+                  {...recommendation}
+                  nextRoute={hasNextRoute ? nextRoute : null}
+                />
+              );
             }}
-            name="heart"
-            size={40}
-            color="green"
           />
-        </Footer>
-      </KeyboardAvoidingView>
-    </>
+        );
+      })}
+    </Tab.Navigator>
   );
 };
 

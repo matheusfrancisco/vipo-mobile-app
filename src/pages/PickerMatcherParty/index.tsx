@@ -88,7 +88,9 @@ const PickerMatcherParty: React.FC = () => {
         });
 
         // TODO do something with the received value
-        console.log(response.data);
+        // TODO remember add some loading to don't send two request or more for the api.
+        // TDODO response are coming without some fields
+        navigation.navigate('Match', response.data);
       } catch (error) {
         Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
         console.error(error.message);
