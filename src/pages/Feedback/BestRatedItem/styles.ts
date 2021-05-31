@@ -1,19 +1,23 @@
 import styled, { css } from 'styled-components/native';
-import SubmitButton from '../../components/SubmitButton';
-import { TextMin } from '../../global';
+import { TextMin, Title3 } from '../../../global';
 
-export const Container = styled.KeyboardAvoidingView`
-  flex: 1;
-`;
-
-export const Header = styled.Text`
-  text-align: center;
+export const Container = styled.View`
   margin: 10px;
 `;
 
-export const Row = styled.View`
+export const Title = styled(Title3)`
+  margin: 12px;
+  color: #470a68;
+`;
+
+export const Bold = styled.Text`
+  font-weight: bold;
+`;
+
+export const Options = styled.View`
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 interface ISelectableProps {
@@ -25,7 +29,7 @@ export const Option = {
     margin: 4px;
     border: 2px solid #000;
     width: 100px;
-    height: 48px;
+    height: 36px;
     position: relative;
     border-radius: 5px;
     align-items: center;
@@ -49,7 +53,3 @@ export const Option = {
       `}
   `,
 };
-
-export const Submit = styled(SubmitButton)`
-  margin: 10px;
-`;
