@@ -3,6 +3,7 @@ import { RectButtonProperties } from 'react-native-gesture-handler';
 
 import { Container, TextButton } from './styles';
 import { TextH3 } from '../../global';
+
 interface ButtonProps extends RectButtonProperties {
   children?: string;
 }
