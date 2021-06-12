@@ -1,10 +1,9 @@
 import axios from 'axios';
-//#TODO need change when env is productions
-import env from '../config/env';
+import envs from 'react-native-config';
 
 class Client {
   static http = axios.create({
-    baseURL: env.DEV_API,
+    baseURL: envs.API_URL,
   });
 
   static addHttpHeader = (key: string, value: string): void => {
