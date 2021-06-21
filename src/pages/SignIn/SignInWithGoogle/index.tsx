@@ -1,45 +1,58 @@
 import { useAuth } from '@/hooks/auth';
 import React from 'react';
-import GoogleLogin, {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from 'react-google-login';
 import { Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 import envs from 'react-native-config';
 
-const isExpectedResult = (result: any): result is GoogleLoginResponse =>
-  Boolean(result.tokenId);
+import { Container } from './styles';
 
+GoogleSignin.configure({
+  webClientId: envs.GOOGLE_AUTH_CLIENT_ID,
+  offlineAccess: true,
+});
+
+// #tTODO Make this work with the api
 const SignInWithGoogle: React.FC = () => {
   const auth = useAuth();
 
-  const handleFailure = () =>
-    Alert.alert('Aconteceu um erro', 'Não foi possível entrar com o google');
-
-  const handleSuccess = async (
-    result: GoogleLoginResponse | GoogleLoginResponseOffline,
-  ) => {
-    if (!isExpectedResult(result)) {
-      return handleFailure();
-    }
-
+  const signIn = async () => {
     try {
-      await auth.signIn({ token: result.tokenId });
+      await GoogleSignin.hasPlayServices();
+      const { serverAuthCode } = await GoogleSignin.signIn();
+
+      if (!serverAuthCode) {
+        throw new Error('Token not present');
+      }
+
+      await auth.signIn({ token: serverAuthCode });
     } catch (error) {
-      console.error(error);
-      handleFailure();
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.error('User cancelled');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.error('Already in progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.error('Play services not available');
+      } else {
+        console.error(error.message);
+        Alert.alert(
+          'Aconteceu um erro',
+          'Não foi possível entrar com o google',
+        );
+      }
     }
   };
 
   return (
-    <GoogleLogin
-      clientId={envs.GOOGLE_AUTH_CLIENT_ID}
-      buttonText="Entrar com o Google"
-      onSuccess={handleSuccess}
-      onFailure={handleFailure}
-      cookiePolicy={'single_host_origin'}
-    />
+    <Container>
+      <Icon.Button name="google" backgroundColor="#ff0000" onPress={signIn}>
+        Entrar com o Google
+      </Icon.Button>
+    </Container>
   );
 };
 
