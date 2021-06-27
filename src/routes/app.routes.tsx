@@ -1,19 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../pages/Home';
-import Match from '../pages/Match';
-import PickerMatcherParty from '../pages/PickerMatcherParty';
-import ProfileMusic from '../pages/ProfileMusic';
-import ProfileDrink from '../pages/ProfileDrink';
-import ProfileFood from '../pages/ProfileFood';
-import RegistrationCompleted from '../pages/SignUp/RegistrationCompleted';
-import Feedback from '../pages/Feedback';
-import Profile from '../pages/Profile';
-import EditProfile from '../pages/Profile/EditProfile';
-import History from '../pages/History';
-import CheckMatch from '../pages/Match/CheckMatch';
+import Home from '@/pages/Home';
+import Match from '@/pages/Match';
+import PickerMatcherParty from '@/pages/PickerMatcherParty';
+import ProfileMusic from '@/pages/ProfileMusic';
+import ProfileDrink from '@/pages/ProfileDrink';
+import ProfileFood from '@/pages/ProfileFood';
+import RegistrationCompleted from '@/pages/SignUp/RegistrationCompleted';
+import Feedback from '@/pages/Feedback';
+import Profile from '@/pages/Profile';
+import EditProfile from '@/pages/Profile/EditProfile';
+import History from '@/pages/History';
+import CheckMatch from '@/pages/Match/CheckMatch';
 
 const App = createStackNavigator();
+
+console.log(process.env);
 
 const AppRoutes: React.FC = () => (
   <App.Navigator

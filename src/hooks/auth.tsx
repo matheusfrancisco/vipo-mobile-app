@@ -26,11 +26,16 @@ interface SignInCredentials {
   password: string;
 }
 
+interface GoogleSignInCredentials {
+  token: string;
+}
+
 interface AuthContextData {
   user: User;
   loading: boolean;
   signOut(): void;
   signIn(credentials: SignInCredentials): Promise<void>;
+  signIn(googleCredentials: GoogleSignInCredentials): Promise<void>;
   updateUser(user: User): Promise<void>;
 }
 
@@ -39,12 +44,23 @@ const AUTH_HEADER = 'Authorization';
 const STORAGE_TOKEN = '@Vipo:token';
 const STORAGE_USER = '@Vipo:user';
 
+const isGoogleSignIn = (
+  credentials: any,
+): credentials is GoogleSignInCredentials => Boolean(credentials.token);
+
 const AuthUser: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>({} as AuthState);
   const [loading, setLoading] = useState(true);
 
-  const signIn = useCallback(async ({ email, password }) => {
-    const response = await Client.http.post('/signin', { email, password });
+  const signIn = useCallback<AuthContextData['signIn']>(async (credentials) => {
+    const response = isGoogleSignIn(credentials)
+      ? await Client.http.post('/signin/google', {
+          token: credentials.token,
+        })
+      : await Client.http.post('/signin', {
+          email: credentials.email,
+          password: credentials.password,
+        });
 
     const { token, user } = response.data;
     Client.addHttpHeader(AUTH_HEADER, `Bearer ${token}`);
