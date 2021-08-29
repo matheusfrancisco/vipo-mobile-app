@@ -52,7 +52,7 @@ const Match: React.FC = () => {
   }
 
   return (
-    <Tab.Navigator lazy={true} tabBar={() => null} swipeEnabled={false}>
+    <Tab.Navigator lazy={true} tabBar={() => null} swipeEnabled={true}>
       {mockedRecommendations.map((recommendation, index) => {
         const hasNextRoute = index < mockedRecommendations.length - 1;
         const nextRoute = `match-route-${index + 1}`;

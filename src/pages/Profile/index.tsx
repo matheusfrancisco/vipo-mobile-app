@@ -35,7 +35,7 @@ interface IProfile {
     lastName: string;
     email: string;
     address?: string;
-    profileInformations: {
+    profile: {
       foods: Array<string>;
       drinks: Array<string>;
       musicals: Array<string>;
@@ -142,7 +142,7 @@ const Profile: React.FC = () => {
                 <ButtonEditLike
                   onPress={() => {
                     navigation.navigate('ProfileDrink', {
-                      profileInformations: profile.user.profileInformations,
+                      profileInformations: profile.user.profile,
                     });
                   }}>
                   <ColorTextButton>
