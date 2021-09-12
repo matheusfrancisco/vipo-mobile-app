@@ -6,7 +6,6 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "dev": "echo \"export default 'dev';\"> active.env.js && react-native start",
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",

@@ -163,7 +163,12 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+            if(project.env.get("PRODUCTION_BUILD").toBoolean()) {
+              println("building production release")
+              signingConfig signingConfigs.release
+            } else {
+              signingConfig signingConfigs.debug
+            }
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
