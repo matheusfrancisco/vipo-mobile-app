@@ -1,26 +1,35 @@
 import { useAuth } from '@/hooks/auth';
 import React from 'react';
 import { Alert } from 'react-native';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import envs from 'react-native-config';
+
+import { Container } from './styles';
+/*
 import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
-import envs from 'react-native-config';
+if (deadCode) {
+  GoogleSignin.configure({
+    webClientId: envs.GOOGLE_AUTH_CLIENT_ID,
+    offlineAccess: true,
+  });
+}
+*/
 
-import { Container } from './styles';
-
-GoogleSignin.configure({
-  webClientId: envs.GOOGLE_AUTH_CLIENT_ID,
-  offlineAccess: true,
-});
-
-// #tTODO Make this work with the api
+// #TODO Make this work with the api
 const SignInWithGoogle: React.FC = () => {
-  const auth = useAuth();
+  //const auth = useAuth();
 
   const signIn = async () => {
+    Alert.alert('Funcionalidade em desenvolvimento ');
+    /*
+    need to install "@react-native-google-signin/google-signin": "^6.0.1",
+    #TODO this code needs to be fixed because. this broked the apk install
     try {
       await GoogleSignin.hasPlayServices();
       const { serverAuthCode } = await GoogleSignin.signIn();
@@ -44,7 +53,7 @@ const SignInWithGoogle: React.FC = () => {
           'Não foi possível entrar com o google',
         );
       }
-    }
+    }*/
   };
 
   return (
