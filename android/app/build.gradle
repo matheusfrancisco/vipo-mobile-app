@@ -131,6 +131,7 @@ android {
     }
 
     defaultConfig {
+        resValue "string", "build_config_package", "com.vipoapp"
         applicationId "com.vipoapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion

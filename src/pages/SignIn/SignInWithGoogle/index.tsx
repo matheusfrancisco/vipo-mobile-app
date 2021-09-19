@@ -4,8 +4,6 @@ import { Alert } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import envs from 'react-native-config';
-
 import { Container } from './styles';
 /*
 import {
