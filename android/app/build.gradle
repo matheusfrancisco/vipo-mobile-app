@@ -1,4 +1,9 @@
 apply plugin: "com.android.application"
+project.ext.envConfigFiles = [
+  debug: ".env.dev",
+  release: ".env.production",
+]
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -131,6 +136,7 @@ android {
     }
 
     defaultConfig {
+        resValue "string", "build_config_package", "com.vipoapp"
         applicationId "com.vipoapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion

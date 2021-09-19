@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "ENVFILE=.env.dev react-native run-android",
+    "build:android:prod": "cd android && ENVFILE=.env.production ./gradlew assembleRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -28,7 +29,7 @@
     "react": "16.13.1",
     "react-icons": "^3.11.0",
     "react-native": "0.63.2",
-    "react-native-config": "^1.4.2",
+    "react-native-config": "luggit/react-native-config#1eb6ac01991210ddad2989857359a0f6ee35d734",
     "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-iphone-x-helper": "^1.2.1",

@@ -10,7 +10,6 @@ import LandingPageTwo from '../pages/LandingPage/LandingPageTwo';
 import LandingPageThree from '../pages/LandingPage/LandingPageThree';
 import LandingPageFour from '../pages/LandingPage/LandingPageFour';
 
-
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (
