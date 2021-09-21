@@ -14,8 +14,7 @@ const OptionButton: React.FC<IOption> = ({ fieldName, link }) => {
 
   return (
     <Button
-      activeOpacity={1}
-      select={field.value}
+      select={!field.value}
       onPress={() => {
         helpers.setValue(!field.value);
       }}>

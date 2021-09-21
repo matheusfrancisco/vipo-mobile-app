@@ -88,13 +88,14 @@ const ProfileMusic: React.FC = () => {
     const newProfileInformations = { ...profileInformations, musicals };
 
     try {
-      await Client.http.patch('profiles', {
+      await Client.http.patch('/profiles', {
         profileInformations: newProfileInformations,
       });
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
       Alert.alert('Aconteceu um erro ao salvar as informações');
     }
+    Alert.alert('Perfil atualizado com sucesso');
 
     navigation.navigate('Profile');
   };
