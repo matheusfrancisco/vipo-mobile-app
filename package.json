@@ -30,7 +30,7 @@
     "react": "16.13.1",
     "react-icons": "^3.11.0",
     "react-native": "0.63.2",
-    "react-native-config": "luggit/react-native-config#1eb6ac01991210ddad2989857359a0f6ee35d734",
+    "react-native-config": "^1.4.4",
     "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-iphone-x-helper": "^1.2.1",
