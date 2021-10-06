@@ -3,7 +3,7 @@ import envs from 'react-native-config';
 
 class Client {
   static http = axios.create({
-    baseURL: envs.API_URL,
+    baseURL: 'http://54.235.0.184',
   });
 
   static addHttpHeader = (key: string, value: string): void => {
