@@ -1,10 +1,7 @@
-import axios from 'axios';
-import envs from 'react-native-config';
+import Http from '@/config/http';
 
 class Client {
-  static http = axios.create({
-    baseURL: envs.API_URL,
-  });
+  static http = Http.instance;
 
   static addHttpHeader = (key: string, value: string): void => {
     Client.http.defaults.headers[key] = value;
