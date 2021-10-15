@@ -8,6 +8,7 @@ import { FormHandles } from '@unform/core';
 
 import Input from '@/components/Input';
 import Button from '@/components/Button';
+import ButtonGoogle from '@/components/Google';
 import logo from '@/assets/logo.png';
 
 import getValidationErrors from '@/utils/getValidationErrors';
@@ -70,6 +71,10 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(error);
           formRef.current?.setErrors(errors);
           return;
+        }
+
+        if (error.isAxiosError) {
+          console.error(error.response.data);
         }
 
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
