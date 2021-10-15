@@ -80,7 +80,7 @@ const SignUp: React.FC = () => {
         email: Yup.string()
           .email('Digite um e-mail válido')
           .required('E-mail obrigatório'),
-        password: Yup.string().min(6, 'Deve possuir pelo menos 6 dígitos'),
+        password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
       });
 
       await schema.validate(data, {
