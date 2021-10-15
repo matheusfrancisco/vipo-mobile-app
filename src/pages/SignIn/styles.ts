@@ -23,15 +23,18 @@ export const ButtonText = styled(RectButton)`
   margin-top: 10px;
   align-items: flex-end;
   color: #9283bf;
+  text-decoration: underline;
 `;
 
 export const SocialIcon = styled.View`
+  justify-content: center;
   flex-direction: row;
 `;
 
 export const TitleHeader = styled.View`
   margin: 14px 0px 30px 0px;
 `;
+
 export const ContainerTextLoginSocial = styled.View`
   align-items: center;
   margin: 60px 0px 0px 0px;

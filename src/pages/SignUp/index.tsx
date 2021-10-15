@@ -68,14 +68,19 @@ const SignUp: React.FC = () => {
   const handleSignUp = async (data: SignUpData) => {
     try {
       formRef.current?.setErrors({});
+      const onlyLetters = /^[aA-zZ\s]+$/;
 
       const schema = Yup.object().shape({
-        name: Yup.string().required('O nome obrigatório'),
-        lastName: Yup.string().required('O sobrenome obrigatório'),
+        name: Yup.string()
+          .required('O nome obrigatório')
+          .matches(onlyLetters, 'Somente letras são permitidas '),
+        lastName: Yup.string()
+          .required('O sobrenome obrigatório')
+          .matches(onlyLetters, 'Somente letras são permitidas '),
         email: Yup.string()
           .email('Digite um e-mail válido')
           .required('E-mail obrigatório'),
-        password: Yup.string().min(6, 'No Mínio 6 dígitos'),
+        password: Yup.string().min(6, 'Deve possuir pelo menos 6 dígitos'),
       });
 
       await schema.validate(data, {
@@ -100,6 +105,7 @@ const SignUp: React.FC = () => {
       if (error instanceof Yup.ValidationError) {
         const errors = getvalidationErrors(error);
         formRef.current?.setErrors(errors);
+
         return;
       }
 

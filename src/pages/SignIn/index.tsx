@@ -8,14 +8,12 @@ import { FormHandles } from '@unform/core';
 
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import ButtonFacebook from '@/components/Facebook';
-import ButtonGoogle from '@/components/Google';
 import logo from '@/assets/logo.png';
 
 import getValidationErrors from '@/utils/getValidationErrors';
 import { useAuth } from '@/hooks/auth';
 
-import { Title, TextH3 } from '@/global';
+import { Title, TextH3, TextH3Link } from '@/global';
 
 import {
   ButtonText,
@@ -74,10 +72,6 @@ const SignIn: React.FC = () => {
           return;
         }
 
-        if (error.isAxiosError) {
-          console.error(error.response.data);
-        }
-
         Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
       }
     },
@@ -122,7 +116,7 @@ const SignIn: React.FC = () => {
               }}
             />
             <ButtonText onPress={() => navigation.navigate('ResetPassword')}>
-              <TextH3>Esqueceu sua senha?</TextH3>
+              <TextH3Link>Esqueceu sua senha?</TextH3Link>
             </ButtonText>
 
             <Button
@@ -134,8 +128,8 @@ const SignIn: React.FC = () => {
             </Button>
 
             <ButtonText onPress={() => navigation.navigate('SignUp')}>
-              <Text>
-                Ainda não tem conta? <TextH3>Crie aqui</TextH3>
+              <Text style={{ color: '#470a68' }}>
+                Ainda não tem conta? <TextH3Link>Crie aqui</TextH3Link>
               </Text>
             </ButtonText>
 
@@ -144,10 +138,6 @@ const SignIn: React.FC = () => {
             </ContainerTextLoginSocial>
 
             <SocialIcon style={{ marginTop: 30 }}>
-              <ButtonFacebook onPress={() => console.log('Foi')}>
-                Login with Facebook
-              </ButtonFacebook>
-
               {/*
               #TODO Verify if this button's style matches the signinwithgoogle style
               If not, use the lib hook on this component to auth via google
