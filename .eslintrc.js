@@ -14,5 +14,6 @@ module.exports = {
     ],
     rules: {
         "no-shadow": 0,
+        "prettier/prettier": ['error', {endOfLine: 'auto'}]
     }
 };

@@ -23,14 +23,20 @@ export const Title3 = styled.Text`
   font-family: 'RobotoSlab-Medium';
 `;
 
-export const TextH3 = styled.Text`
+export const TextH3 = styled.Text<TextH3>`
   font-size: 16px;
   font-family: 'RobotoSlab-Medium';
+  color: ${(props) => (props.primary ? '#fff' : '#470a68')};
+`;
+
+export const TextH3Link = styled(TextH3)`
+  text-decoration: underline;
 `;
 
 export const TextH2 = styled.Text`
   font-size: 20px;
   font-family: bold;
+  color: #470a68;
 `;
 
 export const TextMin = styled.Text`
