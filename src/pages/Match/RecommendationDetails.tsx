@@ -1,9 +1,15 @@
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+import IconEvil from 'react-native-vector-icons/EvilIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLocalion from 'react-native-vector-icons/Octicons';
-import IconEvil from 'react-native-vector-icons/EvilIcons';
 
+import IRecommendation from '@/domain/entities/IRecommendation';
+
+import Line from '../../components/Line';
+import { TextMin, TextH3 } from '../../global';
 import {
   ImageBanner,
   Title,
@@ -14,10 +20,6 @@ import {
   Footer,
 } from './styles';
 
-import { TextMin, TextH3 } from '../../global';
-import Line from '../../components/Line';
-import { useNavigation } from '@react-navigation/native';
-import IRecommendation from './IRecommendation';
 interface IProp extends IRecommendation {
   nextRoute: string | null;
 }

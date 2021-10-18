@@ -1,8 +1,23 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  RefreshControl,
+} from 'react-native';
+
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconLocation from 'react-native-vector-icons/Octicons';
 
-import IconEmail from 'react-native-vector-icons/Fontisto';
+import IProfile from '@/domain/entities/IProfile';
+import IUser from '@/domain/entities/IUser';
 
+import Line from '../../components/Line';
+import { Title2, TextH2, TextMin, TextH5 } from '../../global';
+import { useAuth } from '../../hooks/auth';
+import Client from '../../services/api';
 import {
   IconBorder,
   Container,
@@ -15,38 +30,19 @@ import {
   ColorTextButton,
   HeaderProfile,
 } from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  RefreshControl,
-} from 'react-native';
-import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 
-import Line from '../../components/Line';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import Client from '../../services/api';
-import { useAuth } from '../../hooks/auth';
+interface IUserProfile extends IUser {
+  profile: IProfile;
+}
 
-interface IProfile {
-  user: {
-    name: string;
-    lastName: string;
-    email: string;
-    address?: string;
-    profile: {
-      foods: Array<string>;
-      drinks: Array<string>;
-      musicals: Array<string>;
-    };
-  };
+interface IResponse {
+  user: IUserProfile;
 }
 
 const getProfile = async (signOut: () => void) => {
   try {
-    const response = await Client.http.get<IProfile>('/profiles');
-    return response.data;
+    const response = await Client.http.get<IResponse>('/profiles');
+    return response.data.user;
   } catch (error) {
     console.log(error.response);
     signOut();
@@ -55,7 +51,7 @@ const getProfile = async (signOut: () => void) => {
 };
 
 const Profile: React.FC = () => {
-  const [profile, setProfile] = useState<IProfile | null>(null);
+  const [userProfile, setUserProfile] = useState<IUserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const { signOut } = useAuth();
 
@@ -64,9 +60,9 @@ const Profile: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       (async () => {
-        const profile = await getProfile(signOut);
+        const userProfile = await getProfile(signOut);
 
-        setProfile(profile);
+        setUserProfile(userProfile);
         setLoading(false);
       })();
     }, [signOut]),
@@ -84,7 +80,7 @@ const Profile: React.FC = () => {
           }
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ flex: 1 }}>
-          {profile && (
+          {userProfile && (
             <>
               <Container>
                 <HeaderProfile>
@@ -99,7 +95,7 @@ const Profile: React.FC = () => {
 
                 <AlignText>
                   <Title2>
-                    Olá, {profile.user.name} {profile.user.lastName}!
+                    Olá, {userProfile.name} {userProfile.lastName}!
                   </Title2>
                 </AlignText>
                 <Colunn>
@@ -109,17 +105,17 @@ const Profile: React.FC = () => {
                 </Colunn>
                 <Line />
 
-                {profile.user.address && (
+                {userProfile.address && (
                   <AlignIcon>
                     <IconLocation name="location" size={20} color="#470A68" />
-                    <TextMin> {profile.user.address}</TextMin>
+                    <TextMin> {userProfile.address}</TextMin>
                   </AlignIcon>
                 )}
 
                 <AlignIcon>
                   <IconEmail name="email" size={20} color="#470A68" />
 
-                  <TextMin> {profile.user.email}</TextMin>
+                  <TextMin> {userProfile.email}</TextMin>
                 </AlignIcon>
               </Container>
 
@@ -128,9 +124,9 @@ const Profile: React.FC = () => {
                   onPress={() => {
                     navigation.navigate('EditProfile', {
                       user: {
-                        name: profile.user.name,
-                        lastName: profile.user.lastName,
-                        address: profile.user.address,
+                        name: userProfile.name,
+                        lastName: userProfile.lastName,
+                        address: userProfile.address,
                       },
                     });
                   }}>
@@ -142,7 +138,7 @@ const Profile: React.FC = () => {
                 <ButtonEditLike
                   onPress={() => {
                     navigation.navigate('ProfileDrink', {
-                      profileInformations: profile.user.profile,
+                      profileInformations: userProfile.profile,
                     });
                   }}>
                   <ColorTextButton>
