@@ -3,8 +3,9 @@ module.exports = {
     extends: [
         '@react-native-community',
         'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
+        "plugin:react/recommended",
         'plugin:@typescript-eslint/recommended',
+        "plugin:prettier/recommended",
     ],
     plugins: [
         "react",
@@ -14,6 +15,7 @@ module.exports = {
     ],
     rules: {
         "no-shadow": 0,
-        "prettier/prettier": ['error', {endOfLine: 'auto'}]
+        "prettier/prettier": ['error', {endOfLine: 'auto'}],
+        "@typescript-eslint/no-explicit-any": 0,
     }
 };
