@@ -1,6 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { ScrollView, Platform, Alert } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
+import Client from '../../services/api';
+import HowMuchPicker from './HowMuchPicker';
+import LikesPicker from './LikesPicker';
+import NumberOfPeoplePicker from './NumberOfPeoplePicker';
 import {
   Accordion,
   BackButton,
@@ -13,14 +21,6 @@ import {
   Title,
   Wrapper,
 } from './styles';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-
-import { useNavigation } from '@react-navigation/native';
-import { Formik } from 'formik';
-import NumberOfPeoplePicker from './NumberOfPeoplePicker';
-import LikesPicker from './LikesPicker';
-import HowMuchPicker from './HowMuchPicker';
-import Client from '../../services/api';
 
 interface IValues {
   howMuch: string;
