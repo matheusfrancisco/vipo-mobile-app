@@ -1,5 +1,4 @@
-import IProfile from '@/domain/entities/IProfile';
-import IUser, { IUserProfile } from '@/domain/entities/IUser';
+import IUser from '@/domain/entities/IUser';
 
 interface ICreateUser {
   name: string;
@@ -17,8 +16,5 @@ interface IUpdateUser {
 
 export interface IUsersRepository {
   create(user: ICreateUser): Promise<void>;
-  update(user: IUpdateUser): Promise<IUser>;
-
-  getProfile(userId: string): Promise<IUserProfile>;
-  updateProfile(userId: string, profile: IProfile): Promise<void>;
+  updateOne(user: IUpdateUser): Promise<IUser>;
 }
