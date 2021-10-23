@@ -11,8 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconLocation from 'react-native-vector-icons/Octicons';
 
-import IProfile from '@/domain/entities/IProfile';
-import IUser from '@/domain/entities/IUser';
+import { IUserProfile } from '@/domain/entities/IUser';
 
 import Line from '../../components/Line';
 import { Title2, TextH2, TextMin, TextH5 } from '../../global';
@@ -30,10 +29,6 @@ import {
   ColorTextButton,
   HeaderProfile,
 } from './styles';
-
-interface IUserProfile extends IUser {
-  profile: IProfile;
-}
 
 interface IResponse {
   user: IUserProfile;
