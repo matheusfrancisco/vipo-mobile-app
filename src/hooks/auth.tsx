@@ -9,6 +9,10 @@ import React, {
 import AsyncStorage from '@react-native-community/async-storage';
 
 import IUser from '@/domain/entities/IUser';
+import {
+  GoogleSignInCredentials,
+  SignInCredentials,
+} from '@/domain/repositories/IAuthenticationRepository';
 
 import Client from '../services/api';
 
@@ -17,21 +21,11 @@ interface AuthState {
   user: IUser;
 }
 
-interface SignInCredentials {
-  email: string;
-  password: string;
-}
-
-interface GoogleSignInCredentials {
-  token: string;
-}
-
 interface AuthContextData {
   user: IUser;
   loading: boolean;
   signOut(): void;
   signIn(credentials: SignInCredentials): Promise<void>;
-  signIn(googleCredentials: GoogleSignInCredentials): Promise<void>;
   updateUser(user: IUser): Promise<void>;
 }
 
