@@ -2,24 +2,19 @@ import React, { useMemo } from 'react';
 import { ImageURISource } from 'react-native';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { Formik } from 'formik';
 
-import { Container, HeaderText } from './styles';
+import IProfile from '@/domain/entities/IProfile';
 
 import Header from '../../components/Header';
-import { TextMinAsker } from '../../global';
 import Line from '../../components/Line';
-import { Formik } from 'formik';
 import RecommendationsList from '../../components/RecommendationsList';
-
-interface IProfileDrink {
-  foods: Array<string>;
-  drinks: Array<string>;
-  musicals: Array<string>;
-}
+import { TextMinAsker } from '../../global';
+import { Container, HeaderText } from './styles';
 
 type ParamList = {
   ProfileDrink: {
-    profileInformations: IProfileDrink;
+    profileInformations: IProfile;
   };
 };
 

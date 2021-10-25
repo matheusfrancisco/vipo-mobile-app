@@ -5,38 +5,28 @@ import React, {
   useState,
   useEffect,
 } from 'react';
+
 import AsyncStorage from '@react-native-community/async-storage';
+
+import IUser from '@/domain/entities/IUser';
+import {
+  GoogleSignInCredentials,
+  SignInCredentials,
+} from '@/domain/repositories/IAuthenticationRepository';
 
 import Client from '../services/api';
 
-interface User {
-  id: string;
-  name: string;
-  lastName: string;
-  email: string;
-  address?: string;
-}
 interface AuthState {
   token: string;
-  user: User;
-}
-
-interface SignInCredentials {
-  email: string;
-  password: string;
-}
-
-interface GoogleSignInCredentials {
-  token: string;
+  user: IUser;
 }
 
 interface AuthContextData {
-  user: User;
+  user: IUser;
   loading: boolean;
   signOut(): void;
   signIn(credentials: SignInCredentials): Promise<void>;
-  signIn(googleCredentials: GoogleSignInCredentials): Promise<void>;
-  updateUser(user: User): Promise<void>;
+  updateUser(user: IUser): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -95,7 +85,7 @@ const AuthUser: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  const updateUser = useCallback(async (user: User) => {
+  const updateUser = useCallback(async (user: IUser) => {
     await AsyncStorage.setItem(STORAGE_USER, JSON.stringify(user));
 
     setData((data) => ({

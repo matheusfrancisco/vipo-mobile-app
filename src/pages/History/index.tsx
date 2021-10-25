@@ -1,6 +1,14 @@
 import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
+import IconLocation from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import IHistory from '@/domain/entities/IHistory';
+
+import Footer from '../../components/Footer';
+import { Title3, TextMin } from '../../global';
 import {
   Container,
   Title,
@@ -12,10 +20,6 @@ import {
   Item,
   ContainerText,
 } from './styles';
-import { Title3, TextMin } from '../../global';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import IconLocation from 'react-native-vector-icons/EvilIcons';
-import Footer from '../../components/Footer';
 
 const History: React.FC = () => {
   const navigation = useNavigation();
@@ -23,7 +27,7 @@ const History: React.FC = () => {
     navigation.goBack();
   };
 
-  const items = [
+  const items: IHistory = [
     {
       id: '1',
       title: 'Bar do leo',
