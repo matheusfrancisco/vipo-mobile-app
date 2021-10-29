@@ -99,13 +99,16 @@ const SignIn: React.FC = () => {
               <View>
                 <Input
                   name="email"
+                  icon="mail"
                   placeholder="E-mail"
                   require={true}
                 />
 
                 <Input
                   name="password"
+                  icon="lock"
                   placeholder="Senha"
+                  secureTextEntry
                   require={true}
                 />
 
