@@ -9,8 +9,8 @@ import {
 export default class FakeUsersRepository implements IUsersRepository {
   private users: IUser[] = [];
 
-  public async create({ name, email }: ICreateUser): Promise<IUser> {
-    const user = new FakeUser({ name, email });
+  public async create({ name, lastName, email }: ICreateUser): Promise<IUser> {
+    const user = new FakeUser({ name, lastName, email });
 
     this.users.push(user);
 
