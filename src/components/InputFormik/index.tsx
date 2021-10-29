@@ -1,36 +1,44 @@
 import React, { useState } from 'react';
-import { TextInputProps } from 'react-native';
-
 import { useField } from 'formik';
 
 import { Container, TextInput, Icon } from './styles';
+import { Text } from 'react-native';
 
 interface InputProps {
   name: string;
-  icon: string;
+  icon?: string;
+  placeholder?: string;
+  require?: boolean;
 }
 
-const InputF: React.FC<InputProps> = ({ icon, ...props }) => {
-  const [field, meta, helpers] = useField(props);
+const Input: React.FC<InputProps> = ({ icon, name, require, ...props}) => {
+  const [field, meta, helpers] = useField(name);
   const [focused, setFocus] = useState(false);
   const [errored, setError] = useState(false);
+
+  const placeholder = props.placeholder && `${props.placeholder}${require ? ' *' : ''}`;
 
   return (
     <Container isFocused={focused} isErrored={!!errored}>
       <Icon name={icon} size={20} />
       <TextInput
-        keyboardAppearance="dark"
         placeholderTextColor="#666360"
-        defaultValue={field.value}
-        focused={focused}
+        onFocus={() => setFocus(true)}
+        onChangeText={helpers.setValue}
+        value={field.value}
         onBlur={() => {
           setFocus(true);
           helpers.setTouched(true);
         }}
         {...props}
+        placeholder={placeholder}
       />
+       {meta.touched && meta.error && (
+          <Text style={{ marginTop: -10, marginBottom: 10 }}>
+            {meta.error}
+          </Text>)}
     </Container>
   );
 };
 
-export default InputF;
+export default Input;
