@@ -6,10 +6,11 @@ import { TextH3 } from '../../global';
 
 interface ButtonProps extends RectButtonProperties {
   children?: string;
+  onPress: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
-  <Container {...rest}>
+const Button: React.FC<ButtonProps> = ({ children, onPress, ...rest }) => (
+  <Container {...rest} onPress={onPress}>
     <TextButton>
       <TextH3 primary> {children} </TextH3>
     </TextButton>
