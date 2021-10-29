@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.25% </span>
+                <span class="strong">68.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/16</span>
+                <span class='fraction'>11/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">71.43% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
@@ -120,6 +120,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,22 +144,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FakeUserProfile from '@/domain/entities/fakes/FakeUserProfile';
@@ -165,34 +165,34 @@ export default class FakeUserProfilesRepository
     return profile;
   }
 &nbsp;
-  public async findOne(userId: string): Promise&lt;IUserProfile&gt; {
-    const profileIndex = this.profiles.findIndex(
-      (profile) =&gt; profile.id === userId,
-    );
-&nbsp;
-    if (profileIndex &lt; 0) throw new Error('Profile not found');
-&nbsp;
-    return this.profiles[profileIndex];
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  pu</span>blic async updateOne(
-    userId: string,
-    { drinks, foods, musicals }: IProfile,
-  ): Promise&lt;IUserProfile&gt; {
+<span class="fstat-no" title="function not covered" >  pu</span>blic async findOne(userId: string): Promise&lt;IUserProfile&gt; {
     const profileIndex = <span class="cstat-no" title="statement not covered" >this.profiles.findIndex(</span>
 <span class="fstat-no" title="function not covered" >      (p</span>rofile) =&gt; <span class="cstat-no" title="statement not covered" >profile.id === userId,</span>
     );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (profileIndex &lt; 0) <span class="cstat-no" title="statement not covered" >throw new Error('Profile not found');</span></span>
 &nbsp;
-    const updatedProfile = <span class="cstat-no" title="statement not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >    return this.profiles[profileIndex];</span>
+  }
+&nbsp;
+  public async updateOne(
+    userId: string,
+    { drinks, foods, musicals }: IProfile,
+  ): Promise&lt;IUserProfile&gt; {
+    const profileIndex = this.profiles.findIndex(
+      (profile) =&gt; profile.id === userId,
+    );
+&nbsp;
+    if (profileIndex &lt; 0) throw new Error('Profile not found');
+&nbsp;
+    const updatedProfile = {
       ...this.profiles[profileIndex],
       profile: { drinks, foods, musicals },
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    this.profiles[profileIndex] = updatedProfile;</span>
+    this.profiles[profileIndex] = updatedProfile;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return updatedProfile;</span>
+    return updatedProfile;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -202,7 +202,7 @@ export default class FakeUserProfilesRepository
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Oct 29 2021 11:23:33 GMT-0300 (Horário Padrão de Brasília)
+                at Fri Oct 29 2021 11:30:50 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
