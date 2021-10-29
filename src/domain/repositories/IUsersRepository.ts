@@ -16,6 +16,6 @@ export interface IUpdateUser {
 }
 
 export interface IUsersRepository {
-  create(user: ICreateUser): Promise<void>;
+  create(user: ICreateUser): Promise<IUser>;
   updateOne(user: IUpdateUser): Promise<IUser>;
 }

@@ -9,10 +9,12 @@ import {
 export default class FakeUsersRepository implements IUsersRepository {
   private users: IUser[] = [];
 
-  public async create({ name, email }: ICreateUser): Promise<void> {
+  public async create({ name, email }: ICreateUser): Promise<IUser> {
     const user = new FakeUser({ name, email });
 
     this.users.push(user);
+
+    return user;
   }
 
   public async updateOne({
@@ -27,10 +29,15 @@ export default class FakeUsersRepository implements IUsersRepository {
 
     const user = this.users[userIndex];
 
-    user.name = name;
-    user.lastName = lastName;
-    user.address = address;
+    const updatedUser = {
+      ...user,
+      name: name,
+      lastName: lastName,
+      address: address,
+    };
 
-    return user;
+    this.users[userIndex] = updatedUser;
+
+    return updatedUser;
   }
 }
