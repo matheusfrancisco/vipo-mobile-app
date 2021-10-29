@@ -66,4 +66,4 @@ buck-out/
 /ios/Pods/
 
 # Test
-coverage
+coverage/
