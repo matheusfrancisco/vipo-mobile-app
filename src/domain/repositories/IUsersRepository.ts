@@ -1,6 +1,6 @@
 import IUser from '@/domain/entities/IUser';
 
-interface ICreateUser {
+export interface ICreateUser {
   name: string;
   email: string;
   password: string;
@@ -8,7 +8,8 @@ interface ICreateUser {
   birthDate: string;
 }
 
-interface IUpdateUser {
+export interface IUpdateUser {
+  id: string;
   name: string;
   lastName: string;
   address: string;
