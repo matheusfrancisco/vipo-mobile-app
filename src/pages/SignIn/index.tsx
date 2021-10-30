@@ -1,4 +1,5 @@
 /* eslint-disable import/order */
+/* eslint-disable import/order */
 import React, { useCallback } from 'react';
 import {
   Platform,
@@ -12,12 +13,12 @@ import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
 
-import InputF from '@/components/InputFormik';
+import Input from '@/components/InputFormik';
 import Button from '@/components/Button';
 import ButtonGoogle from '@/components/Google';
 import logo from '@/assets/logo.png';
 
-import { Formik, ErrorMessage, Form } from 'formik';
+import { Formik } from 'formik';
 import { useAuth } from '@/hooks/auth';
 
 import { Title, TextH3, TextH3Link } from '@/global';
@@ -55,21 +56,21 @@ const SignIn: React.FC = () => {
     password: '',
   };
 
-  const Submit = useCallback(async (data: SignInFormData) => {
-    try {
-      console.log(data.email, data.password);
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+  const onSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        console.log(data.email, data.password);
 
-      await signIn({
-        email: data.email,
-        password: data.password,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  });
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [signIn],
+  );
 
   return (
     <KeyboardAvoidingView
@@ -84,9 +85,9 @@ const SignIn: React.FC = () => {
           </TitleHeader>
 
           <Formik
-            initialValues={{ email: '', password: '' }}
-            validationSchema={SignInSchema}
-            onSubmit={(values) => console.log(values.email)}>
+            initialValues={{ initialValues }}
+            onSubmit={onSubmit}
+            validationSchema={SignInSchema}>
             {({
               values,
               handleChange,
@@ -97,32 +98,21 @@ const SignIn: React.FC = () => {
               errors,
             }) => (
               <View>
-                <InputF
+                <Input
                   name="email"
                   icon="mail"
                   placeholder="E-mail"
-                  value={values.email}
-                  onChange={handleChange('email')}
+                  require={true}
                 />
 
-                {touched.email && errors.email ? (
-                  <Text style={{ marginTop: -10, marginBottom: 10 }}>
-                    {errors.email}
-                  </Text>
-                ) : null}
-
-                <InputF
+                <Input
                   name="password"
                   icon="lock"
                   placeholder="Senha"
                   secureTextEntry
-                  value={values.password}
-                  onChange={handleChange('password')}
-                  onBlur={handleBlur('password')}
+                  require={true}
                 />
-                {errors.password && touched.password ? (
-                  <Text style={{ marginTop: -10 }}>{errors.password}</Text>
-                ) : null}
+
                 <ButtonText
                   onPress={() => navigation.navigate('ResetPassword')}>
                   <TextH3Link>Esqueceu sua senha?</TextH3Link>
