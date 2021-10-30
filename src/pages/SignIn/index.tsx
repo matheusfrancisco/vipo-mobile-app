@@ -3,8 +3,6 @@ import React, { useCallback } from 'react';
 import {
   Platform,
   ScrollView,
-  TextInput,
-  Alert,
   Text,
   View,
 } from 'react-native';
@@ -12,12 +10,11 @@ import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
 
-import InputF from '@/components/InputFormik';
+import Input from '@/components/InputFormik';
 import Button from '@/components/Button';
-import ButtonGoogle from '@/components/Google';
 import logo from '@/assets/logo.png';
 
-import { Formik, ErrorMessage, Form } from 'formik';
+import { Formik } from 'formik';
 import { useAuth } from '@/hooks/auth';
 
 import { Title, TextH3, TextH3Link } from '@/global';
@@ -33,19 +30,20 @@ import {
 } from './styles';
 import SignInWithGoogle from '@/pages/SignIn/SignInWithGoogle';
 
-const SignInSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Digite um e-mail válido')
-    .required('E-mail obrigatório'),
-  password: Yup.string().required('Senha obrigatória'),
-});
-
 interface SignInFormData {
   email: string;
   password: string;
 }
 
 const SignIn: React.FC = () => {
+  const SignInSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Digite um e-mail válido')
+      .required('E-mail obrigatório'),
+    password: Yup.string().required('Senha obrigatória'),
+  });
+
+
   const navigation = useNavigation();
 
   const { signIn } = useAuth();
@@ -55,10 +53,12 @@ const SignIn: React.FC = () => {
     password: '',
   };
 
-  const Submit = useCallback(async (data: SignInFormData) => {
+  const onSubmit = useCallback(async (data: SignInFormData) => {
     try {
       console.log(data.email, data.password);
-      await schema.validate(data, {
+
+
+      await SignInSchema.validate(data, {
         abortEarly: false,
       });
 
@@ -69,7 +69,7 @@ const SignIn: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
-  });
+  }, [signIn]);
 
   return (
     <KeyboardAvoidingView
@@ -84,9 +84,9 @@ const SignIn: React.FC = () => {
           </TitleHeader>
 
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={initialValues}
             validationSchema={SignInSchema}
-            onSubmit={(values) => console.log(values.email)}>
+            onSubmit={onSubmit}>
             {({
               values,
               handleChange,
@@ -97,32 +97,21 @@ const SignIn: React.FC = () => {
               errors,
             }) => (
               <View>
-                <InputF
+                <Input
                   name="email"
                   icon="mail"
                   placeholder="E-mail"
-                  value={values.email}
-                  onChange={handleChange('email')}
+                  require={true}
                 />
 
-                {touched.email && errors.email ? (
-                  <Text style={{ marginTop: -10, marginBottom: 10 }}>
-                    {errors.email}
-                  </Text>
-                ) : null}
-
-                <InputF
+                <Input
                   name="password"
                   icon="lock"
                   placeholder="Senha"
                   secureTextEntry
-                  value={values.password}
-                  onChange={handleChange('password')}
-                  onBlur={handleBlur('password')}
+                  require={true}
                 />
-                {errors.password && touched.password ? (
-                  <Text style={{ marginTop: -10 }}>{errors.password}</Text>
-                ) : null}
+
                 <ButtonText
                   onPress={() => navigation.navigate('ResetPassword')}>
                   <TextH3Link>Esqueceu sua senha?</TextH3Link>
