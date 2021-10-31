@@ -13,7 +13,7 @@ export type SignInCredentials =
   | StandardSignInCredentials
   | GoogleSignInCredentials;
 
-interface ILoginData {
+export interface ILoginData {
   token: string;
   user: IUser;
 }
