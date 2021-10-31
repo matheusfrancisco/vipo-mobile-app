@@ -8,7 +8,7 @@ interface InputProps {
   name: string;
   icon: string;
   fullWidth?: boolean;
-  require?: boolean;
+  required?: boolean;
   textContentType?: TextInputProps['textContentType'];
   keyboardType?: TextInputProps['keyboardType'];
   placeholder?: TextInputProps['placeholder'];
@@ -17,31 +17,32 @@ interface InputProps {
   multiline?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ icon, name, require, ...props}) => {
-  const [field, meta, helpers] = useField(name);
+const Input: React.FC<InputProps> = ({ icon, name, required, ...props }) => {
+  const [{ value }, { touched, error }, { setValue, setTouched }] = useField(
+    name,
+  );
   const [focused, setFocus] = useState(false);
 
-  const placeholder = props.placeholder && `${props.placeholder}${require ? ' *' : ''}`;
+  const placeholder =
+    props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
 
   return (
-    <Container isFocused={focused} isErrored={!!meta.error}>
+    <Container isFocused={focused} isErrored={!!error}>
       <Icon name={icon} size={20} />
       <TextInput
         placeholderTextColor="#666360"
         onFocus={() => setFocus(true)}
-        onChangeText={helpers.setValue}
-        value={field.value}
+        onChangeText={setValue}
+        value={value}
         onBlur={() => {
           setFocus(true);
-          helpers.setTouched(true);
+          setTouched(true);
         }}
-        {...props}
         placeholder={placeholder}
       />
-       {meta.touched && meta.error && (
-          <Text style={{ marginTop: -10, marginBottom: 10 }}>
-            {meta.error}
-          </Text>)}
+      {touched && error && (
+        <Text style={{ marginTop: -10, marginBottom: 10 }}>{error}</Text>
+      )}
     </Container>
   );
 };

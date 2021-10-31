@@ -1,11 +1,6 @@
 /* eslint-disable import/order */
 import React, { useCallback } from 'react';
-import {
-  Platform,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import { Platform, ScrollView, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
@@ -43,7 +38,6 @@ const SignIn: React.FC = () => {
     password: Yup.string().required('Senha obrigatória'),
   });
 
-
   const navigation = useNavigation();
 
   const { signIn } = useAuth();
@@ -53,23 +47,21 @@ const SignIn: React.FC = () => {
     password: '',
   };
 
-  const onSubmit = useCallback(async (data: SignInFormData) => {
-    try {
-      console.log(data.email, data.password);
+  const onSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        console.log(data.email, data.password);
 
-
-      await SignInSchema.validate(data, {
-        abortEarly: false,
-      });
-
-      await signIn({
-        email: data.email,
-        password: data.password,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [signIn]);
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [signIn],
+  );
 
   return (
     <KeyboardAvoidingView
