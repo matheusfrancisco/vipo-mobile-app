@@ -38,6 +38,7 @@ const Input: React.FC<InputProps> = ({ icon, name, required, ...props }) => {
           setFocus(true);
           setTouched(true);
         }}
+        {...props}
         placeholder={placeholder}
       />
       {touched && error && (
