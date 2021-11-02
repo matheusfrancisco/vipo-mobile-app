@@ -37,5 +37,5 @@ export const TitleHeader = styled.View`
 
 export const ContainerTextLoginSocial = styled.View`
   align-items: center;
-  margin: 60px 0px 0px 0px;
+  margin: 40px 0px 0px 0px;
 `;
