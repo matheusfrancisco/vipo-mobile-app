@@ -24,20 +24,18 @@ import logo from '../../assets/logo.png';
 import { Title, TextItalic } from '../../global';
 
 import Client from '../../services/api';
-import RNPickerSelect from 'react-native-picker-select';
 
 import {
   Container,
   ContainerTextCreateAccount,
   ContainerButton,
   Row,
-  DatePickerText,
-  Gender,
-  GenderText,
   TextTerms,
   ContainerInput,
+  Gender,
 } from './styles';
 import { Formik } from 'formik';
+import SelectInput from '@/components/SelectGender';
 
 interface SignUpData {
   name: string;
@@ -111,6 +109,7 @@ const SignUp: React.FC = () => {
     email: '',
     password: '',
     date: new Date().toDateString(),
+    genderOptions: '',
   };
 
   const handleSignUp = (values: SignUpData) => {
@@ -177,6 +176,8 @@ const SignUp: React.FC = () => {
                   />
 
                   <DatePicker />
+
+                  <SelectInput />
 
                   <Button title="Submit" onPress={handleSubmit}>
                     Cadastrar

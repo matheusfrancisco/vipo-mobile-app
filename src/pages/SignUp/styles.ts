@@ -57,12 +57,6 @@ export const Gender = styled.View`
   border-radius: 10px;
 `;
 
-export const GenderText = styled.Text`
-  font-size: 15px;
-  font-family: 'RobotoSlab-Medium';
-  margin: 5px 0px 10px 15px;
-`;
-
 export const TextTerms = styled.Text`
   font-size: 12px;
   font-family: 'RobotoSlab-Medium';
