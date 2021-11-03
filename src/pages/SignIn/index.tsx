@@ -93,7 +93,7 @@ const SignIn: React.FC = () => {
                   name="email"
                   icon="mail"
                   placeholder="E-mail"
-                  require={true}
+                  required={true}
                 />
 
                 <Input
@@ -101,7 +101,7 @@ const SignIn: React.FC = () => {
                   icon="lock"
                   placeholder="Senha"
                   secureTextEntry
-                  require={true}
+                  required={true}
                 />
 
                 <ButtonText
