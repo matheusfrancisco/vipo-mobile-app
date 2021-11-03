@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { RectButtonProperties } from 'react-native-gesture-handler';
 
-import { Container, TextButton } from './styles';
 import { TextH3 } from '../../global';
+import { Container, TextButton } from './styles';
 
 interface ButtonProps extends RectButtonProperties {
   title?: string;
