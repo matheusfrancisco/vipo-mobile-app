@@ -5,6 +5,7 @@ import { Container, TextButton } from './styles';
 import { TextH3 } from '../../global';
 
 interface ButtonProps extends RectButtonProperties {
+  title?: string;
   children?: string;
   onPress: () => void;
 }
