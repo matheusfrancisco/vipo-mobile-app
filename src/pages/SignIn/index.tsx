@@ -1,21 +1,12 @@
 /* eslint-disable import/order */
-/* eslint-disable import/order */
 import React, { useCallback } from 'react';
-import {
-  Platform,
-  ScrollView,
-  TextInput,
-  Alert,
-  Text,
-  View,
-} from 'react-native';
+import { Platform, ScrollView, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
 
 import Input from '@/components/InputFormik';
 import Button from '@/components/Button';
-import ButtonGoogle from '@/components/Google';
 import logo from '@/assets/logo.png';
 
 import { Formik } from 'formik';
@@ -34,19 +25,19 @@ import {
 } from './styles';
 import SignInWithGoogle from '@/pages/SignIn/SignInWithGoogle';
 
-const SignInSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Digite um e-mail válido')
-    .required('E-mail obrigatório'),
-  password: Yup.string().required('Senha obrigatória'),
-});
-
 interface SignInFormData {
   email: string;
   password: string;
 }
 
 const SignIn: React.FC = () => {
+  const SignInSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Digite um e-mail válido')
+      .required('E-mail obrigatório'),
+    password: Yup.string().required('Senha obrigatória'),
+  });
+
   const navigation = useNavigation();
 
   const { signIn } = useAuth();
@@ -85,9 +76,9 @@ const SignIn: React.FC = () => {
           </TitleHeader>
 
           <Formik
-            initialValues={{ initialValues }}
-            onSubmit={onSubmit}
-            validationSchema={SignInSchema}>
+            initialValues={initialValues}
+            validationSchema={SignInSchema}
+            onSubmit={onSubmit}>
             {({
               values,
               handleChange,
@@ -102,7 +93,7 @@ const SignIn: React.FC = () => {
                   name="email"
                   icon="mail"
                   placeholder="E-mail"
-                  require={true}
+                  required={true}
                 />
 
                 <Input
@@ -110,7 +101,7 @@ const SignIn: React.FC = () => {
                   icon="lock"
                   placeholder="Senha"
                   secureTextEntry
-                  require={true}
+                  required={true}
                 />
 
                 <ButtonText

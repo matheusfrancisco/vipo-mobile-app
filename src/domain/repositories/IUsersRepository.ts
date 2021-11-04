@@ -1,20 +1,22 @@
 import IUser from '@/domain/entities/IUser';
 
-interface ICreateUser {
+export interface ICreateUser {
   name: string;
+  lastName: string;
   email: string;
   password: string;
   gender: string;
   birthDate: string;
 }
 
-interface IUpdateUser {
+export interface IUpdateUser {
+  id: string;
   name: string;
   lastName: string;
   address: string;
 }
 
 export interface IUsersRepository {
-  create(user: ICreateUser): Promise<void>;
+  create(user: ICreateUser): Promise<IUser>;
   updateOne(user: IUpdateUser): Promise<IUser>;
 }
