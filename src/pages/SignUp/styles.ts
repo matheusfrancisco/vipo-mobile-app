@@ -1,6 +1,7 @@
-import styled from 'styled-components/native';
 import { Platform } from 'react-native';
+
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
@@ -49,18 +50,6 @@ export const DatePickerText = styled.Text`
   font-size: 15px;
   font-family: 'RobotoSlab-Medium';
   margin-bottom: 15px;
-`;
-
-export const Gender = styled.View`
-  margin-top: 15px;
-  border: 1px solid #dadfe2;
-  border-radius: 10px;
-`;
-
-export const GenderText = styled.Text`
-  font-size: 15px;
-  font-family: 'RobotoSlab-Medium';
-  margin: 5px 0px 10px 15px;
 `;
 
 export const TextTerms = styled.Text`

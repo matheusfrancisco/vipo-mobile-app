@@ -2,32 +2,17 @@ import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
 import RNDateTimePicker from '@react-native-community/datetimepicker';
-
 import { useField } from 'formik';
 
 import { DatePickerButton, Icon, DateText } from './styles';
 
-const formatDate = (dateString: string): string => {
-  console.log(dateString, ' aqui');
+interface Props {
+  name: string;
+}
 
-  const date = new Date(dateString);
-  console.log('date', date);
-
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  console.log(day, month, date);
-
-  const formatedDate = `${day < 10 ? `0${day}` : day}/${
-    month < 10 ? `0${month}` : month
-  }/${date.getFullYear()}`;
-  console.log(formatedDate);
-
-  return formatedDate;
-};
-
-const DatePicker: React.FC = () => {
+const DatePicker: React.FC<Props> = ({ name }: Props) => {
   const [showDataPicker, setShowDataPicker] = useState(false);
-  const [{ value }, { error, touched }, { setValue }] = useField('date');
+  const [{ value }, { error, touched }, { setValue }] = useField(name);
 
   const handleOnChange = useCallback(
     (_: unknown, date?: Date) => {

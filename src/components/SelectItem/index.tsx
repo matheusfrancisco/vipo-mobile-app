@@ -1,48 +1,37 @@
 import React from 'react';
-import { useField, useFormikContext } from 'formik';
 
-interface InputProps {
+import { useField } from 'formik';
+
+import { Gender, Container } from './styles';
+
+interface Option {
+  id: string;
   name: string;
-  options: string;
-  fullWidth?: boolean;
-  require?: boolean;
-  textContentType?: TextInputProps['textContentType'];
-  placeholder?: TextInputProps['placeholder'];
 }
 
-const Select = ({ name, options, ...props }) => {
-  const { setFieldValue } = useFormikContext();
-  const [field, meta] = useField(name);
+interface Props {
+  icon?: string;
+  items: Option[];
+  defaultValue: string;
+}
 
-  const handleChange = (set) => {
-    const { value } = set.target;
-    setFieldValue(name, value);
+const Select: React.FC<Props> = ({ icon, items, defaultValue }: any) => {
+  const [{ value }, { touched, error }, { setValue }] = useField('gender');
+
+  const onChange = (value: unknown) => {
+    const newValue = typeof value === 'string' ? value : defaultValue;
+    setValue(newValue);
   };
-
-  const configSelect = {
-    ...field,
-    ...otherProps,
-    select: true,
-    variant: 'outlined',
-    fullWidth: true,
-    onChange: handleChange,
-  };
-
-  if (meta && meta.touched && meta.error) {
-    configSelect.error = true;
-    configSelect.helperText = meta.error;
-  }
 
   return (
-    <TextField {...configSelect}>
-      {Object.keys(options).map((item, pos) => {
-        return (
-          <MenuItem key={pos} value={item}>
-            {options[item]}
-          </MenuItem>
-        );
-      })}
-    </TextField>
+    <Container>
+      <Gender selectedValue={value} onValueChange={onChange}>
+        <Gender.Item label="Escolha um gênero..." value={value} />
+        {items.map((option: Option) => (
+          <Gender.Item key={option.id} label={option.name} value={option.id} />
+        ))}
+      </Gender>
+    </Container>
   );
 };
 

@@ -1,121 +1,91 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  TextInput,
-  Alert,
   View,
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Input from '../../components/InputFormik';
+import logo from '../../assets/logo.png';
 import Button from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
-
-import getvalidationErrors from '../../utils/getValidationErrors';
-
-import logo from '../../assets/logo.png';
-
-import { Title, TextItalic } from '../../global';
-
+import Input from '../../components/InputFormik';
+import Select from '../../components/SelectItem';
+import { Title } from '../../global';
 import Client from '../../services/api';
-import RNPickerSelect from 'react-native-picker-select';
-
 import {
   Container,
   ContainerTextCreateAccount,
-  ContainerButton,
   Row,
-  DatePickerText,
-  Gender,
-  GenderText,
-  TextTerms,
   ContainerInput,
 } from './styles';
-import { Formik } from 'formik';
-
 interface SignUpData {
   name: string;
   lastName: string;
   email: string;
   password: string;
-  date: string;
+  birthDate: string;
+  gender: string;
 }
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
+  const onlyLetters = /^[aA-zZ\s]+$/;
 
-  /* const dateNow = new Date();
-  const [date, setDate] = useState(dateNow);
-  const [gender, setGender] = useState({ title: 'Gênero' });
-  const [selectedGender, setSelectedGender] = useState(''); */
+  const SignUpSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('O nome obrigatório')
+      .matches(onlyLetters, 'Somente letras são permitidas '),
+    lastName: Yup.string()
+      .required('O sobrenome obrigatório')
+      .matches(onlyLetters, 'Somente letras são permitidas '),
+    email: Yup.string()
+      .email('Digite um e-mail válido')
+      .required('E-mail obrigatório'),
+    password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
+  });
 
-  /*   useEffect(() => {
-    if (selectedGender) {
-      return setGender({ title: selectedGender });
-    }
-    return setGender({ title: 'Gênero' });
-  }, [selectedGender]);
- */
-  /* const handleSignUp = async (data: SignUpData) => {
+  const handleSignUp = async (data: SignUpData) => {
     try {
-      const onlyLetters = /^[aA-zZ\s]+$/;
+      console.log(data);
+      const res = await Client.http.post('/users', data);
 
-      const SignUpSchema = Yup.object().shape({
-        name: Yup.string()
-          .required('O nome obrigatório')
-          .matches(onlyLetters, 'Somente letras são permitidas '),
-        lastName: Yup.string()
-          .required('O sobrenome obrigatório')
-          .matches(onlyLetters, 'Somente letras são permitidas '),
-        email: Yup.string()
-          .email('Digite um e-mail válido')
-          .required('E-mail obrigatório'),
-        password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
-      });
-
-      const newUser = {
-        ...data,
-        gender: selectedGender,
-        birthDate: date.toJSON(),
-      };
-
-      const res = await Client.http.post('/users', newUser);
-
-      if (res.status == 201) {
+      if (res.status === 201) {
         console.log('created');
-        navigation.navigate('RegistrationCompleted');
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'RegistrationCompleted' }],
+        });
       } else {
         navigation.goBack();
       }
     } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const errors = getvalidationErrors(error);
+      console.log(error.message);
 
-        return;
-      }
-
-      Alert.alert('Erro no cadastro', 'Ocorreu um erro ao fazer cadastro');
+      Alert.alert('Erro no cadastro', 'Ocorreu um erro inesperado');
     }
   };
- */
 
   const initialValues: SignUpData = {
     name: '',
     lastName: '',
     email: '',
     password: '',
-    date: new Date().toDateString(),
+    birthDate: new Date().toDateString(),
+    gender: '',
   };
 
-  const handleSignUp = (values: SignUpData) => {
-    console.log(values);
-  };
+  const genderOptions = [
+    { id: 'Male', name: 'Homem' },
+    { id: 'Female', name: 'Mulher' },
+    { id: 'Neutral', name: 'Neutro' },
+  ];
 
   return (
     <>
@@ -139,7 +109,10 @@ const SignUp: React.FC = () => {
               <Title>Crie sua conta</Title>
             </ContainerTextCreateAccount>
 
-            <Formik initialValues={initialValues} onSubmit={handleSignUp}>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSignUp}
+              validationSchema={SignUpSchema}>
               {({ handleSubmit }) => (
                 <View>
                   <Row>
@@ -148,7 +121,7 @@ const SignUp: React.FC = () => {
                         name="name"
                         icon="user"
                         placeholder="Nome"
-                        require={true}
+                        required={true}
                       />
                     </ContainerInput>
                     <ContainerInput>
@@ -156,7 +129,7 @@ const SignUp: React.FC = () => {
                         name="lastName"
                         icon="user"
                         placeholder="Sobrenome"
-                        require={true}
+                        required={true}
                       />
                     </ContainerInput>
                   </Row>
@@ -165,7 +138,7 @@ const SignUp: React.FC = () => {
                     name="email"
                     icon="mail"
                     placeholder="E-mail"
-                    require={true}
+                    required={true}
                   />
 
                   <Input
@@ -173,10 +146,11 @@ const SignUp: React.FC = () => {
                     name="password"
                     icon="lock"
                     placeholder="Senha"
-                    require={true}
+                    required={true}
                   />
 
-                  <DatePicker />
+                  <DatePicker name="birthDate" />
+                  <Select items={genderOptions} defaultValue="Gênero" />
 
                   <Button title="Submit" onPress={handleSubmit}>
                     Cadastrar
