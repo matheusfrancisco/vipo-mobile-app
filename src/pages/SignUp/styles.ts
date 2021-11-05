@@ -55,7 +55,8 @@ export const DatePickerText = styled.Text`
 export const TextTerms = styled.Text`
   font-size: 12px;
   font-family: 'RobotoSlab-Medium';
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export const ContainerInput = styled.View`

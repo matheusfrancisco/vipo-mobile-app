@@ -17,13 +17,14 @@ import Button from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
 import Input from '../../components/InputFormik';
 import Select from '../../components/SelectItem';
-import { Title } from '../../global';
+import { TextItalic, Title } from '../../global';
 import Client from '../../services/api';
 import {
   Container,
   ContainerTextCreateAccount,
   Row,
   ContainerInput,
+  TextTerms,
 } from './styles';
 interface SignUpData {
   name: string;
@@ -37,6 +38,7 @@ interface SignUpData {
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const onlyLetters = /^[aA-zZ\s]+$/;
+
   //#TODO create all validators
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
@@ -148,9 +150,17 @@ const SignUp: React.FC = () => {
                     placeholder="Senha"
                     required={true}
                   />
-
                   <DatePicker name="birthDate" />
+
                   <Select items={genderOptions} defaultValue="Gênero" />
+
+                  <TextTerms>
+                    Ao clicar em Cadastrar, você concorda com nossos
+                    <TextItalic>
+                      {' '}
+                      Termos, Política de dados e Política de Cookies.
+                    </TextItalic>
+                  </TextTerms>
 
                   <Button title="Submit" onPress={handleSubmit}>
                     Cadastrar

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, TextInputProps } from 'react-native';
+import { TextInputProps } from 'react-native';
 
 import { useField } from 'formik';
 
-import { Container, TextInput, Icon } from './styles';
+import { Container, TextInput, Icon, TextError } from './styles';
 
 interface InputProps {
   name: string;
@@ -42,9 +42,7 @@ const Input: React.FC<InputProps> = ({ icon, name, required, ...props }) => {
         {...props}
         placeholder={placeholder}
       />
-      {touched && error && (
-        <Text style={{ marginTop: -10, marginBottom: 10 }}>{error}</Text>
-      )}
+      {touched && error && <TextError>{error}</TextError>}
     </Container>
   );
 };
