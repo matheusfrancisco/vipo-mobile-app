@@ -37,7 +37,7 @@ interface SignUpData {
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const onlyLetters = /^[aA-zZ\s]+$/;
-
+  //#TODO create all validators
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
       .required('O nome obrigatório')
