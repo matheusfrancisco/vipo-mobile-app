@@ -15,6 +15,9 @@ const PATHS = {
     CREATE: '/users',
     EDIT: '/users',
   },
+  RECOMMENDATIONS: {
+    FIND: '/users/recommendation',
+  },
 };
 
 const Http = {
