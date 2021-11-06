@@ -22,6 +22,10 @@ const PATHS = {
   RECOMMENDATIONS: {
     FIND: '/users/recommendation',
   },
+  SIGNIN: {
+    GOOGLE: '/signin/google',
+    DEFAULT: '/signin',
+  },
 };
 
 const Http = {
