@@ -10,8 +10,16 @@ const instance = Axios.create({
   timeoutErrorMessage: TIMEOUT_MESSAGE,
 });
 
+const PATHS = {
+  USERS: {
+    CREATE: '/users',
+    EDIT: '/users',
+  },
+};
+
 const Http = {
   instance,
+  PATHS,
 };
 
 export default Http;
