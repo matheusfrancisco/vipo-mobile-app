@@ -15,6 +15,10 @@ const PATHS = {
     CREATE: '/users',
     EDIT: '/users',
   },
+  PROFILES: {
+    GET: '/profiles',
+    EDIT: '/profiles',
+  },
   RECOMMENDATIONS: {
     FIND: '/users/recommendation',
   },
