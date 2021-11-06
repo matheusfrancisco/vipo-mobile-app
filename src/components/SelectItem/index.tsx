@@ -13,9 +13,10 @@ interface Props {
   icon?: string;
   items: Option[];
   defaultValue: string;
+  label: string;
 }
 
-const Select: React.FC<Props> = ({ icon, items, defaultValue }: any) => {
+const Select: React.FC<Props> = ({ icon, items, defaultValue }) => {
   const [{ value }, { touched, error }, { setValue }] = useField('gender');
 
   const onChange = (value: unknown) => {

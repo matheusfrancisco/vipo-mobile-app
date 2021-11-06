@@ -79,7 +79,7 @@ const SignIn: React.FC = () => {
             initialValues={initialValues}
             validationSchema={SignInSchema}
             onSubmit={onSubmit}>
-            {({ values, handleSubmit }) => (
+            {({ handleSubmit }) => (
               <View>
                 <Input
                   name="email"

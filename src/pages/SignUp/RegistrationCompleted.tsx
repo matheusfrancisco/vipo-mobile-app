@@ -11,7 +11,7 @@ import logo from '../../assets/logo.png';
 import { Title, TextH3 } from '../../global';
 import Button from '../../components/Button';
 import { Container } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 const RegistrationCompleted: React.FC = () => {
   const navigation = useNavigation();

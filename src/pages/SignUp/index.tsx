@@ -26,6 +26,7 @@ import {
   ContainerInput,
   TextTerms,
 } from './styles';
+
 interface SignUpData {
   name: string;
   lastName: string;
@@ -34,6 +35,12 @@ interface SignUpData {
   birthDate: string;
   gender: string;
 }
+
+const genderOptions = [
+  { id: 'Male', name: 'Homem' },
+  { id: 'Female', name: 'Mulher' },
+  { id: 'Neutral', name: 'Neutro' },
+];
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
@@ -55,7 +62,6 @@ const SignUp: React.FC = () => {
 
   const handleSignUp = async (data: SignUpData) => {
     try {
-      console.log(data);
       const res = await Client.http.post('/users', data);
 
       if (res.status === 201) {
@@ -82,12 +88,6 @@ const SignUp: React.FC = () => {
     birthDate: new Date().toDateString(),
     gender: '',
   };
-
-  const genderOptions = [
-    { id: 'Male', name: 'Homem' },
-    { id: 'Female', name: 'Mulher' },
-    { id: 'Neutral', name: 'Neutro' },
-  ];
 
   return (
     <>
