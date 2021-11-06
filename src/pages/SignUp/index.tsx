@@ -9,21 +9,18 @@ import {
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
+import RNPickerSelect from 'react-native-picker-select';
 import * as Yup from 'yup';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import DatePicker from '../../components/DatePicker';
-
-import getvalidationErrors from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.png';
-
+import Button from '../../components/Button';
+import DatePicker from '../../components/DatePicker';
+import Input from '../../components/Input';
 import { Title, TextItalic } from '../../global';
-
 import Client from '../../services/api';
-import RNPickerSelect from 'react-native-picker-select';
+import getvalidationErrors from '../../utils/getValidationErrors';
 
 interface SignUpData {
   name: string;
