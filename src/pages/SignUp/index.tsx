@@ -65,11 +65,7 @@ const SignUp: React.FC = () => {
       const res = await Client.http.post('/users', data);
 
       if (res.status === 201) {
-        console.log('created');
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'RegistrationCompleted' }],
-        });
+        navigation.navigate('RegistrationCompleted');
       } else {
         navigation.goBack();
       }

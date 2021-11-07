@@ -4,7 +4,7 @@ import { TextInputProps, View } from 'react-native';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import { useField } from 'formik';
 
-import { DatePickerButton, Icon, DateText } from './styles';
+import { DatePickerButton, Icon, DateText, TextError } from './styles';
 
 interface Props {
   name: string;
@@ -26,7 +26,7 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
 
   const placeholder =
     props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
-
+  console.log(touched, error);
   return (
     <View>
       <DatePickerButton onPress={() => setShowDataPicker(true)}>
@@ -42,6 +42,7 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
           maximumDate={new Date()}
         />
       )}
+      {touched && error && <TextError>{error}</TextError>}
     </View>
   );
 };

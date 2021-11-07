@@ -26,7 +26,7 @@ const Select: React.FC<Props> = ({
 }) => {
   const [{ value }, { touched, error }, { setValue }] = useField('gender');
 
-  const onChange = (value: unknown) => {
+  const onChange = (value: string) => {
     const newValue = typeof value === 'string' ? value : defaultValue;
     setValue(newValue);
   };
