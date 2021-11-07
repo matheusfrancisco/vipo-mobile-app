@@ -31,7 +31,7 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
     <View>
       <DatePickerButton onPress={() => setShowDataPicker(true)}>
         <Icon name={'calendar'} size={20} color="#666360" />
-        <DateText>{value ? value : { placeholder }}</DateText>
+        <DateText>{value ? value : placeholder}</DateText>
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker
