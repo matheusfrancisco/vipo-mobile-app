@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { View } from 'react-native';
+import { TextInputProps, View } from 'react-native';
 
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import { useField } from 'formik';
@@ -8,9 +8,11 @@ import { DatePickerButton, Icon, DateText } from './styles';
 
 interface Props {
   name: string;
+  placeholder?: TextInputProps['placeholder'];
+  required: boolean;
 }
 
-const DatePicker: React.FC<Props> = ({ name }: Props) => {
+const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
   const [showDataPicker, setShowDataPicker] = useState(false);
   const [{ value }, { error, touched }, { setValue }] = useField(name);
 
@@ -22,11 +24,14 @@ const DatePicker: React.FC<Props> = ({ name }: Props) => {
     [setValue],
   );
 
+  const placeholder =
+    props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
+
   return (
     <View>
       <DatePickerButton onPress={() => setShowDataPicker(true)}>
         <Icon name={'calendar'} size={20} color="#666360" />
-        <DateText>{value ? value : 'Data de nascimento'}</DateText>
+        <DateText>{value ? value : { placeholder }}</DateText>
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker

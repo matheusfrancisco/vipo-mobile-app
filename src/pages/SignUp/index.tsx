@@ -150,9 +150,16 @@ const SignUp: React.FC = () => {
                     placeholder="Senha"
                     required={true}
                   />
-                  <DatePicker name="birthDate" />
+                  <DatePicker
+                    placeholder="Data de nascimento:"
+                    name="birthDate"
+                  />
 
-                  <Select items={genderOptions} defaultValue="Gênero" />
+                  <Select
+                    label={'Escolha um gênero:'}
+                    items={genderOptions}
+                    defaultValue="Gênero"
+                  />
 
                   <TextTerms>
                     Ao clicar em Cadastrar, você concorda com nossos

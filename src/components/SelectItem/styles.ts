@@ -8,6 +8,6 @@ export const Container = styled.View`
   margin-bottom: 20px;
 `;
 
-export const Gender = styled(Picker)`
+export const SelectInput = styled(Picker)`
   color: #363636;
 `;

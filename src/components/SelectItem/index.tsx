@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useField } from 'formik';
 
-import { Gender, Container } from './styles';
+import { SelectInput, Container } from './styles';
 
 interface Option {
   id: string;
@@ -14,24 +14,36 @@ interface Props {
   items: Option[];
   defaultValue: string;
   label: string;
+  required?: boolean;
 }
 
-const Select: React.FC<Props> = ({ icon, items, defaultValue }) => {
+const Select: React.FC<Props> = ({
+  icon,
+  items,
+  defaultValue,
+  required,
+  ...props
+}) => {
   const [{ value }, { touched, error }, { setValue }] = useField('gender');
 
   const onChange = (value: unknown) => {
     const newValue = typeof value === 'string' ? value : defaultValue;
     setValue(newValue);
   };
+  const itemLabel = props.label && `${props.label}${required ? ' *' : ''}`;
 
   return (
     <Container>
-      <Gender selectedValue={value} onValueChange={onChange}>
-        <Gender.Item label="Escolha um gênero..." value={value} />
+      <SelectInput selectedValue={value} onValueChange={onChange}>
+        <SelectInput.Item label={itemLabel} value={value} />
         {items.map((option: Option) => (
-          <Gender.Item key={option.id} label={option.name} value={option.id} />
+          <SelectInput.Item
+            key={option.id}
+            label={option.name}
+            value={option.id}
+          />
         ))}
-      </Gender>
+      </SelectInput>
     </Container>
   );
 };
