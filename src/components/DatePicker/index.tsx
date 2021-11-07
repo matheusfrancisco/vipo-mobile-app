@@ -26,7 +26,6 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
 
   const placeholder =
     props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
-  console.log(touched, error);
   return (
     <View>
       <DatePickerButton onPress={() => setShowDataPicker(true)}>
