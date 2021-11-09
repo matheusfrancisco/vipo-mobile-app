@@ -46,8 +46,6 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const onlyLetters = /^[aA-zZ\s]+$/;
 
-  const [errorMessage, setErrorMessage] = useState('');
-
   //#TODO create all validators
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
@@ -66,7 +64,6 @@ const SignUp: React.FC = () => {
   const handleSignUp = async (data: SignUpData) => {
     try {
       const res = await Client.http.post('/users', data);
-      setErrorMessage(res.data);
 
       if (res.status === 201) {
         navigation.navigate('RegistrationCompleted');
