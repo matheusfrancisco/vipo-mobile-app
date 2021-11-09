@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Alert,
   Image,
@@ -46,6 +46,8 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const onlyLetters = /^[aA-zZ\s]+$/;
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   //#TODO create all validators
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
@@ -58,11 +60,13 @@ const SignUp: React.FC = () => {
       .email('Digite um e-mail válido')
       .required('E-mail obrigatório'),
     password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
+    gender: Yup.string().required('Você deve escolher um gênero'),
   });
 
   const handleSignUp = async (data: SignUpData) => {
     try {
       const res = await Client.http.post('/users', data);
+      setErrorMessage(res.data);
 
       if (res.status === 201) {
         navigation.navigate('RegistrationCompleted');
@@ -70,9 +74,8 @@ const SignUp: React.FC = () => {
         navigation.goBack();
       }
     } catch (error) {
-      console.log(error.message);
-
-      Alert.alert('Erro no cadastro', 'Ocorreu um erro inesperado');
+      const { data } = error.response;
+      Alert.alert('Erro no cadastro', data.message);
     }
   };
 
