@@ -90,3 +90,12 @@ export const ButtonEditLike = styled(RectButton)`
   border-radius: 5px;
   /* margin-top: 20px; */
 `;
+
+export const ButtonLogout = styled(RectButton)`
+  width: 100px;
+  height: 36px;
+  background-color: #9283bf;
+  margin-top: 20px;
+  margin-right: 20px;
+  background: #a396cb;
+`;
