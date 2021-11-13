@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import Client from '../../services/api';
+import { useMatchesController } from './hooks';
 import HowMuchPicker from './HowMuchPicker';
 import LikesPicker from './LikesPicker';
 import NumberOfPeoplePicker from './NumberOfPeoplePicker';
@@ -63,13 +63,15 @@ const fields: IField[] = [
 const PickerMatcherParty: React.FC = () => {
   const navigation = useNavigation();
 
+  const controller = useMatchesController();
+
   const [expandedMenu, setExpandedMenu] = useState<FieldKeysEnum | null>(null);
 
   const onSubmit = useCallback(
     async ({ howMuch, like, numberOfPeople }: IValues) => {
       const selectedLikes = Object.entries(like)
         .map(([key, value]) => (value ? key : undefined))
-        .filter((value) => value);
+        .filter((value) => value) as string[]; // This type assertion can be done because the undefined values are filtered out
 
       const isValid = howMuch && selectedLikes.length && numberOfPeople;
 
@@ -80,23 +82,13 @@ const PickerMatcherParty: React.FC = () => {
         );
       }
 
-      try {
-        const response = await Client.http.post('users/recommendation', {
-          howMuch,
-          numberOfPeople,
-          like: selectedLikes,
-        });
-
-        // TODO do something with the received value
-        // TODO remember add some loading to don't send two request or more for the api.
-        // TDODO response are coming without some fields
-        navigation.navigate('Match', response.data);
-      } catch (error) {
-        Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
-        console.error(error.message);
-      }
+      await controller.getMatches({
+        desirablePrice: howMuch,
+        groupSize: numberOfPeople,
+        interests: selectedLikes,
+      });
     },
-    [],
+    [controller],
   );
 
   return (
