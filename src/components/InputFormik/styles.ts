@@ -43,3 +43,8 @@ export const Icon = styled(FeatherIcon)`
   margin-right: 16px;
   color: #dadfe2;
 `;
+
+export const TextError = styled.Text`
+  margin-top: -10px;
+  margin-bottom: 10px;
+`;

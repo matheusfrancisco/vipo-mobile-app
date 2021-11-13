@@ -28,6 +28,7 @@ import {
   ButtonEditLike,
   ColorTextButton,
   HeaderProfile,
+  ButtonLogout,
 } from './styles';
 
 interface IResponse {
@@ -86,6 +87,15 @@ const Profile: React.FC = () => {
                       onPress={navigation.goBack}
                     />
                   </IconBorder>
+
+                  <ButtonLogout
+                    onPress={() => {
+                      signOut();
+                    }}>
+                    <ColorTextButton>
+                      <TextH5>Logout</TextH5>
+                    </ColorTextButton>
+                  </ButtonLogout>
                 </HeaderProfile>
 
                 <AlignText>

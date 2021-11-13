@@ -1,113 +1,88 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  TextInput,
-  Alert,
+  View,
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/mobile';
-import RNPickerSelect from 'react-native-picker-select';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import logo from '../../assets/logo.png';
 import Button from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
-import Input from '../../components/Input';
-import { Title, TextItalic } from '../../global';
+import Input from '../../components/InputFormik';
+import Select from '../../components/SelectItem';
+import { TextItalic, Title } from '../../global';
 import Client from '../../services/api';
-import getvalidationErrors from '../../utils/getValidationErrors';
-
-interface SignUpData {
-  name: string;
-  email: string;
-  password: string;
-}
-
 import {
   Container,
   ContainerTextCreateAccount,
-  ContainerButton,
   Row,
-  DatePickerText,
-  Gender,
-  GenderText,
-  TextTerms,
   ContainerInput,
+  TextTerms,
 } from './styles';
 
-//#TODO migrate this form to formik
+interface SignUpData {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+  birthDate: string;
+  gender: string;
+}
+
+const genderOptions = [
+  { id: 'Male', name: 'Homem' },
+  { id: 'Female', name: 'Mulher' },
+  { id: 'Neutral', name: 'Neutro' },
+];
+
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
-  const formRef = useRef<FormHandles>(null);
-  const emailInputref = useRef<TextInput>(null);
-  const lastName = useRef<TextInput>(null);
-  const genderRef = useRef<RNPickerSelect>(null);
-  const birthDateRef = useRef(null);
-  const passwordInputRef = useRef<TextInput>(null);
+  const onlyLetters = /^[aA-zZ\s]+$/;
 
-  const dateNow = new Date();
-  const [date, setDate] = useState(dateNow);
-  const [gender, setGender] = useState({ title: 'Gênero' });
-  const [selectedGender, setSelectedGender] = useState('');
-
-  useEffect(() => {
-    if (selectedGender) {
-      return setGender({ title: selectedGender });
-    }
-    return setGender({ title: 'Gênero' });
-  }, [selectedGender]);
+  //#TODO create all validators
+  const SignUpSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('O nome obrigatório')
+      .matches(onlyLetters, 'Somente letras são permitidas '),
+    lastName: Yup.string()
+      .required('O sobrenome obrigatório')
+      .matches(onlyLetters, 'Somente letras são permitidas '),
+    email: Yup.string()
+      .email('Digite um e-mail válido')
+      .required('E-mail obrigatório'),
+    password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
+    gender: Yup.string().required('Você deve escolher um gênero'),
+  });
 
   const handleSignUp = async (data: SignUpData) => {
     try {
-      formRef.current?.setErrors({});
-      const onlyLetters = /^[aA-zZ\s]+$/;
+      const res = await Client.http.post('/users', data);
 
-      const schema = Yup.object().shape({
-        name: Yup.string()
-          .required('O nome obrigatório')
-          .matches(onlyLetters, 'Somente letras são permitidas '),
-        lastName: Yup.string()
-          .required('O sobrenome obrigatório')
-          .matches(onlyLetters, 'Somente letras são permitidas '),
-        email: Yup.string()
-          .email('Digite um e-mail válido')
-          .required('E-mail obrigatório'),
-        password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      const newUser = {
-        ...data,
-        gender: selectedGender,
-        birthDate: date.toJSON(),
-      };
-
-      const res = await Client.http.post('/users', newUser);
-
-      if (res.status == 201) {
-        console.log('created');
+      if (res.status === 201) {
         navigation.navigate('RegistrationCompleted');
       } else {
         navigation.goBack();
       }
-    } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        const errors = getvalidationErrors(error);
-        formRef.current?.setErrors(errors);
-
-        return;
-      }
-
-      Alert.alert('Erro no cadastro', 'Ocorreu um erro ao fazer cadastro');
+    } catch (error: any) {
+      const { data } = error.response;
+      Alert.alert('Erro no cadastro', data.message);
     }
+  };
+
+  const initialValues: SignUpData = {
+    name: '',
+    lastName: '',
+    email: '',
+    password: '',
+    birthDate: new Date().toDateString(),
+    gender: '',
   };
 
   return (
@@ -131,96 +106,72 @@ const SignUp: React.FC = () => {
             <ContainerTextCreateAccount>
               <Title>Crie sua conta</Title>
             </ContainerTextCreateAccount>
-            <Form ref={formRef} onSubmit={handleSignUp}>
-              <Row>
-                <ContainerInput>
-                  <Input
-                    autoCapitalize="words"
-                    name="name"
-                    icon="user"
-                    placeholder="Nome"
-                    onSubmitEditing={() => {
-                      lastName.current?.focus();
-                    }}
-                  />
-                </ContainerInput>
-                <ContainerInput>
-                  <Input
-                    ref={lastName}
-                    autoCapitalize="words"
-                    name="lastName"
-                    icon="user"
-                    placeholder="Sobrenome"
-                    onSubmitEditing={() => {
-                      emailInputref.current?.focus();
-                    }}
-                  />
-                </ContainerInput>
-              </Row>
 
-              <Input
-                ref={emailInputref}
-                keyboardType="email-address"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSignUp}
+              validationSchema={SignUpSchema}>
+              {({ handleSubmit }) => (
+                <View>
+                  <Row>
+                    <ContainerInput>
+                      <Input
+                        name="name"
+                        icon="user"
+                        placeholder="Nome"
+                        required={true}
+                      />
+                    </ContainerInput>
+                    <ContainerInput>
+                      <Input
+                        name="lastName"
+                        icon="user"
+                        placeholder="Sobrenome"
+                        required={true}
+                      />
+                    </ContainerInput>
+                  </Row>
 
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                textContentType="newPassword"
-                returnKeyType="send"
-                onSubmitEditing={() => {
-                  birthDateRef.current?.onPressDate();
-                }}
-              />
-              <DatePickerText>Data de nascimento: </DatePickerText>
-              <DatePicker
-                date={date}
-                setDate={(selectedDate) => setDate(selectedDate)}
-              />
-              <Gender>
-                <RNPickerSelect
-                  ref={genderRef}
-                  placeholder={{}}
-                  onValueChange={(value) => setSelectedGender(value)}
-                  items={[
-                    { label: 'Female', value: 'Female' },
-                    { label: 'Male', value: 'Male' },
-                    { label: 'Neuter', value: 'Neuter' },
-                  ]}
-                  pickerProps={{
-                    accessibilityLabel: gender.title,
-                  }}>
-                  <GenderText>{gender.title}</GenderText>
-                </RNPickerSelect>
-              </Gender>
-              <TextTerms>
-                Ao clicar em Cadastrar, você concorda com nossos
-                <TextItalic>
-                  {' '}
-                  Termos, Política de dados e Política de Cookies.
-                </TextItalic>
-              </TextTerms>
-              <ContainerButton>
-                <Button
-                  onPress={() => {
-                    formRef.current?.submitForm();
-                  }}>
-                  Cadastrar
-                </Button>
-              </ContainerButton>
-            </Form>
+                  <Input
+                    name="email"
+                    icon="mail"
+                    placeholder="E-mail"
+                    required={true}
+                  />
+
+                  <Input
+                    secureTextEntry
+                    name="password"
+                    icon="lock"
+                    placeholder="Senha"
+                    required={true}
+                  />
+                  <DatePicker
+                    placeholder="Data de nascimento:"
+                    name="birthDate"
+                    required
+                  />
+
+                  <Select
+                    label={'Escolha um gênero:'}
+                    items={genderOptions}
+                    defaultValue="Gênero"
+                  />
+
+                  <TextTerms>
+                    Ao clicar em Cadastrar, você concorda com nossos
+                    <TextItalic>
+                      {' '}
+                      Termos, Política de dados e Política de Cookies.
+                    </TextItalic>
+                  </TextTerms>
+
+                  <Button title="Submit" onPress={handleSubmit}>
+                    Cadastrar
+                  </Button>
+                </View>
+              )}
+            </Formik>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
