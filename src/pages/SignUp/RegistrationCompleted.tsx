@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  BackHandler,
 } from 'react-native';
 
 import logo from '../../assets/logo.png';
@@ -15,6 +16,18 @@ import { StackActions, useNavigation } from '@react-navigation/native';
 
 const RegistrationCompleted: React.FC = () => {
   const navigation = useNavigation();
+
+  function backAction() {
+    navigation.dispatch(StackActions.popToTop());
+    return true;
+  }
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+    };
+  }, []);
 
   return (
     <>
