@@ -24,9 +24,6 @@ const RegistrationCompleted: React.FC = () => {
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', backAction);
-    return () => {
-      BackHandler.removeEventListener('hardwareBackPress', backAction);
-    };
   }, []);
 
   return (
