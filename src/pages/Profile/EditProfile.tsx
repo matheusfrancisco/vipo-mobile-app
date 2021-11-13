@@ -1,13 +1,4 @@
 import React, { useRef, useCallback } from 'react';
-
-import {
-  HeaderProfile,
-  IconBorder,
-  Container,
-  ContainerButton,
-  ContainerForm,
-} from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -15,16 +6,25 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import Footer from '../../components/Footer';
-import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
-import Input from '../../components/Input';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Yup from 'yup';
+
 import Button from '../../components/Button';
-import Client from '../../services/api';
+import Footer from '../../components/Footer';
+import Input from '../../components/Input';
 import { useAuth } from '../../hooks/auth';
+import Client from '../../services/api';
+import {
+  HeaderProfile,
+  IconBorder,
+  Container,
+  ContainerButton,
+  ContainerForm,
+} from './styles';
 
 interface ProfileFormData {
   name: string;
