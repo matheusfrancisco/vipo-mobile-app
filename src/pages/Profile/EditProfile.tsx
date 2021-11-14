@@ -16,8 +16,7 @@ import * as Yup from 'yup';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Input from '../../components/Input';
-import { useAuth } from '../../hooks/auth';
-import Client from '../../services/api';
+import { useEditProfileController } from './hooks';
 import {
   HeaderProfile,
   IconBorder,
@@ -43,7 +42,6 @@ export type EditProfileParams = RouteProp<ParamList, 'EditProfile'>;
 
 const EditProfile: React.FC = () => {
   const navigation = useNavigation();
-  const auth = useAuth();
   const {
     params: { user },
   } = useRoute<EditProfileParams>();
@@ -51,6 +49,8 @@ const EditProfile: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const lastNameInputRef = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
+
+  const controller = useEditProfileController();
 
   const handleSignUp = useCallback(
     async (data: ProfileFormData) => {
@@ -75,13 +75,11 @@ const EditProfile: React.FC = () => {
         };
         console.log(formData);
 
-        const response = await Client.http.patch('/users', formData);
-
-        await auth.updateUser(response.data);
-
-        Alert.alert('Perfil atualizado com sucesso');
-
-        navigation.goBack();
+        await controller.editProfile({
+          name,
+          lastName,
+          address,
+        });
       } catch (error) {
         // if (error instanceof Yup.ValidationError) {
         //   const errors = getvalidationErrors(error);
@@ -96,7 +94,7 @@ const EditProfile: React.FC = () => {
         );
       }
     },
-    [navigation, auth],
+    [controller],
   );
 
   return (

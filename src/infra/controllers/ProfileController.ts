@@ -1,12 +1,12 @@
-import IPatchUserProfileDTO from '@/domain/dtos/IPatchUserProfileDTO';
-import { IUserProfile } from '@/domain/entities/IUser';
+import IPatchUserDTO from '@/domain/dtos/IPatchUserDTO';
+import IUser, { IUserProfile } from '@/domain/entities/IUser';
 import GetUserProfileUseCase from '@/useCases/GetUserProfileUseCase';
-import PatchUserProfileUseCase from '@/useCases/PatchUserProfileUseCase';
+import PatchUserUseCase from '@/useCases/PatchUserUseCase';
 
 export default class ProfileController {
   constructor(
     private readonly getUserProfileUseCase: GetUserProfileUseCase,
-    private readonly patchUserProfileUseCase: PatchUserProfileUseCase,
+    private readonly patchUserUseCase: PatchUserUseCase,
   ) {}
 
   public async getUserProfile(
@@ -22,13 +22,13 @@ export default class ProfileController {
   }
 
   public async patchUserProfile(
-    payload: IPatchUserProfileDTO,
+    payload: IPatchUserDTO,
   ): Promise<{
     error?: string;
-    response?: IUserProfile;
+    response?: IUser;
   }> {
     try {
-      const response = await this.patchUserProfileUseCase.execute(payload);
+      const response = await this.patchUserUseCase.execute(payload);
 
       return { response };
     } catch (error: any) {
