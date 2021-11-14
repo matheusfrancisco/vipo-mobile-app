@@ -9,8 +9,14 @@ import { DatePickerButton, Icon, DateText, TextError } from './styles';
 interface Props {
   name: string;
   placeholder?: TextInputProps['placeholder'];
-  required: boolean;
+  required?: boolean;
 }
+
+const formatDate = (date: string) => {
+  // const newDate = new Date(date);
+
+  return date;
+};
 
 const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
   const [showDataPicker, setShowDataPicker] = useState(false);
@@ -26,14 +32,20 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
 
   const placeholder =
     props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
+
   return (
     <View>
-      <DatePickerButton onPress={() => setShowDataPicker(true)}>
+      <DatePickerButton
+        onPress={() => {
+          setShowDataPicker(!showDataPicker);
+        }}>
         <Icon name={'calendar'} size={20} color="#666360" />
-        <DateText>{value ? value : placeholder}</DateText>
+        <DateText>{value ? formatDate(value) : placeholder}</DateText>
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker
+          // dateFormat={'day month year'}
+          mode={'datetime'}
           style={{ width: 330 }}
           value={new Date()}
           onChange={handleOnChange}

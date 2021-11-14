@@ -22,21 +22,18 @@ const Input: React.FC<InputProps> = ({ icon, name, required, ...props }) => {
   const [{ value }, { touched, error }, { setValue, setTouched }] = useField(
     name,
   );
-  const [focused, setFocus] = useState(false);
 
   const placeholder =
     props.placeholder && `${props.placeholder}${required ? ' *' : ''}`;
 
   return (
-    <Container isFocused={focused} isErrored={!!error}>
+    <Container isFocused={touched} isErrored={!!error}>
       <Icon name={icon} size={20} />
       <TextInput
-        placeholderTextColor="#666360"
-        onFocus={() => setFocus(true)}
+        placeholderTextColor={error ? '#c53030' : '#666360'}
         onChangeText={setValue}
         value={value}
         onBlur={() => {
-          setFocus(true);
           setTouched(true);
         }}
         {...props}

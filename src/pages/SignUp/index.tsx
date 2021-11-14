@@ -19,27 +19,21 @@ import Input from '../../components/InputFormik';
 import Select from '../../components/SelectItem';
 import { TextItalic, Title } from '../../global';
 import Client from '../../services/api';
-import {
-  Container,
-  ContainerTextCreateAccount,
-  Row,
-  ContainerInput,
-  TextTerms,
-} from './styles';
+import { Container, ContainerTextCreateAccount, TextTerms } from './styles';
 
 interface SignUpData {
   name: string;
   lastName: string;
   email: string;
   password: string;
-  birthDate: string;
+  birthDate: Date;
   gender: string;
 }
 
 const genderOptions = [
   { id: 'Male', name: 'Homem' },
   { id: 'Female', name: 'Mulher' },
-  { id: 'Neutral', name: 'Neutro' },
+  { id: 'Neuter', name: 'Neutro' },
 ];
 
 const SignUp: React.FC = () => {
@@ -111,27 +105,20 @@ const SignUp: React.FC = () => {
               initialValues={initialValues}
               onSubmit={handleSignUp}
               validationSchema={SignUpSchema}>
-              {({ handleSubmit }) => (
+              {({ handleSubmit, errors, isValid }) => (
                 <View>
-                  <Row>
-                    <ContainerInput>
-                      <Input
-                        name="name"
-                        icon="user"
-                        placeholder="Nome"
-                        required={true}
-                      />
-                    </ContainerInput>
-                    <ContainerInput>
-                      <Input
-                        name="lastName"
-                        icon="user"
-                        placeholder="Sobrenome"
-                        required={true}
-                      />
-                    </ContainerInput>
-                  </Row>
-
+                  <Input
+                    name="name"
+                    icon="user"
+                    placeholder="Nome"
+                    required={true}
+                  />
+                  <Input
+                    name="lastName"
+                    icon="user"
+                    placeholder="Sobrenome"
+                    required={true}
+                  />
                   <Input
                     name="email"
                     icon="mail"
@@ -149,9 +136,11 @@ const SignUp: React.FC = () => {
                   <DatePicker
                     placeholder="Data de nascimento:"
                     name="birthDate"
+                    required
                   />
 
                   <Select
+                    required
                     label={'Escolha um gênero:'}
                     items={genderOptions}
                     defaultValue="Gênero"
@@ -165,7 +154,10 @@ const SignUp: React.FC = () => {
                     </TextItalic>
                   </TextTerms>
 
-                  <Button title="Submit" onPress={handleSubmit}>
+                  <Button
+                    title="Submit"
+                    onPress={handleSubmit}
+                    disabled={isValid}>
                     Cadastrar
                   </Button>
                 </View>
