@@ -26,7 +26,7 @@ interface SignUpData {
   lastName: string;
   email: string;
   password: string;
-  birthDate: Date;
+  birthDate: string;
   gender: string;
 }
 
@@ -157,7 +157,7 @@ const SignUp: React.FC = () => {
                   <Button
                     title="Submit"
                     onPress={handleSubmit}
-                    disabled={isValid}>
+                    disabled={!isValid}>
                     Cadastrar
                   </Button>
                 </View>
