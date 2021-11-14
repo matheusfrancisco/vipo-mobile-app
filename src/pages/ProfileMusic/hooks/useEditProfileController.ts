@@ -9,9 +9,9 @@ import ProfileControllerFactory from '@/infra/controllers/factories/ProfileContr
 interface IUseEditProfileController {
   loading: boolean;
   editProfile(profile: {
-    name: string;
-    lastName: string;
-    address: string;
+    drinks: string[];
+    foods: string[];
+    musicals: string[];
   }): void;
 }
 
@@ -24,14 +24,14 @@ export default function useEditProfileController(): IUseEditProfileController {
   const controller = useMemo(() => ProfileControllerFactory.getInstance(), []);
 
   const editProfile = useCallback<IUseEditProfileController['editProfile']>(
-    async ({ name, lastName, address }) => {
+    async ({ drinks, foods, musicals }) => {
       setLoading(true);
 
-      const { error, response } = await controller.patchUserProfile({
-        id: auth.user.id,
-        name,
-        lastName,
-        address,
+      const { error } = await controller.patchUserProfile({
+        userId: auth.user.id,
+        drinks,
+        foods,
+        musicals,
       });
 
       setLoading(false);
@@ -42,13 +42,9 @@ export default function useEditProfileController(): IUseEditProfileController {
           'Ocorreu um erro ao atualizar seu perfil, tente novamente.',
         );
 
-      if (!response) return;
-
-      await auth.updateUser(response);
-
       Alert.alert('Perfil atualizado com sucesso');
 
-      navigation.goBack();
+      navigation.navigate('Profile');
     },
     [auth, controller, navigation],
   );

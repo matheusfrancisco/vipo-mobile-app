@@ -16,7 +16,7 @@ import * as Yup from 'yup';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Input from '../../components/Input';
-import { useEditProfileController } from './hooks';
+import { useEditUserController } from './hooks';
 import {
   HeaderProfile,
   IconBorder,
@@ -50,9 +50,9 @@ const EditProfile: React.FC = () => {
   const lastNameInputRef = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
 
-  const controller = useEditProfileController();
+  const controller = useEditUserController();
 
-  const handleSignUp = useCallback(
+  const handleEdit = useCallback(
     async (data: ProfileFormData) => {
       try {
         formRef.current?.setErrors({});
@@ -75,7 +75,7 @@ const EditProfile: React.FC = () => {
         };
         console.log(formData);
 
-        await controller.editProfile({
+        await controller.editUser({
           name,
           lastName,
           address,
@@ -117,7 +117,7 @@ const EditProfile: React.FC = () => {
               </IconBorder>
             </HeaderProfile>
 
-            <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={user} ref={formRef} onSubmit={handleEdit}>
               <ContainerForm>
                 <Input
                   autoCapitalize="words"
