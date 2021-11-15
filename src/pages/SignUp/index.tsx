@@ -38,8 +38,7 @@ const genderOptions = [
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
-  const onlyLetters = /^[aA-zZ\s]+$/;
-
+  const onlyLetters = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
   //#TODO create all validators
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
