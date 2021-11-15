@@ -43,12 +43,15 @@ const SignUp: React.FC = () => {
   const SignUpSchema = Yup.object().shape({
     name: Yup.string()
       .required('O nome obrigatório')
+      .trim()
       .matches(onlyLetters, 'Somente letras são permitidas '),
     lastName: Yup.string()
       .required('O sobrenome obrigatório')
+      .trim()
       .matches(onlyLetters, 'Somente letras são permitidas '),
     email: Yup.string()
       .email('Digite um e-mail válido')
+      .trim()
       .required('E-mail obrigatório'),
     password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
     gender: Yup.string().required('Você deve escolher um gênero'),
