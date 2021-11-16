@@ -38,8 +38,6 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker
-          // dateFormat={'day month year'}
-          locale={'pt-Br'}
           mode={'datetime'}
           style={{ width: 330 }}
           value={new Date()}
