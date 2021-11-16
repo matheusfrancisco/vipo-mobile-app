@@ -12,12 +12,6 @@ interface Props {
   required?: boolean;
 }
 
-const formatDate = (date: string) => {
-  // const newDate = new Date(date);
-
-  return date;
-};
-
 const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
   const [showDataPicker, setShowDataPicker] = useState(false);
   const [{ value }, { error, touched }, { setValue }] = useField(name);
@@ -40,11 +34,12 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
           setShowDataPicker(!showDataPicker);
         }}>
         <Icon name={'calendar'} size={20} color="#666360" />
-        <DateText>{value ? formatDate(value) : placeholder}</DateText>
+        <DateText>{value ? value : placeholder}</DateText>
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker
           // dateFormat={'day month year'}
+          locale={'pt-Br'}
           mode={'datetime'}
           style={{ width: 330 }}
           value={new Date()}
