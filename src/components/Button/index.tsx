@@ -9,10 +9,16 @@ interface ButtonProps extends RectButtonProperties {
   title?: string;
   children?: string;
   onPress: () => void;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onPress, ...rest }) => (
-  <Container {...rest} onPress={onPress}>
+const Button: React.FC<ButtonProps> = ({
+  children,
+  disabled,
+  onPress,
+  ...rest
+}) => (
+  <Container {...rest} disabled={disabled} onPress={onPress}>
     <TextButton>
       <TextH3 primary> {children} </TextH3>
     </TextButton>

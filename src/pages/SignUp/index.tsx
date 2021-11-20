@@ -17,13 +17,7 @@ import Input from '../../components/InputFormik';
 import Select from '../../components/SelectItem';
 import { TextItalic, Title } from '../../global';
 import { useSignUpController } from './hooks';
-import {
-  Container,
-  ContainerTextCreateAccount,
-  Row,
-  ContainerInput,
-  TextTerms,
-} from './styles';
+import { Container, ContainerTextCreateAccount, TextTerms } from './styles';
 
 interface SignUpData {
   name: string;
@@ -37,7 +31,7 @@ interface SignUpData {
 const genderOptions = [
   { id: 'Male', name: 'Homem' },
   { id: 'Female', name: 'Mulher' },
-  { id: 'Neutral', name: 'Neutro' },
+  { id: 'Neuter', name: 'Neutro' },
 ];
 
 const initialValues: SignUpData = {
@@ -49,18 +43,21 @@ const initialValues: SignUpData = {
   gender: '',
 };
 
-const onlyLettersRegex = /^[aA-zZ\s]+$/;
+const onlyLettersRegex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
 
 //#TODO create all validators
 const SignUpSchema = Yup.object().shape({
   name: Yup.string()
     .required('O nome obrigatório')
+    .trim()
     .matches(onlyLettersRegex, 'Somente letras são permitidas '),
   lastName: Yup.string()
     .required('O sobrenome obrigatório')
+    .trim()
     .matches(onlyLettersRegex, 'Somente letras são permitidas '),
   email: Yup.string()
     .email('Digite um e-mail válido')
+    .trim()
     .required('E-mail obrigatório'),
   password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
   gender: Yup.string().required('Você deve escolher um gênero'),
@@ -112,27 +109,20 @@ const SignUp: React.FC = () => {
               initialValues={initialValues}
               onSubmit={handleSignUp}
               validationSchema={SignUpSchema}>
-              {({ handleSubmit }) => (
+              {({ handleSubmit, errors, isValid }) => (
                 <View>
-                  <Row>
-                    <ContainerInput>
-                      <Input
-                        name="name"
-                        icon="user"
-                        placeholder="Nome"
-                        required={true}
-                      />
-                    </ContainerInput>
-                    <ContainerInput>
-                      <Input
-                        name="lastName"
-                        icon="user"
-                        placeholder="Sobrenome"
-                        required={true}
-                      />
-                    </ContainerInput>
-                  </Row>
-
+                  <Input
+                    name="name"
+                    icon="user"
+                    placeholder="Nome"
+                    required={true}
+                  />
+                  <Input
+                    name="lastName"
+                    icon="user"
+                    placeholder="Sobrenome"
+                    required={true}
+                  />
                   <Input
                     name="email"
                     icon="mail"
@@ -154,6 +144,7 @@ const SignUp: React.FC = () => {
                   />
 
                   <Select
+                    required
                     label={'Escolha um gênero:'}
                     items={genderOptions}
                     defaultValue="Gênero"
@@ -167,7 +158,10 @@ const SignUp: React.FC = () => {
                     </TextItalic>
                   </TextTerms>
 
-                  <Button title="Submit" onPress={handleSubmit}>
+                  <Button
+                    title="Submit"
+                    onPress={handleSubmit}
+                    disabled={!isValid}>
                     Cadastrar
                   </Button>
                 </View>

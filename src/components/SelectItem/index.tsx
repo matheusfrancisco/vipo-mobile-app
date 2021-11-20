@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ItemValue } from '@react-native-community/picker/typings/Picker';
 import { useField } from 'formik';
 
 import { SelectInput, Container } from './styles';
@@ -17,23 +18,16 @@ interface Props {
   required?: boolean;
 }
 
-const Select: React.FC<Props> = ({
-  icon,
-  items,
-  defaultValue,
-  required,
-  ...props
-}) => {
+const Select: React.FC<Props> = ({ items, required, ...props }) => {
   const [{ value }, { touched, error }, { setValue }] = useField('gender');
 
-  const onChange = (value: string) => {
-    setValue(value);
-  };
   const itemLabel = props.label && `${props.label}${required ? ' *' : ''}`;
 
   return (
-    <Container>
-      <SelectInput selectedValue={value} onValueChange={onChange}>
+    <Container error={!!error}>
+      <SelectInput
+        selectedValue={value}
+        onValueChange={(value: ItemValue, _: number) => setValue(value)}>
         <SelectInput.Item label={itemLabel} value={value} />
         {items.map((option: Option) => (
           <SelectInput.Item
