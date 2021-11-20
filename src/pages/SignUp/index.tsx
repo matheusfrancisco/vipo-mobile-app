@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Alert,
   Image,
@@ -11,6 +11,8 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+
+import translateApiErrors from '@/utils/translateApiErrors';
 
 import logo from '../../assets/logo.png';
 import Button from '../../components/Button';
@@ -68,7 +70,8 @@ const SignUp: React.FC = () => {
       }
     } catch (error) {
       const { data } = error.response;
-      Alert.alert('Erro no cadastro', data.message);
+      const translatedData = translateApiErrors(data.message);
+      Alert.alert('Erro no cadastro', translatedData.translatedError);
     }
   };
 

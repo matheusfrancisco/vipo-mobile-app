@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 import React, { useCallback } from 'react';
-import { Platform, ScrollView, Text, View } from 'react-native';
+import { Alert, Platform, ScrollView, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
@@ -24,6 +24,7 @@ import {
   VipoLogo,
 } from './styles';
 import SignInWithGoogle from '@/pages/SignIn/SignInWithGoogle';
+import translateApiErrors from '@/utils/translateApiErrors';
 
 interface SignInFormData {
   email: string;
@@ -57,7 +58,9 @@ const SignIn: React.FC = () => {
           password: data.password,
         });
       } catch (error) {
-        console.log(error);
+        const { data } = error.response;
+        const translatedData = translateApiErrors(data.message);
+        Alert.alert('Erro no login', translatedData.translatedError);
       }
     },
     [signIn],
