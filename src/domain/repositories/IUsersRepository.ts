@@ -6,7 +6,7 @@ export interface ICreateUser {
   email: string;
   password: string;
   gender: string;
-  birthDate: string;
+  birthDate: Date;
 }
 
 export interface IUpdateUser {

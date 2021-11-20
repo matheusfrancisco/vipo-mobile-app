@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -8,7 +7,6 @@ import {
   View,
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -18,7 +16,7 @@ import DatePicker from '../../components/DatePicker';
 import Input from '../../components/InputFormik';
 import Select from '../../components/SelectItem';
 import { TextItalic, Title } from '../../global';
-import Client from '../../services/api';
+import { useSignUpController } from './hooks';
 import { Container, ContainerTextCreateAccount, TextTerms } from './styles';
 
 interface SignUpData {
@@ -26,7 +24,7 @@ interface SignUpData {
   lastName: string;
   email: string;
   password: string;
-  birthDate: string;
+  birthDate?: Date;
   gender: string;
 }
 
@@ -36,50 +34,54 @@ const genderOptions = [
   { id: 'Neuter', name: 'Neutro' },
 ];
 
+const initialValues: SignUpData = {
+  name: '',
+  lastName: '',
+  email: '',
+  password: '',
+  birthDate: undefined,
+  gender: '',
+};
+
+const onlyLettersRegex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+
+const SignUpSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('O nome obrigatório')
+    .trim()
+    .matches(onlyLettersRegex, 'Somente letras são permitidas '),
+  lastName: Yup.string()
+    .required('O sobrenome obrigatório')
+    .trim()
+    .matches(onlyLettersRegex, 'Somente letras são permitidas '),
+  email: Yup.string()
+    .email('Digite um e-mail válido')
+    .trim()
+    .required('E-mail obrigatório'),
+  birthDate: Yup.date().required('Data de nascimento obrigatória'),
+  password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
+  gender: Yup.string().required('Você deve escolher um gênero'),
+});
+
 const SignUp: React.FC = () => {
-  const navigation = useNavigation();
-  const onlyLetters = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-  //#TODO create all validators
-  const SignUpSchema = Yup.object().shape({
-    name: Yup.string()
-      .required('O nome obrigatório')
-      .trim()
-      .matches(onlyLetters, 'Somente letras são permitidas '),
-    lastName: Yup.string()
-      .required('O sobrenome obrigatório')
-      .trim()
-      .matches(onlyLetters, 'Somente letras são permitidas '),
-    email: Yup.string()
-      .email('Digite um e-mail válido')
-      .trim()
-      .required('E-mail obrigatório'),
-    password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
-    gender: Yup.string().required('Você deve escolher um gênero'),
-  });
+  const controller = useSignUpController();
 
-  const handleSignUp = async (data: SignUpData) => {
-    try {
-      const res = await Client.http.post('/users', data);
-
-      if (res.status === 201) {
-        navigation.navigate('RegistrationCompleted');
-      } else {
-        navigation.goBack();
-      }
-    } catch (error) {
-      const { data } = error.response;
-      Alert.alert('Erro no cadastro', data.message);
-    }
-  };
-
-  const initialValues: SignUpData = {
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
-    birthDate: new Date().toDateString(),
-    gender: '',
-  };
+  const handleSignUp = async ({
+    name,
+    lastName,
+    email,
+    gender,
+    birthDate,
+    password,
+  }: SignUpData) =>
+    controller.createUser({
+      name,
+      lastName,
+      email,
+      gender,
+      birthDate: birthDate as Date, // Since we validate it via Yup, it's okay to do a type assertion
+      password,
+    });
 
   return (
     <>
@@ -87,9 +89,7 @@ const SignUp: React.FC = () => {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <Container>
             <Image
               source={logo}
@@ -107,7 +107,7 @@ const SignUp: React.FC = () => {
               initialValues={initialValues}
               onSubmit={handleSignUp}
               validationSchema={SignUpSchema}>
-              {({ handleSubmit, errors, isValid }) => (
+              {({ handleSubmit, isValid }) => (
                 <View>
                   <Input
                     name="name"

@@ -14,12 +14,14 @@ interface Props {
 
 const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
   const [showDataPicker, setShowDataPicker] = useState(false);
-  const [{ value }, { error, touched }, { setValue }] = useField(name);
+  const [{ value }, { error, touched }, { setValue }] = useField<
+    Date | undefined
+  >(name);
 
   const handleOnChange = useCallback(
     (_: unknown, date?: Date) => {
       setShowDataPicker(false);
-      setValue(date?.toDateString());
+      setValue(date);
     },
     [setValue],
   );
@@ -34,7 +36,7 @@ const DatePicker: React.FC<Props> = ({ name, required, ...props }: Props) => {
           setShowDataPicker(!showDataPicker);
         }}>
         <Icon name={'calendar'} size={20} color="#666360" />
-        <DateText>{value ? value : placeholder}</DateText>
+        <DateText>{value?.toLocaleDateString() || placeholder}</DateText>
       </DatePickerButton>
       {showDataPicker && (
         <RNDateTimePicker

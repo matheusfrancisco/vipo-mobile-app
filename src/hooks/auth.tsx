@@ -4,17 +4,14 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useMemo,
 } from 'react';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
 import IUser from '@/domain/entities/IUser';
-import {
-  GoogleSignInCredentials,
-  SignInCredentials,
-} from '@/domain/repositories/IAuthenticationRepository';
-
-import Client from '../services/api';
+import { SignInCredentials } from '@/domain/repositories/IAuthenticationRepository';
+import AuthenticationControllerFactory from '@/infra/controllers/factories/AuthenticationControllerFactory';
+import HttpProviderFactory from '@/infra/providers/factories/HttpProviderFactory';
+import StorageProviderFactory from '@/infra/providers/factories/StorageProviderFactory';
 
 interface AuthState {
   token: string;
@@ -30,73 +27,89 @@ interface AuthContextData {
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
-const AUTH_HEADER = 'Authorization';
 const STORAGE_TOKEN = '@Vipo:token';
 const STORAGE_USER = '@Vipo:user';
 
-const isGoogleSignIn = (
-  credentials: any,
-): credentials is GoogleSignInCredentials => Boolean(credentials.token);
-
 const AuthUser: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>({} as AuthState);
-  const [loading, setLoading] = useState(true);
+  const [initializing, setInitializing] = useState(true);
+  const controller = useMemo(
+    () => AuthenticationControllerFactory.getInstance(),
+    [],
+  );
+  const httpProvider = useMemo(() => HttpProviderFactory.getInstance(), []);
+  const storageProvider = useMemo(
+    () => StorageProviderFactory.getInstance(),
+    [],
+  );
 
-  const signIn = useCallback<AuthContextData['signIn']>(async (credentials) => {
-    const response = isGoogleSignIn(credentials)
-      ? await Client.http.post('/signin/google', {
-          token: credentials.token,
-        })
-      : await Client.http.post('/signin', {
-          email: credentials.email,
-          password: credentials.password,
-        });
+  const signIn = useCallback<AuthContextData['signIn']>(
+    async (credentials) => {
+      const { error, response } = await controller.login(credentials);
 
-    const { token, user } = response.data;
-    Client.addHttpHeader(AUTH_HEADER, `Bearer ${token}`);
+      if (error || !response) return;
 
-    await AsyncStorage.multiSet([
-      [STORAGE_TOKEN, token],
-      [STORAGE_USER, JSON.stringify(user)],
-    ]);
+      const { token, user } = response;
+      httpProvider.authentication = { accessToken: `Bearer ${token}` };
 
-    setData({ token, user });
-  }, []);
+      await Promise.all([
+        storageProvider.store(STORAGE_TOKEN, token),
+        storageProvider.store(STORAGE_USER, user),
+      ]);
+
+      setData({ token, user });
+    },
+    [controller, httpProvider, storageProvider],
+  );
 
   useEffect(() => {
     async function loadStorageData(): Promise<void> {
-      const [token, user] = await AsyncStorage.multiGet([
-        STORAGE_TOKEN,
-        STORAGE_USER,
+      const [token, user] = await Promise.all([
+        storageProvider.get<string>(STORAGE_TOKEN),
+        storageProvider.get<IUser>(STORAGE_USER),
       ]);
-      if (token[1] && user[1]) {
-        Client.addHttpHeader(AUTH_HEADER, `Bearer ${token[1]}`);
-        setData({ token: token[1], user: JSON.parse(user[1]) });
+
+      if (token && user) {
+        httpProvider.authentication = { accessToken: `Bearer ${token}` };
+        setData({ token, user });
       }
-      setLoading(false);
+
+      setInitializing(false);
     }
     loadStorageData();
-  }, []);
+  }, [httpProvider, storageProvider]);
 
   const signOut = useCallback(async () => {
-    await AsyncStorage.multiRemove([STORAGE_USER, STORAGE_TOKEN]);
-    Client.removeHttpHeader(AUTH_HEADER);
+    await Promise.all([
+      storageProvider.delete(STORAGE_TOKEN),
+      storageProvider.delete(STORAGE_USER),
+    ]);
+    httpProvider.authentication = null;
 
     setData({} as AuthState);
-  }, []);
+  }, [httpProvider, storageProvider]);
 
-  const updateUser = useCallback(async (user: IUser) => {
-    await AsyncStorage.setItem(STORAGE_USER, JSON.stringify(user));
+  const updateUser = useCallback(
+    async (user: IUser) => {
+      await storageProvider.store(STORAGE_USER, user);
 
-    setData((data) => ({
-      user,
-      token: data.token,
-    }));
-  }, []);
+      setData((data) => ({
+        user,
+        token: data.token,
+      }));
+    },
+    [storageProvider],
+  );
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, loading, signIn, signOut, updateUser }}>
+      value={{
+        user: data.user,
+        loading: initializing,
+        signIn,
+        signOut,
+        updateUser,
+      }}>
       {children}
     </AuthContext.Provider>
   );
