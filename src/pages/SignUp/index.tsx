@@ -24,7 +24,7 @@ interface SignUpData {
   lastName: string;
   email: string;
   password: string;
-  birthDate: string;
+  birthDate?: Date;
   gender: string;
 }
 
@@ -39,13 +39,12 @@ const initialValues: SignUpData = {
   lastName: '',
   email: '',
   password: '',
-  birthDate: new Date().toDateString(),
+  birthDate: undefined,
   gender: '',
 };
 
 const onlyLettersRegex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
 
-//#TODO create all validators
 const SignUpSchema = Yup.object().shape({
   name: Yup.string()
     .required('O nome obrigatório')
@@ -59,6 +58,7 @@ const SignUpSchema = Yup.object().shape({
     .email('Digite um e-mail válido')
     .trim()
     .required('E-mail obrigatório'),
+  birthDate: Yup.date().required('Data de nascimento obrigatória'),
   password: Yup.string().min(8, 'Deve possuir pelo menos 8 dígitos'),
   gender: Yup.string().required('Você deve escolher um gênero'),
 });
@@ -79,7 +79,7 @@ const SignUp: React.FC = () => {
       lastName,
       email,
       gender,
-      birthDate: new Date(birthDate),
+      birthDate: birthDate as Date, // Since we validate it via Yup, it's okay to do a type assertion
       password,
     });
 
@@ -89,9 +89,7 @@ const SignUp: React.FC = () => {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <Container>
             <Image
               source={logo}
@@ -109,7 +107,7 @@ const SignUp: React.FC = () => {
               initialValues={initialValues}
               onSubmit={handleSignUp}
               validationSchema={SignUpSchema}>
-              {({ handleSubmit, errors, isValid }) => (
+              {({ handleSubmit, isValid }) => (
                 <View>
                   <Input
                     name="name"
