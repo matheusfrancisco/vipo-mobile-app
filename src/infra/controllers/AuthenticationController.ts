@@ -15,7 +15,6 @@ export default class AuthenticationController {
   ): Promise<{ error?: string; response?: IAuthData }> {
     try {
       const response = await this.logUserUseCase.execute(payload);
-
       return { response };
     } catch (error: any) {
       const { data } = error.response;

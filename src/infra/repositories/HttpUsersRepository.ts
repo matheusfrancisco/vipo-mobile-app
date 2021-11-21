@@ -34,10 +34,14 @@ export default class HttpUsersRepository implements IUsersRepository {
     lastName,
     address,
   }: IUpdateUser): Promise<IUser> {
-    return this.httpProvider.patch(Http.PATHS.USERS.EDIT, {
-      name,
-      lastName,
-      address,
-    });
+    const { data } = await this.httpProvider.patch<{ data: IUser }>(
+      Http.PATHS.USERS.EDIT,
+      {
+        name,
+        lastName,
+        address,
+      },
+    );
+    return data;
   }
 }

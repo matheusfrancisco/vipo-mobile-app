@@ -7,12 +7,12 @@ import {
   BackHandler,
 } from 'react-native';
 
-import logo from '../../assets/logo.png';
-
-import { Title, TextH3 } from '../../global';
-import Button from '../../components/Button';
-import { Container } from './styles';
 import { StackActions, useNavigation } from '@react-navigation/native';
+
+import logo from '../../assets/logo.png';
+import Button from '../../components/Button';
+import { Title, TextH3 } from '../../global';
+import { Container } from './styles';
 
 const RegistrationCompleted: React.FC = () => {
   const navigation = useNavigation();
@@ -21,7 +21,7 @@ const RegistrationCompleted: React.FC = () => {
     navigation.dispatch(StackActions.popToTop());
     return true;
   }
-
+  //#TODO need to fix this dependency
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', backAction);
   }, []);

@@ -1,7 +1,8 @@
-import { useField } from 'formik';
 import React, { useCallback } from 'react';
-import PickerRow from '../PickerRow';
 
+import { useField } from 'formik';
+
+import PickerRow from '../PickerRow';
 import { Container, OptionButton, OptionText } from './styles';
 
 type OptionValuesEnum =

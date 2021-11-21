@@ -59,6 +59,7 @@ const Match: React.FC = () => {
         const nextRoute = `match-route-${index + 1}`;
         return (
           <Tab.Screen
+            key={index}
             name={`match-route-${index}`}
             component={function buildRecommendationDetails() {
               return (
