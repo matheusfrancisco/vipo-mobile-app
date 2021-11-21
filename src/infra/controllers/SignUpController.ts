@@ -10,7 +10,8 @@ export default class SignUpController {
 
       return {};
     } catch (error: any) {
-      return { error: error.message };
+      const { data } = error.response;
+      return { error: data.message };
     }
   }
 }

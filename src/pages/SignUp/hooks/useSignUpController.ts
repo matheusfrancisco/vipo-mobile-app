@@ -26,13 +26,10 @@ export default function useSignUpController(): IUseSignUpController {
       const { error } = await controller.createUser(user);
 
       setLoading(false);
-
       if (error) {
         const errorMessage = translateApiErrors(error);
-        Alert.alert('Erro no login', errorMessage);
-
-        Alert.alert('Erro no cadastro', error);
-        return navigation.goBack();
+        Alert.alert('Erro no cadastro', errorMessage);
+        return;
       }
 
       navigation.navigate('RegistrationCompleted');
