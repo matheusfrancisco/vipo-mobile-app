@@ -18,8 +18,9 @@ export default class AuthenticationController {
 
       return { response };
     } catch (error: any) {
+      const { data } = error.response;
       return {
-        error: error.message,
+        error: data.message,
       };
     }
   }

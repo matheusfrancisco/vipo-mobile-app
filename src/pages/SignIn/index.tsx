@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
 import React, { useCallback } from 'react';
-import { Platform, ScrollView, Text, View } from 'react-native';
+import { Alert, Platform, ScrollView, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
 import { useNavigation } from '@react-navigation/native';
@@ -24,6 +24,7 @@ import {
   VipoLogo,
 } from './styles';
 import SignInWithGoogle from '@/pages/SignIn/SignInWithGoogle';
+import translateApiErrors from '@/utils/translateApiErrors';
 
 interface SignInFormData {
   email: string;
@@ -50,14 +51,20 @@ const SignIn: React.FC = () => {
   const onSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
-        console.log(data.email, data.password);
-
-        await signIn({
+        const expectedError = await signIn({
           email: data.email,
           password: data.password,
         });
+        if (expectedError) {
+          const errorMessage = translateApiErrors(expectedError as string);
+          Alert.alert('Erro no login', errorMessage);
+          return;
+        }
       } catch (error) {
-        console.log(error);
+        const { data } = error.response;
+        const errorMessage = translateApiErrors(data.message);
+        console.log(errorMessage);
+        Alert.alert('Ocorreu um erro inesperado no login');
       }
     },
     [signIn],

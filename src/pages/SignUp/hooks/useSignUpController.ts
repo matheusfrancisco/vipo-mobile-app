@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import ICreateUserDTO from '@/domain/dtos/ICreateUserDTO';
 import SignUpControllerFactory from '@/infra/controllers/factories/SignUpControllerFactory';
+import translateApiErrors from '@/utils/translateApiErrors';
 
 interface IUseSignUpController {
   loading: boolean;
@@ -25,10 +26,10 @@ export default function useSignUpController(): IUseSignUpController {
       const { error } = await controller.createUser(user);
 
       setLoading(false);
-
       if (error) {
-        Alert.alert('Erro no cadastro', error);
-        return navigation.goBack();
+        const errorMessage = translateApiErrors(error);
+        Alert.alert('Erro no cadastro', errorMessage);
+        return;
       }
 
       navigation.navigate('RegistrationCompleted');
