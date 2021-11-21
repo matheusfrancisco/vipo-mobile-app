@@ -114,10 +114,12 @@ const PickerMatcherParty: React.FC = () => {
                     <TextH5>{label}</TextH5>
 
                     <Accordion
+                      key={key}
                       onPress={() => {
                         setExpandedMenu(isExpanded ? null : key);
                       }}>
                       <FeatherIcon
+                        key={key}
                         name={isExpanded ? 'minus' : 'plus'}
                         size={20}
                         color="#fff"

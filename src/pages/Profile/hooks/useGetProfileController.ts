@@ -19,7 +19,6 @@ export default function useGetProfileController(): IUseGetProfileController {
     setLoading(true);
 
     const { error, response } = await controller.getUserProfile(auth.user.id);
-
     setLoading(false);
 
     if (error) {
@@ -29,7 +28,6 @@ export default function useGetProfileController(): IUseGetProfileController {
     }
 
     if (!response) return null;
-
     return response;
   }, [auth, controller]);
 

@@ -12,10 +12,10 @@ export default class MatchsController {
   ): Promise<{ error?: string; response?: IRecommendation }> {
     try {
       const response = await this.getNightOutRecommendation.execute(payload);
-
       return { response };
     } catch (error: any) {
-      return { error: error.message };
+      const { data } = error.response;
+      return { error: data.message };
     }
   }
 }

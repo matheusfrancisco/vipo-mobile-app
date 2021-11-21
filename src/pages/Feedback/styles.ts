@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+
 import SubmitButton from '../../components/SubmitButton';
 import { TextMin } from '../../global';
 

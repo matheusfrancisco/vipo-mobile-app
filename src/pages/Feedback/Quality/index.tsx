@@ -1,5 +1,6 @@
-import { useField } from 'formik';
 import React from 'react';
+
+import { useField } from 'formik';
 
 import { Container, Option, Options, Title } from './styles';
 

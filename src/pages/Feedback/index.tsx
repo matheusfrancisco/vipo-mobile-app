@@ -1,12 +1,13 @@
-import { Formik } from 'formik';
 import React, { useCallback, useState } from 'react';
 import { Platform } from 'react-native';
+
+import { Formik } from 'formik';
 import { ScrollView } from 'react-native-gesture-handler';
+
 import { Title } from '../../global';
 import BestRatedItem from './BestRatedItem';
 import LeastRatedItem from './LeastRatedItem';
 import Quality from './Quality';
-
 import { Container, Header, Option, Row, Submit } from './styles';
 import TextFeedback from './TextFeedback';
 

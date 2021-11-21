@@ -12,8 +12,10 @@ export default class AxiosHttpProvider implements IHTTPProvider {
   }
 
   public set authentication(value: IAuthenticationData | null) {
-    if (value) Http.instance.defaults.headers[AUTHENTICATION_HEADER] = value;
-    else delete Http.instance.defaults.headers[AUTHENTICATION_HEADER];
+    if (value) {
+      const { accessToken } = value;
+      Http.instance.defaults.headers[AUTHENTICATION_HEADER] = accessToken;
+    } else delete Http.instance.defaults.headers[AUTHENTICATION_HEADER];
   }
 
   public async delete<T = unknown>(

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -6,7 +6,7 @@ import {
   RefreshControl,
 } from 'react-native';
 
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/Fontisto';
 import IconLocation from 'react-native-vector-icons/Octicons';
@@ -39,15 +39,21 @@ const Profile: React.FC = () => {
 
   const navigation = useNavigation();
 
-  useFocusEffect(
-    useCallback(() => {
-      (async () => {
-        const userProfile = await controller.getUserProfile();
+  const getProfile = useCallback(async () => {
+    const userProfile = await controller.getUserProfile();
+    if (userProfile) {
+      setUserProfile(userProfile);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); //#TODO if we put controller dependency here this loading pading will have an infinity loop
 
-        setUserProfile(userProfile);
-      })();
-    }, [controller]),
-  );
+  //useFoucusEffect cause infinity loop
+  useEffect(() => {
+    const renderProfileGoBack = navigation.addListener('focus', () => {
+      getProfile();
+    });
+    return renderProfileGoBack;
+  }, [getProfile, navigation]);
 
   return (
     <>

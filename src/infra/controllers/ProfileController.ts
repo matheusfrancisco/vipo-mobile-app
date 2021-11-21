@@ -17,7 +17,6 @@ export default class ProfileController {
   ): Promise<{ error?: string; response?: IUserProfile }> {
     try {
       const response = await this.getUserProfileUseCase.execute(id);
-
       return { response };
     } catch (error: any) {
       return { error: error.message };

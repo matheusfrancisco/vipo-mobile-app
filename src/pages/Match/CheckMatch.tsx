@@ -1,8 +1,12 @@
 import React from 'react';
+import { KeyboardAvoidingView, ScrollView, Platform, Text } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 import Footer from '../../components/Footer';
-import { KeyboardAvoidingView, ScrollView, Platform, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import Header from '../../components/Header';
+import HeaderProfile from '../../components/HeaderProfile';
+import Line from '../../components/Line';
 import { Title, Title3, Title4, TextH3 } from '../../global';
 import {
   ContainerTitle,
@@ -11,9 +15,6 @@ import {
   ContainerBenefits,
   Container,
 } from './styles';
-import Line from '../../components/Line';
-import Header from '../../components/Header';
-import HeaderProfile from '../../components/HeaderProfile';
 
 const Feedback: React.FC = () => {
   const yourMatchs = [
@@ -42,7 +43,7 @@ const Feedback: React.FC = () => {
             </ContainerDescription>
             {yourMatchs.map((match) => {
               return (
-                <BoxBorder>
+                <BoxBorder key={match.id}>
                   <TextH3>- {yourMatchs[0].benefits}</TextH3>
                 </BoxBorder>
               );

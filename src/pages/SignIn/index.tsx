@@ -63,7 +63,6 @@ const SignIn: React.FC = () => {
       } catch (error) {
         const { data } = error.response;
         const errorMessage = translateApiErrors(data.message);
-        console.log(errorMessage);
         Alert.alert('Ocorreu um erro inesperado no login');
       }
     },
