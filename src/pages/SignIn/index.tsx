@@ -51,16 +51,20 @@ const SignIn: React.FC = () => {
   const onSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
-        console.log(data.email, data.password);
-
-        await signIn({
+        const expectedError = await signIn({
           email: data.email,
           password: data.password,
         });
+        if (expectedError) {
+          const errorMessage = translateApiErrors(expectedError as string);
+          Alert.alert('Erro no login', errorMessage);
+          return;
+        }
       } catch (error) {
         const { data } = error.response;
         const errorMessage = translateApiErrors(data.message);
-        Alert.alert('Erro no login', errorMessage);
+        console.log(errorMessage);
+        Alert.alert('Ocorreu um erro inesperado no login');
       }
     },
     [signIn],
