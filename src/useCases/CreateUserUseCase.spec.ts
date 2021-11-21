@@ -13,7 +13,7 @@ describe('CreateUserUseCase', () => {
     const user = await useCase.execute({
       name: 'John',
       lastName: 'Doe',
-      birthDate: new Date().toJSON(),
+      birthDate: new Date(),
       email: 'john.doe@gmail.com',
       gender: 'M',
       password: 'asd123',
@@ -35,7 +35,7 @@ describe('CreateUserUseCase', () => {
       useCase.execute({
         name: 'John',
         lastName: 'Doe',
-        birthDate: new Date().toJSON(),
+        birthDate: new Date(),
         email: 'john.doe@gmail.com',
         gender: 'M',
         password: 'asd123',

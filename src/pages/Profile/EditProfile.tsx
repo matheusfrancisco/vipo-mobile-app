@@ -1,13 +1,4 @@
 import React, { useRef, useCallback } from 'react';
-
-import {
-  HeaderProfile,
-  IconBorder,
-  Container,
-  ContainerButton,
-  ContainerForm,
-} from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -15,16 +6,24 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import Footer from '../../components/Footer';
-import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
 
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
-import Input from '../../components/Input';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Yup from 'yup';
+
 import Button from '../../components/Button';
-import Client from '../../services/api';
-import { useAuth } from '../../hooks/auth';
+import Footer from '../../components/Footer';
+import Input from '../../components/Input';
+import { useEditUserController } from './hooks';
+import {
+  HeaderProfile,
+  IconBorder,
+  Container,
+  ContainerButton,
+  ContainerForm,
+} from './styles';
 
 interface ProfileFormData {
   name: string;
@@ -43,7 +42,6 @@ export type EditProfileParams = RouteProp<ParamList, 'EditProfile'>;
 
 const EditProfile: React.FC = () => {
   const navigation = useNavigation();
-  const auth = useAuth();
   const {
     params: { user },
   } = useRoute<EditProfileParams>();
@@ -52,7 +50,9 @@ const EditProfile: React.FC = () => {
   const lastNameInputRef = useRef<TextInput>(null);
   const adressInputref = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback(
+  const controller = useEditUserController();
+
+  const handleEdit = useCallback(
     async (data: ProfileFormData) => {
       try {
         formRef.current?.setErrors({});
@@ -75,13 +75,11 @@ const EditProfile: React.FC = () => {
         };
         console.log(formData);
 
-        const response = await Client.http.patch('/users', formData);
-
-        await auth.updateUser(response.data);
-
-        Alert.alert('Perfil atualizado com sucesso');
-
-        navigation.goBack();
+        await controller.editUser({
+          name,
+          lastName,
+          address,
+        });
       } catch (error) {
         // if (error instanceof Yup.ValidationError) {
         //   const errors = getvalidationErrors(error);
@@ -96,7 +94,7 @@ const EditProfile: React.FC = () => {
         );
       }
     },
-    [navigation, auth],
+    [controller],
   );
 
   return (
@@ -119,7 +117,7 @@ const EditProfile: React.FC = () => {
               </IconBorder>
             </HeaderProfile>
 
-            <Form initialData={user} ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={user} ref={formRef} onSubmit={handleEdit}>
               <ContainerForm>
                 <Input
                   autoCapitalize="words"

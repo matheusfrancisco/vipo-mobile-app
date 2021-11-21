@@ -16,7 +16,7 @@ import { IUserProfile } from '@/domain/entities/IUser';
 import Line from '../../components/Line';
 import { Title2, TextH2, TextMin, TextH5 } from '../../global';
 import { useAuth } from '../../hooks/auth';
-import Client from '../../services/api';
+import { useGetProfileController } from './hooks';
 import {
   IconBorder,
   Container,
@@ -31,37 +31,22 @@ import {
   ButtonLogout,
 } from './styles';
 
-interface IResponse {
-  user: IUserProfile;
-}
-
-const getProfile = async (signOut: () => void) => {
-  try {
-    const response = await Client.http.get<IResponse>('/profiles');
-    return response.data.user;
-  } catch (error) {
-    console.log(error.response);
-    signOut();
-    return null;
-  }
-};
-
 const Profile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<IUserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
   const { signOut } = useAuth();
+
+  const controller = useGetProfileController();
 
   const navigation = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
       (async () => {
-        const userProfile = await getProfile(signOut);
+        const userProfile = await controller.getUserProfile();
 
         setUserProfile(userProfile);
-        setLoading(false);
       })();
-    }, [signOut]),
+    }, [controller]),
   );
 
   return (
@@ -72,7 +57,10 @@ const Profile: React.FC = () => {
         enabled>
         <ScrollView
           refreshControl={
-            <RefreshControl refreshing={loading} colors={['#9283bf']} />
+            <RefreshControl
+              refreshing={controller.loading}
+              colors={['#9283bf']}
+            />
           }
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ flex: 1 }}>

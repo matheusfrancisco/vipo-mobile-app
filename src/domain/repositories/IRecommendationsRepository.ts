@@ -1,6 +1,6 @@
 import IRecommendation from '@/domain/entities/IRecommendation';
 
-interface IFindRecommendationWithParams {
+export interface IFindRecommendationWithParams {
   desirablePrice: string;
   groupSize: number;
   interests: string[];

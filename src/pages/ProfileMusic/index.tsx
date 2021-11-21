@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Alert, ImageURISource } from 'react-native';
+import { ImageURISource } from 'react-native';
 
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Formik } from 'formik';
@@ -10,7 +10,7 @@ import Header from '../../components/Header';
 import Line from '../../components/Line';
 import RecommendationsList from '../../components/RecommendationsList';
 import { TextMinAsker } from '../../global';
-import Client from '../../services/api';
+import { useEditProfileController } from './hooks';
 import { Container, HeaderText } from './styles';
 
 type ParamList = {
@@ -63,6 +63,8 @@ const ProfileMusic: React.FC = () => {
     params: { profileInformations },
   } = useRoute<ProfileMusicParams>();
 
+  const controller = useEditProfileController();
+
   const initialValues = useMemo(
     () => ({
       musicals: musicOptions.reduce(
@@ -79,21 +81,11 @@ const ProfileMusic: React.FC = () => {
   const handleSubmit = async (values: typeof initialValues) => {
     const musicals = Object.entries(values.musicals)
       .map(([name, value]) => (value ? name : undefined))
-      .filter((value) => value);
+      .filter((value) => value) as string[];
 
     const newProfileInformations = { ...profileInformations, musicals };
 
-    try {
-      await Client.http.patch('/profiles', {
-        profileInformations: newProfileInformations,
-      });
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Aconteceu um erro ao salvar as informações');
-    }
-    Alert.alert('Perfil atualizado com sucesso');
-
-    navigation.navigate('Profile');
+    await controller.editProfile(newProfileInformations);
   };
 
   return (
