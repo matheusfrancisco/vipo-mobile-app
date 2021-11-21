@@ -59,8 +59,8 @@ const SignIn: React.FC = () => {
         });
       } catch (error) {
         const { data } = error.response;
-        const translatedData = translateApiErrors(data.message);
-        Alert.alert('Erro no login', translatedData.translatedError);
+        const errorMessage = translateApiErrors(data.message);
+        Alert.alert('Erro no login', errorMessage);
       }
     },
     [signIn],
