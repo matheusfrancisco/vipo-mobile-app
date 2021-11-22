@@ -7,5 +7,5 @@ export interface IFindRecommendationWithParams {
 }
 
 export default interface IRecommendationsRepository {
-  findWith(params: IFindRecommendationWithParams): Promise<IRecommendation>;
+  findWith(params: IFindRecommendationWithParams): Promise<IRecommendation[]>;
 }

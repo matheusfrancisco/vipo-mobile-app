@@ -9,9 +9,10 @@ export default class MatchsController {
 
   public async getRecommendation(
     payload: IGetNightOutRecommendationDTO,
-  ): Promise<{ error?: string; response?: IRecommendation }> {
+  ): Promise<{ error?: string; response?: IRecommendation[] }> {
     try {
       const response = await this.getNightOutRecommendation.execute(payload);
+
       return { response };
     } catch (error: any) {
       const { data } = error.response;

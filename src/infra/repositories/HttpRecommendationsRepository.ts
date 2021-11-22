@@ -13,15 +13,14 @@ export default class HttpRecommendationsRepository
     desirablePrice,
     groupSize,
     interests,
-  }: IFindRecommendationWithParams): Promise<IRecommendation> {
-    const response = await this.httpProvider.post<{ data: IRecommendation }>(
-      Http.PATHS.RECOMMENDATIONS.FIND,
-      {
-        howMuch: desirablePrice,
-        numberOfPeople: groupSize,
-        like: interests,
-      },
-    );
-    return response.data;
+  }: IFindRecommendationWithParams): Promise<IRecommendation[]> {
+    const response = await this.httpProvider.post<{
+      data: { recommendations: IRecommendation[] };
+    }>(Http.PATHS.RECOMMENDATIONS.FIND, {
+      howMuch: desirablePrice,
+      numberOfPeople: groupSize,
+      like: interests,
+    });
+    return response.data.recommendations;
   }
 }
