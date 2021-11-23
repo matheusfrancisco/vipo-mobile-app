@@ -27,6 +27,7 @@ export default function useMatchesController(): IUseMatchesController {
 
       if (error) {
         console.error(error);
+        // #TODO - Implement error handling
         return Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
       }
 

@@ -10,8 +10,6 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import translateApiErrors from '@/utils/translateApiErrors';
-
 import logo from '../../assets/logo.png';
 import Button from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
