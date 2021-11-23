@@ -24,7 +24,6 @@ import {
   VipoLogo,
 } from './styles';
 import SignInWithGoogle from '@/pages/SignIn/SignInWithGoogle';
-import translateApiErrors from '@/utils/translateApiErrors';
 
 interface SignInFormData {
   email: string;
@@ -50,21 +49,12 @@ const SignIn: React.FC = () => {
 
   const onSubmit = useCallback(
     async (data: SignInFormData) => {
-      try {
-        const expectedError = await signIn({
-          email: data.email,
-          password: data.password,
-        });
-        if (expectedError) {
-          const errorMessage = translateApiErrors(expectedError as string);
-          Alert.alert('Erro no login', errorMessage);
-          return;
-        }
-      } catch (error) {
-        const { data } = error.response;
-        const errorMessage = translateApiErrors(data.message);
-        Alert.alert('Ocorreu um erro inesperado no login');
-      }
+      const { error } = await signIn({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) Alert.alert('Erro no login', error);
     },
     [signIn],
   );

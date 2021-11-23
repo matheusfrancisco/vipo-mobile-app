@@ -14,8 +14,7 @@ export default class MatchsController {
       const response = await this.getNightOutRecommendation.execute(payload);
       return { response };
     } catch (error: any) {
-      const { data } = error.response;
-      return { error: data.message };
+      return { error: error.message };
     }
   }
 }
