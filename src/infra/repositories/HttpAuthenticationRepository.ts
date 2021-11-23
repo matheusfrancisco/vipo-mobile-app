@@ -17,14 +17,10 @@ export default class HttpAuthenticationRepository
     }
 
     const { email, password } = credentials;
-    const response = await this.httpProvider.post<{ data: ILoginData }>(
-      Http.PATHS.SIGNIN.DEFAULT,
-      {
-        email,
-        password,
-      },
-    );
-    return response.data;
+    return this.httpProvider.post(Http.PATHS.SIGNIN.DEFAULT, {
+      email,
+      password,
+    });
   }
 
   private isGoogleSignIn = (

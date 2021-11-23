@@ -35,6 +35,12 @@ const translateErrors = (error: Error | AxiosError) => {
   return messageErrors[message] || messageErrors.unknown_error;
 };
 
+/**
+ * @class HttpError
+ * This custom error has the responsibility of translating error messages into useful information along the app.
+ * Meaninful errors that should be decoded in additional information, such as the need to logging out, field errors
+ * and so on will be flagged in this class.
+ */
 export default class HttpError extends Error {
   constructor(error: Error | AxiosError) {
     const message = translateErrors(error);
