@@ -12,7 +12,6 @@ import Profile from '@/pages/Profile';
 import EditProfile from '@/pages/Profile/EditProfile';
 import History from '@/pages/History';
 import CheckMatch from '@/pages/Match/CheckMatch';
-import PartyFeedback from '@/pages/PartyFeedback';
 
 const App = createStackNavigator();
 
