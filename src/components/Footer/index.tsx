@@ -11,14 +11,6 @@ const Footer: React.FC = () => {
       <Container>
         <IconBorder>
           <Icon
-            name="home"
-            size={25}
-            color="#000"
-            onPress={() => {
-              navigation.navigate('PickerMatcherParty');
-            }}
-          />
-          <Icon
             name="search"
             size={25}
             color="#000"
@@ -27,7 +19,7 @@ const Footer: React.FC = () => {
             }}
           />
           <Icon
-            name="user"
+            name="vcard-o"
             size={25}
             color="#000"
             onPress={() => {

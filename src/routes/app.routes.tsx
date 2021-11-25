@@ -12,6 +12,7 @@ import Profile from '@/pages/Profile';
 import EditProfile from '@/pages/Profile/EditProfile';
 import History from '@/pages/History';
 import CheckMatch from '@/pages/Match/CheckMatch';
+import PartyFeedback from '@/pages/PartyFeedback';
 
 const App = createStackNavigator();
 
@@ -32,6 +33,7 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="EditProfile" component={EditProfile} />
     <App.Screen name="Feedback" component={Feedback} />
     <App.Screen name="PickerMatcherParty" component={PickerMatcherParty} />
+
     <App.Screen
       name="RegistrationCompleted"
       component={RegistrationCompleted}
