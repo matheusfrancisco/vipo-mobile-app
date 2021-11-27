@@ -15,17 +15,15 @@ import {
   TextButton,
 } from './styles';
 
-const EventFeedback: React.FC = () => {
-  const items: IHistory = [
-    {
-      id: '1',
-      title: 'Bar do leo',
-      image: require('../../assets/history/bar.jpg'),
-      date: 'Seg à Dom - 18:00 à 22:00',
-      location: 'Vila Madalena',
-      value: 'Preço médio - R$ 60,00',
-    },
-  ];
+const TodaysMatch: React.FC = () => {
+  const items: IHistory = {
+    id: '1',
+    title: 'Bar do leo',
+    image: require('../../assets/history/bar.jpg'),
+    date: 'Seg à Dom - 18:00 à 22:00',
+    location: 'Vila Madalena',
+    value: 'Preço médio - R$ 60,00',
+  };
 
   return (
     <>
@@ -37,12 +35,12 @@ const EventFeedback: React.FC = () => {
             <Title>Você já escolheu o seu rolê de hoje!🔥</Title>
           </Header>
           <EventCard
-            id={items[0].id}
-            title={items[0].title}
-            image={items[0].image}
-            date={items[0].date}
-            location={items[0].location}
-            value={items[0].value}
+            id={items.id}
+            title={items.title}
+            image={items.image}
+            date={items.date}
+            location={items.location}
+            value={items.value}
           />
 
           <WrapperButtons>
@@ -60,4 +58,4 @@ const EventFeedback: React.FC = () => {
   );
 };
 
-export default EventFeedback;
+export default TodaysMatch;
