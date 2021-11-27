@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 const TodaysMatch: React.FC = () => {
-  const items: IHistory = {
+  const item: IHistory = {
     id: '1',
     title: 'Bar do leo',
     image: require('../../assets/history/bar.jpg'),
@@ -35,12 +35,12 @@ const TodaysMatch: React.FC = () => {
             <Title>Você já escolheu o seu rolê de hoje!🔥</Title>
           </Header>
           <EventCard
-            id={items.id}
-            title={items.title}
-            image={items.image}
-            date={items.date}
-            location={items.location}
-            value={items.value}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+            date={item.date}
+            location={item.location}
+            value={item.value}
           />
 
           <WrapperButtons>
