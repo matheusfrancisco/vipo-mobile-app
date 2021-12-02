@@ -9,7 +9,7 @@ export default class GetNightOutRecommendationUseCase {
     desirablePrice,
     groupSize,
     interests,
-  }: IGetNightOutRecommendationDTO): Promise<IRecommendation> {
+  }: IGetNightOutRecommendationDTO): Promise<IRecommendation[]> {
     return this.recommendationsRepository.findWith({
       desirablePrice,
       groupSize,

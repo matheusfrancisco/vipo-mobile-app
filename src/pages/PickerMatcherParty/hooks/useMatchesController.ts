@@ -30,7 +30,7 @@ export default function useMatchesController(): IUseMatchesController {
         return Alert.alert('Erro', 'Houve um erro ao buscar as recomendações');
       }
 
-      navigation.navigate('Match', response);
+      navigation.navigate('Match', { recommendations: response });
     },
     [controller, navigation],
   );
