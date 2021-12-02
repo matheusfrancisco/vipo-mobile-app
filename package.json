@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ENVFILE=.env.dev react-native run-android",
+    "android": "NODE_ENV=development react-native run-android",
     "build:android:prod": "cd android && ENVFILE=.env.production ./gradlew assembleRelease",
     "build:android:prod-bundle": "cd android && ENVFILE=.env.production ./gradlew bundleRelease",
     "ios": "react-native run-ios",

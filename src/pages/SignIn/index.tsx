@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled>
-      <ScrollView keyboardShouldPersistTaps="handled">
+      <ScrollView keyboardShouldPersistTaps="handled" scrollEnabled={false}>
         <Container>
           <VipoLogo source={logo} />
 
