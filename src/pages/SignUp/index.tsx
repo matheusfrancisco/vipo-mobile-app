@@ -91,14 +91,14 @@ const SignUp: React.FC = () => {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
-        <ScrollView keyboardShouldPersistTaps="handled">
+        <ScrollView keyboardShouldPersistTaps="handled" scrollEnabled={false}>
           <Container>
             <Image
               source={logo}
               style={{
                 width: 160,
                 height: 160,
-                marginTop: 130,
+                marginTop: 6,
               }}
             />
             <ContainerTextCreateAccount>
@@ -153,7 +153,6 @@ const SignUp: React.FC = () => {
                   <TextTerms>
                     Ao clicar em Cadastrar, você concorda com nossos
                     <TextItalic>
-                      {' '}
                       Termos, Política de dados e Política de Cookies.
                     </TextItalic>
                   </TextTerms>
