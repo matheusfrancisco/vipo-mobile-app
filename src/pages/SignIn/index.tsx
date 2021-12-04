@@ -35,7 +35,8 @@ const SignIn: React.FC = () => {
   const SignInSchema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um e-mail válido')
-      .required('E-mail obrigatório'),
+      .required('E-mail obrigatório')
+      .trim(),
     password: Yup.string().required('Senha obrigatória'),
   });
 
