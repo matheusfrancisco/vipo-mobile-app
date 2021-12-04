@@ -35,7 +35,8 @@ const SignIn: React.FC = () => {
   const SignInSchema = Yup.object().shape({
     email: Yup.string()
       .email('Digite um e-mail válido')
-      .required('E-mail obrigatório'),
+      .required('E-mail obrigatório')
+      .trim(),
     password: Yup.string().required('Senha obrigatória'),
   });
 
@@ -73,7 +74,7 @@ const SignIn: React.FC = () => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled>
-      <ScrollView keyboardShouldPersistTaps="handled">
+      <ScrollView keyboardShouldPersistTaps="handled" scrollEnabled={false}>
         <Container>
           <VipoLogo source={logo} />
 
