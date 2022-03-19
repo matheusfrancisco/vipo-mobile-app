@@ -17,9 +17,8 @@ export default class AuthenticationController {
       const response = await this.logUserUseCase.execute(payload);
       return { response };
     } catch (error: any) {
-      const { data } = error.response;
       return {
-        error: data.message,
+        error: error.message,
       };
     }
   }

@@ -14,14 +14,10 @@ export default class HttpRecommendationsRepository
     groupSize,
     interests,
   }: IFindRecommendationWithParams): Promise<IRecommendation> {
-    const response = await this.httpProvider.post<{ data: IRecommendation }>(
-      Http.PATHS.RECOMMENDATIONS.FIND,
-      {
-        howMuch: desirablePrice,
-        numberOfPeople: groupSize,
-        like: interests,
-      },
-    );
-    return response.data;
+    return this.httpProvider.post(Http.PATHS.RECOMMENDATIONS.FIND, {
+      howMuch: desirablePrice,
+      numberOfPeople: groupSize,
+      like: interests,
+    });
   }
 }

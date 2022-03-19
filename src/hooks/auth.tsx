@@ -22,7 +22,7 @@ interface AuthContextData {
   user: IUser;
   loading: boolean;
   signOut(): void;
-  signIn(credentials: SignInCredentials): Promise<void | string | undefined>;
+  signIn(credentials: SignInCredentials): Promise<{ error?: string }>;
   updateUser(user: IUser): Promise<void>;
 }
 
@@ -44,9 +44,9 @@ const AuthUser: React.FC = ({ children }) => {
   );
 
   const signIn = useCallback<AuthContextData['signIn']>(
-    async (credentials): Promise<string | undefined> => {
+    async (credentials) => {
       const { error, response } = await controller.login(credentials);
-      if (error || !response) return error;
+      if (error || !response) return { error };
 
       const { token, user } = response;
       httpProvider.authentication = { accessToken: `Bearer ${token}` };
@@ -57,6 +57,8 @@ const AuthUser: React.FC = ({ children }) => {
       ]);
 
       setData({ token, user });
+
+      return {};
     },
     [controller, httpProvider, storageProvider],
   );

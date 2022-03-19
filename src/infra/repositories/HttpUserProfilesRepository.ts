@@ -9,19 +9,19 @@ export default class HttpUserProfilesRepository
   constructor(private readonly httpProvider: IHTTPProvider) {}
 
   public async findOne(): Promise<IUserProfile> {
-    const { data } = await this.httpProvider.get<{
-      data: { user: IUserProfile };
+    const { user } = await this.httpProvider.get<{
+      user: IUserProfile;
     }>(Http.PATHS.PROFILES.GET);
 
-    return data.user;
+    return user;
   }
 
   public async updateOne(
     _: unknown,
     { drinks, foods, musicals }: IProfile,
   ): Promise<IUserProfile> {
-    const { data } = await this.httpProvider.patch<{
-      data: { profile: IUserProfile };
+    const { profile } = await this.httpProvider.patch<{
+      profile: IUserProfile;
     }>(Http.PATHS.PROFILES.EDIT, {
       profileInformations: {
         drinks,
@@ -29,6 +29,6 @@ export default class HttpUserProfilesRepository
         musicals,
       },
     });
-    return data.profile;
+    return profile;
   }
 }

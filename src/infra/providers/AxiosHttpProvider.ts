@@ -3,6 +3,7 @@ import IHTTPProvider, {
   IAuthenticationData,
   IRequestConfig,
 } from '@/domain/providers/IHTTPProvider';
+import HttpError from '@/infra/errors/HttpError';
 
 const AUTHENTICATION_HEADER = 'Authorization';
 
@@ -22,14 +23,22 @@ export default class AxiosHttpProvider implements IHTTPProvider {
     path: string,
     config?: IRequestConfig,
   ): Promise<T> {
-    return Http.instance.delete(path, config);
+    return this.handleRequest(async () => {
+      const response = await Http.instance.delete(path, config);
+
+      return response.data;
+    });
   }
 
   public async get<T = unknown>(
     path: string,
     config?: IRequestConfig,
   ): Promise<T> {
-    return Http.instance.get(path, config);
+    return this.handleRequest(async () => {
+      const response = await Http.instance.get(path, config);
+
+      return response.data;
+    });
   }
 
   public async patch<T = unknown>(
@@ -37,7 +46,11 @@ export default class AxiosHttpProvider implements IHTTPProvider {
     body?: unknown,
     config?: IRequestConfig,
   ): Promise<T> {
-    return Http.instance.patch(path, body, config);
+    return this.handleRequest(async () => {
+      const response = await Http.instance.patch(path, body, config);
+
+      return response.data;
+    });
   }
 
   public async post<T = unknown>(
@@ -45,7 +58,11 @@ export default class AxiosHttpProvider implements IHTTPProvider {
     body?: unknown,
     config?: IRequestConfig,
   ): Promise<T> {
-    return Http.instance.post(path, body, config);
+    return this.handleRequest(async () => {
+      const response = await Http.instance.post(path, body, config);
+
+      return response.data;
+    });
   }
 
   public async put<T = unknown>(
@@ -53,6 +70,22 @@ export default class AxiosHttpProvider implements IHTTPProvider {
     body?: unknown,
     config?: IRequestConfig,
   ): Promise<T> {
-    return Http.instance.put(path, body, config);
+    return this.handleRequest(async () => {
+      const response = await Http.instance.put(path, body, config);
+
+      return response.data;
+    });
+  }
+
+  private async handleRequest<T extends any>(
+    request: () => Promise<T>,
+  ): Promise<T> {
+    try {
+      const response = await request();
+
+      return response;
+    } catch (error: any) {
+      throw new HttpError(error);
+    }
   }
 }
